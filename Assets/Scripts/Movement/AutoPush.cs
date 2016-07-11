@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -17,6 +17,6 @@ public class AutoPush : Physics2DObject
 	void FixedUpdate ()
 	{
 		// Apply the force to the Rigidbody2d
-		rb2D.AddForce(new Vector2(horizontalPush, verticalPush) * 2f);
+		rigidbody2D.AddForce(new Vector2(horizontalPush, verticalPush) * 2f);
 	}
 }

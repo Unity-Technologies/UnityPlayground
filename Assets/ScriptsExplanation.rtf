@@ -1,0 +1,103 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww18560\viewh16300\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\b\fs28 \cf0 Scripts Explanations
+\b0 \
+\
+
+\i [Creation]\
+\
+
+\i0\b AutoObjectSpawner
+\b0 : if you give it a Prefab, it will generate copies of it in a random square area\
+
+\b ObjectShooter
+\b0 : give it a Prefab, will shoot objects on the Y axis when you press a key (like a cannon?)
+\i \
+\
+[Movement]
+\i0 \
+\
+
+\b AutoPush
+\b0 : it applies a continuous push to the object, any direction you like\
+
+\b AutoRotation
+\b0 : it spins the object\
+
+\b PushWithButton
+\b0 : it pushes the object if a key is pressed (like a thruster!)\
+
+\b MoveWithArrows
+\b0 : moves the object with the four arrows (perfect for the player?)\
+
+\b MoveWithWASD
+\b0 : moves the object with the WASD keys (perfect for player 2) - Needs some Input setup!\
+
+\b RotateWithArrows
+\b0 : rotates the object with the left/right arrows\
+
+\b AutoMoveToPlayer
+\b0 : the object move towards the player automatically (homing missile?)\
+
+\b Jump
+\b0 : makes the object jump\
+\
+
+\i [Destruction]\
+
+\i0 \
+
+\b TimedSelfDestruct
+\b0 : destroys this object after a set amount of time\
+
+\b DamagePlayer
+\b0 : damages the player on collision (remember to tag the player object as Player!)\
+
+\b KillEnemy
+\b0 : kills an enemy on collision (for projectiles, remember to tag enemy objects as Enemy!)\
+
+\b DieOnCollision
+\b0 : it destroys this object when it collides with anything\
+
+\b DestroyOnCollision
+\b0 : it destroys the other object when colliding\
+\
+
+\i [Triggers]\
+
+\i0 \
+
+\b TriggerEnterArea
+\b0 : an invisible object that will perform an action when something enters it\
+
+\b TriggerExitArea
+\b0 : an invisible object that will perform an action when something exits from it\
+
+\b TriggerStayInArea
+\b0 : an invisible object that will perform an action as long as something is inside it\
+
+\b TriggerCollision
+\b0 : an object that will perform an action when something touches it\
+
+\b TriggerEndOfLevel
+\b0 : loads a new level when the player enters it\
+\
+
+\i [Gameplay]\
+\
+
+\i0\b CameraFollow
+\b0 : put it on a Camera and select an object in the Hierarchy to follow\
+
+\b PlayerHealth
+\b0 : put it on a player to make it vulnerable to objects that use DamagePlayer script\
+
+\b Collectable
+\b0 : stuff that can be picked up for points\
+
+\b DestroyForPoints
+\b0 : apply to an object so that it awards points when it is destroyed}

@@ -9,7 +9,7 @@ public class DieOnCollision : MonoBehaviour
 
 
 	// Happens when this objects hits another
-	void OnCollisionEnter2D(Collision2D coll)
+	void OnCollisionEnter2D(Collision2D collisionData)
 	{
 		if(deathEffect != null)
 		{

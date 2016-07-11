@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SelfDestruct : MonoBehaviour
+public class TimedSelfDestruct : MonoBehaviour
 {
 
 	// After this time, the object will be destroyed

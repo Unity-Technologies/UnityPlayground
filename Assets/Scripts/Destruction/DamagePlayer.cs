@@ -9,16 +9,16 @@ public class DamagePlayer : MonoBehaviour
 	public int damage = 1;
 
 	// This function gets called everytime this object collides with another
-	private void OnCollisionEnter2D(Collision2D coll)
+	private void OnCollisionEnter2D(Collision2D collisionData)
 	{
 		// is the other object a player?
-		if(coll.gameObject.CompareTag("Player"))
+		if(collisionData.gameObject.CompareTag("Player"))
 		{
-			PlayerHealth ph = coll.gameObject.GetComponent<PlayerHealth>();
-			if(ph != null)
+			PlayerHealth playerHealthScript = collisionData.gameObject.GetComponent<PlayerHealth>();
+			if(playerHealthScript != null)
 			{
 				// subtract health from the player
-				ph.SubHealth(damage);
+				playerHealthScript.SubHealth(damage);
 			}
 		}
 	}

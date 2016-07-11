@@ -5,9 +5,9 @@ using System.Collections;
 public class DestroyOnCollision : MonoBehaviour
 {
 	// This function gets called everytime this object collides with another
-	private void OnCollisionEnter2D(Collision2D coll)
+	private void OnCollisionEnter2D(Collision2D collisionData)
 	{
 		// Destroy it!
-		Destroy(coll.gameObject);
+		Destroy(collisionData.gameObject);
 	}
 }

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -41,16 +41,17 @@ public class PushWithButton : Physics2DObject
 	}
 
 
-	// Update is called once per frame
+	// FixedUpdate is called every frame when the physics are calculated
 	void FixedUpdate()
 	{
 		if(keyPressed)
 		{
-			rb2D.AddRelativeForce(pushVector);
+			rigidbody2D.AddRelativeForce(pushVector);
 		}
 	}
 
 
+	// The list of possible axes (used with the variable axis, at the top)
 	public enum Axis
 	{
 		X,

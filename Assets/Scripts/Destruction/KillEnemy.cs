@@ -6,21 +6,21 @@ public class KillEnemy : MonoBehaviour
 {
 	
 	// This function gets called everytime this object collides with another
-	private void OnCollisionEnter2D(Collision2D coll)
+	private void OnCollisionEnter2D(Collision2D collisionData)
 	{
 		// is the other object an enemy?
-		if(coll.gameObject.CompareTag("Enemy"))
+		if(collisionData.gameObject.CompareTag("Enemy"))
 		{
-			Destroy(coll.gameObject);
+			Destroy(collisionData.gameObject);
 		}
 	}
 
 	// Trigger collision, in case the object is used as a projectile
-	private void OnTriggerEnter2D(Collider2D coll)
+	private void OnTriggerEnter2D(Collider2D otherCollider)
 	{
-		if(coll.gameObject.CompareTag("Enemy"))
+		if(otherCollider.gameObject.CompareTag("Enemy"))
 		{
-			Destroy(coll.gameObject);
+			Destroy(otherCollider.gameObject);
 		}
 	}
 }

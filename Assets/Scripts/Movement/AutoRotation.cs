@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -14,9 +14,10 @@ public class AutoRotation : Physics2DObject
 	// FixedUpdate is called once per frame
 	void FixedUpdate ()
 	{
+		// Find the right rotation, according to speed
 		currentRotation += .02f * rotationSpeed * 10f;
 
 		// Apply the rotation to the Rigidbody2d
-		rb2D.MoveRotation(currentRotation);
+		rigidbody2D.MoveRotation(currentRotation);
 	}
 }

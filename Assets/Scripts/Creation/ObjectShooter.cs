@@ -38,10 +38,10 @@ public class ObjectShooter : MonoBehaviour
 			newObject.transform.position = this.transform.position;
 
 			// push the created objects, but only if they have a Rigidbody2D
-			Rigidbody2D rb2D = newObject.GetComponent<Rigidbody2D>();
-			if(rb2D != null)
+			Rigidbody2D rigidbody2D = newObject.GetComponent<Rigidbody2D>();
+			if(rigidbody2D != null)
 			{
-				rb2D.AddForce(transform.up * shootingSpeed, ForceMode2D.Impulse);
+				rigidbody2D.AddForce(transform.up * shootingSpeed, ForceMode2D.Impulse);
 			}
 
 			timeOfLastSpawn = Time.time;

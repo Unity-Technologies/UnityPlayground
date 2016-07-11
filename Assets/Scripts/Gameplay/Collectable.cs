@@ -4,24 +4,31 @@ using System.Collections;
 [RequireComponent(typeof(Collider2D))]
 public class Collectable : MonoBehaviour
 {
-	private UIScript ui;
+	private UIScript userInterface;
 
+
+	// Start is called at the beginning
 	private void Start()
 	{
-		ui = GameObject.FindObjectOfType<UIScript>();
+		// Find the UI in the scene and store a reference for later use
+		userInterface = GameObject.FindObjectOfType<UIScript>();
 	}
 
-	
+
+
 	// This function gets called everytime this object collides with another
-	private void OnCollisionEnter2D(Collision2D coll)
+	private void OnCollisionEnter2D(Collision2D collisionData)
 	{
+		string playerTag = collisionData.gameObject.tag;
+
 		// is the other object a player?
-		if(coll.gameObject.CompareTag("Player"))
+		if(playerTag == "Player" || playerTag == "Player2")
 		{
-			if(ui != null)
+			if(userInterface != null)
 			{
 				// add one point
-				ui.AddOnePoint();
+				int playerId = (playerTag == "Player") ? 0 : 1;
+				userInterface.AddOnePoint(playerId);
 			}
 
 			// then destroy this object

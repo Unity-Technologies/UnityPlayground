@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -18,10 +18,11 @@ public class RotateWithArrows : Physics2DObject
 		spin = Input.GetAxis("Horizontal");
 	}
 	
-	
+
+	// FixedUpdate is called every frame when the physics are calculated
 	void FixedUpdate ()
 	{
 		// Apply the torque to the Rigidbody2D
-		rb2D.AddTorque(-spin * speed);
+		rigidbody2D.AddTorque(-spin * speed);
 	}
 }

@@ -4,59 +4,116 @@ using UnityEngine.UI;
 
 public class UIScript : MonoBehaviour
 {
-	[Header("Win condition")]
+	[Header("Configuration")]
+	public Players numberOfPlayers = Players.OnePlayer;
+
+	public GameType gameType = GameType.Score;
+
+	// If the scoreToWin is -1, the game becomes endless (no win conditions, but you could do game over)
 	public int scoreToWin = -1;
 
 
 	[Header("References (don't touch)")]
-	public Text scoreNumber;
-	public Text healthNumber;
-	public GameObject scorePanel, gameOverPanel, winPanel;
+	//Right is used for the score in P1 games
+	public Text[] numberLabels = new Text[2];
+	public Text rightLabel, leftLabel;
+	public GameObject statsPanel, gameOverPanel, winPanel;
 
-	private int score = 0;
-	private int playerHealth;
 
-	public void AddOnePoint()
+	// Internal variables to keep track of score and players' health
+	private int[] scores = new int[2];
+	private int[] playersHealth = new int[2];
+
+
+	private void Start()
 	{
-		score++;
-
-		scoreNumber.text = score.ToString();
-
-		if(scoreToWin != -1
-			&& score >= scoreToWin)
+		if(numberOfPlayers == Players.OnePlayer)
 		{
-			GameWon();
+			// No setup needed
+		}
+		else
+		{
+			if(gameType == GameType.Score)
+			{
+				// Show the 2-player score interface
+				rightLabel.text = leftLabel.text = "Score";
+
+				// Show the score as 0 for both players
+				numberLabels[0].text = numberLabels[1].text = "0";
+				scores[0] = scores[1] = 0;
+			}
+			else
+			{
+				// Show the 2-player life interface
+				rightLabel.text = leftLabel.text = "Life";
+
+				// Life will be provided by the PlayerHealth components
+			}
 		}
 	}
 
-	public void GameWon()
+
+	public void AddOnePoint(int playerNumber)
 	{
-		scorePanel.SetActive(false);
+		scores[playerNumber]++;
+
+		numberLabels[playerNumber].text = scores[playerNumber].ToString();
+
+		if(scoreToWin != -1
+			&& scores[playerNumber] >= scoreToWin)
+		{
+			GameWon(playerNumber);
+		}
+	}
+
+
+
+	public void GameWon(int playerNumber)
+	{
+		statsPanel.SetActive(false);
 		winPanel.SetActive(true);
 	}
 
-	public void GameOver()
+
+
+	public void GameOver(int playerNumber)
 	{
-		scorePanel.SetActive(false);
+		statsPanel.SetActive(false);
 		gameOverPanel.SetActive(true);
 	}
 
-	public void SetHealth(int amount)
+
+
+	public void SetHealth(int amount, int playerNumber)
 	{
-		playerHealth = amount;
-		healthNumber.text = playerHealth.ToString();
+		playersHealth[playerNumber] = amount;
+		numberLabels[playerNumber].text = playersHealth.ToString();
 	}
 
-	public void SubHealth(int amount)
+
+
+	public void SubHealth(int change, int playerNumber)
 	{
-		playerHealth -= amount;
+		SetHealth(playersHealth[playerNumber] - change, playerNumber);
 
-		healthNumber.text = playerHealth.ToString();
-
-		if(playerHealth <= 0)
+		if(playersHealth[playerNumber] <= 0)
 		{
-			GameOver();
+			GameOver(playerNumber);
 		}
 
+	}
+
+
+
+	public enum Players
+	{
+		OnePlayer,
+		TwoPlayers
+	}
+
+	public enum GameType
+	{
+		Score,
+		Life
 	}
 }

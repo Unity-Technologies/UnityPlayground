@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 // All component that require physics inherit from this class, for easy access to the Rigidbody2D component
@@ -7,11 +7,11 @@ using System.Collections;
 public class Physics2DObject : MonoBehaviour
 {
 	[HideInInspector]
-	public Rigidbody2D rb2D;
+	public new Rigidbody2D rigidbody2D;
 
 	void Awake ()
 	{
-		rb2D = GetComponent<Rigidbody2D>();
+		rigidbody2D = GetComponent<Rigidbody2D>();
 	}
 
 }
