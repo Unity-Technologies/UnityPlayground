@@ -27,8 +27,8 @@ public class AutoObjectSpawner : MonoBehaviour
 		while(true)
 		{
 			// Create some random numbers
-			float randomX = Random.Range (-horizontalSize, horizontalSize);
-			float randomY = Random.Range (-verticalSize, verticalSize);
+			float randomX = Random.Range (-horizontalSize, horizontalSize) *.5f;
+			float randomY = Random.Range (-verticalSize, verticalSize) *.5f;
 
 			// Generate the new object
 			GameObject newObject = Instantiate<GameObject>(prefabToSpawn);

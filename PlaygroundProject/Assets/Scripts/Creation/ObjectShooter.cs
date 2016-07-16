@@ -5,7 +5,7 @@ public class ObjectShooter : MonoBehaviour
 {
 	[Header("Object creation")]
 	
-	public GameObject prefabToCreate;
+	public GameObject prefabToSpawn;
 
 	// The key to press to create the objects/projectiles
 	public KeyCode keyToPress = KeyCode.Space;
@@ -34,7 +34,7 @@ public class ObjectShooter : MonoBehaviour
 		if(Input.GetKey(keyToPress)
 		   && Time.time >= timeOfLastSpawn + creationRate)
 		{
-			GameObject newObject = Instantiate<GameObject>(prefabToCreate);
+			GameObject newObject = Instantiate<GameObject>(prefabToSpawn);
 			newObject.transform.position = this.transform.position;
 
 			// push the created objects, but only if they have a Rigidbody2D
