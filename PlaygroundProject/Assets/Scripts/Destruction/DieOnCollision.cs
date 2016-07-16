@@ -8,7 +8,7 @@ public class DieOnCollision : MonoBehaviour
 	public GameObject deathEffect;
 
 
-	// Happens when this objects hits another
+	// Happens when this objects hits another one
 	void OnCollisionEnter2D(Collision2D collisionData)
 	{
 		if(deathEffect != null)

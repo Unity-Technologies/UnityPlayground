@@ -14,7 +14,7 @@ public class ObjectShooterInspector : BaseInspectorWindow
 		GUILayout.Space (10);
 		EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
-		bool prefabSelected = ShowObjectAsPrefabWarning("prefabToSpawn");
+		bool prefabSelected = ShowPrefabWarning("prefabToSpawn");
 
 		if(prefabSelected
 			&& !CheckIfObjectUsesComponent<Rigidbody2D>("prefabToSpawn"))

@@ -12,7 +12,8 @@ public class DamagePlayer : MonoBehaviour
 	private void OnCollisionEnter2D(Collision2D collisionData)
 	{
 		// is the other object a player?
-		if(collisionData.gameObject.CompareTag("Player"))
+		if(collisionData.gameObject.CompareTag("Player")
+			|| collisionData.gameObject.CompareTag("Player2"))
 		{
 			PlayerHealth playerHealthScript = collisionData.gameObject.GetComponent<PlayerHealth>();
 			if(playerHealthScript != null)

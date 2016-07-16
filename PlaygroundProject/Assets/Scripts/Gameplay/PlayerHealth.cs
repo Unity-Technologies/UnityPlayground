@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
 
 	private UIScript ui;
 
-	// Will be set to 1 or 2 depending on how the GameObject is tagged
+	// Will be set to 0 or 1 depending on how the GameObject is tagged
 	private int playerNumber;
 
 

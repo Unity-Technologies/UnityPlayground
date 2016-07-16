@@ -3,28 +3,37 @@ using System.Collections;
 
 public class DestroyForPoints : MonoBehaviour
 {
-	private UIScript ui;
-	private int playerNumber;
+	private UIScript userInterface;
 
 
 	// Start is called at the beginning of the game
 	private void Start()
 	{
 		// Find the UI in the scene and store a reference for later use
-		ui = GameObject.FindObjectOfType<UIScript>();
-
-		// Set the player number based on the GameObject tag
-		playerNumber = (gameObject.CompareTag("Player")) ? 0 : 1;
+		userInterface = GameObject.FindObjectOfType<UIScript>();
 	}
 	
 	
-	// This function gets called when the object is destroyed
-	private void OnDestroy()
+	// This function gets called everytime this object collides with another
+	private void OnCollisionEnter2D(Collision2D collisionData)
 	{
-		if(ui != null)
+		string playerTag = collisionData.gameObject.tag;
+
+		// is the other object a Bullet?
+		if(playerTag == "Bullet")
 		{
-			// award one point
-			ui.AddOnePoint(playerNumber);
+			if(userInterface != null)
+			{
+				// add one point
+				Bullet b = collisionData.gameObject.GetComponent<Bullet>();
+				if(b != null)
+				{
+					userInterface.AddOnePoint(b.playerId);
+				}
+			}
+
+			// then destroy this object
+			Destroy(gameObject);
 		}
 	}
 }

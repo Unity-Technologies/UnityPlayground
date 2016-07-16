@@ -12,12 +12,12 @@ public class AutoObjectSpawnerInspector : BaseInspectorWindow
 		GUILayout.Space (10);
 		EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
-		ShowObjectAsPrefabWarning("prefabToSpawn");
+		ShowPrefabWarning("prefabToSpawn");
 
 		base.OnInspectorGUI();
 	}
 
-	// commented due to a weird bug, needs investigation
+	// OnSceneGUI() commented due to a weird bug, needs investigation
 	// srcAttach < m_CurrentFramebuffer.colorCount && "We should always resolve only current RT"
 	public void TempName() //OnSceneGUI()
 	{

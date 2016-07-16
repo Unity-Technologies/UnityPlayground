@@ -30,10 +30,10 @@ public class BaseInspectorWindow : Editor
 	}
 
 
-	// Shows a warning box that suggests to select a prefab, not a gameobject
-	protected bool ShowObjectAsPrefabWarning(string propertyName)
+	// Shows a warning box that enforces the selection of a Prefab, and not a GameObject
+	// Used when the script won't work without a prefab
+	protected bool ShowPrefabWarning(string propertyName)
 	{
-		// Extra warning message to try to catch if the kid uses an object in the scene
 		GameObject go = so.FindProperty(propertyName).objectReferenceValue as GameObject;
 		if(go != null)
 		{
@@ -53,12 +53,46 @@ public class BaseInspectorWindow : Editor
 		}
 	}
 
+	// Checks if a GameObject or Transform field has been assigned
+	// Used usually when there is an optional field
+	protected bool CheckIfAssigned(string propertyName, bool checkIfPrefab = true)
+	{
+		Object genericObject = so.FindProperty(propertyName).objectReferenceValue;
+		if(genericObject != null)
+		{
+			GameObject go = genericObject as GameObject;
+			if(checkIfPrefab)
+			{
+				//if scene.name is Null, then the GameObject is coming from the Project and is probably a prefab
+				if(!string.IsNullOrEmpty(go.scene.name))
+				{
+					EditorGUILayout.HelpBox(prefabNotSceneHint, MessageType.Warning);
+				}
+			}
+			return true;
+		}
+		else
+		{
+			// Message is printed externally
+			return false;
+		}
+	}
+
+	// Checks if an obects (usually an assigned prefab) uses a specific component
 	protected bool CheckIfObjectUsesComponent<T>(string propertyName)
 	{
 		GameObject go = so.FindProperty(propertyName).objectReferenceValue as GameObject;
 		T c = go.GetComponent<T>();
 
 		return c == null;
+	}
+
+	// Checks if the object is tagged with a specific tag
+	protected bool CheckIfTaggedAs(string tagNeeded)
+	{
+		GameObject go = ((MonoBehaviour)target).gameObject;
+
+		return go.CompareTag(tagNeeded);
 	}
 
 	// Regular Inspector drawing and property saving
