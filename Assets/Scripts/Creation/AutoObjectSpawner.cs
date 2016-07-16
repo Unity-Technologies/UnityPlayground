@@ -13,8 +13,8 @@ public class AutoObjectSpawner : MonoBehaviour
 
 	// Configure the spawning pattern
 	public float spawnInterval = 1;
-	public float minimum = -2;
-	public float maximum = 2;
+	public float horizontalSize = 2;
+	public float verticalSize = 2;
 
 	void Start ()
 	{
@@ -27,8 +27,8 @@ public class AutoObjectSpawner : MonoBehaviour
 		while(true)
 		{
 			// Create some random numbers
-			float randomX = Random.Range (minimum, maximum);
-			float randomY = Random.Range (minimum, maximum);
+			float randomX = Random.Range (-horizontalSize, horizontalSize);
+			float randomY = Random.Range (-verticalSize, verticalSize);
 
 			// Generate the new object
 			GameObject newObject = Instantiate<GameObject>(prefabToSpawn);
