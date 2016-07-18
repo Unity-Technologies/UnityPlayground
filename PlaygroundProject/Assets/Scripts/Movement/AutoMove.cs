@@ -2,10 +2,10 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class AutoPush : Physics2DObject
+public class AutoMove : Physics2DObject
 {
 
-	[Header("Direction of the push")]
+	[Header("Direction")]
 
 	// These are the forces that will push the object every frame
 	// don't forget they can be negative too!

@@ -13,7 +13,7 @@ public class Jump : Physics2DObject
 	[Header("Strength")]
 	
 	// strength of the push
-	public float pushStrength = 10f;
+	public float jumpStrength = 10f;
 
 	// Read the input from the player
 	void Update()
@@ -21,7 +21,7 @@ public class Jump : Physics2DObject
 		if(Input.GetKeyDown(key))
 		{
 			// Apply an instantaneous upwards force
-			rigidbody2D.AddForce(Vector2.up * pushStrength, ForceMode2D.Impulse);
+			rigidbody2D.AddForce(Vector2.up * jumpStrength, ForceMode2D.Impulse);
 		}
 	}
 }

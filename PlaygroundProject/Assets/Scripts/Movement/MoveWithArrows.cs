@@ -4,6 +4,8 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody2D))]
 public class MoveWithArrows : Physics2DObject
 {
+	[Header("Input keys")]
+	public Enums.KeyGroups typeOfControl = Enums.KeyGroups.ArrowKeys;
 
 	[Header("Movement")]
 	public float speed = 5f;
@@ -17,8 +19,16 @@ public class MoveWithArrows : Physics2DObject
 	void Update ()
 	{	
 		// Moving with the arrow keys
-		moveHorizontal = Input.GetAxis("Horizontal");
-		moveVertical = Input.GetAxis("Vertical");
+		if(typeOfControl == Enums.KeyGroups.ArrowKeys)
+		{
+			moveHorizontal = Input.GetAxis("Horizontal");
+			moveVertical = Input.GetAxis("Vertical");
+		}
+		else
+		{
+			moveHorizontal = Input.GetAxis("Horizontal2");
+			moveVertical = Input.GetAxis("Vertical2");
+		}
 		
 		movement = new Vector2(moveHorizontal, moveVertical);
 	}
