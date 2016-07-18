@@ -12,7 +12,8 @@ public abstract class TriggerArea : MonoBehaviour
 	{
 		if(playerOnly)
 		{
-			if(other.gameObject.CompareTag("Player"))
+			if(other.gameObject.CompareTag("Player")
+				|| other.gameObject.CompareTag("Player2"))
 			{
 				return true;
 			}

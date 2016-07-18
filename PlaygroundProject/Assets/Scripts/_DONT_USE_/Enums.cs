@@ -9,6 +9,12 @@ public class Enums
 		Player2 = 1,
 	}
 
+	public enum Axes
+	{
+		X,
+		Y
+	}
+
 	public enum Directions
 	{
 		Up,

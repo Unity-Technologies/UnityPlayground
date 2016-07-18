@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class TriggerEndOfLevel : TriggerArea
 {
-	[Space(20)]
 	public string levelName;
 
 	void Start()

@@ -9,6 +9,8 @@ public class BaseInspectorWindow : Editor
 
 	private string prefabNotSceneHint = "WARNING: Select a Prefab from Project panel, not an object in the Hierarchy!";
 	private string selectPrefabHint = "WARNING: No Prefab selected!";
+	private string colliderWarning = "WARNING: You need to make sure the associated Collider2D has the \"Is Trigger\" option disabled for this script to work!";
+	private string triggerWarning = "WARNING: You need to make sure the associated Collider2D has the \"Is Trigger\" option enabled for this script to work!";
 
 	void OnEnable()
 	{
@@ -53,6 +55,7 @@ public class BaseInspectorWindow : Editor
 		}
 	}
 
+
 	// Checks if a GameObject or Transform field has been assigned
 	// Used usually when there is an optional field
 	protected bool CheckIfAssigned(string propertyName, bool checkIfPrefab = true)
@@ -78,6 +81,7 @@ public class BaseInspectorWindow : Editor
 		}
 	}
 
+
 	// Checks if an obects (usually an assigned prefab) uses a specific component
 	protected bool CheckIfObjectUsesComponent<T>(string propertyName)
 	{
@@ -87,6 +91,7 @@ public class BaseInspectorWindow : Editor
 		return c == null;
 	}
 
+
 	// Checks if the object is tagged with a specific tag
 	protected bool CheckIfTaggedAs(string tagNeeded)
 	{
@@ -94,6 +99,26 @@ public class BaseInspectorWindow : Editor
 
 		return go.CompareTag(tagNeeded);
 	}
+
+
+	// Checks if the Collider2D of an object is or is not a trigger, and outputs a message
+	protected bool CheckIfTrigger(bool isTriggerNeeded)
+	{
+		bool isTrigger = (target as MonoBehaviour).GetComponent<Collider2D>().isTrigger;
+
+		if(isTriggerNeeded && !isTrigger)
+		{
+			EditorGUILayout.HelpBox(triggerWarning, MessageType.Warning);
+		}
+
+		if(!isTriggerNeeded && isTrigger)
+		{
+			EditorGUILayout.HelpBox(colliderWarning, MessageType.Warning);
+		}
+
+		return isTrigger;
+	}
+
 
 	// Regular Inspector drawing and property saving
 	override public void OnInspectorGUI()

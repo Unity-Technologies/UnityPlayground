@@ -13,25 +13,12 @@ public class PushWithButton : Physics2DObject
 
 	// strength of the push, and the axis on which it is applied (can be X or Y)
 	public float pushStrength = 10f;
-	public Axis axis = Axis.X;
+	public Enums.Axes axis = Enums.Axes.X;
+	public bool relativeAxis = true;
 
 
 	private bool keyPressed = false;
 	private Vector2 pushVector;
-
-
-	// This function will just define where to apply the push (the push is applied in FixedUpdate, below)
-	void Start()
-	{
-		if(axis == Axis.X)
-		{
-			pushVector = new Vector2(pushStrength, 0f); // Horizontal push
-		}
-		else
-		{
-			pushVector = new Vector2(0f, pushStrength); // Vertical push
-		}
-	}
 
 
 	// Read the input from the player
@@ -46,15 +33,24 @@ public class PushWithButton : Physics2DObject
 	{
 		if(keyPressed)
 		{
-			rigidbody2D.AddRelativeForce(pushVector);
+			if(axis == Enums.Axes.X)
+			{
+				pushVector = new Vector2(pushStrength, 0f); // Horizontal push
+			}
+			else
+			{
+				pushVector = new Vector2(0f, pushStrength); // Vertical push
+			}
+
+			//Apply the push
+			if(relativeAxis)
+			{
+				rigidbody2D.AddRelativeForce(pushVector);
+			}
+			else
+			{
+				rigidbody2D.AddForce(pushVector);
+			}
 		}
-	}
-
-
-	// The list of possible axes (used with the variable axis, at the top)
-	public enum Axis
-	{
-		X,
-		Y
 	}
 }

@@ -4,7 +4,9 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody2D))]
 public class RotateWithArrows : Physics2DObject
 {
-	
+	[Header("Input keys")]
+	public Enums.KeyGroups typeOfControl = Enums.KeyGroups.ArrowKeys;
+
 	[Header("Rotation")]
 	public float speed = 5f;
 	
@@ -15,7 +17,15 @@ public class RotateWithArrows : Physics2DObject
 	void Update ()
 	{	
 		// Register the spin from the player input
-		spin = Input.GetAxis("Horizontal");
+		// Moving with the arrow keys
+		if(typeOfControl == Enums.KeyGroups.ArrowKeys)
+		{
+			spin = Input.GetAxis("Horizontal");
+		}
+		else
+		{
+			spin = Input.GetAxis("Horizontal2");
+		}
 	}
 	
 
