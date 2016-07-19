@@ -42,6 +42,7 @@ public class ObjectShooter : MonoBehaviour
 		{
 			GameObject newObject = Instantiate<GameObject>(prefabToSpawn);
 			newObject.transform.position = this.transform.position;
+			newObject.transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z);
 			newObject.tag = "Bullet";
 
 			// push the created objects, but only if they have a Rigidbody2D

@@ -16,10 +16,12 @@ public class ObjectShooterInspector : BaseInspectorWindow
 
 		bool prefabSelected = ShowPrefabWarning("prefabToSpawn");
 
-		if(prefabSelected
-			&& !CheckIfObjectUsesComponent<Rigidbody2D>("prefabToSpawn"))
+		if(prefabSelected)
 		{
-			EditorGUILayout.HelpBox(warning, MessageType.Warning);
+			if(!CheckIfObjectUsesComponent<Rigidbody2D>("prefabToSpawn"))
+			{
+				EditorGUILayout.HelpBox(warning, MessageType.Warning);
+			}
 		}
 
 		base.OnInspectorGUI();

@@ -17,6 +17,7 @@ public class UIScript : MonoBehaviour
 	//Right is used for the score in P1 games
 	public Text[] numberLabels = new Text[2];
 	public Text rightLabel, leftLabel;
+	public Text winLabel;
 	public GameObject statsPanel, gameOverPanel, winPanel;
 
 
@@ -70,6 +71,7 @@ public class UIScript : MonoBehaviour
 
 	public void GameWon(int playerNumber)
 	{
+		winLabel.text = "Player " + ++playerNumber + " wins!";
 		statsPanel.SetActive(false);
 		winPanel.SetActive(true);
 	}
@@ -87,7 +89,7 @@ public class UIScript : MonoBehaviour
 	public void SetHealth(int amount, int playerNumber)
 	{
 		playersHealth[playerNumber] = amount;
-		numberLabels[playerNumber].text = playersHealth.ToString();
+		numberLabels[playerNumber].text = playersHealth[playerNumber].ToString();
 	}
 
 

@@ -88,7 +88,7 @@ public class BaseInspectorWindow : Editor
 		GameObject go = so.FindProperty(propertyName).objectReferenceValue as GameObject;
 		T c = go.GetComponent<T>();
 
-		return c == null;
+		return !c.Equals(null);
 	}
 
 
