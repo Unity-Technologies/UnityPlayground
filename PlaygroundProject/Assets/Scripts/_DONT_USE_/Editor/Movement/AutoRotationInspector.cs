@@ -6,7 +6,7 @@ using UnityEditor;
 public class AutoRotationInspector : BaseInspectorWindow
 {
 	private string explanation = "The gameObject rotates automatically.";
-	private string tip = "TIP: Use negative value to rotate in the other verse.";
+	private string tip = "TIP: Use negative value to rotate in the other direction.";
 
 	public override void OnInspectorGUI()
 	{
