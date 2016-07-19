@@ -6,15 +6,12 @@ public class TriggerEndOfLevel : TriggerArea
 {
 	public string levelName;
 
-	void Start()
-	{
-		playerOnly = true;
-	}
+	public string filterTag = "Player";
 	
 	// This function will be called when something enters the trigger
 	void OnTriggerEnter2D(Collider2D otherCollider)
 	{
-		if(CheckIfPlayerOnly(otherCollider))
+		if(otherCollider.CompareTag(filterTag))
 		{
 			SceneManager.LoadScene(levelName, LoadSceneMode.Single);
 		}

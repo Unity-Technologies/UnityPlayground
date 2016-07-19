@@ -14,6 +14,8 @@ public class TriggerStayInArea : TriggerArea
 	[Space(20)]
 	public UnityEvent triggerStay;
 
+	public string filterTag = "Player";
+
 	private float lastTimeTriggerStayCalled;
 
 
@@ -26,7 +28,7 @@ public class TriggerStayInArea : TriggerArea
 	// This will be called EVERY FRAME when something stays inside the trigger
 	void OnTriggerStay2D(Collider2D otherCollider)
 	{
-		if(CheckIfPlayerOnly(otherCollider)
+		if(otherCollider.CompareTag(filterTag)
 		   && Time.time >= lastTimeTriggerStayCalled + frequency)
 		{
 			lastTimeTriggerStayCalled = Time.time;

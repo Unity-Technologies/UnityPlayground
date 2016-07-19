@@ -5,6 +5,9 @@ using UnityEngine.Events;
 [RequireComponent(typeof(BoxCollider2D))]
 public abstract class TriggerArea : MonoBehaviour
 {
+	//Removed to optimise functionality
+
+	/*
 	// if true, the trigger reacts only to the player
 	public bool playerOnly = false;
 
@@ -27,4 +30,5 @@ public abstract class TriggerArea : MonoBehaviour
 			return true;
 		}
 	}
+	*/
 }
