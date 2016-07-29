@@ -13,5 +13,7 @@ public class CollectableInspector : BaseInspectorWindow
 		EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
 		base.OnInspectorGUI();
+
+		CheckIfTrigger(true);
 	}
 }

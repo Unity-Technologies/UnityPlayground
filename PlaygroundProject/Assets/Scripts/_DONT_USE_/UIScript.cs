@@ -58,7 +58,14 @@ public class UIScript : MonoBehaviour
 	{
 		scores[playerNumber]++;
 
-		numberLabels[playerNumber].text = scores[playerNumber].ToString();
+		if(numberOfPlayers == Players.OnePlayer)
+		{
+			numberLabels[1].text = scores[playerNumber].ToString(); //with one player, the score is on the right
+		}
+		else
+		{
+			numberLabels[playerNumber].text = scores[playerNumber].ToString();
+		}
 
 		if(scoreToWin != -1
 			&& scores[playerNumber] >= scoreToWin)

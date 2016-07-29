@@ -17,9 +17,9 @@ public class Collectable : MonoBehaviour
 
 
 	// This function gets called everytime this object collides with another
-	private void OnCollisionEnter2D(Collision2D collisionData)
+	private void OnTriggerEnter2D(Collider2D otherCollider)
 	{
-		string playerTag = collisionData.gameObject.tag;
+		string playerTag = otherCollider.gameObject.tag;
 
 		// is the other object a player?
 		if(playerTag == "Player" || playerTag == "Player2")

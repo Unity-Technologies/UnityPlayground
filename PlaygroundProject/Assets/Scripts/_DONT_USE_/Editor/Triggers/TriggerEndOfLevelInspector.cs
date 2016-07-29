@@ -26,7 +26,10 @@ public class TriggerEndOfLevelInspector : BaseInspectorWindow
 		bool displayWarning = false;
 		if(EditorBuildSettings.scenes.Length > 0)
 		{
-			//get available scene names and clean them
+			int sceneId = 0;
+			string sceneNameProperty = so.FindProperty("levelName").stringValue;
+
+			//get available scene names and clean the names
 			string[] sceneNames = new string[EditorBuildSettings.scenes.Length];
 			int i = 0;
 			foreach(EditorBuildSettingsScene s in EditorBuildSettings.scenes)
@@ -35,17 +38,22 @@ public class TriggerEndOfLevelInspector : BaseInspectorWindow
 				string shortPath = s.path.Substring(lastSlash+1, s.path.Length-7-lastSlash);
 				sceneNames[i] = shortPath;
 				
-				if(!s.enabled
-					|| !s.path.EndsWith(so.FindProperty("levelName").stringValue + ".unity"))
+				if(shortPath == sceneNameProperty)
 				{
-					displayWarning = true;
+					sceneId = i;
+					
+					if(!s.enabled)
+					{
+						displayWarning = true;
+					}
 				}
+
 				i++;
 			}
 
 			
 			//Display the selector
-			int sceneId = EditorGUILayout.Popup("Scene to load", 0, sceneNames);
+			sceneId = EditorGUILayout.Popup("Scene to load", sceneId, sceneNames);
 
 			if(displayWarning)
 			{
