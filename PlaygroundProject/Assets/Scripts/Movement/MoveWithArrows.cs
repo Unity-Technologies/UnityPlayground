@@ -9,6 +9,7 @@ public class MoveWithArrows : Physics2DObject
 
 	[Header("Movement")]
 	public float speed = 5f;
+	public Enums.MovementType movementType = Enums.MovementType.AllDirections;
 
 	private Vector2 movement;
 	private float moveHorizontal;
@@ -29,7 +30,18 @@ public class MoveWithArrows : Physics2DObject
 			moveHorizontal = Input.GetAxis("Horizontal2");
 			moveVertical = Input.GetAxis("Vertical2");
 		}
-		
+
+		//zero-out the axes that are not needed, if the movement is constrained
+		switch(movementType)
+		{
+			case Enums.MovementType.OnlyHorizontal:
+				moveVertical = 0f;
+				break;
+			case Enums.MovementType.OnlyVertical:
+				moveHorizontal = 0f;
+				break;
+		}
+			
 		movement = new Vector2(moveHorizontal, moveVertical);
 	}
 

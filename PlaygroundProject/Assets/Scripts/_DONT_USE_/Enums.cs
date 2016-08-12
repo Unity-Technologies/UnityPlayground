@@ -15,6 +15,13 @@ public class Enums
 		Y
 	}
 
+	public enum MovementType
+	{
+		AllDirections = 0,
+		OnlyHorizontal,
+		OnlyVertical
+	}
+
 	public enum Directions
 	{
 		Up,

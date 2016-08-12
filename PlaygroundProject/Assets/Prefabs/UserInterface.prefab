@@ -286,7 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfPlayers: 0
   gameType: 0
-  scoreToWin: -1
+  scoreToWin: 5
   numberLabels:
   - {fileID: 11453338}
   - {fileID: 11469886}

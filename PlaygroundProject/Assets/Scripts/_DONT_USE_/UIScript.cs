@@ -10,7 +10,7 @@ public class UIScript : MonoBehaviour
 	public GameType gameType = GameType.Score;
 
 	// If the scoreToWin is -1, the game becomes endless (no win conditions, but you could do game over)
-	public int scoreToWin = -1;
+	public int scoreToWin = 5;
 
 
 	[Header("References (don't touch)")]
@@ -34,7 +34,8 @@ public class UIScript : MonoBehaviour
 		}
 		else
 		{
-			if(gameType == GameType.Score)
+			if(gameType == GameType.Score
+				|| gameType == GameType.Endless)
 			{
 				// Show the 2-player score interface
 				rightLabel.text = leftLabel.text = "Score";
@@ -67,7 +68,7 @@ public class UIScript : MonoBehaviour
 			numberLabels[playerNumber].text = scores[playerNumber].ToString();
 		}
 
-		if(scoreToWin != -1
+		if(gameType == GameType.Score
 			&& scores[playerNumber] >= scoreToWin)
 		{
 			GameWon(playerNumber);
@@ -116,13 +117,14 @@ public class UIScript : MonoBehaviour
 
 	public enum Players
 	{
-		OnePlayer,
+		OnePlayer = 0,
 		TwoPlayers
 	}
 
 	public enum GameType
 	{
-		Score,
-		Life
+		Score = 0,
+		Life,
+		Endless
 	}
 }
