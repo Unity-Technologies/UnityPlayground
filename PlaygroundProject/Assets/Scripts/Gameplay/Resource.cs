@@ -5,8 +5,8 @@ using System.Collections;
 public class Resource : MonoBehaviour
 {
 	//this is actually more a name/identifier than a type, but from the kids' perspective it makes sense that they are inputting the "type of resource"
-	public string resourceType;
-	public int amount;
+	public string resourceType = "Coal";
+	public int amount = 1;
 
 	private UIScript userInterface;
 

@@ -18,7 +18,7 @@ public class CreateObjectAction : MonoBehaviour
 
 
 			//let's place it in the desired position!
-			prefabToCreate.transform.position = newPosition;
+			newObject.transform.position = newPosition;
 		}
 	}
 }
