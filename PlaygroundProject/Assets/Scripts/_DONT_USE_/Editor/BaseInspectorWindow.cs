@@ -21,13 +21,17 @@ public class BaseInspectorWindow : Editor
 	public void DrawDefaultInspectorMinusScript()
 	{
 		prop = so.GetIterator();
-		while (prop.NextVisible(true))
+		bool useChildren = true;
+		while (prop.NextVisible(useChildren))
 		{
 			if(prop.name != "m_Script")
 			{
 				//Debug.Log (prop.name);
+
 				EditorGUILayout.PropertyField(prop);
 			}
+
+			useChildren = false;
 		}
 	}
 

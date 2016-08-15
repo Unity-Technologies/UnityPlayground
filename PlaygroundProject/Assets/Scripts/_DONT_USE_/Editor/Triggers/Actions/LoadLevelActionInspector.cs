@@ -2,26 +2,18 @@
 using System.Collections;
 using UnityEditor;
 
-[CustomEditor(typeof(TriggerEndOfLevel))]
-public class TriggerEndOfLevelInspector : BaseInspectorWindow
+[CustomEditor(typeof(LoadLevelAction))]
+public class LoadLevelActionInspector : BaseInspectorWindow
 {
-	private string explanation = "Use this script to load a new level (another Unity scene) when the Player enters the trigger.";
+	private string explanation = "Use this script to load a new level (another Unity scene).";
 	private string sceneWarning = "WARNING: Make sure the scene is enabled in the Build Settings scenes list.";
 	private string sceneInfo = "WARNING; To add a new level, save a Unity scene and then go to File > Build Settings... and add the scene to the list.";
 
-	private string chosenTag;
-
 	public override void OnInspectorGUI()
 	{
-		chosenTag = so.FindProperty("filterTag").stringValue;
-
 		GUILayout.Space(10);
 		EditorGUILayout.HelpBox(explanation, MessageType.Info);
 		GUILayout.Space(5);
-
-		// Show a tag selector to then use for the public property filterTag
-		GUILayout.Space(10);
-		chosenTag = EditorGUILayout.TagField("Tag to check for", chosenTag);
 
 		bool displayWarning = false;
 		if(EditorBuildSettings.scenes.Length > 0)
@@ -67,12 +59,9 @@ public class TriggerEndOfLevelInspector : BaseInspectorWindow
 			EditorGUILayout.Popup("Scene to load", 0, new string[]{"No scenes available!"});
 			EditorGUILayout.HelpBox(sceneInfo, MessageType.Warning);
 		}
-		
-		CheckIfTrigger(true);
 
 		if (GUI.changed)
 		{
-			so.FindProperty("filterTag").stringValue = chosenTag;
 			so.ApplyModifiedProperties();
 		}
 	}

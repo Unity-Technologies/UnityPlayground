@@ -5,6 +5,10 @@ using UnityEngine.Events;
 [RequireComponent(typeof(BoxCollider2D))]
 public abstract class TriggerArea : MonoBehaviour
 {
+	public bool happenOnlyOnce = false;
+
+	protected bool alreadyHappened = false;
+
 	//Removed to optimise functionality
 
 	/*
