@@ -6,11 +6,7 @@
 
 A collection of simple scripts to create 2D physics game, intended for giving workshops to a young audience.
 
-- [ ] Project Complete
-- [x] Field Tested
-- [ ] Messaging Confirmed
-
-##Documentation (Do NOT Share)
+##Documentation
 
 **Objective**
 
@@ -31,6 +27,9 @@ Scripts are in the `/Scripts` folder, organised by category. Most of them should
 **User interface**
 
 The `/Prefabs` folder contains a prefab for the UI, which can be simply dragged and dropped in the scene. The scripts that communicate with the UI to show points or health will do it transparently and will still work if the UI is not present, but the UI needs to be setup so that it knows whether to show 1P or 2P UI.
+
+**Graphic assets**
+This project contains graphic assets taken from [Kenney.nl](http://www.kenney.nl). Nevertheless, it can work with any kind of 2D graphic assets so feel free to swap them with your resources. Just make sure to provide variety to allow many types of game genres.
 
 **Code conventions**
 
@@ -64,4 +63,4 @@ Owner: Ciro Continisio
 - 15 Jul - (Mike G) Updated project structure
 - 29 Jul - Example games, Editor scripts to customise the appearance of the components
 - 7 Aug - HowTo video
-- Coming - New scripts (Pickups? Doors/keys?)
+- 15 Aug - Added Resource system, Action scripts
