@@ -83,12 +83,28 @@
 \b TriggerCollision
 \b0 : an object that will perform an action when something touches it\
 
-\b TriggerEndOfLevel
-\b0 : loads a new level when the player enters it\
+\b \
 
-\b CustomActions
-\b0 : use it together with triggers to produce some custom actions\
+\i\b0 [Actions]
+\i0\b \
+
+\b0 Use them with Triggers to produce some different custom actions\
 \
+
+\b ConsumeResourceAction
+\b0 : will check if the player has a specific resource, and if so, it will consume it\
+
+\b CreateObjectAction
+\b0 : creates an object in a specified position\
+
+\b LoadLevelAction
+\b0 : loads another level (Unity scene)\
+
+\b TeleportAction
+\b0 : moves an object somewhere else instantaneously
+\b \
+
+\b0 \
 
 \i [Gameplay]\
 \
@@ -106,4 +122,7 @@
 \b0 : apply to an object so that it awards points when it is destroyed\
 
 \b RestartLevel
-\b0 : use it to restart the level at the press of a key}
+\b0 : use it to restart the level at the press of a key\
+
+\b Resource
+\b0 : apply to an object so it becomes a collectable resource and can be accumulated}
