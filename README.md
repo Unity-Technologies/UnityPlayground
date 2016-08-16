@@ -12,7 +12,7 @@ A collection of simple scripts to create 2D physics game, intended for giving wo
 
 This project is intended to be as flexible as possible, not enforcing a specific game genre apart from the obvious constraints of being 2D and physics-powered. It contains a lot of scripts tha perform _atomic_ tasks, that is they do mostly only one thing, so you can combine them to create _any kind_ of gameplay.
 
-That said, the audience should already have an idea of how Unity works, the Editor interface, the concept of GameObjects, Components, the Scene View, Play Mode, and so forth. It might be useful to guide them through these concepts before letting them play with this project.\
+That said, the audience should already have an idea of how Unity works, the Editor interface, the concept of GameObjects, Components, the Scene View, Play Mode, and so forth. It might be useful to guide them through these concepts before letting them play with this project.
 
 **Usage instructions**
 
