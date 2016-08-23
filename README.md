@@ -4,7 +4,7 @@
 
 ##Description##
 
-A collection of simple scripts to create 2D physics game, intended for giving workshops to an audience and quickly enable them to make games in Unity.
+A collection of simple scripts to create 2D physics game, intended for giving workshops to an audience of beginner game developers to quickly enable them to make games in Unity.
 
 ##Documentation
 
