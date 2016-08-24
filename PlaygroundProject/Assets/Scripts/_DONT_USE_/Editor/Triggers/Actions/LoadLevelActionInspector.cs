@@ -13,13 +13,13 @@ public class LoadLevelActionInspector : BaseInspectorWindow
 	{
 		GUILayout.Space(10);
 		EditorGUILayout.HelpBox(explanation, MessageType.Info);
-		GUILayout.Space(5);
 
+		GUILayout.Space(10);
 		bool displayWarning = false;
 		if(EditorBuildSettings.scenes.Length > 0)
 		{
 			int sceneId = 0;
-			string sceneNameProperty = so.FindProperty("levelName").stringValue;
+			string sceneNameProperty = serializedObject.FindProperty("levelName").stringValue;
 
 			//get available scene names and clean the names
 			string[] sceneNames = new string[EditorBuildSettings.scenes.Length];
@@ -52,7 +52,7 @@ public class LoadLevelActionInspector : BaseInspectorWindow
 				EditorGUILayout.HelpBox(sceneWarning, MessageType.Warning);
 			}
 			
-			so.FindProperty("levelName").stringValue = sceneNames[sceneId];
+			serializedObject.FindProperty("levelName").stringValue = sceneNames[sceneId];
 		}
 		else
 		{
@@ -62,7 +62,7 @@ public class LoadLevelActionInspector : BaseInspectorWindow
 
 		if (GUI.changed)
 		{
-			so.ApplyModifiedProperties();
+			serializedObject.ApplyModifiedProperties();
 		}
 	}
 }

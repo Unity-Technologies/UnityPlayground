@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEditor;
 
 [CustomEditor(typeof(TriggerCollision))]
-public class TriggerCollisionInspector : BaseInspectorWindow
+public class TriggerCollisionInspector : TriggerInspectorBase
 {
 	private string explanation = "Use this script to perform an action when this gameObject collides with another.";
 
@@ -11,26 +11,26 @@ public class TriggerCollisionInspector : BaseInspectorWindow
 
 	public override void OnInspectorGUI()
 	{
-		chosenTag = so.FindProperty("filterTag").stringValue;
+		serializedObject.Update();
+
+		chosenTag = serializedObject.FindProperty("filterTag").stringValue;
 
 		GUILayout.Space(10);
 		EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
-		// Show a tag selector to then use for the public property filterTag
 		GUILayout.Space(10);
-		GUILayout.BeginHorizontal();
-		GUILayout.Label("Tag to check for:");
-		chosenTag = EditorGUILayout.TagField(chosenTag);
-		GUILayout.EndHorizontal();
+		EditorGUILayout.PropertyField(serializedObject.FindProperty("happenOnlyOnce"));
+		chosenTag = EditorGUILayout.TagField("Tag to check for", chosenTag);
 
-		EditorGUILayout.PropertyField(so.FindProperty("colliderTouched"));
+		GUILayout.Space(10);
+		DrawActionLists();
 
 		CheckIfTrigger(false);
 
 		if (GUI.changed)
 		{
-			so.FindProperty("filterTag").stringValue = chosenTag;
-			so.ApplyModifiedProperties();
+			serializedObject.FindProperty("filterTag").stringValue = chosenTag;
+			serializedObject.ApplyModifiedProperties();
 		}
 	}
 }

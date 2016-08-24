@@ -2,15 +2,12 @@
 using System.Collections;
 using UnityEngine.Events;
 
-public class ConsumeResourceAction : MonoBehaviour
+public class ConsumeResourceAction : TriggerBase, IGameplayAction
 {
-	[Header("Resource needed")]
+	[Header("Resource")]
 
-	public string resourceToCheck = "Coal";
+	public string checkFor = "Coal";
 	public int amountNeeded = 1;
-
-	[Header("Action")]
-	public UnityEvent onResourceConsumed;
 
 
 	//reference to the UI
@@ -27,15 +24,14 @@ public class ConsumeResourceAction : MonoBehaviour
 
 
 
-	public void ConsumeResource()
+	public void ExecuteAction()
 	{
-		if(userInterface.CheckIfHasResources(resourceToCheck, amountNeeded))
+		if(userInterface.CheckIfHasResources(checkFor, amountNeeded))
 		{
 			//consume the resource and update the UI
-			userInterface.ConsumeResource(resourceToCheck, amountNeeded);
+			userInterface.ConsumeResource(checkFor, amountNeeded);
 
-			//invoke the connected action
-			onResourceConsumed.Invoke();
+			ExecuteAllActions();
 		}
 	}
 }

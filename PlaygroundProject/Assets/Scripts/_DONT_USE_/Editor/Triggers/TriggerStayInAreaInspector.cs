@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEditor;
 
 [CustomEditor(typeof(TriggerStayInArea))]
-public class TriggerStayInAreaInspector : BaseInspectorWindow
+public class TriggerStayInAreaInspector : TriggerInspectorBase
 {
 	private string explanation = "Use this script to repeatedly perform an action when a gameObject is inside the trigger. The frequency of the action is defined by the \"Frequency\" parameter.";
 
@@ -11,29 +11,28 @@ public class TriggerStayInAreaInspector : BaseInspectorWindow
 
 	public override void OnInspectorGUI()
 	{
-		chosenTag = so.FindProperty("filterTag").stringValue;
+		serializedObject.Update();
+
+		chosenTag = serializedObject.FindProperty("filterTag").stringValue;
 
 		GUILayout.Space(10);
 		EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
 		// Show a tag selector to then use for the public property filterTag
 		GUILayout.Space(10);
-		GUILayout.BeginHorizontal();
-		GUILayout.Label("Tag to check for:");
-		chosenTag = EditorGUILayout.TagField(chosenTag);
-		GUILayout.EndHorizontal();
+		EditorGUILayout.PropertyField(serializedObject.FindProperty("happenOnlyOnce"));
+		chosenTag = EditorGUILayout.TagField("Tag to check for", chosenTag);
+		EditorGUILayout.PropertyField(serializedObject.FindProperty("frequency"));
 
 		GUILayout.Space(10);
-		EditorGUILayout.PropertyField(so.FindProperty("frequency"));
+		DrawActionLists();
 
-		EditorGUILayout.PropertyField(so.FindProperty("triggerStay"));
-		
 		CheckIfTrigger(true);
 
 		if (GUI.changed)
 		{
-			so.FindProperty("filterTag").stringValue = chosenTag;
-			so.ApplyModifiedProperties();
+			serializedObject.FindProperty("filterTag").stringValue = chosenTag;
+			serializedObject.ApplyModifiedProperties();
 		}
 	}
 }

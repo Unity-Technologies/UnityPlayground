@@ -1,16 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TeleportAction : MonoBehaviour
+public class TeleportAction : MonoBehaviour, IGameplayAction
 {
 	public GameObject objectToMove;
 	public Vector3 newPosition;
 
 
 
-
 	// Moves the gameObject instantly to a custom position
-	public void TeleportObject()
+	public void ExecuteAction()
 	{
 		if(objectToMove != null)
 		{

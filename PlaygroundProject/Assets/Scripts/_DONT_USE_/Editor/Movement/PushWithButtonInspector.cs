@@ -16,7 +16,7 @@ public class PushWithButtonInspector : BaseInspectorWindow
 
 		base.OnInspectorGUI();
 
-		if(so.FindProperty("relativeAxis").boolValue)
+		if(serializedObject.FindProperty("relativeAxis").boolValue)
 		{
 			EditorGUILayout.HelpBox(relativeTip, MessageType.Info);
 		}

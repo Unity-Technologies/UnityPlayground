@@ -4,7 +4,6 @@ using UnityEditor;
 
 public class BaseInspectorWindow : Editor
 {
-	protected SerializedObject so;
 	private SerializedProperty prop;
 
 	private string prefabNotSceneHint = "WARNING: Select a Prefab from Project panel, not an object in the Hierarchy!";
@@ -12,15 +11,10 @@ public class BaseInspectorWindow : Editor
 	private string colliderWarning = "WARNING: You need to make sure the associated Collider2D has the \"Is Trigger\" option disabled for this script to work!";
 	private string triggerWarning = "WARNING: You need to make sure the associated Collider2D has the \"Is Trigger\" option enabled for this script to work!";
 
-	void OnEnable()
-	{
-		so = new SerializedObject(target);
-	}
-
 	// Draws the regular Inspector with all the properties, but minus the Script field, for more clarity
 	public void DrawDefaultInspectorMinusScript()
 	{
-		prop = so.GetIterator();
+		prop = serializedObject.GetIterator();
 		bool useChildren = true;
 		while (prop.NextVisible(useChildren))
 		{
@@ -40,7 +34,7 @@ public class BaseInspectorWindow : Editor
 	// Used when the script won't work without a prefab
 	protected bool ShowPrefabWarning(string propertyName)
 	{
-		GameObject go = so.FindProperty(propertyName).objectReferenceValue as GameObject;
+		GameObject go = serializedObject.FindProperty(propertyName).objectReferenceValue as GameObject;
 		if(go != null)
 		{
 			//if scene.name is Null, then the GameObject is coming from the Project and is probably a prefab
@@ -64,7 +58,7 @@ public class BaseInspectorWindow : Editor
 	// Used usually when there is an optional field
 	protected bool CheckIfAssigned(string propertyName, bool checkIfPrefab = true)
 	{
-		Object genericObject = so.FindProperty(propertyName).objectReferenceValue;
+		Object genericObject = serializedObject.FindProperty(propertyName).objectReferenceValue;
 		if(genericObject != null)
 		{
 			GameObject go = genericObject as GameObject;
@@ -89,7 +83,7 @@ public class BaseInspectorWindow : Editor
 	// Checks if an obects (usually an assigned prefab) uses a specific component
 	protected bool CheckIfObjectUsesComponent<T>(string propertyName)
 	{
-		GameObject go = so.FindProperty(propertyName).objectReferenceValue as GameObject;
+		GameObject go = serializedObject.FindProperty(propertyName).objectReferenceValue as GameObject;
 		T c = go.GetComponent<T>();
 
 		return !c.Equals(null);
@@ -131,7 +125,7 @@ public class BaseInspectorWindow : Editor
 
 		if (GUI.changed)
 		{
-			so.ApplyModifiedProperties();
+			serializedObject.ApplyModifiedProperties();
 		}
 	}
 }

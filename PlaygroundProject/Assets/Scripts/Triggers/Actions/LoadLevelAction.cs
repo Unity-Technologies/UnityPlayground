@@ -2,11 +2,11 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class LoadLevelAction : MonoBehaviour
+public class LoadLevelAction : MonoBehaviour, IGameplayAction
 {
 	public string levelName;
 	
-	public void LoadNewLevel()
+	public void ExecuteAction()
 	{
 		SceneManager.LoadScene(levelName, LoadSceneMode.Single);
 	}

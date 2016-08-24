@@ -13,6 +13,7 @@ public class TeleportActionInspector : BaseInspectorWindow
 		GUILayout.Space(10);
 		EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
+		GUILayout.Space(10);
 		base.OnInspectorGUI();
 
 		if(!CheckIfAssigned("objectToMove", false))

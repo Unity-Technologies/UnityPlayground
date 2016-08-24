@@ -12,6 +12,7 @@ public class CreateObjectActionInspector : BaseInspectorWindow
 		GUILayout.Space(10);
 		EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
+		GUILayout.Space(10);
 		base.OnInspectorGUI();
 
 		ShowPrefabWarning("prefabToCreate");

@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(BoxCollider2D))]
-public class TriggerStayInArea : TriggerArea
+public class TriggerStayInArea : TriggerBase
 {
 	// the amount of times (in seconds) that this trigger will call OnTriggerStay
 	// i.e. if it's 1, it means that OnTriggerStay will be called every second
@@ -12,8 +12,6 @@ public class TriggerStayInArea : TriggerArea
 	public float frequency = 1f;
 
 	[Space(20)]
-	public UnityEvent triggerStay;
-
 	public string filterTag = "Player";
 
 	private float lastTimeTriggerStayCalled;
@@ -32,7 +30,7 @@ public class TriggerStayInArea : TriggerArea
 		   && Time.time >= lastTimeTriggerStayCalled + frequency)
 		{
 			lastTimeTriggerStayCalled = Time.time;
-			triggerStay.Invoke();
+			ExecuteAllActions();
 		}
 	}
 }

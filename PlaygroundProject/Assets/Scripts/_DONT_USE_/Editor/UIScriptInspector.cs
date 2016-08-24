@@ -17,15 +17,15 @@ public class UIScriptInspector : BaseInspectorWindow
 		GUILayout.Space(10);
 		EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
-		nOfPlayers = so.FindProperty("numberOfPlayers").intValue;
-		gameType = so.FindProperty("gameType").intValue;
+		nOfPlayers = serializedObject.FindProperty("numberOfPlayers").intValue;
+		gameType = serializedObject.FindProperty("gameType").intValue;
 
 		nOfPlayers = EditorGUILayout.Popup("Number of players", nOfPlayers, readablePlayerEnum);
 
 		gameType = EditorGUILayout.Popup("Game type", gameType, readableGameTypesEnum);
 		if(gameType == 0) //score game
 		{
-			EditorGUILayout.PropertyField(so.FindProperty("scoreToWin"));
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("scoreToWin"));
 		}
 
 		if(gameType == 1) //life
@@ -34,12 +34,12 @@ public class UIScriptInspector : BaseInspectorWindow
 		}
 
 		//write all the properties back
-		so.FindProperty("gameType").intValue = gameType;
-		so.FindProperty("numberOfPlayers").intValue = nOfPlayers;
+		serializedObject.FindProperty("gameType").intValue = gameType;
+		serializedObject.FindProperty("numberOfPlayers").intValue = nOfPlayers;
 
 		if(GUI.changed)
 		{
-			so.ApplyModifiedProperties();
+			serializedObject.ApplyModifiedProperties();
 		}
 	}
 }

@@ -3,11 +3,9 @@ using System.Collections;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(BoxCollider2D))]
-public class TriggerExitArea : TriggerArea
+public class TriggerExitArea : TriggerBase
 {
 	[Space(20)]
-	public UnityEvent triggerExited;
-
 	public string filterTag = "Player";
 
 
@@ -16,7 +14,7 @@ public class TriggerExitArea : TriggerArea
 	{
 		if(otherCollider.CompareTag(filterTag))
 		{
-			triggerExited.Invoke();
+			ExecuteAllActions();
 		}
 	}
 }

@@ -3,11 +3,9 @@ using System.Collections;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(BoxCollider2D))]
-public class TriggerEnterArea : TriggerArea
+public class TriggerEnterArea : TriggerBase
 {
 	[Space(20)]
-	public UnityEvent triggerEntered;
-
 	public string filterTag = "Player";
 
 
@@ -16,7 +14,7 @@ public class TriggerEnterArea : TriggerArea
 	{
 		if(otherCollider.CompareTag(filterTag))
 		{
-			triggerEntered.Invoke();
+			ExecuteAllActions();
 		}
 	}
 }

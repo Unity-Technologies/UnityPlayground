@@ -3,18 +3,23 @@ using System.Collections;
 using UnityEditor;
 
 [CustomEditor(typeof(ConsumeResourceAction))]
-public class ConsumeResourceActionInspector : BaseInspectorWindow
+public class ConsumeResourceActionInspector : TriggerInspectorBase
 {
 	private string explanation = "Use this script to check if the player has a specific resource. If he has it, it will be consumed and the action below will happen.";
-	private string actionTip = "You can also decide to perform no action, only consume the resource.";
 
 	public override void OnInspectorGUI()
 	{
 		GUILayout.Space(10);
 		EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
-		base.OnInspectorGUI();
+		GUILayout.Space(10);
+		EditorGUILayout.PropertyField(serializedObject.FindProperty("happenOnlyOnce"));
+		EditorGUILayout.PropertyField(serializedObject.FindProperty("checkFor"));
+		EditorGUILayout.PropertyField(serializedObject.FindProperty("amountNeeded"));
 
-		EditorGUILayout.HelpBox(actionTip, MessageType.Info);
+		GUILayout.Space(10);
+		DrawActionLists();
+
+		serializedObject.ApplyModifiedProperties();
 	}
 }

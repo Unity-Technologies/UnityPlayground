@@ -3,11 +3,9 @@ using System.Collections;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider2D))]
-public class TriggerCollision : TriggerArea
+public class TriggerCollision : TriggerBase
 {
 	[Space(20)]
-	public UnityEvent colliderTouched;
-
 	public string filterTag = "Player";
 	
 	// This function will be called when something touches the trigger
@@ -15,7 +13,7 @@ public class TriggerCollision : TriggerArea
 	{
 		if(collision.collider.CompareTag(filterTag))
 		{
-			colliderTouched.Invoke();
+			ExecuteAllActions();
 		}
 	}
 }

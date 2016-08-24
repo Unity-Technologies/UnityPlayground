@@ -15,7 +15,7 @@ public class MoveWithArrowsInspector : BaseInspectorWindow
 
 		base.OnInspectorGUI();
 
-		if(so.FindProperty("movementType").intValue != 0)
+		if(serializedObject.FindProperty("movementType").intValue != 0)
 		{
 			EditorGUILayout.HelpBox(constraintsReminder, MessageType.Info);
 		}
