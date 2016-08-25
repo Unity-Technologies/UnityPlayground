@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEditor;
 
 [CustomEditor(typeof(ConsumeResourceAction))]
-public class ConsumeResourceActionInspector : TriggerInspectorBase
+public class ConsumeResourceActionInspector : ConditionInspectorBase
 {
 	private string explanation = "Use this script to check if the player has a specific resource. If he has it, it will be consumed and the action below will happen.";
 

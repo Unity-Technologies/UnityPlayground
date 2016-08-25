@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Events;
 
-public abstract class TriggerBase : MonoBehaviour
+public abstract class ConditionBase : MonoBehaviour
 {
 	
 	//actionitems can be connected to GameplayAction scripts, and execute their one action (the method ExecuteAction implemented in each child class)
@@ -17,7 +17,7 @@ public abstract class TriggerBase : MonoBehaviour
 
 
 
-	//to make the trigger fire only once
+	//to perform the actions only once
 	public bool happenOnlyOnce = false;
 	private bool alreadyHappened = false;
 

@@ -2,10 +2,10 @@
 using System.Collections;
 using UnityEditor;
 
-[CustomEditor(typeof(TriggerStayInArea))]
-public class TriggerStayInAreaInspector : TriggerInspectorBase
+[CustomEditor(typeof(ConditionStayInArea))]
+public class ConditionStayInAreaInspector : ConditionInspectorBase
 {
-	private string explanation = "Use this script to repeatedly perform an action when a gameObject is inside the trigger. The frequency of the action is defined by the \"Frequency\" parameter.";
+	private string explanation = "Perform actions repeatedly when a gameObject is inside the trigger collider. The frequency of the action is defined by the \"Frequency\" parameter.";
 
 	private string chosenTag;
 

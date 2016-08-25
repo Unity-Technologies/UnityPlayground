@@ -2,11 +2,10 @@
 using System.Collections;
 using UnityEditor;
 
-[CustomEditor(typeof(TriggerCollision))]
-public class TriggerCollisionInspector : TriggerInspectorBase
+[CustomEditor(typeof(ConditionEnterArea))]
+public class ConditionEnterAreaInspector : ConditionInspectorBase
 {
-	private string explanation = "Use this script to perform an action when this gameObject collides with another.";
-
+	private string explanation = "Perform actions when a gameObject enters the associated trigger collider.";
 	private string chosenTag;
 
 	public override void OnInspectorGUI()
@@ -18,6 +17,7 @@ public class TriggerCollisionInspector : TriggerInspectorBase
 		GUILayout.Space(10);
 		EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
+		// Show a tag selector to then use for the public property filterTag
 		GUILayout.Space(10);
 		EditorGUILayout.PropertyField(serializedObject.FindProperty("happenOnlyOnce"));
 		chosenTag = EditorGUILayout.TagField("Tag to check for", chosenTag);
@@ -25,7 +25,7 @@ public class TriggerCollisionInspector : TriggerInspectorBase
 		GUILayout.Space(10);
 		DrawActionLists();
 
-		CheckIfTrigger(false);
+		CheckIfTrigger(true);
 
 		if (GUI.changed)
 		{

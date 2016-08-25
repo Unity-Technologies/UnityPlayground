@@ -11,7 +11,12 @@ public class MoveWithArrows : Physics2DObject
 	public float speed = 5f;
 	public Enums.MovementType movementType = Enums.MovementType.AllDirections;
 
-	private Vector2 movement;
+	[Header("Orientation")]
+	public bool orientToDirection = false;
+	// The direction that will face the player
+	public Enums.Directions lookAxis = Enums.Directions.Up;
+
+	private Vector2 movement, cachedDirection;
 	private float moveHorizontal;
 	private float moveVertical;
 
@@ -43,6 +48,18 @@ public class MoveWithArrows : Physics2DObject
 		}
 			
 		movement = new Vector2(moveHorizontal, moveVertical);
+
+
+		//rotate the gameObject towards the direction of movement
+		//the axis to look can be decided with the "axis" variable
+		if(orientToDirection)
+		{
+			if(movement.sqrMagnitude >= 0.01f)
+			{
+				cachedDirection = movement;
+			}
+			Utils.SetAxisTowards(lookAxis, transform, cachedDirection);
+		}
 	}
 
 

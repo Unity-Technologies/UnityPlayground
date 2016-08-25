@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEditor;
 using UnityEditorInternal;
 
-public class TriggerInspectorBase : BaseInspectorWindow
+public class ConditionInspectorBase : BaseInspectorWindow
 {
 
 	protected ReorderableList list;

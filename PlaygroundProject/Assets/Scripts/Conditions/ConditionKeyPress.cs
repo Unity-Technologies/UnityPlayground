@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Events;
 
-public class TriggerKeyPress : TriggerBase
+public class ConditionKeyPress : ConditionBase
 {
 	public KeyCode keyToPress;
 

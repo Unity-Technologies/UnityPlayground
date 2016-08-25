@@ -2,10 +2,11 @@
 using System.Collections;
 using UnityEditor;
 
-[CustomEditor(typeof(TriggerEnterArea))]
-public class TriggerEnterAreaInspector : TriggerInspectorBase
+[CustomEditor(typeof(ConditionExitArea))]
+public class ConditionExitAreaInspector : ConditionInspectorBase
 {
-	private string explanation = "Use this script to perform an action when a gameObject enters this trigger.";
+	private string explanation = "Perform actions when a gameObject exits from the associated trigger collider.";
+
 	private string chosenTag;
 
 	public override void OnInspectorGUI()

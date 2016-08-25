@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.Events;
 
-public class ConsumeResourceAction : TriggerBase, IGameplayAction
+public class ConsumeResourceAction : ConditionBase, IGameplayAction
 {
 	[Header("Resource")]
 

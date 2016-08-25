@@ -2,10 +2,10 @@
 using System.Collections;
 using UnityEditor;
 
-[CustomEditor(typeof(TriggerExitArea))]
-public class TriggerExitAreaInspector : TriggerInspectorBase
+[CustomEditor(typeof(ConditionCollision))]
+public class ConditionCollisionInspector : ConditionInspectorBase
 {
-	private string explanation = "Use this script to perform an action when a gameObject exits from trigger.";
+	private string explanation = "Use this script to perform an action when this gameObject collides with another.";
 
 	private string chosenTag;
 
@@ -18,7 +18,6 @@ public class TriggerExitAreaInspector : TriggerInspectorBase
 		GUILayout.Space(10);
 		EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
-		// Show a tag selector to then use for the public property filterTag
 		GUILayout.Space(10);
 		EditorGUILayout.PropertyField(serializedObject.FindProperty("happenOnlyOnce"));
 		chosenTag = EditorGUILayout.TagField("Tag to check for", chosenTag);
@@ -26,7 +25,7 @@ public class TriggerExitAreaInspector : TriggerInspectorBase
 		GUILayout.Space(10);
 		DrawActionLists();
 
-		CheckIfTrigger(true);
+		CheckIfTrigger(false);
 
 		if (GUI.changed)
 		{

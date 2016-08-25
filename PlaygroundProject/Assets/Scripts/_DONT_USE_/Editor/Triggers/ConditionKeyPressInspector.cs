@@ -3,8 +3,8 @@ using UnityEditor;
 using System.Collections;
 using UnityEditorInternal;
 
-[CustomEditor(typeof(TriggerKeyPress))]
-public class TriggerKeyPressInspector : TriggerInspectorBase
+[CustomEditor(typeof(ConditionKeyPress))]
+public class ConditionKeyPressInspector : ConditionInspectorBase
 {
 	private string explanation = "Use this script to perform an action when a button is pressed.";
 
