@@ -2,10 +2,10 @@
 using System.Collections;
 using UnityEditor;
 
-[CustomEditor(typeof(DamagePlayer))]
-public class DamagePlayerInspector : BaseInspectorWindow
+[CustomEditor(typeof(CollectableAttribute))]
+public class CollectableAttrInspector : BaseInspectorWindow
 {
-	private string explanation = "This gameObject will damage the Player on impact.";
+	private string explanation = "When the Player touches this object, he will get a point.";
 
 	public override void OnInspectorGUI()
 	{
@@ -13,5 +13,7 @@ public class DamagePlayerInspector : BaseInspectorWindow
 		EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
 		base.OnInspectorGUI();
+
+		CheckIfTrigger(true);
 	}
 }

@@ -53,10 +53,10 @@ public class ObjectShooter : MonoBehaviour
 			}
 
 			// add a Bullet component if the prefab doesn't already have one, and assign the player ID
-			Bullet b = newObject.GetComponent<Bullet>();
+			BulletAttribute b = newObject.GetComponent<BulletAttribute>();
 			if(b == null)
 			{
-				b = newObject.AddComponent<Bullet>();
+				b = newObject.AddComponent<BulletAttribute>();
 			}
 			b.playerId = playerNumber;
 

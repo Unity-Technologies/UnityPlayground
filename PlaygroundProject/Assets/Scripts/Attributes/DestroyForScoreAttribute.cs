@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DestroyForPoints : MonoBehaviour
+public class DestroyForPointsAttribute : MonoBehaviour
 {
 	private UIScript userInterface;
 
@@ -17,15 +17,14 @@ public class DestroyForPoints : MonoBehaviour
 	// This function gets called everytime this object collides with another
 	private void OnCollisionEnter2D(Collision2D collisionData)
 	{
-		string playerTag = collisionData.gameObject.tag;
-
 		// is the other object a Bullet?
-		if(playerTag == "Bullet")
+		if(collisionData.gameObject.CompareTag("Bullet")
+			|| collisionData.gameObject.CompareTag("Bullet2"))
 		{
 			if(userInterface != null)
 			{
 				// add one point
-				Bullet b = collisionData.gameObject.GetComponent<Bullet>();
+				BulletAttribute b = collisionData.gameObject.GetComponent<BulletAttribute>();
 				if(b != null)
 				{
 					userInterface.AddOnePoint(b.playerId);

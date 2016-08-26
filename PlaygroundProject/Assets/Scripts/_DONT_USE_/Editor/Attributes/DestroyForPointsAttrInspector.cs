@@ -2,10 +2,10 @@
 using System.Collections;
 using UnityEditor;
 
-[CustomEditor(typeof(Collectable))]
-public class CollectableInspector : BaseInspectorWindow
+[CustomEditor(typeof(DestroyForPointsAttribute))]
+public class DestroyForPointsAttrInspector : BaseInspectorWindow
 {
-	private string explanation = "When the Player touches this object, he will get a point.";
+	private string explanation = "When this object is destroyed, the player gets a point.";
 
 	public override void OnInspectorGUI()
 	{
@@ -13,7 +13,5 @@ public class CollectableInspector : BaseInspectorWindow
 		EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
 		base.OnInspectorGUI();
-
-		CheckIfTrigger(true);
 	}
 }

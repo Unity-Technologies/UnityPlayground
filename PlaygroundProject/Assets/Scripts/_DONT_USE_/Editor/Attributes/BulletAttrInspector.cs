@@ -2,8 +2,8 @@
 using System.Collections;
 using UnityEditor;
 
-[CustomEditor(typeof(Bullet))]
-public class BulletInspector : BaseInspectorWindow
+[CustomEditor(typeof(BulletAttribute))]
+public class BulletAttrInspector : BaseInspectorWindow
 {
 	private string explanation = "When this object touches another that has the script DestroyForPoints, the Player will get a point.";
 

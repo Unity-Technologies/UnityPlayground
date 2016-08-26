@@ -2,10 +2,10 @@
 using System.Collections;
 using UnityEditor;
 
-[CustomEditor(typeof(DestroyForPoints))]
-public class DestroyForPointsInspector : BaseInspectorWindow
+[CustomEditor(typeof(HealthSystemAttribute))]
+public class PlayerHealthInspector : BaseInspectorWindow
 {
-	private string explanation = "When this object is destroyed, the player gets a point.";
+	private string explanation = "This scripts allows the Players or other objects to receive damage.";
 
 	public override void OnInspectorGUI()
 	{

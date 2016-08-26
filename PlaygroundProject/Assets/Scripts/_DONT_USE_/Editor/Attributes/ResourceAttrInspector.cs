@@ -2,8 +2,8 @@
 using System.Collections;
 using UnityEditor;
 
-[CustomEditor(typeof(Resource))]
-public class ResourceInspector : BaseInspectorWindow
+[CustomEditor(typeof(ResourceAttribute))]
+public class ResourceAttrInspector : BaseInspectorWindow
 {
 	private string explanation = "When the Player touches this object, he will collect the specified amount of this type of resource.";
 

@@ -1,15 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(Collider2D), typeof(SpriteRenderer))]
-public class Resource : MonoBehaviour
+[RequireComponent(typeof(Collider2D))]
+public class CollectableAttribute : MonoBehaviour
 {
-	//this is actually more a name/identifier than a type, but from the kids' perspective it makes sense that they are inputting the "type of resource"
-	public string resourceType = "Coal";
-	public int amount = 1;
-
 	private UIScript userInterface;
-
 
 
 	// Start is called at the beginning
@@ -21,17 +16,22 @@ public class Resource : MonoBehaviour
 
 
 
-
+	// This function gets called everytime this object collides with another
 	private void OnTriggerEnter2D(Collider2D otherCollider)
 	{
+		string playerTag = otherCollider.gameObject.tag;
+
 		// is the other object a player?
-		if(otherCollider.CompareTag("Player"))
+		if(playerTag == "Player" || playerTag == "Player2")
 		{
 			if(userInterface != null)
 			{
-				userInterface.AddResource(resourceType, amount, GetComponent<SpriteRenderer>().sprite);
+				// add one point
+				int playerId = (playerTag == "Player") ? 0 : 1;
+				userInterface.AddOnePoint(playerId);
 			}
 
+			// then destroy this object
 			Destroy(gameObject);
 		}
 	}

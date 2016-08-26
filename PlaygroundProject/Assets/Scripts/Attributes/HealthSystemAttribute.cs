@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerHealth : MonoBehaviour
+public class HealthSystemAttribute : MonoBehaviour
 {
 	public int health = 3;
 
 	private UIScript ui;
 
 	// Will be set to 0 or 1 depending on how the GameObject is tagged
+	// it's -1 if the object is not a player
 	private int playerNumber;
 
 
@@ -18,24 +19,37 @@ public class PlayerHealth : MonoBehaviour
 		ui = GameObject.FindObjectOfType<UIScript>();
 
 		// Set the player number based on the GameObject tag
-		playerNumber = (gameObject.CompareTag("Player")) ? 0 : 1;
+		switch(gameObject.tag)
+		{
+			case "Player":
+				playerNumber = 0;
+				break;
+			case "Player2":
+				playerNumber = 1;
+				break;
+			default:
+				playerNumber = -1;
+				break;
+		}
 
 		// Notify the UI so it will show the right initial amount
-		if(ui != null)
+		if(ui != null
+			&& playerNumber != -1)
 		{
 			ui.SetHealth(health, playerNumber);
 		}
 	}
 
 
-	// Subtracts energy from the player
+	// changes the energy from the player
 	// also notifies the UI (if present)
-	public void SubHealth(int amount)
+	public void ModifyHealth(int amount)
 	{
-		health -= amount;
+		health += amount;
 
 		// Notify the UI so it will change the number in the corner
-		if(ui != null)
+		if(ui != null
+			&& playerNumber != -1)
 		{
 			ui.SubHealth(amount, playerNumber);
 		}
