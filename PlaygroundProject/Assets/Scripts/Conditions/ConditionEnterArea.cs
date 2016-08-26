@@ -14,7 +14,7 @@ public class ConditionEnterArea : ConditionBase
 	{
 		if(otherCollider.CompareTag(filterTag))
 		{
-			ExecuteAllActions();
+			ExecuteAllActions(otherCollider.gameObject);
 		}
 	}
 }

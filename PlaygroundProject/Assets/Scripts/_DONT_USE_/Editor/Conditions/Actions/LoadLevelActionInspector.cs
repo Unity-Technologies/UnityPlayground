@@ -5,7 +5,7 @@ using UnityEditor;
 [CustomEditor(typeof(LoadLevelAction))]
 public class LoadLevelActionInspector : BaseInspectorWindow
 {
-	private string explanation = "Use this script to load a new level (another Unity scene).";
+	private string explanation = "Use this script to restart the level, or load another one (load another Unity scene).";
 	private string sceneWarning = "WARNING: Make sure the scene is enabled in the Build Settings scenes list.";
 	private string sceneInfo = "WARNING; To add a new level, save a Unity scene and then go to File > Build Settings... and add the scene to the list.";
 
@@ -22,8 +22,9 @@ public class LoadLevelActionInspector : BaseInspectorWindow
 			string sceneNameProperty = serializedObject.FindProperty("levelName").stringValue;
 
 			//get available scene names and clean the names
-			string[] sceneNames = new string[EditorBuildSettings.scenes.Length];
-			int i = 0;
+			string[] sceneNames = new string[EditorBuildSettings.scenes.Length + 1];
+			sceneNames[0] = "RELOAD LEVEL";
+			int i = 1;
 			foreach(EditorBuildSettingsScene s in EditorBuildSettings.scenes)
 			{
 				int lastSlash = s.path.LastIndexOf("/");
@@ -51,8 +52,15 @@ public class LoadLevelActionInspector : BaseInspectorWindow
 			{
 				EditorGUILayout.HelpBox(sceneWarning, MessageType.Warning);
 			}
-			
-			serializedObject.FindProperty("levelName").stringValue = sceneNames[sceneId];
+
+			if(sceneId == 0)
+			{
+				serializedObject.FindProperty("levelName").stringValue = LoadLevelAction.SAME_SCENE; //this means same scene
+			}
+			else
+			{
+				serializedObject.FindProperty("levelName").stringValue = sceneNames[sceneId];
+			}
 		}
 		else
 		{

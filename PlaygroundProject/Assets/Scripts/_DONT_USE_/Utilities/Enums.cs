@@ -35,4 +35,10 @@ public class Enums
 		ArrowKeys,
 		WASD,
 	}
+
+	public enum Targets
+	{
+		ThisObject,
+		OtherObject,
+	}
 }

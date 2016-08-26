@@ -24,14 +24,14 @@ public class ConsumeResourceAction : ConditionBase, IGameplayAction
 
 
 
-	public void ExecuteAction()
+	public void ExecuteAction(GameObject dataObject)
 	{
 		if(userInterface.CheckIfHasResources(checkFor, amountNeeded))
 		{
 			//consume the resource and update the UI
 			userInterface.ConsumeResource(checkFor, amountNeeded);
 
-			ExecuteAllActions();
+			ExecuteAllActions(dataObject);
 		}
 	}
 }

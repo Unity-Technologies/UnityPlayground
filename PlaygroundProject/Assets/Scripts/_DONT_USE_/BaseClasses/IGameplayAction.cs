@@ -5,5 +5,5 @@ using System;
 //parent class to all Actions
 public interface IGameplayAction
 {
-	void ExecuteAction();
+	void ExecuteAction(GameObject other);
 }

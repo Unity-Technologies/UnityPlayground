@@ -13,7 +13,7 @@ public class ConditionCollision : ConditionBase
 	{
 		if(collision.collider.CompareTag(filterTag))
 		{
-			ExecuteAllActions();
+			ExecuteAllActions(collision.gameObject);
 		}
 	}
 }

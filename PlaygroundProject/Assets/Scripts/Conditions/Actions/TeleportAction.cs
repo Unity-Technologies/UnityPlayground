@@ -9,7 +9,7 @@ public class TeleportAction : MonoBehaviour, IGameplayAction
 
 
 	// Moves the gameObject instantly to a custom position
-	public void ExecuteAction()
+	public void ExecuteAction(GameObject dataObject)
 	{
 		if(objectToMove != null)
 		{

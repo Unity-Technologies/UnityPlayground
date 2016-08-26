@@ -23,7 +23,8 @@ public abstract class ConditionBase : MonoBehaviour
 
 
 
-	public void ExecuteAllActions()
+	//dataObject is usually the other object in the collision
+	public void ExecuteAllActions(GameObject dataObject)
 	{		
 		//first check if the action has already been executed
 		if(happenOnlyOnce && alreadyHappened)
@@ -34,7 +35,7 @@ public abstract class ConditionBase : MonoBehaviour
 		{
 			if(ga.connectedAction != null)
 			{
-				(ga.connectedAction as IGameplayAction).ExecuteAction();
+				(ga.connectedAction as IGameplayAction).ExecuteAction(dataObject);
 			}
 		}
 

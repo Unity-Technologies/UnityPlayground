@@ -31,7 +31,7 @@ public class ConditionStayInArea : ConditionBase
 		   && Time.time >= lastTimeTriggerStayCalled + frequency)
 		{
 			lastTimeTriggerStayCalled = Time.time;
-			ExecuteAllActions();
+			ExecuteAllActions(otherCollider.gameObject);
 		}
 	}
 }

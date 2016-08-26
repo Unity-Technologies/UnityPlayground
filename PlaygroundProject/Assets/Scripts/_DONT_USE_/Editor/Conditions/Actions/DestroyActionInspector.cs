@@ -2,10 +2,10 @@
 using System.Collections;
 using UnityEditor;
 
-[CustomEditor(typeof(DieOnCollision))]
-public class DieOnCollisionInspector : BaseInspectorWindow
+[CustomEditor(typeof(DestroyAction))]
+public class DestroyActionInspector : BaseInspectorWindow
 {
-	private string explanation = "This gameObject will be destroyed instantaneously on impact.";
+	private string explanation = "Destroys a gameObject instantaneously on impact. Could be this object, or the one that suffered the impact.";
 	private string tip = "TIP: You can assign a death effect, such as an explosion or another particle system.";
 
 	public override void OnInspectorGUI()
@@ -15,7 +15,7 @@ public class DieOnCollisionInspector : BaseInspectorWindow
 
 		base.OnInspectorGUI();
 
-		if(!CheckIfAssigned("deathEffect"))
+		if(!CheckIfAssigned("deathEffect", true))
 		{
 			EditorGUILayout.HelpBox(tip, MessageType.Info);
 		}

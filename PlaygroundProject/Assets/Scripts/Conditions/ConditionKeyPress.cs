@@ -13,7 +13,7 @@ public class ConditionKeyPress : ConditionBase
 	{
 		if(Input.GetKeyDown(keyToPress))
 		{
-			ExecuteAllActions();
+			ExecuteAllActions(null);
 		}
 	}
 }
