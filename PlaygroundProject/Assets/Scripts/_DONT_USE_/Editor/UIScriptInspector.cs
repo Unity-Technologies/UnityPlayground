@@ -6,7 +6,7 @@ using System.Collections;
 public class UIScriptInspector : BaseInspectorWindow
 {
 	private string explanation = "Use the UI to visualise points and health for the players.";
-	private string lifeReminder = "Don't forget to use the script Player Health on the player(s)!";
+	private string lifeReminder = "Don't forget to use the script HealthSystemAttribute on the player(s)!";
 
 	private int nOfPlayers = 0, gameType = 0;
 	private string[] readablePlayerEnum = new string[]{"One player", "Two players"};
