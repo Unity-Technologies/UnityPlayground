@@ -18,19 +18,6 @@ That said, the audience should already have an idea of how Unity works, the Edit
 
 Refer to the [Wiki](https://github.com/UnityTechnologies/PlaygroundProject/wiki) for instructions on how to use the framework.
 
-**Code conventions**
-
-The following coding conventions have been used throughout the project to facilitate the usage of the script components:
-- Use RequireComponent to make sure they have added the right ones
-- Duplicate collision code to work with colliders (OnCollisionEnter2D) but also triggers (OnTriggerEnter2D), to accomodate any collider setup
-- Check if the UI is present, to allow the components to work even in games without UI
-
-Or the editing of the code itself:
-- Loads of comments
-- Leave plenty of whitespace in order to minimise deletetion of curly brackets by mistake
-- Not too much caching in order to minimise code (at the expense of performance)
-- Use verbose variable and method names to clearly state what they do
-
 **Software Requirements**
 
 Required: Any Unity 5.x series
