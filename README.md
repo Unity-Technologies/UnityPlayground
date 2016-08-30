@@ -16,20 +16,7 @@ That said, the audience should already have an idea of how Unity works, the Edit
 
 **Usage instructions**
 
-The `/Assets` folder contains a readme file called `ScriptsExplanations.rtf` that explains what each scripts does in a one-liner. This file is intended as a quick-reference, to give the audience a quick outlook of the possibities at their disposal.
-
-The `/Sprites` and `/Particles` folders contain graphic assets which could be used to compose the scene, but the game makers are free to import new ones if they so desire.
-
-Scripts are in the `/Scripts` folder, organised by category. Most of them should work out of the box, although some require objects to be tagged in a specific way to work. For instance, `/Gameplay/PlayerHealth.cs` requires the object to be tagged as "Player" in order to work, or "Player2" in the case of a 2-P game. Similarly, `/Destruction/KillEnemy.cs` will require the enemies to be tagged "Enemy".
-
-[HowTo Video](https://drive.google.com/open?id=0B1E6a0_U02JjdWh0R1d1LWJKa2M)
-
-**User interface**
-
-The `/Prefabs` folder contains a prefab for the UI, which can be simply dragged and dropped in the scene. The scripts that communicate with the UI to show points or health will do it transparently and will still work if the UI is not present, but the UI needs to be setup so that it knows whether to show 1P or 2P UI.
-
-**Graphic assets**
-This project contains graphic assets taken from [Kenney.nl](http://www.kenney.nl). Nevertheless, it can work with any kind of 2D graphic assets so feel free to swap them with your resources. Just make sure to provide variety to allow many types of game genres.
+Refer to the [Wiki](https://github.com/UnityTechnologies/PlaygroundProject/wiki) for instructions on how to use the framework.
 
 **Code conventions**
 
