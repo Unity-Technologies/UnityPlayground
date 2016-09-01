@@ -3,6 +3,7 @@ using UnityEditor;
 using System.Collections;
 using UnityEditorInternal;
 
+[CanEditMultipleObjects]
 [CustomEditor(typeof(ConditionKeyPress))]
 public class ConditionKeyPressInspector : ConditionInspectorBase
 {

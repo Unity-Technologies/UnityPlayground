@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEditor;
 
+[CanEditMultipleObjects]
 [CustomEditor(typeof(TimedSelfDestruct))]
 public class TimedSelfDestructInspector : BaseInspectorWindow
 {

@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEditor;
 
+[CanEditMultipleObjects]
 [CustomEditor(typeof(BulletAttribute))]
 public class BulletAttrInspector : BaseInspectorWindow
 {

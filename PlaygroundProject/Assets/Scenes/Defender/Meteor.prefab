@@ -12,8 +12,9 @@ GameObject:
   - 60: {fileID: 6049366}
   - 50: {fileID: 5058630}
   - 114: {fileID: 11424868}
-  - 114: {fileID: 11460808}
+  - 114: {fileID: 114000011533140650}
   - 114: {fileID: 11441764}
+  - 114: {fileID: 114000012881949288}
   m_Layer: 0
   m_Name: Meteor
   m_TagString: Enemy
@@ -109,19 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fa3c260db47248a18ecb8112019040d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
---- !u!114 &11460808
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 105984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4438ad7669e904067ab34554d857ab20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deathEffect: {fileID: 100012, guid: 384371afbb4354cc9a3fc68eab303756, type: 2}
+  healthChange: -1
 --- !u!212 &21256868
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -166,3 +155,37 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 105984}
   m_IsPrefabParent: 1
+--- !u!114 &114000011533140650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdab9334f9a2a4efe8c019b5d37595cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+  - connectedAction: {fileID: 114000012881949288}
+  useCustomActions: 0
+  customActions:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  happenOnlyOnce: 1
+  filterTag: Player
+--- !u!114 &114000012881949288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be840ffee03ed4abe9b3dc9b48f9cae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: 0
+  deathEffect: {fileID: 100012, guid: 384371afbb4354cc9a3fc68eab303756, type: 2}

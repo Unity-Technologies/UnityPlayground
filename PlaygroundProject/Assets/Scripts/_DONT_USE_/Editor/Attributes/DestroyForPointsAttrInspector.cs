@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEditor;
 
+[CanEditMultipleObjects]
 [CustomEditor(typeof(DestroyForPointsAttribute))]
 public class DestroyForPointsAttrInspector : BaseInspectorWindow
 {

@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEditor;
 
+[CanEditMultipleObjects]
 [CustomEditor(typeof(TeleportAction))]
 public class TeleportActionInspector : BaseInspectorWindow
 {

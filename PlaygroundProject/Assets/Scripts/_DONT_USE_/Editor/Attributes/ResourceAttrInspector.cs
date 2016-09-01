@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEditor;
 
+[CanEditMultipleObjects]
 [CustomEditor(typeof(ResourceAttribute))]
 public class ResourceAttrInspector : BaseInspectorWindow
 {

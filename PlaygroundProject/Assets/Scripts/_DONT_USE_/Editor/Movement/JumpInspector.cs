@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEditor;
 
+[CanEditMultipleObjects]
 [CustomEditor(typeof(Jump))]
 public class JumpInspector : BaseInspectorWindow
 {

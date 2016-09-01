@@ -18,8 +18,7 @@ public class DestroyForPointsAttribute : MonoBehaviour
 	private void OnCollisionEnter2D(Collision2D collisionData)
 	{
 		// is the other object a Bullet?
-		if(collisionData.gameObject.CompareTag("Bullet")
-			|| collisionData.gameObject.CompareTag("Bullet2"))
+		if(collisionData.gameObject.CompareTag("Bullet"))
 		{
 			if(userInterface != null)
 			{

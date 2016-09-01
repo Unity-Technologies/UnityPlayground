@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEditor;
 
+[CanEditMultipleObjects]
 [CustomEditor(typeof(CreateObjectAction))]
 public class CreateObjectActionInspector : BaseInspectorWindow
 {

@@ -2,12 +2,11 @@
 using System.Collections;
 using UnityEditor;
 
+[CanEditMultipleObjects]
 [CustomEditor(typeof(ConditionStayInArea))]
 public class ConditionStayInAreaInspector : ConditionInspectorBase
 {
 	private string explanation = "Perform actions repeatedly when a gameObject is inside the trigger collider. The frequency of the action is defined by the \"Frequency\" parameter.";
-
-	private string chosenTag;
 
 	public override void OnInspectorGUI()
 	{
@@ -20,8 +19,7 @@ public class ConditionStayInAreaInspector : ConditionInspectorBase
 
 		// Show a tag selector to then use for the public property filterTag
 		GUILayout.Space(10);
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("happenOnlyOnce"));
-		chosenTag = EditorGUILayout.TagField("Tag to check for", chosenTag);
+		DrawTagsGroup();
 		EditorGUILayout.PropertyField(serializedObject.FindProperty("frequency"));
 
 		GUILayout.Space(10);

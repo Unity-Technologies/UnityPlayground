@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEditor;
 
+[CanEditMultipleObjects]
 [CustomEditor(typeof(DestroyAction))]
 public class DestroyActionInspector : BaseInspectorWindow
 {

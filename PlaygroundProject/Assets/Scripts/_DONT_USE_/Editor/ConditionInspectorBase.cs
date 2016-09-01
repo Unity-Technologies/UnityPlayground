@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEditorInternal;
 
+[CanEditMultipleObjects]
 public class ConditionInspectorBase : BaseInspectorWindow
 {
 
 	protected ReorderableList list;
-
+	protected string chosenTag;
+	protected bool filterByTag;
 
 
 	protected void OnEnable()
@@ -18,6 +21,9 @@ public class ConditionInspectorBase : BaseInspectorWindow
 			(Rect rect, int index, bool isActive, bool isFocused) => {
 			SerializedProperty element = list.serializedProperty.GetArrayElementAtIndex(index); //ActionItem
 			rect.y += 2;
+			//ActionItem sp = (ActionItem)element.FindPropertyRelative("connectedAction").value;
+			//IGameplayAction[] actions = sp.GetComponents<IGameplayAction>();
+			//Debug.Log(sp);
 			EditorGUI.ObjectField(new Rect(rect.x, rect.y, rect.width - 30, EditorGUIUtility.singleLineHeight), element.FindPropertyRelative("connectedAction"), GUIContent.none);
 		};
 
@@ -38,5 +44,16 @@ public class ConditionInspectorBase : BaseInspectorWindow
 			EditorGUILayout.PropertyField(serializedObject.FindProperty("customActions"));
 		}
 		serializedObject.FindProperty("useCustomActions").boolValue = useCustom;
+	}
+
+	protected void DrawTagsGroup()
+	{
+		EditorGUILayout.PropertyField(serializedObject.FindProperty("happenOnlyOnce"));
+		filterByTag = EditorGUILayout.Toggle("Filter by Tag", serializedObject.FindProperty("filterByTag").boolValue);
+		if(filterByTag)
+		{
+			chosenTag = EditorGUILayout.TagField("Tag to check for", chosenTag);
+		}
+		serializedObject.FindProperty("filterByTag").boolValue = filterByTag;
 	}
 }

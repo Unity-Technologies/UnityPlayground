@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEditor;
 
+[CanEditMultipleObjects]
 [CustomEditor(typeof(LoadLevelAction))]
 public class LoadLevelActionInspector : BaseInspectorWindow
 {

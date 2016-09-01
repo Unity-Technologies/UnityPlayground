@@ -22,6 +22,10 @@ public abstract class ConditionBase : MonoBehaviour
 	private bool alreadyHappened = false;
 
 
+	public bool filterByTag = true;
+	public string filterTag = "Player";
+
+
 
 	//dataObject is usually the other object in the collision
 	public void ExecuteAllActions(GameObject dataObject)

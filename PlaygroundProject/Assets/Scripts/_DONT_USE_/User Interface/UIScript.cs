@@ -106,9 +106,9 @@ public class UIScript : MonoBehaviour
 
 
 
-	public void SubHealth(int change, int playerNumber)
+	public void ChangeHealth(int change, int playerNumber)
 	{
-		SetHealth(playersHealth[playerNumber] - change, playerNumber);
+		SetHealth(playersHealth[playerNumber] + change, playerNumber);
 
 		if(playersHealth[playerNumber] <= 0)
 		{

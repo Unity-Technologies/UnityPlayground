@@ -2,12 +2,11 @@
 using System.Collections;
 using UnityEditor;
 
+[CanEditMultipleObjects]
 [CustomEditor(typeof(ConditionCollision))]
 public class ConditionCollisionInspector : ConditionInspectorBase
 {
 	private string explanation = "Use this script to perform an action when this gameObject collides with another.";
-
-	private string chosenTag;
 
 	public override void OnInspectorGUI()
 	{
@@ -19,8 +18,7 @@ public class ConditionCollisionInspector : ConditionInspectorBase
 		EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
 		GUILayout.Space(10);
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("happenOnlyOnce"));
-		chosenTag = EditorGUILayout.TagField("Tag to check for", chosenTag);
+		DrawTagsGroup();
 
 		GUILayout.Space(10);
 		DrawActionLists();

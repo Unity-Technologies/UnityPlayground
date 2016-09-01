@@ -6,6 +6,7 @@ public class HealthSystemAttribute : MonoBehaviour
 	public int health = 3;
 
 	private UIScript ui;
+	private int maxHealth;
 
 	// Will be set to 0 or 1 depending on how the GameObject is tagged
 	// it's -1 if the object is not a player
@@ -38,6 +39,8 @@ public class HealthSystemAttribute : MonoBehaviour
 		{
 			ui.SetHealth(health, playerNumber);
 		}
+
+		maxHealth = health; //note down the maximum health to avoid going over it when the player gets healed
 	}
 
 
@@ -45,13 +48,19 @@ public class HealthSystemAttribute : MonoBehaviour
 	// also notifies the UI (if present)
 	public void ModifyHealth(int amount)
 	{
+		//avoid going over the maximum health by forcin
+		if(health + amount > maxHealth)
+		{
+			amount = maxHealth - health;
+		}
+			
 		health += amount;
 
 		// Notify the UI so it will change the number in the corner
 		if(ui != null
 			&& playerNumber != -1)
 		{
-			ui.SubHealth(amount, playerNumber);
+			ui.ChangeHealth(amount, playerNumber);
 		}
 
 		//DEAD

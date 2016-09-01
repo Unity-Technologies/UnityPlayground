@@ -11,9 +11,6 @@ public class ConditionStayInArea : ConditionBase
 	// ... and so on...
 	public float frequency = 1f;
 
-	[Space(20)]
-	public string filterTag = "Player";
-
 	private float lastTimeTriggerStayCalled;
 
 
@@ -27,11 +24,12 @@ public class ConditionStayInArea : ConditionBase
 	void OnTriggerStay2D(Collider2D otherCollider)
 	{
 		//... then we check for the frequency
-		if(otherCollider.CompareTag(filterTag)
+		if((otherCollider.CompareTag(filterTag)
+			|| !filterByTag)
 		   && Time.time >= lastTimeTriggerStayCalled + frequency)
 		{
-			lastTimeTriggerStayCalled = Time.time;
 			ExecuteAllActions(otherCollider.gameObject);
+			lastTimeTriggerStayCalled = Time.time;
 		}
 	}
 }
