@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class AutoObjectSpawner : MonoBehaviour
 {
 	[Header("Object creation")]
@@ -13,11 +14,13 @@ public class AutoObjectSpawner : MonoBehaviour
 
 	// Configure the spawning pattern
 	public float spawnInterval = 1;
-	public float horizontalSize = 2;
-	public float verticalSize = 2;
+
+	private BoxCollider2D boxCollider2D;
 
 	void Start ()
 	{
+		boxCollider2D = GetComponent<BoxCollider2D>();
+
 		StartCoroutine(SpawnObject());
 	}
 	
@@ -27,8 +30,8 @@ public class AutoObjectSpawner : MonoBehaviour
 		while(true)
 		{
 			// Create some random numbers
-			float randomX = Random.Range (-horizontalSize, horizontalSize) *.5f;
-			float randomY = Random.Range (-verticalSize, verticalSize) *.5f;
+			float randomX = Random.Range (-boxCollider2D.size.x, boxCollider2D.size.x) *.5f;
+			float randomY = Random.Range (-boxCollider2D.size.y, boxCollider2D.size.y) *.5f;
 
 			// Generate the new object
 			GameObject newObject = Instantiate<GameObject>(prefabToSpawn);

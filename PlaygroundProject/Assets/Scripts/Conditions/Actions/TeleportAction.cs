@@ -5,7 +5,7 @@ public class TeleportAction : MonoBehaviour, IGameplayAction
 {
 	public GameObject objectToMove;
 	public Vector3 newPosition;
-	public bool stopMovements;
+	public bool stopMovements = true;
 
 
 
