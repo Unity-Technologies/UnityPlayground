@@ -7,7 +7,7 @@ using UnityEditorInternal;
 [CustomEditor(typeof(ConditionKeyPress))]
 public class ConditionKeyPressInspector : ConditionInspectorBase
 {
-	private string explanation = "Use this script to perform an action when a button is pressed.";
+	private string explanation = "Use this script to perform an action when a button is pressed, released, or as long as it's kept pressed (in this case you get to choose the frequency).";
 
 	public override void OnInspectorGUI()
 	{
@@ -18,7 +18,15 @@ public class ConditionKeyPressInspector : ConditionInspectorBase
 
 		GUILayout.Space(10);
 		EditorGUILayout.PropertyField(serializedObject.FindProperty("happenOnlyOnce"));
+
 		EditorGUILayout.PropertyField(serializedObject.FindProperty("keyToPress"));
+		EditorGUILayout.PropertyField(serializedObject.FindProperty("eventType"));
+		int eventType = serializedObject.FindProperty("eventType").intValue;
+		if(eventType == 2)
+		{
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("frequency"));
+		}
+
 
 		GUILayout.Space(10);
 		DrawActionLists();

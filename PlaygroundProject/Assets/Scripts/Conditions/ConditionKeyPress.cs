@@ -5,15 +5,50 @@ using UnityEngine.Events;
 
 public class ConditionKeyPress : ConditionBase
 {
-	public KeyCode keyToPress;
+	public KeyCode keyToPress = KeyCode.Space;
 
+	public KeyEventTypes eventType = KeyEventTypes.JustPressed;
 
+	public float frequency = 0.5f;
+
+	private float timeLastEventFired;
+
+	private void Start()
+	{
+		timeLastEventFired = -frequency;
+	}
 
 	private void Update()
 	{
-		if(Input.GetKeyDown(keyToPress))
+		switch(eventType)
 		{
-			ExecuteAllActions(null);
+			case KeyEventTypes.JustPressed:
+				if(Input.GetKeyDown(keyToPress))
+				{
+					ExecuteAllActions(null);
+				}
+				break;
+			case KeyEventTypes.Released:
+				if(Input.GetKeyUp(keyToPress))
+				{
+					ExecuteAllActions(null);
+				}
+				break;
+			case KeyEventTypes.KeptPressed:
+				if(Time.time >= timeLastEventFired + frequency
+					&& Input.GetKey(keyToPress))
+				{
+					ExecuteAllActions(null);
+					timeLastEventFired = Time.time;
+				}
+				break;
 		}
+	}
+
+	public enum KeyEventTypes
+	{
+		JustPressed,
+		Released,
+		KeptPressed
 	}
 }
