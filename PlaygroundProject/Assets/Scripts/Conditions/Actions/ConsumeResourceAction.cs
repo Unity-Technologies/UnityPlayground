@@ -34,4 +34,7 @@ public class ConsumeResourceAction : ConditionBase, IGameplayAction
 			ExecuteAllActions(dataObject);
 		}
 	}
+
+
+
 }
