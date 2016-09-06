@@ -7,16 +7,23 @@ public class ConditionKeyPress : ConditionBase
 {
 	public KeyCode keyToPress = KeyCode.Space;
 
+	[Header("Type of Event")]
 	public KeyEventTypes eventType = KeyEventTypes.JustPressed;
 
 	public float frequency = 0.5f;
 
 	private float timeLastEventFired;
 
+
+
+
 	private void Start()
 	{
 		timeLastEventFired = -frequency;
 	}
+
+
+
 
 	private void Update()
 	{
@@ -45,10 +52,16 @@ public class ConditionKeyPress : ConditionBase
 		}
 	}
 
+
+
+
 	public enum KeyEventTypes
 	{
 		JustPressed,
 		Released,
 		KeptPressed
 	}
+
+
+
 }

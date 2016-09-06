@@ -790,7 +790,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 436231007}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf2436fd71a7145b091032fd0639ad21, type: 3}
+  m_Script: {fileID: 11500000, guid: 810546aa5348745779a5772744036fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actions:
@@ -804,6 +804,8 @@ MonoBehaviour:
   happenOnlyOnce: 1
   filterByTag: 1
   filterTag: Player
+  frequency: 1
+  eventType: 0
 --- !u!61 &436231009
 BoxCollider2D:
   m_ObjectHideFlags: 0

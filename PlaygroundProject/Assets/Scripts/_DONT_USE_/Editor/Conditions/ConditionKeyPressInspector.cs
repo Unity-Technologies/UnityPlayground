@@ -20,6 +20,8 @@ public class ConditionKeyPressInspector : ConditionInspectorBase
 		EditorGUILayout.PropertyField(serializedObject.FindProperty("happenOnlyOnce"));
 
 		EditorGUILayout.PropertyField(serializedObject.FindProperty("keyToPress"));
+
+		//discern the event type, and show the frequency if needed
 		EditorGUILayout.PropertyField(serializedObject.FindProperty("eventType"));
 		int eventType = serializedObject.FindProperty("eventType").intValue;
 		if(eventType == 2)
