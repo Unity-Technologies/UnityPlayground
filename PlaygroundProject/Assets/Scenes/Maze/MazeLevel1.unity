@@ -199,7 +199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 0}
   typeOfControl: 0
-  speed: 50
+  speed: 5
   movementType: 0
   orientToDirection: 0
   lookAxis: 0
