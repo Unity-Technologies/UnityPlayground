@@ -67,28 +67,25 @@
 \b0  apply it to prefabs used as bullets for the ObjectShooter script. Points are awarded when a DestroyForPoints object gets touched by a Bullet.\
 \
 
-\i [Triggers]\
+\i [Conditions]\
 
 \i0 \
 
-\b TriggerEnterArea
-\b0 : an invisible object that will perform an action when something enters it\
+\b ConditionArea
+\b0 : an invisible object that will perform an action when something enters it, exits from it, or as long as it stays inside it\
 
-\b TriggerExitArea
-\b0 : an invisible object that will perform an action when something exits from it\
-
-\b TriggerStayInArea
-\b0 : an invisible object that will perform an action as long as something is inside it\
-
-\b TriggerCollision
+\b ConditionCollision
 \b0 : an object that will perform an action when something touches it\
+
+\b ConditionKeyPress
+\b0 : an object that will perform an action when you press a specific key\
 
 \b \
 
 \i\b0 [Actions]
 \i0\b \
 
-\b0 Use them with Triggers to produce some different custom actions\
+\b0 Use them with Conditions to produce some different custom actions\
 \
 
 \b ConsumeResourceAction
@@ -96,6 +93,9 @@
 
 \b CreateObjectAction
 \b0 : creates an object in a specified position\
+
+\b DestroyAction
+\b0 : destroys another object\
 
 \b LoadLevelAction
 \b0 : loads another level (Unity scene)\
