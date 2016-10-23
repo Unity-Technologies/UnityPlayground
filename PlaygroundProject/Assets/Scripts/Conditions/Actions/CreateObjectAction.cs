@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CreateObjectAction : MonoBehaviour, IGameplayAction
+public class CreateObjectAction : Action
 {
 	public GameObject prefabToCreate;
 	public Vector3 newPosition;
@@ -9,7 +9,7 @@ public class CreateObjectAction : MonoBehaviour, IGameplayAction
 
 
 	// Moves the gameObject instantly to a custom position
-	public void ExecuteAction(GameObject dataObject)
+	public override bool ExecuteAction(GameObject dataObject)
 	{
 		if(prefabToCreate != null)
 		{
@@ -19,6 +19,12 @@ public class CreateObjectAction : MonoBehaviour, IGameplayAction
 
 			//let's place it in the desired position!
 			newObject.transform.position = newPosition;
+
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 }

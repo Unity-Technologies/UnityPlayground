@@ -39,6 +39,6 @@ public class Enums
 	public enum Targets
 	{
 		ThisObject,
-		OtherObject,
+		ObjectThatCollided,
 	}
 }

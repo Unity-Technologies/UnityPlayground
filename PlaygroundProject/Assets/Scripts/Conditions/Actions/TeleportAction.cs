@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TeleportAction : MonoBehaviour, IGameplayAction
+public class TeleportAction : Action
 {
 	public GameObject objectToMove;
 	public Vector3 newPosition;
@@ -10,7 +10,7 @@ public class TeleportAction : MonoBehaviour, IGameplayAction
 
 
 	// Moves the gameObject instantly to a custom position
-	public void ExecuteAction(GameObject dataObject)
+	public override bool ExecuteAction(GameObject dataObject)
 	{
 		Rigidbody2D rb2D;
 
@@ -35,5 +35,7 @@ public class TeleportAction : MonoBehaviour, IGameplayAction
 			rb2D.velocity = Vector3.zero;
 			rb2D.angularVelocity = 0f;
 		}
+
+		return true;
 	}
 }

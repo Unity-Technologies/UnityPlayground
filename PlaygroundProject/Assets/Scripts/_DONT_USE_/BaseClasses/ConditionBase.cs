@@ -7,7 +7,8 @@ public abstract class ConditionBase : MonoBehaviour
 {
 	
 	//actionitems can be connected to GameplayAction scripts, and execute their one action (the method ExecuteAction implemented in each child class)
-	public List<ActionItem> actions = new List<ActionItem>();
+	[SerializeField]
+	public List<Action> actions = new List<Action>();
 
 
 
@@ -34,12 +35,16 @@ public abstract class ConditionBase : MonoBehaviour
 		if(happenOnlyOnce && alreadyHappened)
 			return;
 
+
 		//first execute the simple GameplayActions, if present
-		foreach(ActionItem ga in actions)
+		bool actionResult;
+		foreach(Action ga in actions)
 		{
-			if(ga.connectedAction != null)
+			actionResult = ga.ExecuteAction(dataObject);
+			if(actionResult == false)
 			{
-				(ga.connectedAction as IGameplayAction).ExecuteAction(dataObject);
+				Debug.LogWarning("An action failed and interrupted the chain of Actions");
+				break;
 			}
 		}
 

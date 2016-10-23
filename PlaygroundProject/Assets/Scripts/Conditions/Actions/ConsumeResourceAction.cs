@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.Events;
 
-public class ConsumeResourceAction : ConditionBase, IGameplayAction
+public class ConsumeResourceAction : Action
 {
 	[Header("Resource")]
 
@@ -24,15 +24,17 @@ public class ConsumeResourceAction : ConditionBase, IGameplayAction
 
 
 
-	public void ExecuteAction(GameObject dataObject)
+	public override bool ExecuteAction(GameObject dataObject)
 	{
-		if(userInterface.CheckIfHasResources(checkFor, amountNeeded))
+		bool hasEnoughResource = userInterface.CheckIfHasResources(checkFor, amountNeeded);
+
+		if(hasEnoughResource)
 		{
 			//consume the resource and update the UI
 			userInterface.ConsumeResource(checkFor, amountNeeded);
-
-			ExecuteAllActions(dataObject);
 		}
+
+		return hasEnoughResource;
 	}
 
 
