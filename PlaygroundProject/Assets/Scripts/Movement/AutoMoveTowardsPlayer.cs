@@ -15,7 +15,7 @@ public class AutoMoveTowardsPlayer : Physics2DObject
 	public bool lookAtPlayer = false;
 
 	// The direction that will face the player
-	public Enums.Directions axis = Enums.Directions.Up;
+	public Enums.Directions useSide = Enums.Directions.Up;
 
 	private Transform playerTransform;
 
@@ -31,6 +31,10 @@ public class AutoMoveTowardsPlayer : Physics2DObject
 		//Move towards the player
 		rigidbody2D.MovePosition(Vector2.Lerp(transform.position, playerTransform.position, Time.fixedDeltaTime * speed));
 
-		Utils.SetAxisTowards(axis, transform, playerTransform.position - transform.position);
+		//look towards the player
+		if(lookAtPlayer)
+		{
+			Utils.SetAxisTowards(useSide, transform, playerTransform.position - transform.position);
+		}
 	}
 }

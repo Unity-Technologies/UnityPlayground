@@ -21,7 +21,7 @@ public class AutoMoveTowardsPlayerInspector : BaseInspectorWindow
 		SerializedProperty lookAtPlayerProperty = serializedObject.FindProperty("lookAtPlayer");
 
 		lookAtPlayerProperty.boolValue = EditorGUILayout.BeginToggleGroup("Look at Player", lookAtPlayerProperty.boolValue);
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("axis"));
+		EditorGUILayout.PropertyField(serializedObject.FindProperty("useSide"));
 		EditorGUILayout.EndToggleGroup();
 
 		if (GUI.changed)
