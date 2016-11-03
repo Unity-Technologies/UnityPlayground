@@ -613,9 +613,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 568194864}
   - 114: {fileID: 568194865}
-  - 114: {fileID: 568194866}
   m_Layer: 0
-  m_Name: ConsumeResources
+  m_Name: ConsumeResourcesAction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -645,33 +644,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75bd2a7045c0846acaee583b24913cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actions:
-  - connectedAction: {fileID: 568194866}
-  useCustomActions: 0
-  customActions:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  happenOnlyOnce: 1
-  filterByTag: 1
-  filterTag: Player
   checkFor: Coin
   amountNeeded: 3
---- !u!114 &568194866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 568194863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96f65a194a6d04c559f3e4f3a2ab77c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabToCreate: {fileID: 1000010233782126, guid: 5d5478520145643cbafc7b73d9840153,
-    type: 2}
-  newPosition: {x: -1, y: 3.24, z: 0}
 --- !u!1 &603342362
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,8 +657,9 @@ GameObject:
   - 61: {fileID: 603342365}
   - 114: {fileID: 603342364}
   - 114: {fileID: 603342363}
+  - 114: {fileID: 603342367}
   m_Layer: 0
-  m_Name: Trigger
+  m_Name: DudeTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -701,8 +676,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810546aa5348745779a5772744036fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actions: []
-  useCustomActions: 1
+  actions:
+  - {fileID: 603342367}
+  useCustomActions: 0
   customActions:
     m_PersistentCalls:
       m_Calls:
@@ -736,8 +712,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions:
-  - connectedAction: {fileID: 568194865}
-  useCustomActions: 1
+  - {fileID: 603342367}
+  - {fileID: 568194865}
+  - {fileID: 2071765268}
+  useCustomActions: 0
   customActions:
     m_PersistentCalls:
       m_Calls:
@@ -786,6 +764,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
+--- !u!114 &603342367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 603342362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64a4647d3a321452ea507a5464cb2f81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToAffect: {fileID: 1299570180}
+  justMakeInvisible: 1
 --- !u!1001 &655160808
 Prefab:
   m_ObjectHideFlags: 0
@@ -989,7 +980,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22456410, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 67.87097
+      value: 68.38009
       objectReference: {fileID: 0}
     - target: {fileID: 22456410, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_AnchoredPosition.y
@@ -997,7 +988,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22456410, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 55.741936
+      value: 56.76018
       objectReference: {fileID: 0}
     - target: {fileID: 22456410, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_SizeDelta.y
@@ -1013,7 +1004,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22483070, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 207.93549
+      value: 208.11765
       objectReference: {fileID: 0}
     - target: {fileID: 22483070, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_AnchoredPosition.y
@@ -1021,7 +1012,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22483070, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 204.3871
+      value: 202.71494
       objectReference: {fileID: 0}
     - target: {fileID: 22483070, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_SizeDelta.y
@@ -1037,7 +1028,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22466418, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 696.7742
+      value: 697.33936
       objectReference: {fileID: 0}
     - target: {fileID: 22466418, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_AnchoredPosition.y
@@ -1045,7 +1036,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22466418, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 753.2903
+      value: 755.7285
       objectReference: {fileID: 0}
     - target: {fileID: 22466418, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_SizeDelta.y
@@ -1061,7 +1052,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22414540, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 1171.1613
+      value: 1172.0814
       objectReference: {fileID: 0}
     - target: {fileID: 22414540, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_AnchoredPosition.y
@@ -1069,7 +1060,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22414540, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 175.48387
+      value: 173.75566
       objectReference: {fileID: 0}
     - target: {fileID: 22414540, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_SizeDelta.y
@@ -1085,7 +1076,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22435712, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 1296.7742
+      value: 1297.3394
       objectReference: {fileID: 0}
     - target: {fileID: 22435712, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_AnchoredPosition.y
@@ -1093,7 +1084,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22435712, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 55.741936
+      value: 56.76018
       objectReference: {fileID: 0}
     - target: {fileID: 22435712, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_SizeDelta.y
@@ -1347,6 +1338,7 @@ GameObject:
   - 61: {fileID: 843860219}
   - 114: {fileID: 843860223}
   - 114: {fileID: 843860222}
+  - 114: {fileID: 843860224}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -1425,27 +1417,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75bd2a7045c0846acaee583b24913cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actions: []
-  useCustomActions: 1
-  customActions:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 843860218}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  happenOnlyOnce: 0
-  filterByTag: 1
-  filterTag: Player
   checkFor: Key
   amountNeeded: 1
 --- !u!114 &843860223
@@ -1460,7 +1431,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions:
-  - connectedAction: {fileID: 843860222}
+  - {fileID: 843860222}
+  - {fileID: 843860224}
   useCustomActions: 0
   customActions:
     m_PersistentCalls:
@@ -1470,6 +1442,19 @@ MonoBehaviour:
   happenOnlyOnce: 0
   filterByTag: 1
   filterTag: Player
+--- !u!114 &843860224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 843860218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64a4647d3a321452ea507a5464cb2f81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToAffect: {fileID: 843860218}
+  justMakeInvisible: 0
 --- !u!1001 &848761280
 Prefab:
   m_ObjectHideFlags: 0
@@ -2216,14 +2201,14 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1299570181
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1299570180}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_MotionVectors: 1
@@ -3724,6 +3709,49 @@ Transform:
   m_PrefabParentObject: {fileID: 4000012620548650, guid: 4690e19586361409d9e45c5eb8398713,
     type: 2}
   m_PrefabInternal: {fileID: 2066208809}
+--- !u!1 &2071765267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2071765270}
+  - 114: {fileID: 2071765268}
+  m_Layer: 0
+  m_Name: CreateObjectAction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2071765268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2071765267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96f65a194a6d04c559f3e4f3a2ab77c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabToCreate: {fileID: 1000010233782126, guid: 5d5478520145643cbafc7b73d9840153,
+    type: 2}
+  newPosition: {x: -1, y: 3.24, z: 0}
+--- !u!4 &2071765270
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2071765267}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.66, y: 2.03, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
 --- !u!1001 &2111315090
 Prefab:
   m_ObjectHideFlags: 0

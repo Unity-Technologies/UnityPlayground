@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions:
-  - connectedAction: {fileID: 114000012881949288}
+  - {fileID: 114000012881949288}
   useCustomActions: 0
   customActions:
     m_PersistentCalls:
@@ -175,6 +175,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   happenOnlyOnce: 1
+  filterByTag: 0
   filterTag: Player
 --- !u!114 &114000012881949288
 MonoBehaviour:

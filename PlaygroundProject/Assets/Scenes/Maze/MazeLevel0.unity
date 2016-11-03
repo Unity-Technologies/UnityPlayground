@@ -794,7 +794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions:
-  - connectedAction: {fileID: 436231012}
+  - {fileID: 436231012}
   useCustomActions: 0
   customActions:
     m_PersistentCalls:

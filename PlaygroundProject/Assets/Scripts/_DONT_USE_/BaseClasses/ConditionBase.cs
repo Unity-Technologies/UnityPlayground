@@ -23,7 +23,7 @@ public abstract class ConditionBase : MonoBehaviour
 	private bool alreadyHappened = false;
 
 
-	public bool filterByTag = true;
+	public bool filterByTag = false;
 	public string filterTag = "Player";
 
 
@@ -44,7 +44,7 @@ public abstract class ConditionBase : MonoBehaviour
 			if(actionResult == false)
 			{
 				Debug.LogWarning("An action failed and interrupted the chain of Actions");
-				break;
+				return;
 			}
 		}
 
