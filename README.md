@@ -20,7 +20,7 @@ Refer to the [Wiki](https://github.com/UnityTechnologies/PlaygroundProject/wiki)
 
 **Software Requirements**
 
-Required: Any Unity 5.x series
+Required: Any Unity 5.4.x, or later version
 
 **Hardware Requirements**
 
