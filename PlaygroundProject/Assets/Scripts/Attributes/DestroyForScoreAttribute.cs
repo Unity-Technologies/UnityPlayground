@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DestroyForPointsAttribute : MonoBehaviour
+public class DestroyForScoreAttribute : MonoBehaviour
 {
 	private UIScript userInterface;
 

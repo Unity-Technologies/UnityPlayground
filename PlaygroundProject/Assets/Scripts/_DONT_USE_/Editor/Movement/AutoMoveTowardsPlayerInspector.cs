@@ -13,6 +13,8 @@ public class AutoMoveTowardsPlayerInspector : BaseInspectorWindow
 		GUILayout.Space(10);
 		EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
+		EditorGUILayout.PropertyField(serializedObject.FindProperty("targetPlayer"));
+
 		//Draw custom inspector
 		EditorGUILayout.PropertyField(serializedObject.FindProperty("speed"));
 

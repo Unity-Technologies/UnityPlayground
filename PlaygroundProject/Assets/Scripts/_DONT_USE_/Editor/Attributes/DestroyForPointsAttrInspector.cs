@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEditor;
 
 [CanEditMultipleObjects]
-[CustomEditor(typeof(DestroyForPointsAttribute))]
+[CustomEditor(typeof(DestroyForScoreAttribute))]
 public class DestroyForPointsAttrInspector : BaseInspectorWindow
 {
 	private string explanation = "When this object is destroyed, the player gets a point.";
