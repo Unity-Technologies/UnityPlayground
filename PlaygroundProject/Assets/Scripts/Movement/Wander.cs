@@ -13,7 +13,7 @@ public class Wander : Physics2DObject
 
 	[Header("Orientation")]
 	public bool orientToDirection = false;
-	// The direction that will face the player
+	// The direction that the gameObject will be oriented to
 	public Enums.Directions lookAxis = Enums.Directions.Up;
 
 
