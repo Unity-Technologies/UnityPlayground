@@ -10,13 +10,13 @@ public class AutoMove : Physics2DObject
 
 
 	//is the push relative or absolute to the world?
-	public bool relative = true;
+	public bool relativeToRotation = true;
 
 	
 	// FixedUpdate is called once per frame
 	void FixedUpdate ()
 	{
-		if(relative)
+		if(relativeToRotation)
 		{
 			rigidbody2D.AddRelativeForce(direction * 2f);
 		}
@@ -27,13 +27,13 @@ public class AutoMove : Physics2DObject
 	}
 
 
-
+	//Draw an arrow to show the direction in which the object will move
 	void OnDrawGizmosSelected()
 	{
 		if(this.enabled)
 		{
-			float extraAngle = (relative) ? transform.rotation.eulerAngles.z : 0f;
-			Utils.DrawArrowGizmo(transform.position, direction, extraAngle);
+			float extraAngle = (relativeToRotation) ? transform.rotation.eulerAngles.z : 0f;
+			Utils.DrawMoveArrowGizmo(transform.position, direction, extraAngle);
 		}
 	}
 }

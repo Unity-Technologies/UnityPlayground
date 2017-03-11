@@ -16,7 +16,11 @@ public class ObjectShooter : MonoBehaviour
 	public float creationRate = .5f;
 
 	// The speed at which the object are shot along the Y axis
-	public float shootingSpeed = 5f;
+	public float shootSpeed = 5f;
+
+	public Vector2 shootDirection = new Vector2(1f, 1f);
+
+	public bool relativeToRotation = true;
 
 	private float timeOfLastSpawn;
 
@@ -40,16 +44,18 @@ public class ObjectShooter : MonoBehaviour
 		if(Input.GetKey(keyToPress)
 		   && Time.time >= timeOfLastSpawn + creationRate)
 		{
+			Vector2 actualBulletDirection = (relativeToRotation) ? (Vector2)(Quaternion.Euler(0, 0, transform.eulerAngles.z) * shootDirection) : shootDirection;
+
 			GameObject newObject = Instantiate<GameObject>(prefabToSpawn);
 			newObject.transform.position = this.transform.position;
-			newObject.transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z);
+			newObject.transform.eulerAngles = new Vector3(0f, 0f, Utils.Angle(actualBulletDirection));
 			newObject.tag = "Bullet";
 
 			// push the created objects, but only if they have a Rigidbody2D
 			Rigidbody2D rigidbody2D = newObject.GetComponent<Rigidbody2D>();
 			if(rigidbody2D != null)
 			{
-				rigidbody2D.AddForce(transform.up * shootingSpeed, ForceMode2D.Impulse);
+				rigidbody2D.AddForce(actualBulletDirection * shootSpeed, ForceMode2D.Impulse);
 			}
 
 			// add a Bullet component if the prefab doesn't already have one, and assign the player ID
@@ -63,6 +69,15 @@ public class ObjectShooter : MonoBehaviour
 
 
 			timeOfLastSpawn = Time.time;
+		}
+	}
+
+	void OnDrawGizmosSelected()
+	{
+		if(this.enabled)
+		{
+			float extraAngle = (relativeToRotation) ? transform.rotation.eulerAngles.z : 0f;
+			Utils.DrawShootArrowGizmo(transform.position, shootDirection, extraAngle, 1f);
 		}
 	}
 }

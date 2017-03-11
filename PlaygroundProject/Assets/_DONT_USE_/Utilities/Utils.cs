@@ -3,11 +3,13 @@ using System.Collections;
 
 public static class Utils
 {
-	public static Mesh arrowMesh;
+	public static Mesh moveArrowMesh, shootArrowMesh, rotateArrowMesh;
 
 	static Utils()
 	{
-		arrowMesh = Resources.Load<Mesh>("Meshes/Arrow");
+		moveArrowMesh = Resources.Load<Mesh>("Meshes/MoveArrow");
+		shootArrowMesh = Resources.Load<Mesh>("Meshes/ShootArrow");
+		rotateArrowMesh = Resources.Load<Mesh>("Meshes/RotateArrow");
 	}
 
 	public static void SetAxisTowards(Enums.Directions axis, Transform t, Vector2 direction)
@@ -29,19 +31,49 @@ public static class Utils
 		}
 	}
 
-	//Draws a green arrow in a certain direction, with support for an extraAngle (to make it relative to the gameObject's rotation) and a specific scale
-	public static void DrawArrowGizmo(Vector3 position, Vector2 direction, float extraAngle, float scale = 0f)
+	//Always returns positive vectors!
+	public static Vector2 GetVectorFromAxis(Enums.Axes axis)
+	{
+		if(axis == Enums.Axes.X)
+		{
+			return Vector2.right;
+		}
+		else
+		{
+			return Vector2.up;
+		}
+	}
+
+	public static void DrawMoveArrowGizmo(Vector3 position, Vector2 direction, float extraAngle = 0f, float scale = 0f)
 	{
 		Gizmos.color = Color.green;
-		float arrowAngle = Angle(direction);
+		DrawGizmo(moveArrowMesh, position, direction, extraAngle, scale);
+	}
 
+	public static void DrawShootArrowGizmo(Vector3 position, Vector2 direction, float extraAngle = 0f, float scale = 0f)
+	{
+		Gizmos.color = Color.red;
+		DrawGizmo(shootArrowMesh, position, direction, extraAngle, scale);
+	}
+
+	public static void DrawRotateArrowGizmo(Vector3 position, float strength)
+	{
+		Gizmos.color = Color.green;
+		Gizmos.DrawMesh(rotateArrowMesh, position, Quaternion.identity, new Vector3(Mathf.Sign(strength), 1f, Mathf.Sign(strength)));
+	}
+
+	//Draws a gizmo in a certain direction, with support for an extraAngle (to make it relative to the gameObject's rotation) and a specific scale
+	public static void DrawGizmo(Mesh meshToDraw, Vector3 position, Vector2 direction, float extraAngle, float scale)
+	{
+		float arrowAngle = Angle(direction);
+		
 		if(scale == 0f)
 		{
 			//calculate it from the direction
 			scale = direction.magnitude;
 		}
 
-		Gizmos.DrawMesh(arrowMesh, position, Quaternion.AngleAxis(arrowAngle + extraAngle, Vector3.forward), Vector3.one * scale);
+		Gizmos.DrawMesh(meshToDraw, position, Quaternion.AngleAxis(arrowAngle + extraAngle, Vector3.forward), Vector3.one * scale);
 	}
 
 	public static float Angle(Vector2 inputVector)

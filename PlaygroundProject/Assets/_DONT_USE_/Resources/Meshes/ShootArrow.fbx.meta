@@ -1,19 +1,27 @@
 fileFormatVersion: 2
-guid: 43f94ac88684b43e2a9f7ac1c6a05b97
+guid: 156df60b369684169ac7e5b250be7cf9
 timeCreated: 1489164059
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Camera
+    100004: Directional Light
+    100006: Mesh
     400000: //RootNode
+    400002: Camera
+    400004: Directional Light
+    400006: Mesh
     2300000: //RootNode
+    2300002: Mesh
     3300000: //RootNode
+    3300002: Mesh
     4300000: Mesh
     7400000: Take 001
     9500000: //RootNode
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
@@ -33,7 +41,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
