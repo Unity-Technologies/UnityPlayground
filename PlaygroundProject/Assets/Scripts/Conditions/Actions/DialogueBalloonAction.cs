@@ -3,7 +3,6 @@ using System.Collections;
 
 public class DialogueBalloonAction : Action
 {
-	public Transform targetObject;
 
 	[Header("Contents")]
 	public string textToDisplay = "Hey!";
@@ -11,6 +10,7 @@ public class DialogueBalloonAction : Action
 	public Color textColor = Color.white;
 
 	[Header("Options")]
+	public Transform targetObject;
 	public DisappearMode disappearMode = DisappearMode.ButtonPress;
 	public float timeToDisappear = 2f;
 	public KeyCode keyToPress = KeyCode.Return;

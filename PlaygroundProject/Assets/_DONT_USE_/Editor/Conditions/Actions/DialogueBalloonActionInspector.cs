@@ -20,6 +20,7 @@ public class DialogueBalloonActionInspector : BaseInspectorWindow
 		EditorGUILayout.PropertyField(serializedObject.FindProperty("textColor"));
 
 		//Options
+		EditorGUILayout.PropertyField(serializedObject.FindProperty("targetObject"));
 		EditorGUILayout.PropertyField(serializedObject.FindProperty("disappearMode"));
 		int isUsingKey = serializedObject.FindProperty("disappearMode").intValue;
 		if(isUsingKey == 1)
