@@ -46,13 +46,11 @@ public static class Utils
 
 	public static void DrawMoveArrowGizmo(Vector3 position, Vector2 direction, float extraAngle = 0f, float scale = 0f)
 	{
-		Gizmos.color = Color.green;
 		DrawGizmo(moveArrowMesh, position, direction, extraAngle, scale);
 	}
 
 	public static void DrawShootArrowGizmo(Vector3 position, Vector2 direction, float extraAngle = 0f, float scale = 0f)
 	{
-		Gizmos.color = Color.red;
 		DrawGizmo(shootArrowMesh, position, direction, extraAngle, scale);
 	}
 
@@ -65,6 +63,7 @@ public static class Utils
 	//Draws a gizmo in a certain direction, with support for an extraAngle (to make it relative to the gameObject's rotation) and a specific scale
 	public static void DrawGizmo(Mesh meshToDraw, Vector3 position, Vector2 direction, float extraAngle, float scale)
 	{
+		Gizmos.color = Color.green;
 		float arrowAngle = Angle(direction);
 		
 		if(scale == 0f)
