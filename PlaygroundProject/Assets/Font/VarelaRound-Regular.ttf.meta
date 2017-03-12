@@ -1,18 +1,20 @@
 fileFormatVersion: 2
-guid: 543035cedfdc94fc3b56faeb80750a8e
-timeCreated: 1467928904
+guid: 2696e3aa5aa814877a73628c10bd29c0
+timeCreated: 1489350694
 licenseType: Pro
 TrueTypeFontImporter:
-  serializedVersion: 2
+  serializedVersion: 4
   fontSize: 16
   forceTextureCase: -2
-  characterSpacing: 1
-  characterPadding: 0
+  characterSpacing: 0
+  characterPadding: 1
   includeFontData: 1
-  use2xBehaviour: 0
-  fontNames: []
+  fontNames:
+  - Varela Round
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
+  ascentCalculationMode: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 
