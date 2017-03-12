@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class BalloonScript : MonoBehaviour
 {
 	public Text dialogueText, buttonText;
+	public UnityAction BalloonDestroyed; //action fired when the time is up, or when the right button has been pressed (depends on isUsingButton)
 
 	private RectTransform rectTransform;
 	private bool isUsingButton;
@@ -19,11 +21,12 @@ public class BalloonScript : MonoBehaviour
 		rectTransform = GetComponent<RectTransform>();
 	}
 
-	public void Setup(string dialogueString, bool _isUsingButton, KeyCode _buttonUsed, Color backgroundC, Color textC, Transform _targetObj = null)
+	public void Setup(string dialogueString, bool _isUsingButton, KeyCode _buttonUsed, float _time, Color backgroundC, Color textC, Transform _targetObj = null)
 	{
 		isUsingButton = _isUsingButton;
 		buttonUsed = _buttonUsed;
 		targetObj = _targetObj;
+		duration = _time;
 
 		//background setup
 		GetComponent<Image>().color = backgroundC;
@@ -35,14 +38,13 @@ public class BalloonScript : MonoBehaviour
 		//button text setup
 		if(isUsingButton)
 		{
-			buttonText.text = "Press " + buttonUsed.ToString();
+			buttonText.text = "press " + buttonUsed.ToString();
 			buttonText.color = textC;
 		}
 		else
 		{
 			buttonText.gameObject.SetActive(false);
 			startTime = Time.time;
-			duration = 3f + dialogueString.Length * .1f;
 		}
 
 		//create just above the target, or at the centre
@@ -80,6 +82,11 @@ public class BalloonScript : MonoBehaviour
 				Destroy(this.gameObject);
 			}
 		}
+	}
+
+	private void OnDestroy()
+	{
+		BalloonDestroyed();
 	}
 
 	private void FollowTarget()
