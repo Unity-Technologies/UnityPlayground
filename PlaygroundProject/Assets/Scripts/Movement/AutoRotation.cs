@@ -18,6 +18,15 @@ public class AutoRotation : Physics2DObject
 		currentRotation += .02f * rotationSpeed * 10f;
 
 		// Apply the rotation to the Rigidbody2d
-		rigidbody2D.MoveRotation(currentRotation);
+		rigidbody2D.MoveRotation(-currentRotation);
+	}
+
+	//Draw an arrow to show the direction in which the object will rotate
+	void OnDrawGizmosSelected()
+	{
+		if(this.enabled)
+		{
+			Utils.DrawRotateArrowGizmo(transform.position, rotationSpeed);
+		}
 	}
 }

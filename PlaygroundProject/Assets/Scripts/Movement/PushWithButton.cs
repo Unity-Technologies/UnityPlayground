@@ -12,8 +12,8 @@ public class PushWithButton : Physics2DObject
 	[Header("Direction and strength")]
 
 	// strength of the push, and the axis on which it is applied (can be X or Y)
-	public float pushStrength = 10f;
-	public Enums.Axes axis = Enums.Axes.X;
+	public float pushStrength = 5f;
+	public Enums.Axes axis = Enums.Axes.Y;
 	public bool relativeAxis = true;
 
 
@@ -33,14 +33,7 @@ public class PushWithButton : Physics2DObject
 	{
 		if(keyPressed)
 		{
-			if(axis == Enums.Axes.X)
-			{
-				pushVector = new Vector2(pushStrength, 0f); // Horizontal push
-			}
-			else
-			{
-				pushVector = new Vector2(0f, pushStrength); // Vertical push
-			}
+			pushVector = Utils.GetVectorFromAxis(axis) * pushStrength;
 
 			//Apply the push
 			if(relativeAxis)
@@ -51,6 +44,17 @@ public class PushWithButton : Physics2DObject
 			{
 				rigidbody2D.AddForce(pushVector);
 			}
+		}
+	}
+
+	//Draw an arrow to show the direction in which the object will move
+	void OnDrawGizmosSelected()
+	{
+		if(this.enabled)
+		{
+			float extraAngle = (relativeAxis) ? transform.rotation.eulerAngles.z : 0f;
+			pushVector = Utils.GetVectorFromAxis(axis) * pushStrength;
+			Utils.DrawMoveArrowGizmo(transform.position, pushVector, extraAngle, pushStrength * .5f);
 		}
 	}
 }
