@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class AutoMoveTowardsPlayer : Physics2DObject
+public class FollowPlayer : Physics2DObject
 {
 	// This is the player the object is going to move towards
 	public Enums.Players targetPlayer = Enums.Players.Player;

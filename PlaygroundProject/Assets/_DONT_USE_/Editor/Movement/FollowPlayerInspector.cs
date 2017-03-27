@@ -3,8 +3,8 @@ using System.Collections;
 using UnityEditor;
 
 [CanEditMultipleObjects]
-[CustomEditor(typeof(AutoMoveTowardsPlayer))]
-public class AutoMoveTowardsPlayerInspector : BaseInspectorWindow
+[CustomEditor(typeof(FollowPlayer))]
+public class FollowPlayerInspector : BaseInspectorWindow
 {
 	private string explanation = "This gameObject will pursue the Player constantly.";
 
