@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LookTowardsMouse : MonoBehaviour
+public class LookAtCursor : MonoBehaviour
 {
 	public Enums.Directions useSide = Enums.Directions.Up;
 	

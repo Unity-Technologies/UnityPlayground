@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class GoToMouse : MonoBehaviour
+public class FollowCursor : MonoBehaviour
 {
 	public float speed = 2f;
 

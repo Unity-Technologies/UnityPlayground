@@ -3,10 +3,10 @@ using System.Collections;
 using UnityEditor;
 
 [CanEditMultipleObjects]
-[CustomEditor(typeof(LookTowardsMouse))]
-public class LookTowardsMouseInspector : BaseInspectorWindow
+[CustomEditor(typeof(FollowCursor))]
+public class FollowCursorInspector : BaseInspectorWindow
 {
-	private string explanation = "The gameObject looks towards the mouse cursor.";
+	private string explanation = "The gameObject moves towards the mouse cursor when the player clicks the left button.";
 
 	public override void OnInspectorGUI()
 	{
