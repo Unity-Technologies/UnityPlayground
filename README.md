@@ -2,11 +2,11 @@
 
 ![playground.png](https://dl.dropboxusercontent.com/u/6116499/Images/playground.png)
 
-##Description##
+## Description
 
 A collection of simple scripts to create 2D physics game, intended for giving workshops to an audience of beginner game developers to quickly enable them to make games in Unity.
 
-##Documentation
+## Documentation
 
 **Objective**
 
@@ -30,8 +30,9 @@ Required: Laptop
 
 Owner: Ciro Continisio
 
-**Change Log**
+**Change Log** (only major changes)
 
+2016
 - 11 Jul - Project created
 - 12 Jul - Added graphic assets
 - 15 Jul - (Mike G) Updated project structure
@@ -40,3 +41,10 @@ Owner: Ciro Continisio
 - 15 Aug - Added Resource system, Action scripts
 - 24 Aug - Refactored the whole Action system
 - 25 Aug - Added Wiki, renamed Triggers to Conditions
+- 06 Sep - Area Conditions refactored to one to support different events
+- 21 Sep - Added license
+- 10 Nov - New mouse scripts added (GoToMouse, LookTowardsMouse)
+2017
+- 10 Mar - Arrow gizmos for movement/rotation scripts
+- 12 Mar - Dialogue system
+- 01 Apr - Added cheatsheet images
