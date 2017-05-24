@@ -14,8 +14,14 @@ public class DestroyForPointsAttribute : MonoBehaviour
 	}
 	
 	
-	// This function gets called everytime this object collides with another
+	//duplication of the following function to accomodate both trigger and non-trigger Colliders
 	private void OnCollisionEnter2D(Collision2D collisionData)
+	{
+		OnTriggerEnter2D(collisionData.collider);
+	}
+
+	// This function gets called everytime this object collides with another trigger
+	private void OnTriggerEnter2D(Collider2D collisionData)
 	{
 		// is the other object a Bullet?
 		if(collisionData.gameObject.CompareTag("Bullet"))

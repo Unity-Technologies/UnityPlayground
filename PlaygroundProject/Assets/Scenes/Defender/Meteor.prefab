@@ -15,6 +15,7 @@ GameObject:
   - 114: {fileID: 114000011533140650}
   - 114: {fileID: 11441764}
   - 114: {fileID: 114000012881949288}
+  - 114: {fileID: 114000012184921828}
   m_Layer: 0
   m_Name: Meteor
   m_TagString: Enemy
@@ -177,6 +178,17 @@ MonoBehaviour:
   happenOnlyOnce: 1
   filterByTag: 0
   filterTag: Player
+--- !u!114 &114000012184921828
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9c4adaf25c56477b836b81ad48e3bdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000012881949288
 MonoBehaviour:
   m_ObjectHideFlags: 1
