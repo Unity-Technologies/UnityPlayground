@@ -4,9 +4,6 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Patrol : Physics2DObject
 {
-	// We set the direction to 1, as we only want to to switch between 2 directions
-	private Vector2 direction = new Vector2(1f, 0f);
-
 	[Header("Movement")]
 	public float speed = 5f;
 	public float directionChangeInterval = 3f;
@@ -15,51 +12,56 @@ public class Patrol : Physics2DObject
 	public bool orientToDirection = false;
 	public Enums.Directions lookAxis = Enums.Directions.Up;
 
+	[Header("Stops")]
+	public bool backToStart = true;
+	public Vector2[] waypoints;
 
-	// Start is called at the beginning of the game
-	private void Start()
+	private int currentTargetIndex;
+
+	void Start ()
 	{
-		//we don't want directionChangeInterval to be 0, so we force it to a minimum value
-		if(directionChangeInterval < 0.1f)
+		currentTargetIndex = 0;
+		if(orientToDirection)
 		{
-			directionChangeInterval = 0.1f;
+			Utils.SetAxisTowards(lookAxis, transform, ((Vector3)waypoints[currentTargetIndex] - transform.position).normalized);
 		}
 
-		StartCoroutine(ChangeDirection());
-	}
-
-
-
-
-	// Calculates a new direction
-	private IEnumerator ChangeDirection()
-	{
-		while(true)
+		if(backToStart)
 		{
-			// Stops the gameObject briefly to make the direction change quicker
-			rigidbody2D.velocity = new Vector2(0,0);
-			// turn the gameObject in the opposite direction
-	 		direction = direction * (-1);
+			Vector2[] newWaypoints = new Vector2[waypoints.Length+1];
+			int w = 0;
+			for(int i=0; i<waypoints.Length; i++)
+			{
+				newWaypoints[i] = waypoints[i];
+				w = i;
+			}
+			newWaypoints[w+1] = transform.position;
+			waypoints = newWaypoints;
+		}
+	}
+	
+	public void FixedUpdate ()
+	{
+		Vector2 currentTarget = waypoints[currentTargetIndex];
 
+		rigidbody2D.MovePosition(transform.position + ((Vector3)currentTarget - transform.position).normalized * speed * Time.fixedDeltaTime);
 
-			//if the object has to look in the direction of movement
+		if(Vector2.Distance(transform.position, currentTarget) <= .1f)
+		{
+			//new waypoint has been reached
+			currentTargetIndex = (currentTargetIndex<waypoints.Length-1) ? currentTargetIndex +1 : 0;
 			if(orientToDirection)
 			{
-				Utils.SetAxisTowards(lookAxis, transform, direction);
+				currentTarget = waypoints[currentTargetIndex];
+				Utils.SetAxisTowards(lookAxis, transform, ((Vector3)currentTarget - transform.position).normalized);
 			}
-
-
-			// this will make Unity wait for some time before continuing the execution of the code
-			yield return new WaitForSeconds(directionChangeInterval);
 		}
 	}
 
-
-
-	// FixedUpdate is called every frame when the physics are calculated
-	private void FixedUpdate()
+	public void Reset()
 	{
-		rigidbody2D.AddForce(direction * speed);
+		waypoints = new Vector2[1];
+		Vector2 thisPosition = transform.position;
+		waypoints [0] = new Vector2 (.5f, 2f) + thisPosition;
 	}
-
 }

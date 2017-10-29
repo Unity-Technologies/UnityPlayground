@@ -21,7 +21,7 @@ public class BaseInspectorWindow : Editor
 			if(prop.name != "m_Script")
 			{
 				//Debug.Log (prop.name);
-
+				
 				EditorGUILayout.PropertyField(prop);
 			}
 
