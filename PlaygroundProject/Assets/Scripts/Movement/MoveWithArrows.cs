@@ -8,6 +8,7 @@ public class MoveWithArrows : Physics2DObject
 	public Enums.KeyGroups typeOfControl = Enums.KeyGroups.ArrowKeys;
 
 	[Header("Movement")]
+	[Tooltip("Speed of movement")]
 	public float speed = 5f;
 	public Enums.MovementType movementType = Enums.MovementType.AllDirections;
 
