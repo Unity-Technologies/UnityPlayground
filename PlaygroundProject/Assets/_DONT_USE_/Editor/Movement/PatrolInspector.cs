@@ -7,7 +7,7 @@ using UnityEditorInternal;
 [CustomEditor(typeof(Patrol))]
 public class PatrolInspector : BaseInspectorWindow
 {
-	private string explanation = "The gameObject will move from side to side. This can  be used for patrolling enemies.";
+	private string explanation = "The object moves through a series of positions. This can be used for patrolling characters.";
 
 	private ReorderableList list;
 	Patrol patrolScript;
