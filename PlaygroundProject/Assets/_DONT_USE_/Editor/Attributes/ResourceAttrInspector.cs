@@ -6,7 +6,7 @@ using UnityEditor;
 [CustomEditor(typeof(ResourceAttribute))]
 public class ResourceAttrInspector : BaseInspectorWindow
 {
-	private string explanation = "When the Player touches this object, he will collect the specified amount of this type of resource.";
+	private string explanation = "When the Player touches this object, they will collect the specified amount of this type of resource.";
 
 	public override void OnInspectorGUI()
 	{

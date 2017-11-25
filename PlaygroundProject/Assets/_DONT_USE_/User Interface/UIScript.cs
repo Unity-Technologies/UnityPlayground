@@ -79,6 +79,26 @@ public class UIScript : MonoBehaviour
 		}
 	}
 
+	public void RemoveOnePoint(int playerNumber)
+	{
+		scores[playerNumber]--;
+
+		if(numberOfPlayers == Players.OnePlayer)
+		{
+			numberLabels[1].text = scores[playerNumber].ToString(); //with one player, the score is on the right
+		}
+		else
+		{
+			numberLabels[playerNumber].text = scores[playerNumber].ToString();
+		}
+
+		if(gameType == GameType.Score
+			&& scores[playerNumber] >= scoreToWin)
+		{
+			GameWon(playerNumber);
+		}
+	}
+
 
 
 	public void GameWon(int playerNumber)

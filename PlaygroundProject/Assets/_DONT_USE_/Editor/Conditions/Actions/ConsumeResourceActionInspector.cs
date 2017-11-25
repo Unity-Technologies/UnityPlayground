@@ -6,7 +6,7 @@ using UnityEditor;
 [CustomEditor(typeof(ConsumeResourceAction))]
 public class ConsumeResourceActionInspector : ConditionInspectorBase
 {
-	private string explanation = "Use this script to check if the player has a specific resource. If he has it, it will be consumed.";
+	private string explanation = "Use this script to check if the player has a specific resource. If they have it, it will be consumed.";
 
 	public override void OnInspectorGUI()
 	{
