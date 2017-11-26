@@ -44,6 +44,11 @@ public static class Utils
 		}
 	}
 
+	public static Vector2 GetVector2FromVector3(Vector3 input)
+	{
+		return new Vector2(input.x, input.y);
+	}
+
 	public static void DrawMoveArrowGizmo(Vector3 position, Vector2 direction, float extraAngle = 0f, float scale = 0f)
 	{
 		DrawGizmo(moveArrowMesh, position, direction, extraAngle, scale);
