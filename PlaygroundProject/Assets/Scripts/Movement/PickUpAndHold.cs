@@ -3,13 +3,16 @@
 public class PickUpAndHold : MonoBehaviour
 {
 	// An object need to closer than that distance to be picked up.
+
+	public KeyCode pickUpKey = KeyCode.B;
+	public KeyCode dropKey = KeyCode.N;
 	public float pickUpDistance = 1f;   
 	private Transform carriedObject = null;
 	private int pickupLayer = 0;
 
 	private void Update()
 	{
-		if( Input.GetButton( "Pickup" ) ) // Define it in the input manager
+		if( Input.GetKeyDown(pickUpKey) ) // Define it in the input manager
 		{
 			if( carriedObject != null )
 			{
@@ -22,7 +25,7 @@ public class PickUpAndHold : MonoBehaviour
 			}
 		}
 
-		if (Input.GetButton("Drop"))
+		if (Input.GetKeyDown(dropKey))
 		{
 			if( carriedObject != null )
 			{

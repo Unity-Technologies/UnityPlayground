@@ -11,10 +11,8 @@ public class PickUpAndHoldInspector : BaseInspectorWindow
 
 	public override void OnInspectorGUI()
 	{
-		GUILayout.Space(10);
 		EditorGUILayout.HelpBox(explanation, MessageType.Info);
-		GUILayout.Space(10);
-		EditorGUILayout.HelpBox(warning, MessageType.Warning);
+		EditorGUILayout.HelpBox(warning, MessageType.Info);
 
 		base.OnInspectorGUI();
 	}
