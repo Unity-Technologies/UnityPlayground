@@ -2,10 +2,10 @@
 
 public class PickUpAndHold : MonoBehaviour
 {
-	// An object need to closer than that distance to be picked up.
-
 	public KeyCode pickUpKey = KeyCode.B;
 	public KeyCode dropKey = KeyCode.N;
+
+	// An object need to closer than this distance to be picked up.
 	public float pickUpDistance = 1f;   
 	private Transform carriedObject = null;
 	private int pickupLayer = 0;
