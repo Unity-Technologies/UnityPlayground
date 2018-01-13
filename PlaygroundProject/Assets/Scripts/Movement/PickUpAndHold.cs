@@ -2,63 +2,57 @@
 
 public class PickUpAndHold : MonoBehaviour
 {
-	// An object need to closer than that distance to be picked up.
-	public float pickUpDistance = 1f;   
+	//pickup key and drop key could be the same
+	public KeyCode pickupKey = KeyCode.B;
+	public KeyCode dropKey = KeyCode.B;
+
+	public float pickUpDistance = 2f; // An object need to closer than that distance to be picked up.
+	//public float hitToDropObject = Mathf.Infinity; //if the character hits anything with a force stronger than this value, the pickup is dropped
+
 	private Transform carriedObject = null;
-	private int pickupLayer = 0;
 
 	private void Update()
 	{
-		if( Input.GetButton( "Pickup" ) ) // Define it in the input manager
+		bool justPickedUpSomething = false;
+
+		if(Input.GetKeyDown(pickupKey)
+			&& carriedObject == null)
 		{
-			if( carriedObject != null )
-			{
-			// Do Nothing
-			}
-			else
-			{
-				// Nothing in hand, we check if something is around and pick it up.
-				PickUp();
-			}
+			//Nothing in hand, we check if something is around and pick it up.
+			justPickedUpSomething = PickUp();
+			 Debug.Log("Pickup");
 		}
 
-		if (Input.GetButton("Drop"))
+		if(Input.GetKeyDown(dropKey)
+			&& carriedObject != null
+			&& !justPickedUpSomething)
 		{
-			if( carriedObject != null )
-			{
-				// We're holding something already, we drop
-				Drop();
-			}
-			else
-			{
-				// Do nothing
-			}
+			//We're holding something already, we drop
+			Drop();
+			 Debug.Log("Drop");
 		}
 	}
 
-	private void Drop()
+	public void Drop()
 	{
 		carriedObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-		// Unparenting
+		//unparenting
 		carriedObject.parent = null;
-		// Hands are free again
+		//hands are free again
 		carriedObject = null;
 	}
 
-	private void PickUp()
+	public bool PickUp()
 	{
-		// Get the layer bitmask from the layer name
-		pickupLayer = 1 << LayerMask.NameToLayer( "Pickup" );
-
-		// Collect every Pickup around. Make sure they have a collider and the layer Pickup
-		Collider2D[] pickups = Physics2D.OverlapCircleAll(Utils.GetVector2FromVector3(transform.position), pickUpDistance, pickupLayer );
+		//Collect every Pickup around
+		GameObject[] pickups = GameObject.FindGameObjectsWithTag("Pickup");
 
 		// Find the closest
-		float dist = Mathf.Infinity;
-		for( int i = 0; i < pickups.Length; i++ )
+		float dist = pickUpDistance;
+		for(int i = 0; i < pickups.Length; i++)
 		{
 			float newDist = (transform.position - pickups[i].transform.position).sqrMagnitude;
-			if( newDist  < dist )
+			if(newDist  < dist)
 			{
 				carriedObject = pickups[i].transform;
 				dist = newDist;
@@ -66,12 +60,27 @@ public class PickUpAndHold : MonoBehaviour
 		}
 
 		// Check if we found something
-		if( carriedObject != null )
+		if(carriedObject != null)
 		{
-			// Set the box in front of character
+			//check if another player had it, in this case, steal it
+			Transform pickupParent = carriedObject.parent;
+			if(pickupParent != null)
+			{
+				PickUpAndHold pickupScript = pickupParent.GetComponent<PickUpAndHold>();
+				if(pickupScript != null)
+				{
+					pickupScript.Drop();
+				}
+			}
+
 			carriedObject.parent = gameObject.transform;
 			// Set to Kinematic so it will move with the Player
 			carriedObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 }

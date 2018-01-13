@@ -3,26 +3,27 @@ using System.Collections;
 using UnityEditor;
 
 [CanEditMultipleObjects]
-[CustomEditor(typeof(FollowPlayer))]
-public class FollowPlayerInspector : BaseInspectorWindow
+[CustomEditor(typeof(FollowTarget))]
+public class FollowTargetInspector : BaseInspectorWindow
 {
-	private string explanation = "This gameObject will pursue the Player constantly.";
+	private string explanation = "This gameObject will pursue a target constantly.";
 
 	public override void OnInspectorGUI()
 	{
 		GUILayout.Space(10);
 		EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("targetPlayer"));
+		GUILayout.Space(5);
+		EditorGUILayout.PropertyField(serializedObject.FindProperty("target"));
 
 		//Draw custom inspector
 		EditorGUILayout.PropertyField(serializedObject.FindProperty("speed"));
 
 		GUILayout.Space(10);
 
-		SerializedProperty lookAtPlayerProperty = serializedObject.FindProperty("lookAtPlayer");
+		SerializedProperty lookAtTargetProperty = serializedObject.FindProperty("lookAtTarget");
 
-		lookAtPlayerProperty.boolValue = EditorGUILayout.BeginToggleGroup("Look at Player", lookAtPlayerProperty.boolValue);
+		lookAtTargetProperty.boolValue = EditorGUILayout.BeginToggleGroup("Look at target", lookAtTargetProperty.boolValue);
 		EditorGUILayout.PropertyField(serializedObject.FindProperty("useSide"));
 		EditorGUILayout.EndToggleGroup();
 

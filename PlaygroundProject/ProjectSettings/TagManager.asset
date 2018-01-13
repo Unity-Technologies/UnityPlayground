@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Bullet
   - Ground
+  - Pickup
   layers:
   - Default
   - TransparentFX
