@@ -14,19 +14,7 @@ public class BaseInspectorWindow : Editor
 	// Draws the regular Inspector with all the properties, but minus the Script field, for more clarity
 	public void DrawDefaultInspectorMinusScript()
 	{
-		prop = serializedObject.GetIterator();
-		bool useChildren = true;
-		while (prop.NextVisible(useChildren))
-		{
-			if(prop.name != "m_Script")
-			{
-				//Debug.Log (prop.name);
-				
-				EditorGUILayout.PropertyField(prop);
-			}
-
-			useChildren = false;
-		}
+		DrawPropertiesExcluding(serializedObject, "m_Script");
 	}
 
 

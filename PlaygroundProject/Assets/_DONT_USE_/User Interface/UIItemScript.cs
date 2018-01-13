@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
+[AddComponentMenu("")]
 public class UIItemScript : MonoBehaviour
 {
 	public Image resourceIcon;

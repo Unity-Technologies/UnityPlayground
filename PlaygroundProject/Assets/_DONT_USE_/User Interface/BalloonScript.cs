@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
+[AddComponentMenu("")]
 public class BalloonScript : MonoBehaviour
 {
 	public Text dialogueText, buttonText;

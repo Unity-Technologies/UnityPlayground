@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
+[AddComponentMenu("")]
 public class DialogueSystem : MonoBehaviour
 {
 	public GameObject balloonPrefab;

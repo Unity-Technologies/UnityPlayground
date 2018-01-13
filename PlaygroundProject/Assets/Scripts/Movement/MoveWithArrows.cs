@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+//[AddComponentMenu("Playground/Movement/Move With Arrows")]
 [RequireComponent(typeof(Rigidbody2D))]
 public class MoveWithArrows : Physics2DObject
 {
