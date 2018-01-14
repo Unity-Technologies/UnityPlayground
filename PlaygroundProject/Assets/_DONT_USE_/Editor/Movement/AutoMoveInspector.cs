@@ -4,7 +4,7 @@ using UnityEditor;
 
 [CanEditMultipleObjects]
 [CustomEditor(typeof(AutoMove))]
-public class AutoMoveInspector : BaseInspectorWindow
+public class AutoMoveInspector : InspectorBase
 {
 	private string explanation = "The gameObject moves automatically in a specific direction.";
 

@@ -4,7 +4,7 @@ using UnityEditor;
 
 [CanEditMultipleObjects]
 [CustomEditor(typeof(LoadLevelAction))]
-public class LoadLevelActionInspector : BaseInspectorWindow
+public class LoadLevelActionInspector : InspectorBase
 {
 	private string explanation = "Use this script to restart the level, or load another one (load another Unity scene).";
 	private string sceneWarning = "WARNING: Make sure the scene is enabled in the Build Settings scenes list.";

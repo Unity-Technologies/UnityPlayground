@@ -4,7 +4,7 @@ using UnityEditor;
 
 [CanEditMultipleObjects]
 [CustomEditor(typeof(Jump))]
-public class JumpInspector : BaseInspectorWindow
+public class JumpInspector : InspectorBase
 {
 	private string explanation = "Makes the gameObject jump at the press of a button.";
 	private bool checkGround;

@@ -3,7 +3,7 @@ using UnityEditor;
 using System.Collections;
 
 [CustomEditor(typeof(DialogueSystem))]
-public class DialogueSystemInspector : BaseInspectorWindow
+public class DialogueSystemInspector : InspectorBase
 {
 	private string explanation = "This script is responsible of creating dialogue balloons. Create dialogues by using DialogueBalloonAction in Conditions.";
 

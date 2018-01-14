@@ -4,7 +4,7 @@ using UnityEditor;
 
 [CanEditMultipleObjects]
 [CustomEditor(typeof(RotateWithArrows))]
-public class RotateWithArrowsInspector : BaseInspectorWindow
+public class RotateWithArrowsInspector : InspectorBase
 {
 	private string explanation = "The gameObject rotates at the press of the left-right arrow keys (or A-D keys for player 2).";
 

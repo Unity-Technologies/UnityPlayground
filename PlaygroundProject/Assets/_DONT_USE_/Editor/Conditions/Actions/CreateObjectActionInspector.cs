@@ -4,7 +4,7 @@ using UnityEditor;
 
 [CanEditMultipleObjects]
 [CustomEditor(typeof(CreateObjectAction))]
-public class CreateObjectActionInspector : BaseInspectorWindow
+public class CreateObjectActionInspector : InspectorBase
 {
 	private string explanation = "Use this script to create a new gameObject from a Prefab in a specific position.";
 

@@ -4,7 +4,7 @@ using UnityEditor;
 
 [CanEditMultipleObjects]
 [CustomEditor(typeof(ModifyHealthAttribute))]
-public class ModifyHealthAttributeInspector : BaseInspectorWindow
+public class ModifyHealthAttributeInspector : InspectorBase
 {
 	private string explanation = "This gameObject will damage or heal other gameObjects on impact (only if they use the HealthSystemAttribute). Negative values mean damage, positive values mean healing (like a medipack).";
 

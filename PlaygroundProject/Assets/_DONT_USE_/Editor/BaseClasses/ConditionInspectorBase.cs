@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEditorInternal;
 
 [CanEditMultipleObjects]
-public class ConditionInspectorBase : BaseInspectorWindow
+public class ConditionInspectorBase : InspectorBase
 {
 
 	protected ReorderableList list;

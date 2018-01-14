@@ -4,7 +4,7 @@ using UnityEditor;
 
 [CanEditMultipleObjects]
 [CustomEditor(typeof(OnOffAction))]
-public class OnOffActionInspector : BaseInspectorWindow
+public class OnOffActionInspector : InspectorBase
 {
 	private string explanation = "Use this script to turn an object on or off.";
 	private string invisibleTip = "TIP: The object will be made invisible, but it will still collide with others.";

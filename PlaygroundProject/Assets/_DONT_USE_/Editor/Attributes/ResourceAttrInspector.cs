@@ -4,7 +4,7 @@ using UnityEditor;
 
 [CanEditMultipleObjects]
 [CustomEditor(typeof(ResourceAttribute))]
-public class ResourceAttrInspector : BaseInspectorWindow
+public class ResourceAttrInspector : InspectorBase
 {
 	private string explanation = "When the Player touches this object, they will collect the specified amount of this type of resource.";
 

@@ -5,7 +5,7 @@ using UnityEditorInternal;
 
 [CanEditMultipleObjects]
 [CustomEditor(typeof(Patrol))]
-public class PatrolInspector : BaseInspectorWindow
+public class PatrolInspector : InspectorBase
 {
 	private string explanation = "The object moves through a series of positions. This can be used for patrolling characters.";
 

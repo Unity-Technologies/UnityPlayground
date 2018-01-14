@@ -4,7 +4,7 @@ using UnityEditor;
 
 [CanEditMultipleObjects]
 [CustomEditor(typeof(CollectableAttribute))]
-public class CollectableAttrInspector : BaseInspectorWindow
+public class CollectableAttrInspector : InspectorBase
 {
 	private string explanation = "When the Player touches this object, the Player will get a point.";
 

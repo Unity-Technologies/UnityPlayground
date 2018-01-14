@@ -4,7 +4,7 @@ using UnityEditor;
 
 [CanEditMultipleObjects]
 [CustomEditor(typeof(TeleportAction))]
-public class TeleportActionInspector : BaseInspectorWindow
+public class TeleportActionInspector : InspectorBase
 {
 	private string explanation = "Use this script to teleport this or another object to a new location.";
 	private string objectWarning = "WARNING: If you don't assign a gameObject, this gameObject will be teleported!";

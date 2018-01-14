@@ -4,7 +4,7 @@ using UnityEditor;
 
 [CanEditMultipleObjects]
 [CustomEditor(typeof(CameraFollow))]
-public class CameraFollowInspector : BaseInspectorWindow
+public class CameraFollowInspector : InspectorBase
 {
 	private string explanation = "This script makes the Camera follow a specific object (usually the Player).";
 	private string warning = "WARNING: No object is selected, so the Camera won't move.";

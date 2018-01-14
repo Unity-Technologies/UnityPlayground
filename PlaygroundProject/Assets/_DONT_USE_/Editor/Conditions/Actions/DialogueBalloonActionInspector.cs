@@ -4,7 +4,7 @@ using UnityEditor;
 
 [CanEditMultipleObjects]
 [CustomEditor(typeof(DialogueBalloonAction))]
-public class DialogueBalloonActionInspector : BaseInspectorWindow
+public class DialogueBalloonActionInspector : InspectorBase
 {
 	private string explanation = "Use this script to create a dialogue ballon on a character's head.";
 	private string tipMessage = "TIP: Connect another DialogueBalloonAction in the last slot to create a continuous conversation.";

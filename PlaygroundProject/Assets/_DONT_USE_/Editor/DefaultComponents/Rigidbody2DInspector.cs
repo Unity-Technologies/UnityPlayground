@@ -7,24 +7,24 @@ using UnityEditor;
 [CustomEditor(typeof(Rigidbody2D))]
 public class Rigidbody2DInspector : Editor
 {
+	private bool showConstraints = false;
+
 	public override void OnInspectorGUI()
 	{
 		serializedObject.Update();
 
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("m_BodyType"));
+		EditorGUILayout.Separator();
+		//EditorGUILayout.PropertyField(serializedObject.FindProperty("m_BodyType"));
+		//EditorGUILayout.LabelField("Physical Properties", EditorStyles.boldLabel);
 
-		GUILayout.Space(5f);
-		EditorGUILayout.LabelField("Physical Properties", EditorStyles.boldLabel);
 		EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Mass"));
 		EditorGUILayout.PropertyField(serializedObject.FindProperty("m_LinearDrag"), new GUIContent("Friction"));
 		EditorGUILayout.PropertyField(serializedObject.FindProperty("m_AngularDrag"), new GUIContent("Angular Friction"));
 		EditorGUILayout.PropertyField(serializedObject.FindProperty("m_GravityScale"), new GUIContent("Gravity"));
+		EditorGUILayout.Separator();
 		
-		
-		GUILayout.Space(5f);
-		bool constraintsGroup = true;
-		constraintsGroup = EditorGUILayout.Foldout(constraintsGroup, new GUIContent("Constraints"));
-		if(constraintsGroup)
+		showConstraints = EditorGUILayout.Foldout(showConstraints, new GUIContent("Constraints"));
+		if(showConstraints)
 		{
 			if(Selection.gameObjects.Length == 1)
 			{

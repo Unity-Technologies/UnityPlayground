@@ -4,7 +4,7 @@ using UnityEditor;
 
 [CanEditMultipleObjects]
 [CustomEditor(typeof(PickUpAndHold))]
-public class PickUpAndHoldInspector : BaseInspectorWindow
+public class PickUpAndHoldInspector : InspectorBase
 {
 	private string explanation = "The Player can pick up and drop objects by pressing a key.";
 	private string warning = "The Pickup object must be tagged 'Pickup' and have component Rigidbody2D";

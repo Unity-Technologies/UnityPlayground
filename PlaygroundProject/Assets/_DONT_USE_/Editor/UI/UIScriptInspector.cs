@@ -3,7 +3,7 @@ using UnityEditor;
 using System.Collections;
 
 [CustomEditor(typeof(UIScript))]
-public class UIScriptInspector : BaseInspectorWindow
+public class UIScriptInspector : InspectorBase
 {
 	private string explanation = "Use the UI to visualise points and health for the players.";
 	private string lifeReminder = "Don't forget to use the script HealthSystemAttribute on the player(s)!";

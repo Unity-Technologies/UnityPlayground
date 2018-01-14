@@ -4,7 +4,7 @@ using UnityEditor;
 
 [CanEditMultipleObjects]
 [CustomEditor(typeof(Wander))]
-public class WanderInspector : BaseInspectorWindow
+public class WanderInspector : InspectorBase
 {
 	private string explanation = "The gameObject will move around randomly. Use keepNearStartingPoint if you want it to keep near its starting position.";
 

@@ -4,7 +4,7 @@ using UnityEditor;
 
 [CanEditMultipleObjects]
 [CustomEditor(typeof(FollowTarget))]
-public class FollowTargetInspector : BaseInspectorWindow
+public class FollowTargetInspector : InspectorBase
 {
 	private string explanation = "This gameObject will pursue a target constantly.";
 

@@ -23,9 +23,13 @@ public class CameraInspector : Editor
 
 	public override void OnInspectorGUI()
 	{
+		serializedObject.Update();
+
+		EditorGUILayout.Separator();
+
 		EditorGUILayout.PropertyField(serializedObject.FindProperty("m_BackGroundColor"), new GUIContent("Background Color"));
 		EditorGUILayout.PropertyField(serializedObject.FindProperty("orthographic size"), new GUIContent("Frame Size"));
-		GUILayout.Space(10f);
+		EditorGUILayout.Separator();
 
 		//check if Camera Follow script is already present
 		if(go.GetComponent<CameraFollow>() != null)

@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEditor;
 
-public class BaseInspectorWindow : Editor
+public class InspectorBase : Editor
 {
 	private SerializedProperty prop;
 
