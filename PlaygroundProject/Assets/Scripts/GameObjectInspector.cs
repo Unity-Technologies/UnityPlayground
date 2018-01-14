@@ -2,38 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditorInternal;
 
+[CanEditMultipleObjects]
 [CustomEditor(typeof(GameObject))]
 public class TestScriptInspector : Editor {
 
-	private GameObject gameObject;
-	private string tag;
 	private Texture2D headerBackground;
 
 	public void OnEnable()
 	{
-		gameObject = (GameObject)target;
-
 		headerBackground = Resources.Load<Texture2D>("Textures/MidGrey");
 	}
 
 	public override void OnInspectorGUI()
 	{
-		/*Component[] c;
-		c = ((GameObject)target).GetComponents<Component>();
-		foreach(Component comp in c)
-		{
-			//comp.hideFlags = HideFlags.HideInInspector;
-		}
-
-
-		fold = EditorGUILayout.InspectorTitlebar(fold, Selection.activeGameObject.transform.parent);
-		if (fold)
-		{
-
-			
-		}
-		*/
+		//do nothing
 	}
 
 	protected override void OnHeaderGUI()
@@ -46,18 +30,81 @@ public class TestScriptInspector : Editor {
 
 		GUILayout.BeginVertical(boxStyle);
 
+		//Active toggle and GameObject's name
 		GUILayout.BeginHorizontal();
-		gameObject.SetActive(GUILayout.Toggle(gameObject.activeSelf, "", GUILayout.Width(25)));
-		gameObject.name = EditorGUILayout.DelayedTextField(gameObject.name, fontStyle, GUILayout.Height(17));
+		EditorGUILayout.PropertyField(serializedObject.FindProperty("m_IsActive"), GUIContent.none, GUILayout.Width(25));
+		EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Name"), GUIContent.none, GUILayout.Height(17));
 		GUILayout.EndHorizontal();
 
 		GUILayout.Space(5);
 
+		//Tags dropdown
 		GUILayout.BeginHorizontal();
 		GUILayout.Label("Tag", GUILayout.ExpandWidth(false));
-		gameObject.tag = EditorGUILayout.TagField(gameObject.tag);
-		GUILayout.EndHorizontal();
+		//gameObject.tag = EditorGUILayout.TagField(gameObject.tag);
+		//EditorGUILayout.PropertyField(serializedObject.FindProperty("m_TagString"));
 
+		string[] options = InternalEditorUtility.tags; //final list of tag options, including the mixed tag placeholder character "–"
+		int chosenTagId = 0; //number of tag chosen
+		bool isMixedTag = false;
+
+		//extra checks in case of multiple selection
+		if(Selection.gameObjects.Length > 1)
+		{
+			//check if at least two objects have different tags		
+			string firstTag = Selection.gameObjects[0].tag;
+			foreach(GameObject go in Selection.gameObjects)
+			{
+				if(!go.CompareTag(firstTag))
+				{
+					//different tags, show placeholder character
+					options = new string[InternalEditorUtility.tags.Length + 1];
+					(new string[]{"―"}).CopyTo(options, 0);
+					(InternalEditorUtility.tags).CopyTo(options, 1);
+					isMixedTag = true;
+					break;
+				}
+			}
+		}
+
+		if(!isMixedTag)
+		{
+			//find the actual tag's ID in the list
+			chosenTagId = System.Array.IndexOf(InternalEditorUtility.tags, Selection.gameObjects[0].tag);
+		}
+
+		//display the actual UI Dropdown
+		int oldTagId = chosenTagId;
+		chosenTagId = EditorGUILayout.Popup(chosenTagId, options);
+
+		if(oldTagId != chosenTagId)
+		{
+			//adjust id to account for the placeholder tag
+			if(isMixedTag)
+			{
+				chosenTagId--;
+			}
+			string finalTag = InternalEditorUtility.tags[chosenTagId];
+			serializedObject.FindProperty("m_TagString").stringValue = finalTag;
+
+		}
+		GUILayout.EndHorizontal();
+		
 		GUILayout.EndVertical();
+
+		serializedObject.ApplyModifiedProperties();
+		
+		/* SerializedProperty prop = serializedObject.GetIterator();
+			if (prop.NextVisible(true)) {
+				do {
+					
+					EditorGUILayout.PropertyField(serializedObject.FindProperty(prop.name), true);
+					Debug.Log(prop.name);
+				}
+				while (prop.NextVisible(false));
+			}
+		
+		EditorGUILayout.PropertyField(serializedObject.FindProperty("m_TagString")); */
+		
 	}
 }

@@ -118,7 +118,7 @@ public class PatrolInspector : BaseInspectorWindow
 				
 				orientation = (gizmoPos-lastPos).normalized;
 				Handles.DrawDottedLine(lastPos, gizmoPos, 8f);
-				Handles.ArrowCap(0, gizmoPos-(orientation * 1.2f), Quaternion.LookRotation(orientation, -Vector3.forward) , 1f);
+				Handles.ArrowHandleCap(0, gizmoPos-(orientation * 1.2f), Quaternion.LookRotation(orientation, -Vector3.forward) , 1f, EventType.Repaint);
 			
 				if(EditorGUI.EndChangeCheck())
 				{
@@ -139,7 +139,7 @@ public class PatrolInspector : BaseInspectorWindow
 		{
 			orientation = (patrolScript.transform.position-lastPos).normalized;
 			Handles.DrawDottedLine(lastPos, patrolScript.transform.position, 8f);
-			Handles.ArrowCap(0, patrolScript.transform.position-(orientation * 2f), Quaternion.LookRotation(orientation, -Vector3.forward) , 1f);
+			Handles.ArrowHandleCap(0, patrolScript.transform.position-(orientation * 2f), Quaternion.LookRotation(orientation, -Vector3.forward), 1f, EventType.Repaint);
 		}
 	}
 }

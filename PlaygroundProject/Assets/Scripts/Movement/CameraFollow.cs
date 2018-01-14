@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(Camera))]
 public class CameraFollow : MonoBehaviour
 {
 	[Header("Object to follow")]
