@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.Tilemaps;
 
 [CanEditMultipleObjects]
-[CustomEditor(typeof(PolygonCollider2D))]
-public class PolygonCollider2DInspector : Collider2DInspectorBase
+[CustomEditor(typeof(TilemapCollider2D))]
+public class TilemapCollider2DInspector : Collider2DInspectorBase
 {
 
 	public override void OnInspectorGUI()

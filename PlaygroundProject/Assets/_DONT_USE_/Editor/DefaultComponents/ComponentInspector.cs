@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditorInternal;
 
 //[CustomEditor(typeof(SpriteRenderer), true)]
 public class ComponentInspector : Editor {
@@ -19,7 +20,7 @@ public class ComponentInspector : Editor {
  
         //EditorGUI.DrawRect (rect, EditorGUIUtility.isProSkin ? proColor : plebColor);
 
-		Rect buttonPos = new Rect(EditorGUIUtility.currentViewWidth - 75, rect.y-EditorGUIUtility.singleLineHeight, 18, EditorGUIUtility.singleLineHeight-2);
+		Rect buttonPos = new Rect(EditorGUIUtility.currentViewWidth - 60, rect.y-EditorGUIUtility.singleLineHeight, 18, EditorGUIUtility.singleLineHeight-2);
 		GUI.backgroundColor = Color.red;
 
 		GUIStyle style = new GUIStyle(GUI.skin.button);
@@ -39,6 +40,7 @@ public class ComponentInspector : Editor {
  
         //string header = "Ciao";
         //EditorGUI.LabelField (rect, header, EditorStyles.boldLabel);
+		
 	}
 
 	public override void OnInspectorGUI()
