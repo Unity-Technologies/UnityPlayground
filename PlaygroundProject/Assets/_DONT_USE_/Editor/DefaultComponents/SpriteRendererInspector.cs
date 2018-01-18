@@ -8,6 +8,8 @@ using System.Linq;
 [CustomEditor(typeof(SpriteRenderer))]
 public class SpriteRendererInspector : Editor
 {
+	protected bool showExtras = false;
+
 	public override void OnInspectorGUI()
 	{
 		serializedObject.Update();
@@ -22,11 +24,34 @@ public class SpriteRendererInspector : Editor
 			EditorGUILayout.PropertyField(serializedObject.FindProperty("m_FlipY"), new GUIContent("Y"), GUILayout.ExpandWidth(false));
 			EditorGUIUtility.labelWidth = 0f;
 		EditorGUILayout.EndHorizontal();
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("m_DrawMode"));
 
-		EditorGUILayout.Separator();
-		DrawSortingLayers();
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("m_MaskInteraction"));
+		EditorGUILayout.PropertyField(serializedObject.FindProperty("m_DrawMode"));
+		EditorGUI.indentLevel++;
+		switch((SpriteDrawMode)serializedObject.FindProperty("m_DrawMode").enumValueIndex)
+		{
+			case SpriteDrawMode.Sliced:
+				EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Size"));
+			break;
+
+			case SpriteDrawMode.Tiled:
+				EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Size"));
+				EditorGUILayout.PropertyField(serializedObject.FindProperty("m_SpriteTileMode"));
+				if((SpriteTileMode)serializedObject.FindProperty("m_SpriteTileMode").enumValueIndex == SpriteTileMode.Adaptive)
+				{
+					EditorGUI.indentLevel++;
+						EditorGUILayout.PropertyField(serializedObject.FindProperty("m_AdaptiveModeThreshold"), new GUIContent("Adaptability"));
+					EditorGUI.indentLevel--;
+				}
+				break;
+		}
+		EditorGUI.indentLevel--;
+
+		showExtras = EditorGUILayout.Foldout(showExtras, new GUIContent("Visibility Options"));
+		if(showExtras)
+		{
+			DrawSortingLayers();
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("m_MaskInteraction"));
+		}
 		
 		serializedObject.ApplyModifiedProperties();
 	}
