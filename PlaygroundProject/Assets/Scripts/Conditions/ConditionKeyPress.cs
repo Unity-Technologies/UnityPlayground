@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Events;
 
+[AddComponentMenu("Playground/Conditions/Key Press")]
 public class ConditionKeyPress : ConditionBase
 {
 	public KeyCode keyToPress = KeyCode.Space;

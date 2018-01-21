@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Playground/Actions/Create Object")]
 public class CreateObjectAction : Action
 {
 	public GameObject prefabToCreate;

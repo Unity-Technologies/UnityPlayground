@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class Action : MonoBehaviour
+public abstract class Action : MonoBehaviour
 {
 	public virtual bool ExecuteAction(GameObject other)
 	{

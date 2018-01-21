@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.Events;
 
+[AddComponentMenu("Playground/Actions/Consume Resource")]
 public class ConsumeResourceAction : Action
 {
 	[Header("Resource")]

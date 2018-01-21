@@ -22,13 +22,16 @@ public class ConditionInspectorBase : InspectorBase
 			(Rect rect, int index, bool isActive, bool isFocused) => {
 			SerializedProperty element = list.serializedProperty.GetArrayElementAtIndex(index);
 			rect.y += 2;
-			Rect r = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight);
+			Rect r = new Rect(rect.x, rect.y, rect.width - 40, EditorGUIUtility.singleLineHeight);
 			EditorGUI.PropertyField(r, element, GUIContent.none, false);
 
 			//Add button at the end to unlink the Action?
-			//Rect buttonRect = new Rect(rect.width + 7, rect.y, 25, EditorGUIUtility.singleLineHeight);
-			//bool b = GUI.Button(buttonRect, "X");
-
+			Rect buttonRect = new Rect(rect.width + 7, rect.y, 25, EditorGUIUtility.singleLineHeight);
+			bool b = GUI.Button(buttonRect, "X");
+			if(b)
+			{
+				element.objectReferenceValue = null;
+			}
 		};
 
 

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Playground/Attributes/Health System")]
 public class HealthSystemAttribute : MonoBehaviour
 {
 	public int health = 3;

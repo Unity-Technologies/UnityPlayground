@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Playground/Movement/Follow Target")]
 [RequireComponent(typeof(Rigidbody2D))]
 public class FollowTarget : Physics2DObject
 {

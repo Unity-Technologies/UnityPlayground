@@ -93,7 +93,16 @@ public class BalloonScript : MonoBehaviour
 	private void FollowTarget()
 	{
 		Vector3 topBoundary = targetObj.position;
-		topBoundary.y += targetObj.GetComponent<SpriteRenderer>().bounds.size.y;
+		SpriteRenderer sr = targetObj.GetComponent<SpriteRenderer>();
+		if(sr != null)
+		{
+			topBoundary.y += sr.bounds.size.y;
+		}
+		else
+		{
+			//the object is invisible in some way (has no SpriteRenderer)
+			topBoundary.y = targetObj.position.y;
+		}
 		rectTransform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, topBoundary);
 	}
 }

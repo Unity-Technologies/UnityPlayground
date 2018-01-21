@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Playground/Movement/Auto Rotation")]
 [RequireComponent(typeof(Rigidbody2D))]
 public class AutoRotation : Physics2DObject
 {

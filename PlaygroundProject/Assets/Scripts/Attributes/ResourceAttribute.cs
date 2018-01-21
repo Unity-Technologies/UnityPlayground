@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Playground/Attributes/Resource")]
 [RequireComponent(typeof(Collider2D), typeof(SpriteRenderer))]
 public class ResourceAttribute : MonoBehaviour
 {

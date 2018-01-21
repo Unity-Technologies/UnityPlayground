@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Playground/Actions/Destroy Action")]
 public class DestroyAction : Action
 {
 	//who gets destroyed in the collision?

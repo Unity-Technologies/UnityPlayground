@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Playground/Destruction/Timed Self-Destruct")]
 public class TimedSelfDestruct : MonoBehaviour
 {
 

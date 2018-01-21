@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Playground/Actions/Dialogue Balloon")]
 public class DialogueBalloonAction : Action
 {
 

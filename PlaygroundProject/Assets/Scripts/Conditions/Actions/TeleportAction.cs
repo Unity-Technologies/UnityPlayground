@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Playground/Actions/Teleport")]
 public class TeleportAction : Action
 {
 	public GameObject objectToMove;

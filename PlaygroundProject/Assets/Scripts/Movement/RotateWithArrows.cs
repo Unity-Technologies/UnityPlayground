@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+[AddComponentMenu("Playground/Movement/Rotate With Arrows")]
 [RequireComponent(typeof(Rigidbody2D))]
 public class RotateWithArrows : Physics2DObject
 {
