@@ -6,7 +6,7 @@ using UnityEditor;
 [CustomEditor(typeof(CollectableAttribute))]
 public class CollectableAttrInspector : BaseInspectorWindow
 {
-	private string explanation = "When the Player touches this object, he will get a point.";
+	private string explanation = "When the Player touches this object, the Player will get a point.";
 
 	public override void OnInspectorGUI()
 	{
