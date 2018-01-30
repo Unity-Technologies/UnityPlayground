@@ -3,7 +3,7 @@ using System.Collections;
 
 [AddComponentMenu("Playground/Movement/Move With Arrows")]
 [RequireComponent(typeof(Rigidbody2D))]
-public class MoveWithArrows : Physics2DObject
+public class Move : Physics2DObject
 {
 	[Header("Input keys")]
 	public Enums.KeyGroups typeOfControl = Enums.KeyGroups.ArrowKeys;

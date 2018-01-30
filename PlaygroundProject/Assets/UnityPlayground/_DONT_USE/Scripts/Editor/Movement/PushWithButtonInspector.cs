@@ -3,8 +3,8 @@ using System.Collections;
 using UnityEditor;
 
 [CanEditMultipleObjects]
-[CustomEditor(typeof(PushWithButton))]
-public class PushWithButtonInspector : InspectorBase
+[CustomEditor(typeof(Push))]
+public class PushInspector : InspectorBase
 {
 	private string explanation = "The gameObject will move at the push of a button, as if a thruster or an invisible force was pushing it.";
 	private string absoluteTip = "TIP: The gameObject will always move in the direction chosen regardless of its orientation.";

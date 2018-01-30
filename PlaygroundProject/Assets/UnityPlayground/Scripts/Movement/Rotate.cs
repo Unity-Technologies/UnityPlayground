@@ -1,9 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-[AddComponentMenu("Playground/Movement/Rotate With Arrows")]
+[AddComponentMenu("Playground/Movement/Rotate")]
 [RequireComponent(typeof(Rigidbody2D))]
-public class RotateWithArrows : Physics2DObject
+public class Rotate : Physics2DObject
 {
 	[Header("Input keys")]
 	public Enums.KeyGroups typeOfControl = Enums.KeyGroups.ArrowKeys;

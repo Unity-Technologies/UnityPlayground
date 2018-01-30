@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[AddComponentMenu("Playground/Creation/Object Shooter")]
+[AddComponentMenu("Playground/Gameplay/Object Shooter")]
 public class ObjectShooter : MonoBehaviour
 {
 	[Header("Object creation")]

@@ -1,9 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-[AddComponentMenu("Playground/Movement/Push With Button")]
+[AddComponentMenu("Playground/Movement/Push")]
 [RequireComponent(typeof(Rigidbody2D))]
-public class PushWithButton : Physics2DObject
+public class Push : Physics2DObject
 {
 	[Header("Input key")]
 

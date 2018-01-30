@@ -1,9 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-[AddComponentMenu("Playground/Movement/Auto Rotation")]
+[AddComponentMenu("Playground/Movement/Auto Rotate")]
 [RequireComponent(typeof(Rigidbody2D))]
-public class AutoRotation : Physics2DObject
+public class AutoRotate : Physics2DObject
 {
 
 	// This is the force that rotate the object every frame
