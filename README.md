@@ -1,4 +1,4 @@
-# Playground Project
+# Unity Playground
 
 ![playground.png](https://imgur.com/NvAFtsp.jpg)
 
@@ -20,7 +20,7 @@ Refer to the [Wiki](https://github.com/UnityTechnologies/PlaygroundProject/wiki)
 
 **Software Requirements**
 
-Required: Any Unity 5.4.x, or later version
+Required: Any Unity 2017.2, or later version
 
 **Hardware Requirements**
 
@@ -50,3 +50,6 @@ Owner: Ciro Continisio
 - 12 Mar - Dialogue system
 - 01 Apr - Added Cheatsheet images
 - 29 Oct - Added Patrol script
+
+2018
+- Jan - So many changes :D Almost on the Asset Store!
