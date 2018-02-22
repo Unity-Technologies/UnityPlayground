@@ -6,35 +6,34 @@ public class CreateObjectAction : Action
 {
 	public GameObject prefabToCreate;
 	public Vector2 newPosition;
-	public bool relative;
+	public bool relativeToThisObject;
 
 
 	void Update ()
 	{
-		if (relative)
+		if (relativeToThisObject)
 		{
-			newPosition = transform.localPosition;
+			newPosition = (Vector2)transform.localPosition + newPosition;
 		}
 	}
 		
 	// Moves the gameObject instantly to a custom position
-		public override bool ExecuteAction(GameObject dataObject)
+	public override bool ExecuteAction(GameObject dataObject)
+	{
+		if(prefabToCreate != null)
 		{
-			if(prefabToCreate != null)
-			{
-				//create the new object by copying the prefab
-				GameObject newObject = Instantiate<GameObject>(prefabToCreate);
+			//create the new object by copying the prefab
+			GameObject newObject = Instantiate<GameObject>(prefabToCreate);
 
+			//let's place it in the desired position!
+			newObject.transform.position = newPosition;
 
-				//let's place it in the desired position!
-				newObject.transform.position = newPosition;
-
-				return true;
-			}
-			else
-			{
-				return false;
-			}
+			return true;
 		}
+		else
+		{
+			return false;
+		}
+	}
 
 }
