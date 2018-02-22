@@ -1,14 +1,22 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 [AddComponentMenu("Playground/Actions/Create Object")]
 public class CreateObjectAction : Action
 {
 	public GameObject prefabToCreate;
-	public Vector3 newPosition;
+	public Vector2 newPosition;
+	public bool relativeToThisObject;
 
 
-
+	void Update ()
+	{
+		if (relativeToThisObject)
+		{
+			newPosition = (Vector2)transform.localPosition + newPosition;
+		}
+	}
+		
 	// Moves the gameObject instantly to a custom position
 	public override bool ExecuteAction(GameObject dataObject)
 	{
@@ -16,7 +24,6 @@ public class CreateObjectAction : Action
 		{
 			//create the new object by copying the prefab
 			GameObject newObject = Instantiate<GameObject>(prefabToCreate);
-
 
 			//let's place it in the desired position!
 			newObject.transform.position = newPosition;
@@ -28,4 +35,5 @@ public class CreateObjectAction : Action
 			return false;
 		}
 	}
+
 }
