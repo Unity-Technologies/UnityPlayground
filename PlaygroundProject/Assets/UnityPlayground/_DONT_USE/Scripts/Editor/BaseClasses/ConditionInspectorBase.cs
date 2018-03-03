@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEditorInternal;
+using System;
+using System.IO;
 
 [CanEditMultipleObjects]
 public class ConditionInspectorBase : InspectorBase
@@ -18,20 +20,22 @@ public class ConditionInspectorBase : InspectorBase
 		list = new ReorderableList(serializedObject, serializedObject.FindProperty("actions"), true, true, true, true);
 
 		//called for every element that has to be drawn in the ReorderableList
-		list.drawElementCallback =  
-			(Rect rect, int index, bool isActive, bool isFocused) => {
+		list.drawElementCallback =  (Rect rect, int index, bool isActive, bool isFocused) => {
 			SerializedProperty element = list.serializedProperty.GetArrayElementAtIndex(index);
 			rect.y += 2;
-			Rect r = new Rect(rect.x, rect.y, rect.width - 40, EditorGUIUtility.singleLineHeight);
+			Rect r = new Rect(rect.x, rect.y, rect.width - 20, EditorGUIUtility.singleLineHeight);
 			EditorGUI.PropertyField(r, element, GUIContent.none, false);
 
+			/*
+			TODO: would be great to have but doesn't work for now
 			//Add button at the end to unlink the Action?
 			Rect buttonRect = new Rect(rect.width + 7, rect.y, 25, EditorGUIUtility.singleLineHeight);
-			bool b = GUI.Button(buttonRect, "X");
+			bool b = GUI.Button(buttonRect, "-");
 			if(b)
 			{
-				element.objectReferenceValue = null;
+				//RemoveElement(index);
 			}
+			*/
 		};
 
 
@@ -39,8 +43,47 @@ public class ConditionInspectorBase : InspectorBase
 		list.drawHeaderCallback = (Rect rect) => {
 			EditorGUI.LabelField(rect, "Gameplay Actions");
 		};
+
+		list.onAddDropdownCallback = (Rect buttonRect, ReorderableList l) => {  
+    		var menu = new GenericMenu();
+			var guids = AssetDatabase.FindAssets("", new[]{"Assets/UnityPlayground/Scripts/Conditions/Actions"});
+			foreach (var guid in guids) {
+				var path = AssetDatabase.GUIDToAssetPath(guid);
+				string p = Path.GetFileNameWithoutExtension(path);
+				menu.AddItem(new GUIContent(p), false, ClickHandler, p);
+			}
+			menu.ShowAsContext();
+		};
+
+		list.onRemoveCallback += RemoveElement;
 	}
 
+	private void RemoveElement(ReorderableList l)
+	{
+		SerializedProperty element = l.serializedProperty.GetArrayElementAtIndex(l.index);
+		
+		if(element.objectReferenceValue != null)
+		{
+			Type t = element.objectReferenceValue.GetType();
+			Undo.DestroyObjectImmediate(Selection.activeGameObject.GetComponent(t));
+			element.objectReferenceValue = null;
+		}
+
+		ReorderableList.defaultBehaviours.DoRemoveButton(l);
+	}
+
+	public void ClickHandler(object actionName)
+	{
+		Type t = Type.GetType(actionName + ",Assembly-CSharp");
+		var newComponent = Selection.activeGameObject.AddComponent(t);
+
+		var index = list.serializedProperty.arraySize;
+		list.serializedProperty.arraySize++;
+		list.index = index;
+		var element = list.serializedProperty.GetArrayElementAtIndex(index);
+		element.objectReferenceValue = newComponent;
+		serializedObject.ApplyModifiedProperties();
+	}
 
 	//draws the list ReorderableList of GameplayActions, the useCustomActions toggle and (if this is enabled) the default list of UnityEvents
 	protected void DrawActionLists()
