@@ -25,10 +25,11 @@ public class UIScript : MonoBehaviour
 	public GameObject resourceItemPrefab;
 
 
-	// Internal variables to keep track of score, health, and resources
+	// Internal variables to keep track of score, health, and resources, win state
 	private int[] scores = new int[2];
 	private int[] playersHealth = new int[2];
 	private Dictionary<string, ResourceStruct> resourcesDict = new Dictionary<string, ResourceStruct>(); //holds a reference to all the resources collected, and to their UI
+    private bool gameWon = false;
 
 
 	private void Start()
@@ -104,6 +105,7 @@ public class UIScript : MonoBehaviour
 
 	public void GameWon(int playerNumber)
 	{
+	    gameWon = true;
 		winLabel.text = "Player " + ++playerNumber + " wins!";
 		statsPanel.SetActive(false);
 		winPanel.SetActive(true);
@@ -113,8 +115,12 @@ public class UIScript : MonoBehaviour
 
 	public void GameOver(int playerNumber)
 	{
-		statsPanel.SetActive(false);
-		gameOverPanel.SetActive(true);
+        // only set game over UI if game has not been won
+	    if (!gameWon)
+	    {
+	        statsPanel.SetActive(false);
+	        gameOverPanel.SetActive(true);
+	    }
 	}
 
 
