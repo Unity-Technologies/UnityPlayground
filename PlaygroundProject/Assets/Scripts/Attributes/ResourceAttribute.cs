@@ -2,7 +2,7 @@
 using System.Collections;
 
 [AddComponentMenu("Playground/Attributes/Resource")]
-[RequireComponent(typeof(Collider2D), typeof(SpriteRenderer))]
+[RequireComponent(typeof(BoxCollider2D), typeof(SpriteRenderer))]
 public class ResourceAttribute : MonoBehaviour
 {
 	//this is actually more a name/identifier than a type, but from the kids' perspective it makes sense that they are inputting the "type of resource"
