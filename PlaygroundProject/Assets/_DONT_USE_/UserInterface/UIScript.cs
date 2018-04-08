@@ -29,7 +29,7 @@ public class UIScript : MonoBehaviour
 	private int[] scores = new int[2];
 	private int[] playersHealth = new int[2];
 	private Dictionary<string, ResourceStruct> resourcesDict = new Dictionary<string, ResourceStruct>(); //holds a reference to all the resources collected, and to their UI
-    private bool gameWon = false;
+    private bool gameOver = false; //this gets changed when the game is won OR lost
 
 
 	private void Start()
@@ -105,19 +105,24 @@ public class UIScript : MonoBehaviour
 
 	public void GameWon(int playerNumber)
 	{
-	    gameWon = true;
-		winLabel.text = "Player " + ++playerNumber + " wins!";
-		statsPanel.SetActive(false);
-		winPanel.SetActive(true);
+		// only set game over UI if game is not over
+	    if (!gameOver)
+	    {
+			gameOver = true;
+			winLabel.text = "Player " + ++playerNumber + " wins!";
+			statsPanel.SetActive(false);
+			winPanel.SetActive(true);
+		}
 	}
 
 
 
 	public void GameOver(int playerNumber)
 	{
-        // only set game over UI if game has not been won
-	    if (!gameWon)
+        // only set game over UI if game is not over
+	    if (!gameOver)
 	    {
+			gameOver = true;
 	        statsPanel.SetActive(false);
 	        gameOverPanel.SetActive(true);
 	    }
