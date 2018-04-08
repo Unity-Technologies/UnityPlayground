@@ -5,7 +5,7 @@ using System.Collections;
 public class TeleportAction : Action
 {
 	public GameObject objectToMove;
-	public Vector3 newPosition;
+	public Vector2 newPosition;
 	public bool stopMovements = true;
 
 
