@@ -97,7 +97,28 @@ public class TestScriptInspector : Editor {
 				}
 			GUILayout.EndHorizontal();
 
-		GUILayout.EndVertical();
+            //Prefab
+            Object prefabParent = PrefabUtility.GetPrefabParent(Selection.activeGameObject);
+            if (null != prefabParent) {
+                GUILayout.Space(5);
+
+                GUILayout.BeginHorizontal();
+                GUILayout.Label("Prefab", GUILayout.ExpandWidth(false));
+                if (GUILayout.Button("Select", EditorStyles.miniButtonLeft)) {
+                    Selection.activeObject = prefabParent;
+                    EditorGUIUtility.PingObject(prefabParent);
+                }
+                if (GUILayout.Button("Revert", EditorStyles.miniButtonMid)) {
+                    PrefabUtility.RevertPrefabInstance(Selection.activeGameObject);
+                }
+                if (GUILayout.Button("Apply", EditorStyles.miniButtonRight)) {
+                    PrefabUtility.ReplacePrefab(Selection.activeGameObject, PrefabUtility.GetPrefabParent(Selection.activeGameObject), ReplacePrefabOptions.ConnectToPrefab);
+                }
+
+                GUILayout.EndHorizontal();
+            }
+
+        GUILayout.EndVertical();
 
 		serializedObject.ApplyModifiedProperties();
 		
