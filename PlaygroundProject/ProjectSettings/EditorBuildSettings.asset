@@ -5,17 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Defender/Defender.unity
-  - enabled: 0
-    path: Assets/Scenes/Football/Football.unity
-  - enabled: 0
-    path: Assets/Scenes/Lander/Lander.unity
-  - enabled: 0
-    path: Assets/Scenes/Maze/MazeLevel0.unity
-  - enabled: 0
-    path: Assets/Scenes/Maze/MazeLevel1.unity
-  - enabled: 0
-    path: Assets/Test.unity
   - enabled: 1
-    path: Assets/Scenes/PiemansDanceOfDeath.unity
+    path: Assets/UnityPlayground/Examples/Maze/MazeLevel1.unity
+    guid: f9b71d909be1c4e9dbb8b3599d76b33c

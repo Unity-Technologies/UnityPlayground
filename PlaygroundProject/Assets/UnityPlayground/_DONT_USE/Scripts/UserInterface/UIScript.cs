@@ -40,8 +40,7 @@ public class UIScript : MonoBehaviour
 		}
 		else
 		{
-			if(gameType == GameType.Score
-				|| gameType == GameType.Endless)
+			if(gameType == GameType.Score)
 			{
 				// Show the 2-player score interface
 				rightLabel.text = leftLabel.text = "Score";
@@ -93,12 +92,6 @@ public class UIScript : MonoBehaviour
 		{
 			numberLabels[playerNumber].text = scores[playerNumber].ToString();
 		}
-
-		if(gameType == GameType.Score
-			&& scores[playerNumber] >= scoreToWin)
-		{
-			GameWon(playerNumber);
-		}
 	}
 
 
@@ -142,7 +135,8 @@ public class UIScript : MonoBehaviour
 	{
 		SetHealth(playersHealth[playerNumber] + change, playerNumber);
 
-		if(playersHealth[playerNumber] <= 0)
+		if(gameType != GameType.Endless
+			&& playersHealth[playerNumber] <= 0)
 		{
 			GameOver(playerNumber);
 		}
