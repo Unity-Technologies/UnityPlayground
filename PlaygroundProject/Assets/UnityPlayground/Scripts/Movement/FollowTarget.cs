@@ -21,13 +21,14 @@ public class FollowTarget : Physics2DObject
 	// FixedUpdate is called once per frame
 	void FixedUpdate ()
 	{
-		//Move towards the target
-		rigidbody2D.MovePosition(Vector2.Lerp(transform.position, target.position, Time.fixedDeltaTime * speed));
-
 		//look towards the target
 		if(lookAtTarget)
 		{
 			Utils.SetAxisTowards(useSide, transform, target.position - transform.position);
 		}
+		
+		//Move towards the target
+		rigidbody2D.MovePosition(Vector2.Lerp(transform.position, target.position, Time.fixedDeltaTime * speed));
+
 	}
 }
