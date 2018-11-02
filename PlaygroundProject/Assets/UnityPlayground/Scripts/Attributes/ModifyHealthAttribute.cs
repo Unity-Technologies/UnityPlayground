@@ -2,12 +2,11 @@
 using System.Collections;
 
 [AddComponentMenu("Playground/Attributes/Modify Health")]
-[RequireComponent(typeof(PolygonCollider2D), typeof(Rigidbody2D))]
 public class ModifyHealthAttribute : MonoBehaviour
 {
 
+	public bool destroyWhenActivated = false;
 	public int healthChange = -1;
-
 
 	// This function gets called everytime this object collides with another
 	private void OnCollisionEnter2D(Collision2D collisionData)
@@ -17,6 +16,11 @@ public class ModifyHealthAttribute : MonoBehaviour
 		{
 			// subtract health from the player
 			healthScript.ModifyHealth(healthChange);
+
+			if(destroyWhenActivated)
+			{
+				Destroy(this.gameObject);
+			}
 		}
 	}
 
@@ -27,6 +31,11 @@ public class ModifyHealthAttribute : MonoBehaviour
 		{
 			// subtract health from the player
 			healthScript.ModifyHealth(healthChange);
+
+			if(destroyWhenActivated)
+			{
+				Destroy(this.gameObject);
+			}
 		}
 	}
 }
