@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 4123463}
   - component: {fileID: 4123464}
   m_Layer: 0
-  m_Name: foliagePack_051 (10)
+  m_Name: FoliagePack51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 11881750}
   - component: {fileID: 11881749}
   m_Layer: 0
-  m_Name: foliagePack_005 (13)
+  m_Name: FoliagePack5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -316,7 +316,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000011117960554, guid: 2003e2b60d20b4e5ea512bd20b9cdd04, type: 2}
       propertyPath: m_Name
-      value: Bee (2)
+      value: Bee
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2003e2b60d20b4e5ea512bd20b9cdd04, type: 2}
@@ -418,7 +418,7 @@ GameObject:
   - component: {fileID: 57009558}
   - component: {fileID: 57009557}
   m_Layer: 0
-  m_Name: Wall5 (2)
+  m_Name: Wall5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -563,7 +563,7 @@ GameObject:
   - component: {fileID: 92393686}
   - component: {fileID: 92393687}
   m_Layer: 0
-  m_Name: foliagePack_051 (15)
+  m_Name: FoliagePack51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -668,7 +668,7 @@ GameObject:
   - component: {fileID: 115373766}
   - component: {fileID: 115373765}
   m_Layer: 0
-  m_Name: foliagePack_005 (15)
+  m_Name: FoliagePack5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -787,7 +787,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000011117960554, guid: 2003e2b60d20b4e5ea512bd20b9cdd04, type: 2}
       propertyPath: m_Name
-      value: Bee (3)
+      value: Bee
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2003e2b60d20b4e5ea512bd20b9cdd04, type: 2}
@@ -807,7 +807,7 @@ GameObject:
   - component: {fileID: 241425901}
   - component: {fileID: 241425902}
   m_Layer: 0
-  m_Name: foliagePack_001 (11)
+  m_Name: FoliagePack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -922,7 +922,7 @@ GameObject:
   - component: {fileID: 377243473}
   - component: {fileID: 377243472}
   m_Layer: 0
-  m_Name: foliagePack_005 (14)
+  m_Name: FoliagePack5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1010,7 +1010,7 @@ GameObject:
   - component: {fileID: 404810255}
   - component: {fileID: 404810256}
   m_Layer: 0
-  m_Name: foliagePack_001 (5)
+  m_Name: FoliagePack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1114,7 +1114,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000010141761028, guid: 62bf5f4c55a554355bb7f0b398f8620c, type: 2}
       propertyPath: m_Name
-      value: StarCollectable (2)
+      value: StarCollectable
       objectReference: {fileID: 0}
     - target: {fileID: 212000011037795508, guid: 62bf5f4c55a554355bb7f0b398f8620c,
         type: 2}
@@ -1157,7 +1157,7 @@ GameObject:
   - component: {fileID: 554580262}
   - component: {fileID: 554580263}
   m_Layer: 0
-  m_Name: foliagePack_051 (16)
+  m_Name: FoliagePack51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1231,7 +1231,7 @@ GameObject:
   - component: {fileID: 556293313}
   - component: {fileID: 556293312}
   m_Layer: 0
-  m_Name: Wall5 (4)
+  m_Name: Wall5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1330,7 +1330,7 @@ GameObject:
   - component: {fileID: 585058546}
   - component: {fileID: 585058545}
   m_Layer: 0
-  m_Name: foliagePack_005 (10)
+  m_Name: FoliagePack5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1449,7 +1449,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000011117960554, guid: 2003e2b60d20b4e5ea512bd20b9cdd04, type: 2}
       propertyPath: m_Name
-      value: Bee (1)
+      value: Bee
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2003e2b60d20b4e5ea512bd20b9cdd04, type: 2}
@@ -1465,7 +1465,7 @@ GameObject:
   - component: {fileID: 625793746}
   - component: {fileID: 625793745}
   m_Layer: 0
-  m_Name: Wall (2)
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1629,7 +1629,7 @@ GameObject:
   - component: {fileID: 696406541}
   - component: {fileID: 696406540}
   m_Layer: 0
-  m_Name: foliagePack_005 (9)
+  m_Name: FoliagePack5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1946,7 +1946,7 @@ GameObject:
   - component: {fileID: 736864992}
   - component: {fileID: 736864993}
   m_Layer: 0
-  m_Name: foliagePack_051 (14)
+  m_Name: FoliagePack51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2019,7 +2019,7 @@ GameObject:
   - component: {fileID: 764471248}
   - component: {fileID: 764471249}
   m_Layer: 0
-  m_Name: foliagePack_051 (5)
+  m_Name: FoliagePack51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2092,7 +2092,7 @@ GameObject:
   - component: {fileID: 770615711}
   - component: {fileID: 770615712}
   m_Layer: 0
-  m_Name: foliagePack_051 (13)
+  m_Name: FoliagePack51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2165,7 +2165,7 @@ GameObject:
   - component: {fileID: 807463480}
   - component: {fileID: 807463481}
   m_Layer: 0
-  m_Name: foliagePack_001 (14)
+  m_Name: FoliagePack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2238,7 +2238,7 @@ GameObject:
   - component: {fileID: 958791494}
   - component: {fileID: 958791495}
   m_Layer: 0
-  m_Name: foliagePack_001 (10)
+  m_Name: FoliagePack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2312,7 +2312,7 @@ GameObject:
   - component: {fileID: 973354825}
   - component: {fileID: 973354824}
   m_Layer: 0
-  m_Name: Wall (4)
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2410,7 +2410,7 @@ GameObject:
   - component: {fileID: 991472313}
   - component: {fileID: 991472314}
   m_Layer: 0
-  m_Name: foliagePack_051 (6)
+  m_Name: FoliagePack51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2484,7 +2484,7 @@ GameObject:
   - component: {fileID: 1065752091}
   - component: {fileID: 1065752093}
   m_Layer: 0
-  m_Name: Wall5 (1)
+  m_Name: Wall5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2582,7 +2582,7 @@ GameObject:
   - component: {fileID: 1066118143}
   - component: {fileID: 1066118144}
   m_Layer: 0
-  m_Name: foliagePack_001 (12)
+  m_Name: FoliagePack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5088,7 +5088,7 @@ GameObject:
   - component: {fileID: 1202934703}
   - component: {fileID: 1202934704}
   m_Layer: 0
-  m_Name: foliagePack_001 (13)
+  m_Name: FoliagePack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5162,7 +5162,7 @@ GameObject:
   - component: {fileID: 1223559323}
   - component: {fileID: 1223559322}
   m_Layer: 0
-  m_Name: foliagePack_005 (6)
+  m_Name: FoliagePack5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5251,7 +5251,7 @@ GameObject:
   - component: {fileID: 1234343088}
   - component: {fileID: 1234343087}
   m_Layer: 0
-  m_Name: Wall (1)
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5418,7 +5418,7 @@ GameObject:
   - component: {fileID: 1290356998}
   - component: {fileID: 1290356999}
   m_Layer: 0
-  m_Name: foliagePack_051 (8)
+  m_Name: FoliagePack51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5492,7 +5492,7 @@ GameObject:
   - component: {fileID: 1325700313}
   - component: {fileID: 1325700312}
   m_Layer: 0
-  m_Name: Wall5 (3)
+  m_Name: Wall5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5596,7 +5596,7 @@ GameObject:
   - component: {fileID: 1402937727}
   - component: {fileID: 1402937726}
   m_Layer: 0
-  m_Name: foliagePack_005 (12)
+  m_Name: FoliagePack5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5723,7 +5723,7 @@ GameObject:
   - component: {fileID: 1456210853}
   - component: {fileID: 1456210852}
   m_Layer: 0
-  m_Name: foliagePack_005 (11)
+  m_Name: FoliagePack5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5811,7 +5811,7 @@ GameObject:
   - component: {fileID: 1480855687}
   - component: {fileID: 1480855688}
   m_Layer: 0
-  m_Name: foliagePack_051 (9)
+  m_Name: FoliagePack51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5885,7 +5885,7 @@ GameObject:
   - component: {fileID: 1558209701}
   - component: {fileID: 1558209700}
   m_Layer: 0
-  m_Name: foliagePack_005 (4)
+  m_Name: FoliagePack5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5974,7 +5974,7 @@ GameObject:
   - component: {fileID: 1603972984}
   - component: {fileID: 1603972983}
   m_Layer: 0
-  m_Name: foliagePack_005 (5)
+  m_Name: FoliagePack5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6135,7 +6135,7 @@ GameObject:
   - component: {fileID: 1621064185}
   - component: {fileID: 1621064186}
   m_Layer: 0
-  m_Name: foliagePack_001 (4)
+  m_Name: FoliagePack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6208,7 +6208,7 @@ GameObject:
   - component: {fileID: 1636127251}
   - component: {fileID: 1636127252}
   m_Layer: 0
-  m_Name: foliagePack_001 (6)
+  m_Name: FoliagePack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6312,7 +6312,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000010141761028, guid: 62bf5f4c55a554355bb7f0b398f8620c, type: 2}
       propertyPath: m_Name
-      value: StarCollectable (1)
+      value: StarCollectable
       objectReference: {fileID: 0}
     - target: {fileID: 212000011037795508, guid: 62bf5f4c55a554355bb7f0b398f8620c,
         type: 2}
@@ -6424,7 +6424,7 @@ GameObject:
   - component: {fileID: 1659516312}
   - component: {fileID: 1659516311}
   m_Layer: 0
-  m_Name: foliagePack_005 (7)
+  m_Name: FoliagePack5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6512,7 +6512,7 @@ GameObject:
   - component: {fileID: 1683420653}
   - component: {fileID: 1683420654}
   m_Layer: 0
-  m_Name: foliagePack_001 (9)
+  m_Name: FoliagePack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6617,7 +6617,7 @@ GameObject:
   - component: {fileID: 1716401582}
   - component: {fileID: 1716401583}
   m_Layer: 0
-  m_Name: foliagePack_051 (4)
+  m_Name: FoliagePack51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6690,7 +6690,7 @@ GameObject:
   - component: {fileID: 1724215541}
   - component: {fileID: 1724215542}
   m_Layer: 0
-  m_Name: foliagePack_001 (7)
+  m_Name: FoliagePack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6867,7 +6867,7 @@ GameObject:
   - component: {fileID: 1781309790}
   - component: {fileID: 1781309791}
   m_Layer: 0
-  m_Name: foliagePack_001 (8)
+  m_Name: FoliagePack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7332,6 +7332,11 @@ Prefab:
       propertyPath: scoreToWin
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 224000012685850840, guid: 0f6ae8712879c4f40bf6af3fe490badd,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
   m_IsPrefabParent: 0
@@ -7345,7 +7350,7 @@ GameObject:
   - component: {fileID: 1851519052}
   - component: {fileID: 1851519053}
   m_Layer: 0
-  m_Name: foliagePack_001 (15)
+  m_Name: FoliagePack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7418,7 +7423,7 @@ GameObject:
   - component: {fileID: 1878538345}
   - component: {fileID: 1878538344}
   m_Layer: 0
-  m_Name: foliagePack_001
+  m_Name: FoliagePack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7492,7 +7497,7 @@ GameObject:
   - component: {fileID: 1911498384}
   - component: {fileID: 1911498383}
   m_Layer: 0
-  m_Name: Wall (5)
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7591,7 +7596,7 @@ GameObject:
   - component: {fileID: 1961774524}
   - component: {fileID: 1961774523}
   m_Layer: 0
-  m_Name: foliagePack_005 (16)
+  m_Name: FoliagePack5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7679,7 +7684,7 @@ GameObject:
   - component: {fileID: 1995770390}
   - component: {fileID: 1995770391}
   m_Layer: 0
-  m_Name: foliagePack_051 (11)
+  m_Name: FoliagePack51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7752,7 +7757,7 @@ GameObject:
   - component: {fileID: 2001820655}
   - component: {fileID: 2001820656}
   m_Layer: 0
-  m_Name: foliagePack_051 (7)
+  m_Name: FoliagePack51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7825,7 +7830,7 @@ GameObject:
   - component: {fileID: 2032255985}
   - component: {fileID: 2032255986}
   m_Layer: 0
-  m_Name: foliagePack_051 (3)
+  m_Name: FoliagePack51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7904,7 +7909,7 @@ GameObject:
   - component: {fileID: 2089020981}
   - component: {fileID: 2089020980}
   m_Layer: 0
-  m_Name: foliagePack_005 (3)
+  m_Name: FoliagePack5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7992,7 +7997,7 @@ GameObject:
   - component: {fileID: 2105109016}
   - component: {fileID: 2105109017}
   m_Layer: 0
-  m_Name: foliagePack_051 (12)
+  m_Name: FoliagePack51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8066,7 +8071,7 @@ GameObject:
   - component: {fileID: 2114832130}
   - component: {fileID: 2114832129}
   m_Layer: 0
-  m_Name: foliagePack_005 (8)
+  m_Name: FoliagePack5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -290,7 +290,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 175624, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Name
-      value: LongBlock (14)
+      value: LongBlock
       objectReference: {fileID: 0}
     - target: {fileID: 21212332, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Sprite
@@ -345,7 +345,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 121912, guid: 2e23adf719b9a428c94221163d353aba, type: 2}
       propertyPath: m_Name
-      value: Coin (3)
+      value: Coin
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2e23adf719b9a428c94221163d353aba, type: 2}
@@ -622,7 +622,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 175624, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Name
-      value: LongBlock (8)
+      value: LongBlock
       objectReference: {fileID: 0}
     - target: {fileID: 21212332, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Sprite
@@ -677,7 +677,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 175624, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Name
-      value: LongBlock (4)
+      value: LongBlock
       objectReference: {fileID: 0}
     - target: {fileID: 21212332, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Sprite
@@ -866,7 +866,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 175624, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Name
-      value: LongBlock (17)
+      value: LongBlock
       objectReference: {fileID: 0}
     - target: {fileID: 449110, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -925,7 +925,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 175624, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Name
-      value: LongBlock (9)
+      value: LongBlock
       objectReference: {fileID: 0}
     - target: {fileID: 21212332, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Sprite
@@ -980,7 +980,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 164708, guid: 5b9bdbfaa9cc84a8daef7fb586b5242a, type: 2}
       propertyPath: m_Name
-      value: Block (10)
+      value: Block
       objectReference: {fileID: 0}
     - target: {fileID: 21279708, guid: 5b9bdbfaa9cc84a8daef7fb586b5242a, type: 2}
       propertyPath: m_Sprite
@@ -1035,7 +1035,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 175624, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Name
-      value: LongBlock (12)
+      value: LongBlock
       objectReference: {fileID: 0}
     - target: {fileID: 21212332, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Sprite
@@ -1090,7 +1090,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 175624, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Name
-      value: LongBlock (10)
+      value: LongBlock
       objectReference: {fileID: 0}
     - target: {fileID: 449110, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1149,7 +1149,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 175624, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Name
-      value: LongBlock (16)
+      value: LongBlock
       objectReference: {fileID: 0}
     - target: {fileID: 21212332, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Sprite
@@ -1251,7 +1251,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 175624, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Name
-      value: LongBlock (5)
+      value: LongBlock
       objectReference: {fileID: 0}
     - target: {fileID: 21212332, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Sprite
@@ -1392,7 +1392,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 175624, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Name
-      value: LongBlock (3)
+      value: LongBlock
       objectReference: {fileID: 0}
     - target: {fileID: 449110, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1451,7 +1451,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 164708, guid: 5b9bdbfaa9cc84a8daef7fb586b5242a, type: 2}
       propertyPath: m_Name
-      value: Block (6)
+      value: Block
       objectReference: {fileID: 0}
     - target: {fileID: 21279708, guid: 5b9bdbfaa9cc84a8daef7fb586b5242a, type: 2}
       propertyPath: m_Sprite
@@ -1506,7 +1506,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 175624, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Name
-      value: LongBlock (15)
+      value: LongBlock
       objectReference: {fileID: 0}
     - target: {fileID: 449110, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1565,7 +1565,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 175624, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Name
-      value: LongBlock (2)
+      value: LongBlock
       objectReference: {fileID: 0}
     - target: {fileID: 449110, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1624,7 +1624,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 175624, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Name
-      value: LongBlock (7)
+      value: LongBlock
       objectReference: {fileID: 0}
     - target: {fileID: 21212332, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Sprite
@@ -1721,7 +1721,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 175624, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Name
-      value: LongBlock (13)
+      value: LongBlock
       objectReference: {fileID: 0}
     - target: {fileID: 21212332, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Sprite
@@ -1849,7 +1849,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 164708, guid: 5b9bdbfaa9cc84a8daef7fb586b5242a, type: 2}
       propertyPath: m_Name
-      value: Block (4)
+      value: Block
       objectReference: {fileID: 0}
     - target: {fileID: 21279708, guid: 5b9bdbfaa9cc84a8daef7fb586b5242a, type: 2}
       propertyPath: m_Sprite
@@ -1908,7 +1908,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 121912, guid: 2e23adf719b9a428c94221163d353aba, type: 2}
       propertyPath: m_Name
-      value: Coin (1)
+      value: Coin
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2e23adf719b9a428c94221163d353aba, type: 2}
@@ -1954,7 +1954,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 121912, guid: 2e23adf719b9a428c94221163d353aba, type: 2}
       propertyPath: m_Name
-      value: Coin (2)
+      value: Coin
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2e23adf719b9a428c94221163d353aba, type: 2}
@@ -2096,7 +2096,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 164708, guid: 5b9bdbfaa9cc84a8daef7fb586b5242a, type: 2}
       propertyPath: m_Name
-      value: Block (5)
+      value: Block
       objectReference: {fileID: 0}
     - target: {fileID: 21279708, guid: 5b9bdbfaa9cc84a8daef7fb586b5242a, type: 2}
       propertyPath: m_Sprite
@@ -2198,7 +2198,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 175624, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Name
-      value: LongBlock (1)
+      value: LongBlock
       objectReference: {fileID: 0}
     - target: {fileID: 21212332, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Sprite
@@ -2253,7 +2253,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 175624, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Name
-      value: LongBlock (11)
+      value: LongBlock
       objectReference: {fileID: 0}
     - target: {fileID: 449110, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -2312,7 +2312,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 164708, guid: 5b9bdbfaa9cc84a8daef7fb586b5242a, type: 2}
       propertyPath: m_Name
-      value: Block (8)
+      value: Block
       objectReference: {fileID: 0}
     - target: {fileID: 21279708, guid: 5b9bdbfaa9cc84a8daef7fb586b5242a, type: 2}
       propertyPath: m_Sprite
@@ -2367,7 +2367,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 164708, guid: 5b9bdbfaa9cc84a8daef7fb586b5242a, type: 2}
       propertyPath: m_Name
-      value: Block (9)
+      value: Block
       objectReference: {fileID: 0}
     - target: {fileID: 21279708, guid: 5b9bdbfaa9cc84a8daef7fb586b5242a, type: 2}
       propertyPath: m_Sprite
@@ -2422,7 +2422,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 164708, guid: 5b9bdbfaa9cc84a8daef7fb586b5242a, type: 2}
       propertyPath: m_Name
-      value: Block (2)
+      value: Block
       objectReference: {fileID: 0}
     - target: {fileID: 21279708, guid: 5b9bdbfaa9cc84a8daef7fb586b5242a, type: 2}
       propertyPath: m_Sprite
@@ -2477,7 +2477,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 164708, guid: 5b9bdbfaa9cc84a8daef7fb586b5242a, type: 2}
       propertyPath: m_Name
-      value: Block (3)
+      value: Block
       objectReference: {fileID: 0}
     - target: {fileID: 21279708, guid: 5b9bdbfaa9cc84a8daef7fb586b5242a, type: 2}
       propertyPath: m_Sprite
@@ -2532,7 +2532,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 175624, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Name
-      value: LongBlock (6)
+      value: LongBlock
       objectReference: {fileID: 0}
     - target: {fileID: 21212332, guid: 08b756736ae104f27bd53762481020c2, type: 2}
       propertyPath: m_Sprite
@@ -2587,7 +2587,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 164708, guid: 5b9bdbfaa9cc84a8daef7fb586b5242a, type: 2}
       propertyPath: m_Name
-      value: Block (1)
+      value: Block
       objectReference: {fileID: 0}
     - target: {fileID: 21279708, guid: 5b9bdbfaa9cc84a8daef7fb586b5242a, type: 2}
       propertyPath: m_Sprite
