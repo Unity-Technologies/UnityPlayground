@@ -74,7 +74,6 @@ public class PatrolInspector : InspectorBase
 		EditorGUILayout.PropertyField(serializedObject.FindProperty("speed"));
 
 		GUILayout.Space(5);
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("backToStart"));
 		list.DoLayoutList();
 
 		//Button to reset all waypoints
@@ -116,6 +115,7 @@ public class PatrolInspector : InspectorBase
 				EditorGUI.BeginChangeCheck();
 				Vector3 gizmoPos = Handles.PositionHandle(patrolScript.waypoints[i], Quaternion.identity);
 				
+				//Draws a dotted line and arrow pointing from one stop to the next
 				orientation = (gizmoPos-lastPos).normalized;
 				Handles.DrawDottedLine(lastPos, gizmoPos, 8f);
 				Handles.ArrowHandleCap(0, gizmoPos-(orientation * 1.2f), Quaternion.LookRotation(orientation, -Vector3.forward) , 1f, EventType.Repaint);
@@ -134,12 +134,15 @@ public class PatrolInspector : InspectorBase
 			}
 		}
 
-		if(patrolScript.backToStart
-			&& !Application.isPlaying)
+		//When there's more than two points (starting position and one point in the list), draw a path from the last point back to the start
+		if(!Application.isPlaying
+		&& patrolScript.waypoints.Length > 1)
 		{
-			orientation = (patrolScript.transform.position-lastPos).normalized;
 			Handles.DrawDottedLine(lastPos, patrolScript.transform.position, 8f);
-			Handles.ArrowHandleCap(0, patrolScript.transform.position-(orientation * 2f), Quaternion.LookRotation(orientation, -Vector3.forward), 1f, EventType.Repaint);
 		}
+		
+		//Draw an extra arrow that reconnects to the starting position
+		orientation = (patrolScript.transform.position-lastPos).normalized;
+		Handles.ArrowHandleCap(0, patrolScript.transform.position-(orientation * 2f), Quaternion.LookRotation(orientation, -Vector3.forward), 1f, EventType.Repaint);
 	}
 }

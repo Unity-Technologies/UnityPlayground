@@ -6,7 +6,7 @@ using UnityEditor;
 [CustomEditor(typeof(ConditionArea))]
 public class ConditionAreaInspector : ConditionInspectorBase
 {
-	private string explanation = "Perform actions when a gameObject enters, exits, or stays inside the trigger collider (in this last case you get to choose the frequency).";
+	private string explanation = "Perform actions when a GameObject enters, exits, or stays inside the trigger collider (in this last case you get to choose the frequency).";
 
 	public override void OnInspectorGUI()
 	{

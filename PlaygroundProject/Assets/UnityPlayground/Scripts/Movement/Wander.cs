@@ -14,7 +14,7 @@ public class Wander : Physics2DObject
 
 	[Header("Orientation")]
 	public bool orientToDirection = false;
-	// The direction that the gameObject will be oriented to
+	// The direction that the GameObject will be oriented to
 	public Enums.Directions lookAxis = Enums.Directions.Up;
 
 
@@ -31,7 +31,7 @@ public class Wander : Physics2DObject
 			directionChangeInterval = 0.1f;
 		}
 			
-		// we note down the initial position of the gameObject in case it has to hover around that (see keepNearStartingPoint)
+		// we note down the initial position of the GameObject in case it has to hover around that (see keepNearStartingPoint)
 		startingPoint = transform.position;
 
 		StartCoroutine(ChangeDirection());
@@ -51,10 +51,10 @@ public class Wander : Physics2DObject
 			if(keepNearStartingPoint)
 			{
 				// we measure the distance from it...
-				float distanceFromStart = Vector3.Distance(startingPoint, transform.position);
-				if(distanceFromStart > 1f + (speed * 0.1f)) // and if it's more than 2...
+				float distanceFromStart = Vector2.Distance(startingPoint, transform.position);
+				if(distanceFromStart > 1f + (speed * 0.1f)) // and if it's too much...
 				{
-					// we get a direction that points back to the starting point
+					//... we get a direction that points back to the starting point
 					direction = (startingPoint - transform.position).normalized;
 				}
 			}

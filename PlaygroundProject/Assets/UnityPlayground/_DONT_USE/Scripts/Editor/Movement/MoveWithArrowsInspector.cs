@@ -6,7 +6,7 @@ using UnityEditor;
 [CustomEditor(typeof(Move))]
 public class MoveInspector : InspectorBase
 {
-	private string explanation = "The gameObject moves at the pressing of some keys. Choose between Arrows or WASD.";
+	private string explanation = "The GameObject moves at the pressing of some keys. Choose between Arrows or WASD.";
 	private string constraintsReminder = "If you want, you can constrain movement on the X/Y axes in the Rigidbody2D's properties.";
 
 	public override void OnInspectorGUI()

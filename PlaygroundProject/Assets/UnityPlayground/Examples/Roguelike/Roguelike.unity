@@ -2858,11 +2858,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22419810, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0.000061035156
+      value: 0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 22470998, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0.000061035156
+      value: 0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 224000012685850840, guid: 0f6ae8712879c4f40bf6af3fe490badd,
         type: 2}
@@ -4777,7 +4777,7 @@ GameObject:
   - component: {fileID: 1102525767}
   - component: {fileID: 1102525772}
   m_Layer: 0
-  m_Name: Girl_Player
+  m_Name: Adventurer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

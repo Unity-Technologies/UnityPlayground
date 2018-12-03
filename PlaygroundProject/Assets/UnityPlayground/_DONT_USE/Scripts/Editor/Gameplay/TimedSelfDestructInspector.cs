@@ -6,7 +6,7 @@ using UnityEditor;
 [CustomEditor(typeof(TimedSelfDestruct))]
 public class TimedSelfDestructInspector : InspectorBase
 {
-	private string explanation = "This gameObject will self destruct after a set amount of time, useful for bullets so they don't accumulate.";
+	private string explanation = "This GameObject will self destruct after a set amount of time, useful for bullets so they don't accumulate.";
 
 	public override void OnInspectorGUI()
 	{

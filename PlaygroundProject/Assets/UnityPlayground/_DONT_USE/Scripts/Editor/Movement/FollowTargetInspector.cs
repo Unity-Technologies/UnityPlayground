@@ -6,7 +6,7 @@ using UnityEditor;
 [CustomEditor(typeof(FollowTarget))]
 public class FollowTargetInspector : InspectorBase
 {
-	private string explanation = "This gameObject will pursue a target constantly.";
+	private string explanation = "This GameObject will pursue a target constantly.";
 
 	public override void OnInspectorGUI()
 	{

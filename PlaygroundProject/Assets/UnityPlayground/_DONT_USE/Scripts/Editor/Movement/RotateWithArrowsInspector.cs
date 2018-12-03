@@ -6,7 +6,7 @@ using UnityEditor;
 [CustomEditor(typeof(Rotate))]
 public class RotateInspector : InspectorBase
 {
-	private string explanation = "The gameObject rotates at the press of the left-right arrow keys (or A-D keys for player 2).";
+	private string explanation = "The GameObject rotates when pressing the Arrow keys or WASD.";
 
 	public override void OnInspectorGUI()
 	{

@@ -6,7 +6,7 @@ using UnityEditor;
 [CustomEditor(typeof(Wander))]
 public class WanderInspector : InspectorBase
 {
-	private string explanation = "The gameObject will move around randomly. Use keepNearStartingPoint if you want it to keep near its starting position.";
+	private string explanation = "The GameObject will move around randomly. Use keepNearStartingPoint if you want it to keep near its starting position.";
 
 	public override void OnInspectorGUI()
 	{

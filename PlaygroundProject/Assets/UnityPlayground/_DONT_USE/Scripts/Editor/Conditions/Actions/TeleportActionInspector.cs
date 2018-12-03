@@ -7,7 +7,7 @@ using UnityEditor;
 public class TeleportActionInspector : InspectorBase
 {
 	private string explanation = "Use this script to teleport this or another object to a new location.";
-	private string objectWarning = "WARNING: If you don't assign a gameObject, this gameObject will be teleported!";
+	private string objectWarning = "WARNING: If you don't assign a GameObject, this GameObject will be teleported!";
 
 	public override void OnInspectorGUI()
 	{

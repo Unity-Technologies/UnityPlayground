@@ -52,7 +52,7 @@ public class Move : Physics2DObject
 		movement = new Vector2(moveHorizontal, moveVertical);
 
 
-		//rotate the gameObject towards the direction of movement
+		//rotate the GameObject towards the direction of movement
 		//the axis to look can be decided with the "axis" variable
 		if(orientToDirection)
 		{

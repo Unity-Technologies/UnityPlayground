@@ -65,7 +65,7 @@ public static class Utils
 		Gizmos.DrawMesh(rotateArrowMesh, position, Quaternion.identity, new Vector3(Mathf.Sign(strength), 1f, Mathf.Sign(strength)));
 	}
 
-	//Draws a gizmo in a certain direction, with support for an extraAngle (to make it relative to the gameObject's rotation) and a specific scale
+	//Draws a gizmo in a certain direction, with support for an extraAngle (to make it relative to the GameObject's rotation) and a specific scale
 	public static void DrawGizmo(Mesh meshToDraw, Vector3 position, Vector2 direction, float extraAngle, float scale)
 	{
 		Gizmos.color = Color.green;

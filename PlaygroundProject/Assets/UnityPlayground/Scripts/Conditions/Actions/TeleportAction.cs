@@ -10,7 +10,7 @@ public class TeleportAction : Action
 
 
 
-	// Moves the gameObject instantly to a custom position
+	// Moves the GameObject instantly to a custom position
 	public override bool ExecuteAction(GameObject dataObject)
 	{
 		Rigidbody2D rb2D;

@@ -14,7 +14,6 @@ public class Patrol : Physics2DObject
 	public Enums.Directions lookAxis = Enums.Directions.Up;
 
 	[Header("Stops")]
-	public bool backToStart = true;
 	public Vector2[] waypoints;
 
 	private int currentTargetIndex;
@@ -27,18 +26,15 @@ public class Patrol : Physics2DObject
 			Utils.SetAxisTowards(lookAxis, transform, ((Vector3)waypoints[currentTargetIndex] - transform.position).normalized);
 		}
 
-		if(backToStart)
+		Vector2[] newWaypoints = new Vector2[waypoints.Length+1];
+		int w = 0;
+		for(int i=0; i<waypoints.Length; i++)
 		{
-			Vector2[] newWaypoints = new Vector2[waypoints.Length+1];
-			int w = 0;
-			for(int i=0; i<waypoints.Length; i++)
-			{
-				newWaypoints[i] = waypoints[i];
-				w = i;
-			}
-			newWaypoints[w+1] = transform.position;
-			waypoints = newWaypoints;
+			newWaypoints[i] = waypoints[i];
+			w = i;
 		}
+		newWaypoints[w+1] = transform.position;
+		waypoints = newWaypoints;
 	}
 	
 	public void FixedUpdate ()

@@ -20,7 +20,7 @@ public class DestroyAction : Action
 			newObject.transform.position = (target == Enums.Targets.ObjectThatCollided) ? otherObject.transform.position : this.transform.position;
 		}
 
-		//remove the gameObject from the scene (destroy)
+		//remove the GameObject from the scene (destroy)
 		if(target == Enums.Targets.ObjectThatCollided)
 		{
 			if(otherObject != null)

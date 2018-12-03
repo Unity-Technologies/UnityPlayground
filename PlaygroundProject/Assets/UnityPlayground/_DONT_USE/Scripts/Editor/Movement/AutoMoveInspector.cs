@@ -6,7 +6,7 @@ using UnityEditor;
 [CustomEditor(typeof(AutoMove))]
 public class AutoMoveInspector : InspectorBase
 {
-	private string explanation = "The gameObject moves automatically in a specific direction.";
+	private string explanation = "The GameObject moves automatically in a specific direction.";
 
 	public override void OnInspectorGUI()
 	{

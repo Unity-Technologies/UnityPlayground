@@ -6,7 +6,7 @@ using UnityEditor;
 [CustomEditor(typeof(Jump))]
 public class JumpInspector : InspectorBase
 {
-	private string explanation = "Makes the gameObject jump at the press of a button.";
+	private string explanation = "Makes the GameObject jump at the press of a button.";
 	private bool checkGround;
 	private string checkGroundTip = "Enable ground check to restrict the Player from jumping while in the air.";
 

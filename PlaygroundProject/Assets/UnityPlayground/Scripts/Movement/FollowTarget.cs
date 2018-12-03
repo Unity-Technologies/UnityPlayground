@@ -21,6 +21,10 @@ public class FollowTarget : Physics2DObject
 	// FixedUpdate is called once per frame
 	void FixedUpdate ()
 	{
+		//do nothing if the target hasn't been assigned or it was detroyed for some reason
+		if(target == null)
+			return;
+
 		//look towards the target
 		if(lookAtTarget)
 		{
