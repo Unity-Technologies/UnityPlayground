@@ -2366,7 +2366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75bd2a7045c0846acaee583b24913cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkFor: Coin
+  checkFor: 0
   amountNeeded: 3
 --- !u!4 &587212057 stripped
 Transform:
@@ -2460,7 +2460,7 @@ GameObject:
   - component: {fileID: 603342364}
   - component: {fileID: 603342368}
   m_Layer: 0
-  m_Name: Trigger
+  m_Name: InvisibleTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2679,7 +2679,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22469592, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 22469592, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -3129,7 +3129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 746468260}
   m_Layer: 0
-  m_Name: CoinResource
+  m_Name: CoinResources
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3149,7 +3149,7 @@ Transform:
   - {fileID: 1713222718}
   - {fileID: 848761281}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &788081986
 Prefab:
@@ -3391,7 +3391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 815166474}
   m_Layer: 0
-  m_Name: Room
+  m_Name: Rooms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3407,8 +3407,8 @@ Transform:
   m_LocalPosition: {x: 0.22, y: 0.20595503, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 937973937}
   - {fileID: 1906777696}
+  - {fileID: 937973937}
   - {fileID: 1044972606}
   - {fileID: 403501319}
   - {fileID: 1084378931}
@@ -3610,7 +3610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75bd2a7045c0846acaee583b24913cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkFor: Key
+  checkFor: 1
   amountNeeded: 1
 --- !u!114 &843860223
 MonoBehaviour:
@@ -4014,7 +4014,7 @@ Transform:
   - {fileID: 241902842}
   - {fileID: 1236645738}
   m_Father: {fileID: 815166474}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &955701169
 Prefab:
@@ -4907,7 +4907,7 @@ GameObject:
   - component: {fileID: 1102525767}
   - component: {fileID: 1102525772}
   m_Layer: 0
-  m_Name: GirlPlayer
+  m_Name: Adventurer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5036,7 +5036,7 @@ Transform:
   - {fileID: 73283735}
   - {fileID: 1206067529}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!210 &1102525772
 SortingGroup:
@@ -6655,6 +6655,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -8514,7 +8515,7 @@ GameObject:
   - component: {fileID: 1906777698}
   - component: {fileID: 1906777697}
   m_Layer: 0
-  m_Name: Ground
+  m_Name: Secret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8532,7 +8533,7 @@ Transform:
   m_Children:
   - {fileID: 1947475803}
   m_Father: {fileID: 815166474}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1906777697
 MonoBehaviour:
@@ -8851,7 +8852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7f86633aef54b0dbb99c07a0a64442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceType: Star
+  resourceIndex: 4
   amount: 1
 --- !u!58 &1947475805
 CircleCollider2D:

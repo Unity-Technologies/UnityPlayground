@@ -36,7 +36,7 @@ public class InventoryResourcesInspector : Editor
 
 	protected void OnEnable()
 	{
-		list = new ReorderableList(serializedObject, serializedObject.FindProperty("resourcesTypes"), true, true, true, true);
+		list = new ReorderableList(serializedObject, serializedObject.FindProperty("resourcesTypes"), false, true, true, true);
 
 		//called for every element that has to be drawn in the ReorderableList
 		list.drawElementCallback =  (Rect rect, int index, bool isActive, bool isFocused) => {

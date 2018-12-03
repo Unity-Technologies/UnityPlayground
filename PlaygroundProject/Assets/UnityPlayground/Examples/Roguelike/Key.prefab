@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7f86633aef54b0dbb99c07a0a64442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceType: Key
+  resourceIndex: 1
   amount: 1
 --- !u!212 &212000012756416480
 SpriteRenderer:
