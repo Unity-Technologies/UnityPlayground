@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 212029635793209246}
   - component: {fileID: 210170384727234474}
   m_Layer: 0
-  m_Name: Lora'sGhost
+  m_Name: LorasGhost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

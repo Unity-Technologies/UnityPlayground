@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 64683279}
   - component: {fileID: 64683280}
   m_Layer: 0
-  m_Name: Block (1)
+  m_Name: Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 950081912}
   - component: {fileID: 950081913}
   m_Layer: 0
-  m_Name: Block (2)
+  m_Name: Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -838,7 +838,7 @@ GameObject:
   - component: {fileID: 1071988532}
   - component: {fileID: 1071988531}
   m_Layer: 0
-  m_Name: Rawbot
+  m_Name: Robot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -911,7 +911,7 @@ GameObject:
   - component: {fileID: 1377767125}
   - component: {fileID: 1377767126}
   m_Layer: 0
-  m_Name: crane
+  m_Name: Crane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1118,7 +1118,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -1146,7 +1145,7 @@ GameObject:
   - component: {fileID: 1786152667}
   - component: {fileID: 1786152668}
   m_Layer: 0
-  m_Name: crane (1)
+  m_Name: Crane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

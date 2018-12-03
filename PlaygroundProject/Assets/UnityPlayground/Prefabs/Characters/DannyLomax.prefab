@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 4849007245430820}
   - component: {fileID: 212187071199673070}
   m_Layer: 0
-  m_Name: Flag-Blue
+  m_Name: FlagBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 4504328945313100}
   - component: {fileID: 212260817076558560}
   m_Layer: 0
-  m_Name: Hat-7
+  m_Name: Hat7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

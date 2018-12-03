@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 68343760}
   - component: {fileID: 68343759}
   m_Layer: 0
-  m_Name: space (3)
+  m_Name: Space
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 198280999}
   - component: {fileID: 198280998}
   m_Layer: 0
-  m_Name: MoonSoil (12)
+  m_Name: MoonSoil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 224400525}
   - component: {fileID: 224400527}
   m_Layer: 0
-  m_Name: Base (2)
+  m_Name: Base
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -412,7 +412,7 @@ GameObject:
   - component: {fileID: 347470974}
   - component: {fileID: 347470973}
   m_Layer: 0
-  m_Name: crane (2)
+  m_Name: Crane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 376087835}
   - component: {fileID: 376087834}
   m_Layer: 0
-  m_Name: MoonSoil (1)
+  m_Name: MoonSoil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -693,7 +693,7 @@ GameObject:
   - component: {fileID: 525384930}
   - component: {fileID: 525384929}
   m_Layer: 0
-  m_Name: crane (3)
+  m_Name: Crane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -918,7 +918,7 @@ GameObject:
   - component: {fileID: 819600998}
   - component: {fileID: 819600997}
   m_Layer: 0
-  m_Name: space (9)
+  m_Name: Space
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1123,7 +1123,7 @@ GameObject:
   - component: {fileID: 919734967}
   - component: {fileID: 919734966}
   m_Layer: 0
-  m_Name: space
+  m_Name: Space
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1196,7 +1196,7 @@ GameObject:
   - component: {fileID: 923851792}
   - component: {fileID: 923851791}
   m_Layer: 0
-  m_Name: crane (1)
+  m_Name: Crane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1343,7 +1343,7 @@ GameObject:
   - component: {fileID: 1011921052}
   - component: {fileID: 1011921051}
   m_Layer: 0
-  m_Name: MoonSoil (6)
+  m_Name: MoonSoil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1478,7 +1478,7 @@ GameObject:
   - component: {fileID: 1090566987}
   - component: {fileID: 1090566986}
   m_Layer: 0
-  m_Name: MoonSoil (10)
+  m_Name: MoonSoil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1595,7 +1595,7 @@ GameObject:
   - component: {fileID: 1114022085}
   - component: {fileID: 1114022084}
   m_Layer: 0
-  m_Name: MoonSoil (2)
+  m_Name: MoonSoil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1722,7 +1722,7 @@ GameObject:
   - component: {fileID: 1252396173}
   - component: {fileID: 1252396172}
   m_Layer: 0
-  m_Name: space (2)
+  m_Name: Space
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1796,7 +1796,7 @@ GameObject:
   - component: {fileID: 1306642027}
   - component: {fileID: 1306642026}
   m_Layer: 0
-  m_Name: MoonSoil (8)
+  m_Name: MoonSoil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1931,7 +1931,7 @@ GameObject:
   - component: {fileID: 1401138372}
   - component: {fileID: 1401138371}
   m_Layer: 0
-  m_Name: MoonSoil (13)
+  m_Name: MoonSoil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2047,7 +2047,7 @@ GameObject:
   - component: {fileID: 1558040004}
   - component: {fileID: 1558040003}
   m_Layer: 0
-  m_Name: space (10)
+  m_Name: Space
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2325,11 +2325,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22470998, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0.000061035156
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22419810, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0.000061035156
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000012685850840, guid: 0f6ae8712879c4f40bf6af3fe490badd,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0f6ae8712879c4f40bf6af3fe490badd, type: 2}
@@ -2449,7 +2454,7 @@ GameObject:
   - component: {fileID: 1640467023}
   - component: {fileID: 1640467022}
   m_Layer: 0
-  m_Name: space (1)
+  m_Name: Space
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2740,7 +2745,7 @@ GameObject:
   - component: {fileID: 1748980125}
   - component: {fileID: 1748980124}
   m_Layer: 0
-  m_Name: metal
+  m_Name: Metal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2905,7 +2910,7 @@ GameObject:
   - component: {fileID: 1760056490}
   - component: {fileID: 1760056489}
   m_Layer: 0
-  m_Name: MoonSoil (5)
+  m_Name: MoonSoil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3032,7 +3037,7 @@ GameObject:
   - component: {fileID: 1874309040}
   - component: {fileID: 1874309039}
   m_Layer: 0
-  m_Name: crane
+  m_Name: Crane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3106,7 +3111,7 @@ GameObject:
   - component: {fileID: 1883852927}
   - component: {fileID: 1883852926}
   m_Layer: 0
-  m_Name: MoonSoil (11)
+  m_Name: MoonSoil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3223,7 +3228,7 @@ GameObject:
   - component: {fileID: 1912924394}
   - component: {fileID: 1912924393}
   m_Layer: 0
-  m_Name: MoonSoil (4)
+  m_Name: MoonSoil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3351,7 +3356,7 @@ GameObject:
   - component: {fileID: 1963179089}
   - component: {fileID: 1963179091}
   m_Layer: 0
-  m_Name: Base (1)
+  m_Name: Base
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3450,7 +3455,7 @@ GameObject:
   - component: {fileID: 2072709962}
   - component: {fileID: 2072709961}
   m_Layer: 0
-  m_Name: MoonSoil (3)
+  m_Name: MoonSoil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3585,7 +3590,7 @@ GameObject:
   - component: {fileID: 2090775309}
   - component: {fileID: 2090775308}
   m_Layer: 0
-  m_Name: MoonSoil (7)
+  m_Name: MoonSoil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3720,7 +3725,7 @@ GameObject:
   - component: {fileID: 2110059150}
   - component: {fileID: 2110059149}
   m_Layer: 0
-  m_Name: MoonSoil (9)
+  m_Name: MoonSoil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
