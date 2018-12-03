@@ -7,16 +7,13 @@ public class ConsumeResourceAction : Action
 {
 	[Header("Resource")]
 
-	public string checkFor = "Coal";
+	public int checkFor = 0;
 	public int amountNeeded = 1;
 
-
-	//reference to the UI
 	private UIScript userInterface;
 
 
 
-	// Start is called at the beginning
 	private void Start()
 	{
 		// Find the UI in the scene and store a reference for later use
@@ -27,15 +24,23 @@ public class ConsumeResourceAction : Action
 
 	public override bool ExecuteAction(GameObject dataObject)
 	{
-		bool hasEnoughResource = userInterface.CheckIfHasResources(checkFor, amountNeeded);
-
-		if(hasEnoughResource)
+		if(userInterface != null)
 		{
-			//consume the resource and update the UI
-			userInterface.ConsumeResource(checkFor, amountNeeded);
-		}
+			bool hasEnoughResource = userInterface.CheckIfHasResources(checkFor, amountNeeded);
 
-		return hasEnoughResource;
+			if(hasEnoughResource)
+			{
+				//consume the resource and update the UI
+				userInterface.ConsumeResource(checkFor, amountNeeded);
+			}
+
+			return hasEnoughResource;
+		}
+		else
+		{
+			Debug.LogWarning("User Interface prefab has not been found in the scene. The action can't execute!");
+			return false;
+		}
 	}
 
 

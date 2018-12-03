@@ -8,7 +8,7 @@ public class CreateObjectAction : Action
 	public Vector2 newPosition;
 	public bool relativeToThisObject;
 		
-	// Moves the GameObject instantly to a custom position
+	// Creates a new GameObject
 	public override bool ExecuteAction(GameObject dataObject)
 	{
 		if(prefabToCreate != null)
@@ -29,6 +29,7 @@ public class CreateObjectAction : Action
 		}
 		else
 		{
+			Debug.LogWarning("There is no Prefab assigned to this CreateObjectAction, so a new object can't be created.");
 			return false;
 		}
 	}

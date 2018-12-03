@@ -29,7 +29,7 @@ public class TeleportAction : Action
 		}
 
 
-		//bring the object to an halt
+		//in case the object has physics, we can bring it to an halt
 		if(stopMovements
 			&& rb2D != null)
 		{

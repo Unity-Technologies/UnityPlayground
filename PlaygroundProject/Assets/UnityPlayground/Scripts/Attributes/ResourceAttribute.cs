@@ -6,7 +6,7 @@ using System.Collections;
 public class ResourceAttribute : MonoBehaviour
 {
 	//this is actually more a name/identifier than a type, but from the kids' perspective it makes sense that they are inputting the "type of resource"
-	public string resourceType = "Coal";
+	public int resourceIndex = 0;
 	public int amount = 1;
 
 	private UIScript userInterface;
@@ -31,7 +31,11 @@ public class ResourceAttribute : MonoBehaviour
 		{
 			if(userInterface != null)
 			{
-				userInterface.AddResource(resourceType, amount, GetComponent<SpriteRenderer>().sprite);
+				userInterface.AddResource(resourceIndex, amount, GetComponent<SpriteRenderer>().sprite);
+			}
+			else
+			{
+				Debug.LogWarning("User Interface is not in the scene, so the resource cannot be displayed and put in the inventory.");
 			}
 
 			Destroy(gameObject);

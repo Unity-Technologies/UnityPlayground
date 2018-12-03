@@ -7,7 +7,6 @@ public class DestroyForPointsAttribute : MonoBehaviour
 	private UIScript userInterface;
 
 
-	// Start is called at the beginning of the game
 	private void Start()
 	{
 		// Find the UI in the scene and store a reference for later use
@@ -35,6 +34,14 @@ public class DestroyForPointsAttribute : MonoBehaviour
 				{
 					userInterface.AddOnePoint(b.playerId);
 				}
+				else
+				{
+					Debug.Log("Use a BulletAttribute on one of the objects involved in the collision if you want one of the players to receive points for destroying the target.");
+				}
+			}
+			else
+			{
+				Debug.Log("There is no UI in the scene, hence points can't be displayed.");
 			}
 
 			// then destroy this object

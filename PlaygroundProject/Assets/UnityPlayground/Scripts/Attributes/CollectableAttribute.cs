@@ -8,7 +8,6 @@ public class CollectableAttribute : MonoBehaviour
 	private UIScript userInterface;
 
 
-	// Start is called at the beginning
 	private void Start()
 	{
 		// Find the UI in the scene and store a reference for later use

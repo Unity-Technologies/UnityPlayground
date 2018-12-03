@@ -10,7 +10,7 @@ using UnityEditorInternal;
 public class ComponentInspector : Editor {
 
 	//Color proColor = (Color) new Color32 (56, 56, 56, 255);
-   // Color plebColor = (Color) new Color32 (194, 194, 194, 255);
+   // Color persColor = (Color) new Color32 (194, 194, 194, 255);
 
 	protected override void OnHeaderGUI()
 	{
@@ -22,7 +22,7 @@ public class ComponentInspector : Editor {
 		
 		/*
  
-        //EditorGUI.DrawRect (rect, EditorGUIUtility.isProSkin ? proColor : plebColor);
+        //EditorGUI.DrawRect (rect, EditorGUIUtility.isProSkin ? proColor : persColor);
 
 		Rect buttonPos = new Rect(EditorGUIUtility.currentViewWidth - 60, rect.y-EditorGUIUtility.singleLineHeight, 18, EditorGUIUtility.singleLineHeight-2);
 		GUI.backgroundColor = Color.red;

@@ -6,10 +6,12 @@ public class InspectorBase : Editor
 {
 	private SerializedProperty prop;
 
-	private string prefabNotSceneHint = "WARNING: Select a Prefab from Project panel, not an object in the Hierarchy!";
-	private string selectPrefabHint = "WARNING: No Prefab selected!";
-	private string colliderWarning = "WARNING: You need to make sure the associated Collider2D has the \"Is Trigger\" option disabled for this script to work!";
-	private string triggerWarning = "WARNING: You need to make sure the associated Collider2D has the \"Is Trigger\" option enabled for this script to work!";
+	private string prefabNotSceneHint = "Select a Prefab from Project panel, not an object in the Hierarchy!";
+	private string selectPrefabHint = "No Prefab selected!";
+	private string colliderWarning = "Disable \"Is Trigger\" on the Collider to make this script work!";
+	private string triggerWarning = "Enable \"Is Trigger\" on the Collider to make this script work!";
+
+	private int preWarningSpace = 5;
 
 	// Draws the regular Inspector with all the properties, but minus the Script field, for more clarity
 	public void DrawDefaultInspectorMinusScript()
@@ -28,6 +30,7 @@ public class InspectorBase : Editor
 			//if scene.name is Null, then the GameObject is coming from the Project and is probably a prefab
 			if(!string.IsNullOrEmpty(go.scene.name))
 			{
+				GUILayout.Space(preWarningSpace);
 				EditorGUILayout.HelpBox(prefabNotSceneHint, MessageType.Warning);
 			}
 
@@ -35,6 +38,7 @@ public class InspectorBase : Editor
 		}
 		else
 		{
+			GUILayout.Space(preWarningSpace);
 			EditorGUILayout.HelpBox(selectPrefabHint, MessageType.Warning); //no prefab selected
 
 			return false;
@@ -55,6 +59,7 @@ public class InspectorBase : Editor
 				//if scene.name is Null, then the GameObject is coming from the Project and is probably a prefab
 				if(!string.IsNullOrEmpty(go.scene.name))
 				{
+					GUILayout.Space(preWarningSpace);
 					EditorGUILayout.HelpBox(prefabNotSceneHint, MessageType.Warning);
 				}
 			}
@@ -94,11 +99,13 @@ public class InspectorBase : Editor
 
 		if(isTriggerNeeded && !isTrigger)
 		{
+			GUILayout.Space(preWarningSpace);
 			EditorGUILayout.HelpBox(triggerWarning, MessageType.Warning);
 		}
 
 		if(!isTriggerNeeded && isTrigger)
 		{
+			GUILayout.Space(preWarningSpace);
 			EditorGUILayout.HelpBox(colliderWarning, MessageType.Warning);
 		}
 

@@ -28,7 +28,7 @@ public class UIScript : MonoBehaviour
 	// Internal variables to keep track of score, health, and resources, win state
 	private int[] scores = new int[2];
 	private int[] playersHealth = new int[2];
-	private Dictionary<string, ResourceStruct> resourcesDict = new Dictionary<string, ResourceStruct>(); //holds a reference to all the resources collected, and to their UI
+	private Dictionary<int, ResourceStruct> resourcesDict = new Dictionary<int, ResourceStruct>(); //holds a reference to all the resources collected, and to their UI
     private bool gameOver = false; //this gets changed when the game is won OR lost
 
 
@@ -146,7 +146,7 @@ public class UIScript : MonoBehaviour
 
 
 	//Adds a resource to the dictionary, and to the UI
-	public void AddResource(string resourceType, int pickedUpAmount, Sprite graphics)
+	public void AddResource(int resourceType, int pickedUpAmount, Sprite graphics)
 	{
 		if(resourcesDict.ContainsKey(resourceType))
 		{
@@ -170,7 +170,7 @@ public class UIScript : MonoBehaviour
 
 
 	//checks if a certain resource is in the inventory, in the needed quantity
-	public bool CheckIfHasResources(string resourceType, int amountNeeded = 1)
+	public bool CheckIfHasResources(int resourceType, int amountNeeded = 1)
 	{
 		if(resourcesDict.ContainsKey(resourceType))
 		{
@@ -193,7 +193,7 @@ public class UIScript : MonoBehaviour
 
 
 	//to use only before checking that the resource is in the dictionary
-	public void ConsumeResource(string resourceType, int amountNeeded = 1)
+	public void ConsumeResource(int resourceType, int amountNeeded = 1)
 	{
 		resourcesDict[resourceType].amount -= amountNeeded;
 		resourcesDict[resourceType].UIItem.ShowNumber(resourcesDict[resourceType].amount);
