@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[AddComponentMenu("Playground/Gameplay/Auto Object Spawner")]
+[AddComponentMenu("Playground/Gameplay/Object Creator Area")]
 [RequireComponent(typeof(BoxCollider2D))]
-public class AutoObjectSpawner : MonoBehaviour
+public class ObjectCreatorArea : MonoBehaviour
 {
 	[Header("Object creation")]
 

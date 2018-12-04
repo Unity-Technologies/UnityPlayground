@@ -8,6 +8,7 @@ using UnityEditorInternal;
 public class PatrolInspector : InspectorBase
 {
 	private string explanation = "The object moves through a series of positions. This can be used for patrolling characters.";
+	private string emptyArrayWarning = "The list of waypoints is empty, so the GameObject will not move.";
 
 	private ReorderableList list;
 	Patrol patrolScript;
@@ -27,15 +28,18 @@ public class PatrolInspector : InspectorBase
 			rect.y += 2;
 			Rect r = new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight);
 			EditorGUI.PropertyField(r, element, GUIContent.none, false);
-
 		};
 
-		list.onAddCallback = (ReorderableList l) => {  
+		list.onAddCallback = (ReorderableList l) => { 
 			var index = l.serializedProperty.arraySize;
+			
+			//make the array longer, and point the index at the new end
 			l.serializedProperty.arraySize++;
 			l.index = index;
+			
 			var element = l.serializedProperty.GetArrayElementAtIndex(index);
-			element.vector2Value = l.serializedProperty.GetArrayElementAtIndex(index-1).vector2Value + Vector2.one;
+			int previousIndex = (index == 0) ? 0 : index-1; //protection against a zero-length array
+			element.vector2Value = l.serializedProperty.GetArrayElementAtIndex(previousIndex).vector2Value + Vector2.one; //create new point, slightly offset
 		};
 
 
@@ -86,6 +90,12 @@ public class PatrolInspector : InspectorBase
 			//force both the custom Inspector and the Scene View to show the changes
 			Repaint();
 			SceneView.RepaintAll();
+		}
+
+		if(serializedObject.FindProperty(arraySizeString).intValue == 0)
+		{
+			GUILayout.Space(5);
+			EditorGUILayout.HelpBox(emptyArrayWarning, MessageType.Warning);
 		}
 		
 		GUILayout.Space(5);

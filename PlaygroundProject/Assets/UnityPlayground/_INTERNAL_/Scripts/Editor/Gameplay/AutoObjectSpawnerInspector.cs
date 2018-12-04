@@ -3,10 +3,10 @@ using System.Collections;
 using UnityEditor;
 
 [CanEditMultipleObjects]
-[CustomEditor(typeof(AutoObjectSpawner))]
-public class AutoObjectSpawnerInspector : InspectorBase
+[CustomEditor(typeof(ObjectCreatorArea))]
+public class ObjectCreatorAreaInspector : InspectorBase
 {
-	private string explanation = "Spawns an object repeatedly in a square area. The size of the area is defined by Minimum and Maximum, while Spawn Interval defines the delay of spawning.";
+	private string explanation = "Creates an object repeatedly in a square area. The size of the area is defined by Minimum and Maximum, while Spawn Interval defines the delay of spawning.";
 	
 	public override void OnInspectorGUI()
 	{

@@ -9,9 +9,11 @@ public class ConsumeResourceActionInspector : ConditionInspectorBase
 	private string explanation = "Use this script to check if the player has enough of a specific resource. If they have it, it will be removed from the Player's inventory.";
 	private InventoryResources repository;
 
-	private void OnEnable()
+	private new void OnEnable()
 	{
 		repository = Resources.Load<InventoryResources>("ScriptableObjects/InventoryResources");
+
+		base.OnEnable();
 	}
 
 	public override void OnInspectorGUI()
