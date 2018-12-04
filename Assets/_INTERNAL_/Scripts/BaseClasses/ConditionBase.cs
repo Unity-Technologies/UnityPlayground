@@ -40,11 +40,14 @@ public abstract class ConditionBase : MonoBehaviour
 		bool actionResult;
 		foreach(Action ga in actions)
 		{
-			actionResult = ga.ExecuteAction(dataObject);
-			if(actionResult == false)
+			if(ga != null)
 			{
-				Debug.LogWarning("An action failed and interrupted the chain of Actions");
-				return;
+				actionResult = ga.ExecuteAction(dataObject);
+				if(actionResult == false)
+				{
+					Debug.LogWarning("An action failed and interrupted the chain of Actions");
+					return;
+				}
 			}
 		}
 

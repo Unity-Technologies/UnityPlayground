@@ -46,12 +46,13 @@ public class ConditionInspectorBase : InspectorBase
 
 		list.onAddDropdownCallback = (Rect buttonRect, ReorderableList l) => {  
     		var menu = new GenericMenu();
-			var guids = AssetDatabase.FindAssets("", new[]{"Assets/UnityPlayground/Scripts/Conditions/Actions"});
+			var guids = AssetDatabase.FindAssets("", new[]{"Assets/Scripts/Conditions/Actions"});
 			foreach (var guid in guids) {
 				var path = AssetDatabase.GUIDToAssetPath(guid);
 				string p = Path.GetFileNameWithoutExtension(path);
 				menu.AddItem(new GUIContent(p), false, ClickHandler, p);
 			}
+			menu.AddItem(new GUIContent("- Empty slot -"), false, ClickHandler, "");
 			menu.ShowAsContext();
 		};
 
@@ -74,14 +75,20 @@ public class ConditionInspectorBase : InspectorBase
 
 	public void ClickHandler(object actionName)
 	{
-		Type t = Type.GetType(actionName + ",Assembly-CSharp");
-		var newComponent = Selection.activeGameObject.AddComponent(t);
+		Component newComponent = null;
+		if(actionName.ToString() != "")
+		{
+			//Assign the new Component
+			Type t = Type.GetType(actionName + ",Assembly-CSharp");
+			newComponent = Selection.activeGameObject.AddComponent(t);
+		}
 
+		//Add the list element
 		var index = list.serializedProperty.arraySize;
 		list.serializedProperty.arraySize++;
 		list.index = index;
 		var element = list.serializedProperty.GetArrayElementAtIndex(index);
-		element.objectReferenceValue = newComponent;
+		element.objectReferenceValue = newComponent; //connect the newly assigned component to it
 		serializedObject.ApplyModifiedProperties();
 	}
 

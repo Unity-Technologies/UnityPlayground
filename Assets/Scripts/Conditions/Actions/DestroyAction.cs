@@ -10,14 +10,16 @@ public class DestroyAction : Action
 	public GameObject deathEffect;
 
 
-	// Happens when this objects hits another one
+	//OtherObject is null when this Action is called from a Condition that is not collision-based
 	public override bool ExecuteAction(GameObject otherObject)
 	{
 		if(deathEffect != null)
 		{
 			GameObject newObject = Instantiate<GameObject>(deathEffect);
+			
 			//move the effect depending on who needs to be destroyed
-			newObject.transform.position = (target == Enums.Targets.ObjectThatCollided) ? otherObject.transform.position : this.transform.position;
+			Vector3 otherObjectPos = (otherObject == null) ? this.transform.position : otherObject.transform.position;
+			newObject.transform.position = (target == Enums.Targets.ObjectThatCollided) ? otherObjectPos : this.transform.position;
 		}
 
 		//remove the GameObject from the scene (destroy)
@@ -26,17 +28,13 @@ public class DestroyAction : Action
 			if(otherObject != null)
 			{
 				Destroy(otherObject);
-				return true;
-			}
-			else
-			{
-				return false; //no object is destroyed
 			}
 		}
 		else
 		{
 			Destroy(gameObject);
-			return true;
 		}
+
+		return true; //always returns true
 	}
 }

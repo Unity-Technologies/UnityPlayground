@@ -21,7 +21,7 @@ public class PickUpAndHold : MonoBehaviour
 		{
 			//Nothing in hand, we check if something is around and pick it up.
 			justPickedUpSomething = PickUp();
-			 Debug.Log("Pickup");
+			//Debug.Log("Pickup");
 		}
 
 		if(Input.GetKeyDown(dropKey)
@@ -30,13 +30,18 @@ public class PickUpAndHold : MonoBehaviour
 		{
 			//We're holding something already, we drop
 			Drop();
-			 Debug.Log("Drop");
+			//Debug.Log("Drop");
 		}
 	}
 
 	public void Drop()
 	{
-		carriedObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+		Rigidbody2D rb2d = carriedObject.GetComponent<Rigidbody2D>();
+		if(rb2d != null)
+		{
+			rb2d.bodyType = RigidbodyType2D.Dynamic;
+			rb2d.velocity = Vector2.zero;
+		}
 		//unparenting
 		carriedObject.parent = null;
 		//hands are free again
@@ -76,7 +81,11 @@ public class PickUpAndHold : MonoBehaviour
 
 			carriedObject.parent = gameObject.transform;
 			// Set to Kinematic so it will move with the Player
-			carriedObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+			Rigidbody2D rb2d = carriedObject.GetComponent<Rigidbody2D>();
+			if(rb2d != null)
+			{
+				rb2d.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+			}
 			return true;
 		}
 		else
