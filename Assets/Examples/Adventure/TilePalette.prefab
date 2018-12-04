@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4102225206177036}
   - component: {fileID: 2569400266540720204}
   m_Layer: 31
-  m_Name: PlaygroundPalette
+  m_Name: TilePalette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
