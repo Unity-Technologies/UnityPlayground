@@ -13,6 +13,12 @@ public class DestroyForPointsAttribute : MonoBehaviour
 		userInterface = GameObject.FindObjectOfType<UIScript>();
 	}
 	
+
+	//This will create a dialog window asking for which dialog to add
+	private void Reset()
+	{
+		Utils.Collider2DDialogWindow(this.gameObject);
+	}
 	
 	//duplication of the following function to accomodate both trigger and non-trigger Colliders
 	private void OnCollisionEnter2D(Collision2D collisionData)

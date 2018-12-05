@@ -2,7 +2,6 @@
 using System.Collections;
 
 [AddComponentMenu("Playground/Attributes/Collectable")]
-[RequireComponent(typeof(Collider2D))]
 public class CollectableAttribute : MonoBehaviour
 {
 	private UIScript userInterface;
@@ -14,6 +13,12 @@ public class CollectableAttribute : MonoBehaviour
 		userInterface = GameObject.FindObjectOfType<UIScript>();
 	}
 
+
+	//This will create a dialog window asking for which dialog to add
+	private void Reset()
+	{
+		Utils.Collider2DDialogWindow(this.gameObject);
+	}
 
 
 	// This function gets called everytime this object collides with another

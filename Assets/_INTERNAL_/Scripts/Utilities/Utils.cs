@@ -85,4 +85,45 @@ public static class Utils
 		if(inputVector.x<0) return (Mathf.Atan2(inputVector.x, inputVector.y)*Mathf.Rad2Deg*-1)-360;
 		else return -Mathf.Atan2(inputVector.x,inputVector.y)*Mathf.Rad2Deg;
 	}
+
+
+	//Called by Reset functions of scripts that require a Collider2D of any type
+	//Unity displays a modal dialog window asking for which type of Collider2D to add
+	public static void Collider2DDialogWindow(GameObject gameObjectRef)
+	{
+		//Check first if a Collider2D is already present
+		if(gameObjectRef.GetComponent<Collider2D>() != null)
+		{
+			return;
+		}
+
+		//If not, popup a window offering a choice		
+        int option = UnityEditor.EditorUtility.DisplayDialogComplex("Collider2D needed",
+                "This script requires a Collider2D to work. Which shape do you want it to be?\n\nIf you are not sure, choose Polygon.",
+                "Polygon",
+                "Circle",
+                "Rectangle");
+
+        switch (option)
+        {
+            //Polygon
+            case 0:
+                gameObjectRef.AddComponent<PolygonCollider2D>();
+                break;
+
+            //Circle
+            case 1:
+				gameObjectRef.AddComponent<CircleCollider2D>();
+                break;
+
+            //Rectangle
+            case 2:
+                gameObjectRef.AddComponent<BoxCollider2D>();
+                break;
+
+            default:
+                Debug.LogWarning("Please add a Collider2D of any type or the script will not work as expected.");
+                break;
+        }
+	}
 }

@@ -2,15 +2,13 @@
 using System.Collections;
 
 [AddComponentMenu("Playground/Attributes/Resource")]
-[RequireComponent(typeof(PolygonCollider2D), typeof(SpriteRenderer))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class ResourceAttribute : MonoBehaviour
 {
-	//this is actually more a name/identifier than a type, but from the kids' perspective it makes sense that they are inputting the "type of resource"
-	public int resourceIndex = 0;
+	public int resourceIndex = 0; //the "type of resource", this index point to the array in the centralised InventoryResources ScriptableObject
 	public int amount = 1;
 
 	private UIScript userInterface;
-
 
 
 	// Start is called at the beginning
@@ -21,6 +19,11 @@ public class ResourceAttribute : MonoBehaviour
 	}
 
 
+	//This will create a dialog window asking for which dialog to add
+	private void Reset()
+	{
+		Utils.Collider2DDialogWindow(this.gameObject);
+	}
 
 
 	private void OnTriggerEnter2D(Collider2D otherCollider)

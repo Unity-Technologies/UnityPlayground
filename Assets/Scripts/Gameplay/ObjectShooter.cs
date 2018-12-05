@@ -39,6 +39,12 @@ public class ObjectShooter : MonoBehaviour
 	}
 
 
+	//This will create a dialog window asking for which dialog to add
+	private void Reset()
+	{
+		Utils.Collider2DDialogWindow(this.gameObject);
+	}
+
 	// Update is called once per frame
 	void Update ()
 	{
