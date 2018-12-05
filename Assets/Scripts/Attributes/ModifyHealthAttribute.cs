@@ -11,7 +11,7 @@ public class ModifyHealthAttribute : MonoBehaviour
 	//This will create a dialog window asking for which dialog to add
 	private void Reset()
 	{
-		Utils.Collider2DDialogWindow(this.gameObject);
+		Utils.Collider2DDialogWindow(this.gameObject, true);
 	}
 
 	// This function gets called everytime this object collides with another

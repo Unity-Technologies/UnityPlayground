@@ -10,7 +10,7 @@ public class ConditionCollision : ConditionBase
 	//This will create a dialog window asking for which dialog to add
 	private void Reset()
 	{
-		Utils.Collider2DDialogWindow(this.gameObject);
+		Utils.Collider2DDialogWindow(this.gameObject, false);
 	}
 	
 	// This function will be called when something touches the trigger collider

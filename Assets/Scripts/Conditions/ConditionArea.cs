@@ -3,7 +3,6 @@ using System.Collections;
 using UnityEngine.Events;
 
 [AddComponentMenu("Playground/Conditions/Condition Area")]
-[RequireComponent(typeof(BoxCollider2D))]
 public class ConditionArea : ConditionBase
 {
 	// the amount of times (in seconds) that this Condition will call OnTriggerStay
@@ -33,7 +32,7 @@ public class ConditionArea : ConditionBase
 	//This will create a dialog window asking for which dialog to add
 	private void Reset()
 	{
-		Utils.Collider2DDialogWindow(this.gameObject);
+		Utils.Collider2DDialogWindow(this.gameObject, true);
 	}
 	
 

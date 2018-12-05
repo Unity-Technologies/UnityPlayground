@@ -60,9 +60,9 @@ public class UIScript : MonoBehaviour
 	}
 
 
-	public void AddOnePoint(int playerNumber)
+	public void AddPoints(int playerNumber, int amount = 1)
 	{
-		scores[playerNumber]++;
+		scores[playerNumber] += amount;
 
 		if(numberOfPlayers == Players.OnePlayer)
 		{
@@ -80,6 +80,7 @@ public class UIScript : MonoBehaviour
 		}
 	}
 
+	//currently unused by other Playground scripts
 	public void RemoveOnePoint(int playerNumber)
 	{
 		scores[playerNumber]--;

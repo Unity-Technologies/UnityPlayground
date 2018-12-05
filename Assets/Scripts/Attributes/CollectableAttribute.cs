@@ -4,8 +4,9 @@ using System.Collections;
 [AddComponentMenu("Playground/Attributes/Collectable")]
 public class CollectableAttribute : MonoBehaviour
 {
+	public int pointsWorth = 1;
+	
 	private UIScript userInterface;
-
 
 	private void Start()
 	{
@@ -17,7 +18,7 @@ public class CollectableAttribute : MonoBehaviour
 	//This will create a dialog window asking for which dialog to add
 	private void Reset()
 	{
-		Utils.Collider2DDialogWindow(this.gameObject);
+		Utils.Collider2DDialogWindow(this.gameObject, true);
 	}
 
 
@@ -33,7 +34,7 @@ public class CollectableAttribute : MonoBehaviour
 			{
 				// add one point
 				int playerId = (playerTag == "Player") ? 0 : 1;
-				userInterface.AddOnePoint(playerId);
+				userInterface.AddPoints(playerId, pointsWorth);
 			}
 
 			// then destroy this object

@@ -4,8 +4,9 @@ using System.Collections;
 [AddComponentMenu("Playground/Attributes/Destroy For Points")]
 public class DestroyForPointsAttribute : MonoBehaviour
 {
-	private UIScript userInterface;
+	public int pointsWorth = 1;
 
+	private UIScript userInterface;
 
 	private void Start()
 	{
@@ -17,7 +18,7 @@ public class DestroyForPointsAttribute : MonoBehaviour
 	//This will create a dialog window asking for which dialog to add
 	private void Reset()
 	{
-		Utils.Collider2DDialogWindow(this.gameObject);
+		Utils.Collider2DDialogWindow(this.gameObject, false);
 	}
 	
 	//duplication of the following function to accomodate both trigger and non-trigger Colliders
@@ -38,7 +39,7 @@ public class DestroyForPointsAttribute : MonoBehaviour
 				BulletAttribute b = collisionData.gameObject.GetComponent<BulletAttribute>();
 				if(b != null)
 				{
-					userInterface.AddOnePoint(b.playerId);
+					userInterface.AddPoints(b.playerId, pointsWorth);
 				}
 				else
 				{

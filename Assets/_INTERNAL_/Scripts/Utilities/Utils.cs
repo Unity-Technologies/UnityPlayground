@@ -89,7 +89,7 @@ public static class Utils
 
 	//Called by Reset functions of scripts that require a Collider2D of any type
 	//Unity displays a modal dialog window asking for which type of Collider2D to add
-	public static void Collider2DDialogWindow(GameObject gameObjectRef)
+	public static void Collider2DDialogWindow(GameObject gameObjectRef, bool makeItTrigger = false)
 	{
 		//Check first if a Collider2D is already present
 		if(gameObjectRef.GetComponent<Collider2D>() != null)
@@ -108,17 +108,17 @@ public static class Utils
         {
             //Polygon
             case 0:
-                gameObjectRef.AddComponent<PolygonCollider2D>();
+                gameObjectRef.AddComponent<PolygonCollider2D>().isTrigger = makeItTrigger;
                 break;
 
             //Circle
             case 1:
-				gameObjectRef.AddComponent<CircleCollider2D>();
+				gameObjectRef.AddComponent<CircleCollider2D>().isTrigger = makeItTrigger;
                 break;
 
             //Rectangle
             case 2:
-                gameObjectRef.AddComponent<BoxCollider2D>();
+                gameObjectRef.AddComponent<BoxCollider2D>().isTrigger = makeItTrigger;
                 break;
 
             default:
