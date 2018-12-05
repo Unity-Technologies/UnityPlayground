@@ -7,7 +7,7 @@ public class DialogueBalloonAction : Action
 
 	[Header("Contents")]
 	public string textToDisplay = "Hey!";
-	public Color backgroundColor = Color.blue;
+	public Color backgroundColor = new Color32(113, 132, 146, 255);
 	public Color textColor = Color.white;
 
 	[Header("Options")]
