@@ -362,7 +362,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!4 &224400526
 Transform:
@@ -1317,7 +1317,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!4 &986823220
 Transform:
@@ -2526,8 +2526,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1683164455}
   - component: {fileID: 1683164454}
-  - component: {fileID: 1683164453}
-  - component: {fileID: 1683164452}
   - component: {fileID: 1683164451}
   m_Layer: 0
   m_Name: Main Camera
@@ -2538,20 +2536,6 @@ GameObject:
   m_IsActive: 1
 --- !u!81 &1683164451
 AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1683164450}
-  m_Enabled: 1
---- !u!124 &1683164452
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1683164450}
-  m_Enabled: 1
---- !u!92 &1683164453
-Behaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -3404,7 +3388,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!4 &1963179090
 Transform:

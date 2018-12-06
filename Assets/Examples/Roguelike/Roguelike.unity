@@ -6588,7 +6588,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1498446983}
   - component: {fileID: 1498446982}
-  - component: {fileID: 1498446981}
   - component: {fileID: 1498446979}
   - component: {fileID: 1498446980}
   m_Layer: 0
@@ -6617,13 +6616,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1102525771}
---- !u!92 &1498446981
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1498446978}
-  m_Enabled: 1
+  limitBounds: 0
+  left: -5
+  right: 5
+  bottom: -5
+  top: 5
 --- !u!20 &1498446982
 Camera:
   m_ObjectHideFlags: 0
