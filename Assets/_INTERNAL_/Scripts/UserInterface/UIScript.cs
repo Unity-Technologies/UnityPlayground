@@ -59,6 +59,12 @@ public class UIScript : MonoBehaviour
 		}
 	}
 
+	//version of the one below with one parameter to be able to connect UnityEvents
+	public void AddOnePoint(int playerNumber)
+	{
+		AddPoints(playerNumber, 1);
+	}
+
 
 	public void AddPoints(int playerNumber, int amount = 1)
 	{

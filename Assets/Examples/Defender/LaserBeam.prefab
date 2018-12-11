@@ -171,7 +171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: 1
-  deathEffect: {fileID: 100012, guid: 384371afbb4354cc9a3fc68eab303756, type: 2}
+  deathEffect: {fileID: 1496494696399852, guid: e61802031429a4e2e8f547dbca07fe84,
+    type: 2}
 --- !u!114 &114000014282508134
 MonoBehaviour:
   m_ObjectHideFlags: 1

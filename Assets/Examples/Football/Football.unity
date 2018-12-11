@@ -966,7 +966,7 @@ Transform:
   - {fileID: 238356133}
   - {fileID: 595828948}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &75750259
 GameObject:
@@ -1558,10 +1558,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1446612705}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   happenOnlyOnce: 0
-  filterByTag: 0
+  filterByTag: 1
   filterTag: Bullet
 --- !u!61 &192000767
 BoxCollider2D:
@@ -1580,13 +1591,13 @@ BoxCollider2D:
     border: {x: 0.17999999, y: 0.17, z: 0.19, w: 0.17}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.28, y: 1.28}
-    newSize: {x: 1.7813462, y: 0.73211086}
+    newSize: {x: 1.7813462, y: 0.61}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 1
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.7439013, y: 0.6999999}
+  m_Size: {x: 1.7439013, y: 0.61}
   m_EdgeRadius: 0
 --- !u!212 &192000768
 SpriteRenderer:
@@ -1627,7 +1638,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 1.7813462, y: 0.73211086}
+  m_Size: {x: 1.7813462, y: 0.61}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 1
   m_WasSpriteAssigned: 1
@@ -1639,11 +1650,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 192000765}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 7.725, y: 0.0191, z: 0}
+  m_LocalPosition: {x: 7.79, y: 0.0191, z: 0}
   m_LocalScale: {x: 1.28, y: 1.28, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &207290533
 GameObject:
@@ -3507,7 +3518,7 @@ Transform:
   m_LocalScale: {x: 0.8, y: 0.8, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &728159199
 Rigidbody2D:
@@ -3816,7 +3827,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &811112634
 CircleCollider2D:
@@ -4639,7 +4650,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 1.7803879, y: 0.7630477}
+  m_Size: {x: 1.81, y: 0.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 1
   m_WasSpriteAssigned: 1
@@ -4651,11 +4662,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 918290807}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: -7.683, y: 0.026, z: 0}
+  m_LocalPosition: {x: -7.75, y: 0.026, z: 0}
   m_LocalScale: {x: 1.28, y: 1.28, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!61 &918290810
 BoxCollider2D:
@@ -4674,13 +4685,13 @@ BoxCollider2D:
     border: {x: 0.17999999, y: 0.17, z: 0.19, w: 0.17}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.28, y: 1.28}
-    newSize: {x: 1.7803879, y: 0.7630477}
+    newSize: {x: 1.81, y: 0.6}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 1
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6993964, y: 0.7637755}
+  m_Size: {x: 1.81, y: 0.6}
   m_EdgeRadius: 0
 --- !u!114 &918290811
 MonoBehaviour:
@@ -4712,10 +4723,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1446612705}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   happenOnlyOnce: 0
-  filterByTag: 0
+  filterByTag: 1
   filterTag: Bullet
 --- !u!1 &923123293
 GameObject:
@@ -5585,7 +5607,7 @@ Transform:
   - {fileID: 1046382610}
   - {fileID: 1870797513}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1123989411
 GameObject:
@@ -6296,6 +6318,58 @@ Transform:
   m_Father: {fileID: 1111741748}
   m_RootOrder: 62
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1310715737
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4853161688787748, guid: bdacd49febd5543859c09f2cd1ef4601, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853161688787748, guid: bdacd49febd5543859c09f2cd1ef4601, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853161688787748, guid: bdacd49febd5543859c09f2cd1ef4601, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.3451855
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853161688787748, guid: bdacd49febd5543859c09f2cd1ef4601, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853161688787748, guid: bdacd49febd5543859c09f2cd1ef4601, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853161688787748, guid: bdacd49febd5543859c09f2cd1ef4601, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853161688787748, guid: bdacd49febd5543859c09f2cd1ef4601, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853161688787748, guid: bdacd49febd5543859c09f2cd1ef4601, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 198577694026796656, guid: bdacd49febd5543859c09f2cd1ef4601,
+        type: 2}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198577694026796656, guid: bdacd49febd5543859c09f2cd1ef4601,
+        type: 2}
+      propertyPath: randomSeed
+      value: 764497595
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: bdacd49febd5543859c09f2cd1ef4601, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1325950684
 GameObject:
   m_ObjectHideFlags: 0
@@ -7099,6 +7173,11 @@ Transform:
   m_Father: {fileID: 1111741748}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!198 &1446612705 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198577694026796656, guid: bdacd49febd5543859c09f2cd1ef4601,
+    type: 2}
+  m_PrefabInternal: {fileID: 1310715737}
 --- !u!1 &1466010918
 GameObject:
   m_ObjectHideFlags: 0
@@ -8661,7 +8740,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1908508976
 CircleCollider2D:

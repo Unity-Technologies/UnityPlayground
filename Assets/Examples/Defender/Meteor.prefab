@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5058630}
   - component: {fileID: 11424868}
   - component: {fileID: 114000011533140650}
-  - component: {fileID: 11441764}
   - component: {fileID: 114000012881949288}
+  - component: {fileID: 11441764}
   - component: {fileID: 114000012184921828}
   m_Layer: 0
   m_Name: Meteor
@@ -241,6 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c4adaf25c56477b836b81ad48e3bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointsWorth: 1
 --- !u!114 &114000012881949288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -253,4 +254,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: 0
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 1496494696399852, guid: 61bb6781d7b9444e89d1fd6eef729832,
+    type: 2}

@@ -407,6 +407,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 697399055}
+  limitBounds: 1
+  left: -17.651276
+  right: 15.649492
+  bottom: -13.527602
+  top: 17.651278
 --- !u!1 &57009555
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4000011794436848}
   - component: {fileID: 212000011037795508}
-  - component: {fileID: 58000013959959048}
   - component: {fileID: 114000012564969970}
+  - component: {fileID: 60343958541053794}
   m_Layer: 0
   m_Name: StarCollectable
   m_TagString: Untagged
@@ -42,8 +42,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &58000013959959048
-CircleCollider2D:
+--- !u!60 &60343958541053794
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -54,9 +54,30 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.03}
-  serializedVersion: 2
-  m_Radius: 0.25
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.2890625, y: 2.2421875}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.71449155, y: -0.042305347}
+      - {x: 0.34192204, y: -0.29197085}
+      - {x: 0.32003197, y: -0.768525}
+      - {x: 0.151286, y: -0.7293458}
+      - {x: -0.106960416, y: -0.4881348}
+      - {x: -0.63433546, y: -0.5593387}
+      - {x: -0.65709317, y: -0.3908685}
+      - {x: -0.5058958, y: -0.131342}
+      - {x: -0.627165, y: 0.2535149}
+      - {x: -0.16295427, y: 0.27106807}
+      - {x: 0.10341322, y: 0.54683673}
+      - {x: 0.29770494, y: 0.18018983}
 --- !u!114 &114000012564969970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -68,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dde7269c73c0d4a0aa7d33419579c17d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointsWorth: 1
 --- !u!212 &212000011037795508
 SpriteRenderer:
   m_ObjectHideFlags: 1
