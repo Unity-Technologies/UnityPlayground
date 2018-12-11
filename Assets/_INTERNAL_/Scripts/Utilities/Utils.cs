@@ -91,6 +91,7 @@ public static class Utils
 	//Unity displays a modal dialog window asking for which type of Collider2D to add
 	public static void Collider2DDialogWindow(GameObject gameObjectRef, bool makeItTrigger = false)
 	{
+#if UNITY_EDITOR
 		//Check first if a Collider2D is already present
 		if(gameObjectRef.GetComponent<Collider2D>() != null)
 		{
@@ -103,6 +104,7 @@ public static class Utils
                 "Polygon",
                 "Circle",
                 "Rectangle");
+
 
         switch (option)
         {
@@ -125,5 +127,6 @@ public static class Utils
                 Debug.LogWarning("Please add a Collider2D of any type or the script will not work as expected.");
                 break;
         }
+#endif
 	}
 }
