@@ -2,6 +2,8 @@
 
 ![playground.png](https://imgur.com/NvAFtsp.jpg)
 
+**This project can be found and downloaded on the Asset Store**
+
 ## Description
 
 A collection of simple scripts to create 2D physics games, intended for giving workshops to an audience of beginner game developers to quickly enable them to make games in Unity.
@@ -16,40 +18,16 @@ That said, the audience should already have an idea of how Unity works, the Edit
 
 **Usage instructions**
 
-Refer to the [Wiki](https://github.com/UnityTechnologies/PlaygroundProject/wiki) for instructions on how to use the framework.
+Documentation can be found in pdf form under Assets/Documentation
 
 **Software Requirements**
 
-Required: Any Unity 2017.2, or later version
+Required: Any Unity 2017.4 or later version
 
 **Hardware Requirements**
 
 Required: Laptop
 
-**Owner and Responsible Devs**
+**Change Log**
 
-Owner: Ciro Continisio
-
-**Change Log** (only major changes)
-
-2016
-- 11 Jul - Project created
-- 12 Jul - Added graphic assets
-- 15 Jul - (Mike G) Updated project structure
-- 29 Jul - Example games, Editor scripts to customise the appearance of the components
-- 07 Aug - HowTo video
-- 15 Aug - Added Resource system, Action scripts
-- 24 Aug - Refactored the whole Action system
-- 25 Aug - Added Wiki, renamed Triggers to Conditions
-- 06 Sep - Area Conditions refactored to one to support different events
-- 21 Sep - Added license
-- 10 Nov - New mouse scripts added (GoToMouse, LookTowardsMouse)
-
-2017
-- 10 Mar - Arrow gizmos for movement/rotation scripts
-- 12 Mar - Dialogue system
-- 01 Apr - Added Cheatsheet images
-- 29 Oct - Added Patrol script
-
-2018
-- Jan - So many changes :D Almost on the Asset Store!
+- **1.0** _(2018/12/12)_ - initial release on the Asset Store.
