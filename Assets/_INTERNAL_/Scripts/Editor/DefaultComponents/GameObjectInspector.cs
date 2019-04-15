@@ -98,7 +98,7 @@ public class TestScriptInspector : Editor {
 			GUILayout.EndHorizontal();
 
             //Prefab
-            Object prefabParent = PrefabUtility.GetPrefabParent(Selection.activeGameObject);
+            Object prefabParent = PrefabUtility.GetCorrespondingObjectFromSource(Selection.activeGameObject);
             if (null != prefabParent) {
                 GUILayout.Space(5);
 
@@ -109,10 +109,10 @@ public class TestScriptInspector : Editor {
                     EditorGUIUtility.PingObject(prefabParent);
                 }
                 if (GUILayout.Button("Revert", EditorStyles.miniButtonMid)) {
-                    PrefabUtility.RevertPrefabInstance(Selection.activeGameObject);
+                    PrefabUtility.RevertPrefabInstance(Selection.activeGameObject, InteractionMode.UserAction);
                 }
                 if (GUILayout.Button("Apply", EditorStyles.miniButtonRight)) {
-                    PrefabUtility.ReplacePrefab(Selection.activeGameObject, PrefabUtility.GetPrefabParent(Selection.activeGameObject), ReplacePrefabOptions.ConnectToPrefab);
+	                PrefabUtility.ApplyPrefabInstance(Selection.activeGameObject, InteractionMode.UserAction);
                 }
 
                 GUILayout.EndHorizontal();
