@@ -13,7 +13,7 @@ public class ConditionRepeat : ConditionBase
 
 	private void Start()
 	{
-		timeLastEventFired = initialDelay - frequency;
+		timeLastEventFired = Time.time + initialDelay - frequency;
 	}
 
 
