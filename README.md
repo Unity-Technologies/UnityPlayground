@@ -22,7 +22,7 @@ Documentation can be found in pdf form under Assets/Documentation
 
 **Software Requirements**
 
-Required: Any Unity 2017.4 or later version
+Required: Any Unity 2022.2 or later version
 
 **Hardware Requirements**
 
@@ -30,4 +30,9 @@ Required: Laptop
 
 **Change Log**
 
-- **1.0** _(2018/12/12)_ - initial release on the Asset Store.
+- **1.1** _(2023/05/24)_ 
+    - Upgraded to 2022.2
+    - Upgraded to Universal Render Pipeline
+    - Removed Varela Font and replaced by Built-in font
+- **1.0** _(2018/12/12)_ 
+    - initial release on the Asset Store.
