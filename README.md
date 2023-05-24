@@ -34,5 +34,6 @@ Required: Laptop
     - Upgraded to 2022.2
     - Upgraded to Universal Render Pipeline
     - Removed Varela Font and replaced by Built-in font
+    - Changed folders structure to match Asset Store requirements
 - **1.0** _(2018/12/12)_ 
     - initial release on the Asset Store.

@@ -46,7 +46,7 @@ public class ConditionInspectorBase : InspectorBase
 
 		list.onAddDropdownCallback = (Rect buttonRect, ReorderableList l) => {  
     		var menu = new GenericMenu();
-			var guids = AssetDatabase.FindAssets("", new[]{"Assets/Scripts/Conditions/Actions"});
+			var guids = AssetDatabase.FindAssets("", new[]{"Assets/UnityTechnologies/Playground/Scripts/Conditions/Actions"});
 			foreach (var guid in guids) {
 				var path = AssetDatabase.GUIDToAssetPath(guid);
 				string p = Path.GetFileNameWithoutExtension(path);
