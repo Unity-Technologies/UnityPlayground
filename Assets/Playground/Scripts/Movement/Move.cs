@@ -2,7 +2,7 @@
 using System.Collections;
 
 [AddComponentMenu("Playground/Movement/Move")]
-[HelpURL("https://bit.ly/4bD04y1")]
+[HelpURL("https://bboydaisuke.cloudfree.jp/2021/04/26/playground-reference-guide-1/#Move%EF%BC%88%E3%82%AD%E3%83%BC%E3%82%92%E6%8A%BC%E3%81%97%E3%81%A6%E7%A7%BB%E5%8B%95%E3%81%99%E3%82%8B%EF%BC%89")]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Move : Physics2DObject
 {
