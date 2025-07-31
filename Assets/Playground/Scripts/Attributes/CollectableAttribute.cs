@@ -2,7 +2,7 @@
 using System.Collections;
 
 [AddComponentMenu("Playground/Attributes/Collectable")]
-[HelpURL("https://bit.ly/3UCa9Er")]
+[HelpURL("https://bboydaisuke.cloudfree.jp/2021/04/26/playground-reference-guide-1/#CollectableAttribute%EF%BC%88%E5%8F%96%E3%81%A3%E3%81%9F%E3%82%89%E5%BE%97%E7%82%B9%EF%BC%89")]
 public class CollectableAttribute : MonoBehaviour
 {
     public int pointsWorth = 1;

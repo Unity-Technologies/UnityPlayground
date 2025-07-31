@@ -2,7 +2,7 @@
 using System.Collections;
 
 [AddComponentMenu("Playground/Movement/Auto Move")]
-[HelpURL("https://bit.ly/4bxVQaW")]
+[HelpURL("https://bboydaisuke.cloudfree.jp/2021/04/26/playground-reference-guide-1/#Auto_Move%EF%BC%88%E4%B8%80%E6%96%B9%E5%90%91%E3%81%AB%E5%8B%95%E3%81%8F%EF%BC%89")]
 [RequireComponent(typeof(Rigidbody2D))]
 public class AutoMove : Physics2DObject
 {

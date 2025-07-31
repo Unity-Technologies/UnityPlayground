@@ -2,7 +2,7 @@
 using System.Collections;
 
 [AddComponentMenu("Playground/Attributes/Health System")]
-[HelpURL("https://bit.ly/3UC1fqy")]
+[HelpURL("https://bboydaisuke.cloudfree.jp/2021/04/26/playground-reference-guide-1/#HealthSystemAttribute%EF%BC%88HP_%E8%BF%BD%E5%8A%A0%EF%BC%89")]
 public class HealthSystemAttribute : MonoBehaviour
 {
     public int health = 3;

@@ -2,7 +2,7 @@
 using System.Collections;
 
 [AddComponentMenu("Playground/Movement/Camera Follow")]
-[HelpURL("https://bit.ly/3WGVDhh")]
+[HelpURL("https://bboydaisuke.cloudfree.jp/2021/04/26/playground-reference-guide-1/#Camera_Follow%EF%BC%88%E3%82%AB%E3%83%A1%E3%83%A9%E3%82%92%E5%8B%95%E3%81%8B%E3%81%99%EF%BC%89")]
 public class CameraFollow : MonoBehaviour
 {
     [Header("Object to follow")]

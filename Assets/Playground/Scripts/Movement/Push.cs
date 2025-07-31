@@ -2,7 +2,7 @@
 using System.Collections;
 
 [AddComponentMenu("Playground/Movement/Push")]
-[HelpURL("https://bit.ly/4dF5ABR")]
+[HelpURL("https://bboydaisuke.cloudfree.jp/2021/04/26/playground-reference-guide-1/#Push%EF%BC%88%E3%82%AD%E3%83%BC%E3%82%92%E6%8A%BC%E3%81%97%E3%81%A6%E5%8A%9B%E3%82%92%E5%8A%A0%E3%81%88%E3%82%8B%EF%BC%89")]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Push : Physics2DObject
 {

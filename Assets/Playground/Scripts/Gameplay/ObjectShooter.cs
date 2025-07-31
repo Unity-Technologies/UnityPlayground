@@ -2,7 +2,7 @@
 using System.Collections;
 
 [AddComponentMenu("Playground/Gameplay/Object Shooter")]
-[HelpURL("https://bit.ly/3KiurhH")]
+[HelpURL("https://bboydaisuke.cloudfree.jp/2021/04/26/playground-reference-guide-1/#ObjectShooter%EF%BC%88%E3%82%AD%E3%83%BC%E3%82%92%E6%8A%BC%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E9%96%93%E3%80%81%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E7%99%BA%E5%B0%84%E3%81%99%E3%82%8B%EF%BC%89")]
 public class ObjectShooter : MonoBehaviour
 {
     [Header("Object creation")]

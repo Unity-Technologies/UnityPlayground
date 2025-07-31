@@ -2,7 +2,7 @@
 using System.Collections;
 
 [AddComponentMenu("Playground/Actions/Teleport")]
-[HelpURL("https://bit.ly/3WDQned")]
+[HelpURL("https://bboydaisuke.cloudfree.jp/2021/04/26/playground-reference-guide-2/#TeleportAction%EF%BC%88%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E7%9E%AC%E9%96%93%E7%A7%BB%E5%8B%95%E3%81%99%E3%82%8B%EF%BC%89")]
 public class TeleportAction : Action
 {
     public GameObject objectToMove;

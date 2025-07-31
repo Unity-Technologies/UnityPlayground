@@ -2,7 +2,7 @@
 using System.Collections;
 
 [AddComponentMenu("Playground/Attributes/Destroy For Points")]
-[HelpURL("https://bit.ly/3UYBvWR")]
+[HelpURL("https://bboydaisuke.cloudfree.jp/2021/04/26/playground-reference-guide-1/#DestroyforPointsAttribute%EF%BC%88%E7%A0%B4%E5%A3%8A%E3%81%A7%E5%BE%97%E7%82%B9%EF%BC%89")]
 public class DestroyForPointsAttribute : MonoBehaviour
 {
     public int pointsWorth = 1;

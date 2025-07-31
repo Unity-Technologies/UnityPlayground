@@ -2,7 +2,7 @@
 using System.Collections;
 
 [AddComponentMenu("Playground/Movement/Auto Rotate")]
-[HelpURL("https://bit.ly/3UG7SrM")]
+[HelpURL("https://bboydaisuke.cloudfree.jp/2021/04/26/playground-reference-guide-1/#Auto_Rotate%EF%BC%88%E4%B8%80%E5%AE%9A%E9%80%9F%E5%BA%A6%E3%81%A7%E5%9B%9E%E8%BB%A2%E3%81%99%E3%82%8B%EF%BC%89")]
 [RequireComponent(typeof(Rigidbody2D))]
 public class AutoRotate : Physics2DObject
 {

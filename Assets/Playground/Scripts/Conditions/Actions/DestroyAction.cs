@@ -2,7 +2,7 @@
 using System.Collections;
 
 [AddComponentMenu("Playground/Actions/Destroy Action")]
-[HelpURL("https://bit.ly/3wm54br")]
+[HelpURL("https://bboydaisuke.cloudfree.jp/2021/04/26/playground-reference-guide-2/#DestroyAction%EF%BC%88%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E7%A0%B4%E5%A3%8A%E3%81%99%E3%82%8B%EF%BC%89")]
 public class DestroyAction : Action
 {
 	//who gets destroyed in the collision?

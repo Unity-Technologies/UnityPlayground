@@ -2,7 +2,7 @@
 using System.Collections;
 
 [AddComponentMenu("Playground/Actions/Create Object")]
-[HelpURL("https://bit.ly/3UvgRMg")]
+[HelpURL("https://bboydaisuke.cloudfree.jp/2021/04/26/playground-reference-guide-2/#CreateObjectAction%EF%BC%88%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B%EF%BC%89")]
 public class CreateObjectAction : Action
 {
     public GameObject prefabToCreate;

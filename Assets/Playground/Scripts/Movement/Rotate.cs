@@ -2,7 +2,7 @@
 using System.Collections;
 
 [AddComponentMenu("Playground/Movement/Rotate")]
-[HelpURL("https://bit.ly/3QJv6wa")]
+[HelpURL("https://bboydaisuke.cloudfree.jp/2021/04/26/playground-reference-guide-1/#Rotate%EF%BC%88%E3%82%AD%E3%83%BC%E6%93%8D%E4%BD%9C%E3%81%A7%E5%9B%9E%E8%BB%A2%E3%81%99%E3%82%8B%EF%BC%89")]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Rotate : Physics2DObject
 {

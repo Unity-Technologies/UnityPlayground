@@ -2,7 +2,7 @@
 using System.Collections;
 
 [AddComponentMenu("Playground/Actions/On-Off")]
-[HelpURL("https://bit.ly/3yq75Uj")]
+[HelpURL("https://bboydaisuke.cloudfree.jp/2021/04/26/playground-reference-guide-2/#OnOffAction%EF%BC%88%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E6%9C%89%E5%8A%B9%E3%83%BB%E7%84%A1%E5%8A%B9%E3%82%92%E5%88%87%E3%82%8A%E6%9B%BF%E3%81%88%E3%82%8B%EF%BC%89")]
 public class OnOffAction : Action
 {
     public GameObject objectToAffect;
