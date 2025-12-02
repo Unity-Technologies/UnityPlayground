@@ -33,7 +33,7 @@ public class TeleportAction : Action
 		if(stopMovements
 			&& rb2D != null)
 		{
-			rb2D.velocity = Vector3.zero;
+			rb2D.linearVelocity = Vector3.zero;
 			rb2D.angularVelocity = 0f;
 		}
 

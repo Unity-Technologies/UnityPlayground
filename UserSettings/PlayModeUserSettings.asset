@@ -2,15 +2,14 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &1
 MonoBehaviour:
-  m_ObjectHideFlags: 61
+  m_ObjectHideFlags: 53
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 247994e1f5a72c2419c26a37e9334c01, type: 3}
+  m_Script: {fileID: 15050, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
-  m_EditorClassIdentifier: 
-  m_LastMaterialVersion: 10
-  m_ProjectSettingFolderPath: URPDefaultResources
+  m_EditorClassIdentifier: UnityEditor.PlayModeModule.dll::Unity.PlayMode.Editor.PlayModeUserSettings
+  m_LastActiveConfiguration: {fileID: 0}
