@@ -1,6 +1,7 @@
 ﻿using Playground.Attributes;
 using Playground.Utilities;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Playground.Gameplay
 {
@@ -10,7 +11,7 @@ namespace Playground.Gameplay
         [Header("Object creation")] public GameObject prefabToSpawn;
 
         // The key to press to create the objects/projectiles
-        public KeyCode keyToPress = KeyCode.Space;
+        public Key keyToPress = Key.Space;
 
         [Header("Other options")]
 
@@ -43,7 +44,7 @@ namespace Playground.Gameplay
         // Update is called once per frame
         private void Update()
         {
-            if (Input.GetKey(keyToPress)
+            if (Keyboard.current[keyToPress].wasPressedThisFrame
                 && Time.time >= timeOfLastSpawn + creationRate)
             {
                 Vector2 actualBulletDirection = relativeToRotation

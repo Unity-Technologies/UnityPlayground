@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Playground.Gameplay
 {
     [AddComponentMenu("Playground/Gameplay/Pick Up And Hold")]
     public class PickUpAndHold : MonoBehaviour
     {
-        //pickup key and drop key could be the same
-        public KeyCode pickupKey = KeyCode.B;
-        public KeyCode dropKey = KeyCode.B;
+        // Pickup key and drop key could be the same
+        public Key pickupKey = Key.B;
+        public Key dropKey = Key.B;
 
         public float pickUpDistance = 2f; // An object need to closer than that distance to be picked up.
-        //public float hitToDropObject = Mathf.Infinity; //if the character hits anything with a force stronger than this value, the pickup is dropped
 
         private Transform carriedObject;
 
@@ -18,17 +18,16 @@ namespace Playground.Gameplay
         {
             bool justPickedUpSomething = false;
 
-            if (Input.GetKeyDown(pickupKey)
+            // Nothing in hand, we check if something is around and pick it up.
+            if (Keyboard.current[pickupKey].wasPressedThisFrame
                 && carriedObject == null)
-                //Nothing in hand, we check if something is around and pick it up.
                 justPickedUpSomething = PickUp();
-            //Debug.Log("Pickup");
-            if (Input.GetKeyDown(dropKey)
+            
+            // We're holding something already, we drop
+            if (Keyboard.current[dropKey].wasPressedThisFrame
                 && carriedObject != null
                 && !justPickedUpSomething)
-                //We're holding something already, we drop
                 Drop();
-            //Debug.Log("Drop");
         }
 
         public void Drop()
@@ -40,15 +39,13 @@ namespace Playground.Gameplay
                 rb2d.linearVelocity = Vector2.zero;
             }
 
-            //unparenting
             carriedObject.parent = null;
-            //hands are free again
             carriedObject = null;
         }
 
         public bool PickUp()
         {
-            //Collect every Pickup around
+            // Collect every Pickup around
             GameObject[] pickups = GameObject.FindGameObjectsWithTag("Pickup");
 
             // Find the closest
@@ -66,7 +63,7 @@ namespace Playground.Gameplay
             // Check if we found something
             if (carriedObject != null)
             {
-                //check if another player had it, in this case, steal it
+                // Check if another player had it, in this case, steal it
                 Transform pickupParent = carriedObject.parent;
                 if (pickupParent != null)
                 {
@@ -75,9 +72,8 @@ namespace Playground.Gameplay
                 }
 
                 carriedObject.parent = gameObject.transform;
-                // Set to Kinematic so it will move with the Player
                 Rigidbody2D rb2d = carriedObject.GetComponent<Rigidbody2D>();
-                if (rb2d != null) rb2d.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+                if (rb2d != null) rb2d.bodyType = RigidbodyType2D.Kinematic;
                 return true;
             }
 
