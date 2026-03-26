@@ -32,7 +32,7 @@ namespace Playground.Utilities
 			}
 		}
 
-		//Always returns positive vectors!
+		// Always returns positive vectors!
 		public static Vector2 GetVectorFromAxis(Enums.Axes axis)
 		{
 			return axis == Enums.Axes.X ? Vector2.right : Vector2.up;
@@ -59,7 +59,7 @@ namespace Playground.Utilities
 			Gizmos.DrawMesh(rotateArrowMesh, position, Quaternion.identity, new Vector3(Mathf.Sign(strength), 1f, Mathf.Sign(strength)));
 		}
 
-		//Draws a gizmo in a certain direction, with support for an extraAngle (to make it relative to the GameObject's rotation) and a specific scale
+		// Draws a gizmo in a certain direction, with support for an extraAngle (to make it relative to the GameObject's rotation) and a specific scale
 		public static void DrawGizmo(Mesh meshToDraw, Vector3 position, Vector2 direction, float extraAngle, float scale)
 		{
 			Gizmos.color = Color.green;
@@ -81,18 +81,18 @@ namespace Playground.Utilities
 		}
 
 
-		//Called by Reset functions of scripts that require a Collider2D of any type
-		//Unity displays a modal dialog window asking for which type of Collider2D to add
+		// Called by Reset functions of scripts that require a Collider2D of any type
+		// Unity displays a modal dialog window asking for which type of Collider2D to add
 		public static void Collider2DDialogWindow(GameObject gameObjectRef, bool makeItTrigger = false)
 		{
 #if UNITY_EDITOR
-			//Check first if a Collider2D is already present
+			// Check first if a Collider2D is already present
 			if(gameObjectRef.GetComponent<Collider2D>() != null)
 			{
 				return;
 			}
 
-			//If not, popup a window offering a choice		
+			// If not, popup a window offering a choice		
 			int option = UnityEditor.EditorUtility.DisplayDialogComplex("Collider2D needed",
 				"This script requires a Collider2D to work. Which shape do you want it to be?\n\nIf you are not sure, choose Polygon.",
 				"Polygon",
@@ -102,17 +102,17 @@ namespace Playground.Utilities
 
 			switch (option)
 			{
-				//Polygon
+				// Polygon
 				case 0:
 					gameObjectRef.AddComponent<PolygonCollider2D>().isTrigger = makeItTrigger;
 					break;
 
-				//Circle
+				// Circle
 				case 1:
 					gameObjectRef.AddComponent<CircleCollider2D>().isTrigger = makeItTrigger;
 					break;
 
-				//Rectangle
+				// Rectangle
 				case 2:
 					gameObjectRef.AddComponent<BoxCollider2D>().isTrigger = makeItTrigger;
 					break;
@@ -122,6 +122,11 @@ namespace Playground.Utilities
 					break;
 			}
 #endif
+		}
+
+		public static void GetAxis()
+		{
+			
 		}
 	}
 }

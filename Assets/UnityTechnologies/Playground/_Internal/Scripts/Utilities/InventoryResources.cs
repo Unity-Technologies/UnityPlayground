@@ -11,7 +11,7 @@ namespace Playground.Utilities
 
 		public string[] GetResourceTypes()
 		{
-			//Just an annoying loop to switch the List<string> into an array of strings
+			// Just an annoying loop to switch the List<string> into an array of strings
 			string[] resourceTypesArray = new string[resourcesTypes.Count];
 			for(int i=0; i<resourcesTypes.Count; i++)
 			{

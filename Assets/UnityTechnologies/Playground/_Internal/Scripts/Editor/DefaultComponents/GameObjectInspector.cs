@@ -1,128 +1,128 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEditorInternal;
+using UnityEngine;
 
 #if GAMEOBJECT_HEADER
 
-[CanEditMultipleObjects]
-[CustomEditor(typeof(GameObject))]
-public class TestScriptInspector : Editor {
+namespace Playground.Editor.DefaultComponents
+{
+	[CanEditMultipleObjects]
+	[CustomEditor(typeof(GameObject))]
+	public class TestScriptInspector : UnityEditor.Editor {
 
-	private Texture2D headerBackground;
+		private Texture2D headerBackground;
 
-	public void OnEnable()
-	{
-		if(!EditorGUIUtility.isProSkin)
+		public void OnEnable()
 		{
-			headerBackground = Resources.Load<Texture2D>("Textures/HeaderPers");
+			if(!EditorGUIUtility.isProSkin)
+			{
+				headerBackground = Resources.Load<Texture2D>("Textures/HeaderPers");
+			}
+			else
+			{
+				headerBackground = Resources.Load<Texture2D>("Textures/HeaderPro");
+			}
 		}
-		else
+
+		public override void OnInspectorGUI()
 		{
-			headerBackground = Resources.Load<Texture2D>("Textures/HeaderPro");
+			//do nothing
 		}
-	}
 
-	public override void OnInspectorGUI()
-	{
-		//do nothing
-	}
+		protected override void OnHeaderGUI()
+		{
+			GUIStyle boxStyle = new GUIStyle();
+			boxStyle.padding = new RectOffset(15, 5, 15, 10);
+			boxStyle.normal.background = headerBackground;
+			GUIStyle fontStyle = new GUIStyle(GUI.skin.textField);
+			fontStyle.fontSize = 12;
 
-	protected override void OnHeaderGUI()
-	{
-		GUIStyle boxStyle = new GUIStyle();
-		boxStyle.padding = new RectOffset(15, 5, 15, 10);
-		boxStyle.normal.background = headerBackground;
-		GUIStyle fontStyle = new GUIStyle(GUI.skin.textField);
-		fontStyle.fontSize = 12;
-
-		GUILayout.BeginVertical(boxStyle);
+			GUILayout.BeginVertical(boxStyle);
 
 			//Active toggle and GameObject's name
 			GUILayout.BeginHorizontal();
-				EditorGUILayout.PropertyField(serializedObject.FindProperty("m_IsActive"), GUIContent.none, GUILayout.Width(25));
-				EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Name"), GUIContent.none, GUILayout.Height(17));
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("m_IsActive"), GUIContent.none, GUILayout.Width(25));
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Name"), GUIContent.none, GUILayout.Height(17));
 			GUILayout.EndHorizontal();
 
 			GUILayout.Space(5);
 
 			//Tags dropdown
 			GUILayout.BeginHorizontal();
-				GUILayout.Label("Tag", GUILayout.ExpandWidth(false));
+			GUILayout.Label("Tag", GUILayout.ExpandWidth(false));
 
-				string[] options = InternalEditorUtility.tags; //final list of tag options, including the mixed tag placeholder character "–"
-				int chosenTagId = 0; //number of tag chosen
-				bool isMixedTag = false;
+			string[] options = InternalEditorUtility.tags; //final list of tag options, including the mixed tag placeholder character "–"
+			int chosenTagId = 0; //number of tag chosen
+			bool isMixedTag = false;
 
-				//extra checks in case of multiple selection
-				if(Selection.gameObjects.Length > 1)
+			//extra checks in case of multiple selection
+			if(Selection.gameObjects.Length > 1)
+			{
+				//check if at least two objects have different tags		
+				string firstTag = Selection.gameObjects[0].tag;
+				foreach(GameObject go in Selection.gameObjects)
 				{
-					//check if at least two objects have different tags		
-					string firstTag = Selection.gameObjects[0].tag;
-					foreach(GameObject go in Selection.gameObjects)
+					if(!go.CompareTag(firstTag))
 					{
-						if(!go.CompareTag(firstTag))
-						{
-							//different tags, show placeholder character
-							options = new string[InternalEditorUtility.tags.Length + 1];
-							(new string[]{"―"}).CopyTo(options, 0);
-							(InternalEditorUtility.tags).CopyTo(options, 1);
-							isMixedTag = true;
-							break;
-						}
+						//different tags, show placeholder character
+						options = new string[InternalEditorUtility.tags.Length + 1];
+						(new string[]{"―"}).CopyTo(options, 0);
+						(InternalEditorUtility.tags).CopyTo(options, 1);
+						isMixedTag = true;
+						break;
 					}
 				}
+			}
 
-				if(!isMixedTag)
+			if(!isMixedTag)
+			{
+				//find the actual tag's ID in the list
+				chosenTagId = System.Array.IndexOf(InternalEditorUtility.tags, Selection.gameObjects[0].tag);
+			}
+
+			//display the actual UI Dropdown
+			int oldTagId = chosenTagId;
+			chosenTagId = EditorGUILayout.Popup(chosenTagId, options);
+
+			if(oldTagId != chosenTagId)
+			{
+				//adjust id to account for the placeholder tag
+				if(isMixedTag)
 				{
-					//find the actual tag's ID in the list
-					chosenTagId = System.Array.IndexOf(InternalEditorUtility.tags, Selection.gameObjects[0].tag);
+					chosenTagId--;
 				}
+				string finalTag = InternalEditorUtility.tags[chosenTagId];
+				serializedObject.FindProperty("m_TagString").stringValue = finalTag;
 
-				//display the actual UI Dropdown
-				int oldTagId = chosenTagId;
-				chosenTagId = EditorGUILayout.Popup(chosenTagId, options);
-
-				if(oldTagId != chosenTagId)
-				{
-					//adjust id to account for the placeholder tag
-					if(isMixedTag)
-					{
-						chosenTagId--;
-					}
-					string finalTag = InternalEditorUtility.tags[chosenTagId];
-					serializedObject.FindProperty("m_TagString").stringValue = finalTag;
-
-				}
+			}
 			GUILayout.EndHorizontal();
 
-            //Prefab
-            Object prefabParent = PrefabUtility.GetCorrespondingObjectFromSource(Selection.activeGameObject);
-            if (null != prefabParent) {
-                GUILayout.Space(5);
+			//Prefab
+			Object prefabParent = PrefabUtility.GetCorrespondingObjectFromSource(Selection.activeGameObject);
+			if (null != prefabParent) {
+				GUILayout.Space(5);
 
-                GUILayout.BeginHorizontal();
-                GUILayout.Label("Prefab", GUILayout.ExpandWidth(false));
-                if (GUILayout.Button("Select", EditorStyles.miniButtonLeft)) {
-                    Selection.activeObject = prefabParent;
-                    EditorGUIUtility.PingObject(prefabParent);
-                }
-                if (GUILayout.Button("Revert", EditorStyles.miniButtonMid)) {
-                    PrefabUtility.RevertPrefabInstance(Selection.activeGameObject, InteractionMode.UserAction);
-                }
-                if (GUILayout.Button("Apply", EditorStyles.miniButtonRight)) {
-	                PrefabUtility.ApplyPrefabInstance(Selection.activeGameObject, InteractionMode.UserAction);
-                }
+				GUILayout.BeginHorizontal();
+				GUILayout.Label("Prefab", GUILayout.ExpandWidth(false));
+				if (GUILayout.Button("Select", EditorStyles.miniButtonLeft)) {
+					Selection.activeObject = prefabParent;
+					EditorGUIUtility.PingObject(prefabParent);
+				}
+				if (GUILayout.Button("Revert", EditorStyles.miniButtonMid)) {
+					PrefabUtility.RevertPrefabInstance(Selection.activeGameObject, InteractionMode.UserAction);
+				}
+				if (GUILayout.Button("Apply", EditorStyles.miniButtonRight)) {
+					PrefabUtility.ApplyPrefabInstance(Selection.activeGameObject, InteractionMode.UserAction);
+				}
 
-                GUILayout.EndHorizontal();
-            }
+				GUILayout.EndHorizontal();
+			}
 
-        GUILayout.EndVertical();
+			GUILayout.EndVertical();
 
-		serializedObject.ApplyModifiedProperties();
+			serializedObject.ApplyModifiedProperties();
 		
-		/*
+			/*
 		//Prints the names of all properties of an object
 		SerializedProperty prop = serializedObject.GetIterator();
 		if (prop.NextVisible(true)) {
@@ -134,6 +134,7 @@ public class TestScriptInspector : Editor {
 			while (prop.NextVisible(false));
 		}
 		*/
+		}
 	}
 }
 

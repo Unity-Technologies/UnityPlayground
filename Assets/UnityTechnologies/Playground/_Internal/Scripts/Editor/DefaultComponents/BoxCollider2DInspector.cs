@@ -1,28 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEditor;
 using UnityEngine;
-using UnityEditor;
 
 #if DEFAULT_INSPECTORS
 
-[CanEditMultipleObjects]
-[CustomEditor(typeof(BoxCollider2D))]
-public class BoxCollider2DInspector : Collider2DInspectorBase
+namespace Playground.Editor.DefaultComponents
 {
-
-	public override void OnInspectorGUI()
+	[CanEditMultipleObjects]
+	[CustomEditor(typeof(BoxCollider2D))]
+	public class BoxCollider2DInspector : Collider2DInspectorBase
 	{
-		serializedObject.Update();
 
-		EditorGUILayout.Separator();
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Size"));
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Offset"));
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("m_AutoTiling"));
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("m_IsTrigger"), new GUIContent("Is Trigger", triggerMessage));
+		public override void OnInspectorGUI()
+		{
+			serializedObject.Update();
+
+			EditorGUILayout.Separator();
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Size"));
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Offset"));
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("m_AutoTiling"));
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("m_IsTrigger"), new GUIContent("Is Trigger", triggerMessage));
 		
-		base.ShowExtrasBlock(new string[]{"m_Material", "m_EdgeRadius", "m_UsedByEffector", "m_UsedByComposite"});
+			base.ShowExtrasBlock(new string[]{"m_Material", "m_EdgeRadius", "m_UsedByEffector", "m_UsedByComposite"});
 
-		serializedObject.ApplyModifiedProperties();
+			serializedObject.ApplyModifiedProperties();
+		}
 	}
 }
 
