@@ -1,29 +1,32 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using Playground.Scripts.BaseClasses;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[AddComponentMenu("Playground/Actions/Load Level")]
-public class LoadLevelAction : Action
+namespace Playground.Conditions.Actions
 {
-	public string levelName = SAME_SCENE;
+	[AddComponentMenu("Playground/Actions/Load Level")]
+	public class LoadLevelAction : Action
+	{
+		public string levelName = SAME_SCENE;
 
-	public const string SAME_SCENE = "0";
+		public const string SAME_SCENE = "0";
 	
 
-	//Loads a new Unity scene, or reload the current one (it means all objects are reset)
-	public override bool ExecuteAction(GameObject dataObject)
-	{
-		if(levelName == SAME_SCENE)
+		//Loads a new Unity scene, or reload the current one (it means all objects are reset)
+		public override bool ExecuteAction(GameObject dataObject)
 		{
-			//just restart the level
-			SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
-		}
-		else
-		{
-			//load another scene
-			SceneManager.LoadScene(levelName, LoadSceneMode.Single);
-		}
+			if(levelName == SAME_SCENE)
+			{
+				//just restart the level
+				SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+			}
+			else
+			{
+				//load another scene
+				SceneManager.LoadScene(levelName, LoadSceneMode.Single);
+			}
 
-		return true;
+			return true;
+		}
 	}
 }

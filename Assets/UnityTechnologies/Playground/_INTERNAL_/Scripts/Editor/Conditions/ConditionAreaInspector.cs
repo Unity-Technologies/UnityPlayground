@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Playground.Conditions;
 using UnityEditor;
 
 [CanEditMultipleObjects]

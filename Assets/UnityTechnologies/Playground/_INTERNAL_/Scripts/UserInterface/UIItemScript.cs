@@ -1,20 +1,22 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
-[AddComponentMenu("")]
-public class UIItemScript : MonoBehaviour
+namespace Playground.Scripts.UserInterface
 {
-	public Image resourceIcon;
-	public Text resourceAmount;
-
-	public void ShowNumber(int n)
+	[AddComponentMenu("")]
+	public class UIItemScript : MonoBehaviour
 	{
-		resourceAmount.text = n.ToString();
-	}
+		public Image resourceIcon;
+		public Text resourceAmount;
 
-	public void DisplayIcon(Sprite s)
-	{
-		resourceIcon.sprite = s;
+		public void ShowNumber(int n)
+		{
+			resourceAmount.text = n.ToString();
+		}
+
+		public void DisplayIcon(Sprite s)
+		{
+			resourceIcon.sprite = s;
+		}
 	}
 }

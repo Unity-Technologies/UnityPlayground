@@ -1,48 +1,51 @@
-﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.Events;
+﻿using Playground.Scripts.BaseClasses;
+using Playground.Scripts.UserInterface;
+using UnityEngine;
 
-[AddComponentMenu("Playground/Actions/Consume Resource")]
-public class ConsumeResourceAction : Action
+namespace Playground.Conditions.Actions
 {
-	[Header("Resource")]
-
-	public int checkFor = 0;
-	public int amountNeeded = 1;
-
-	private UIScript userInterface;
-
-
-
-	private void Start()
+	[AddComponentMenu("Playground/Actions/Consume Resource")]
+	public class ConsumeResourceAction : Action
 	{
-		// Find the UI in the scene and store a reference for later use
-		userInterface = FindObjectOfType<UIScript>();
-	}
+		[Header("Resource")]
+
+		public int checkFor = 0;
+		public int amountNeeded = 1;
+
+		private UIScript userInterface;
 
 
 
-	public override bool ExecuteAction(GameObject dataObject)
-	{
-		if(userInterface != null)
+		private void Start()
 		{
-			bool hasEnoughResource = userInterface.CheckIfHasResources(checkFor, amountNeeded);
+			// Find the UI in the scene and store a reference for later use
+			userInterface = FindObjectOfType<UIScript>();
+		}
 
-			if(hasEnoughResource)
+
+
+		public override bool ExecuteAction(GameObject dataObject)
+		{
+			if(userInterface != null)
 			{
-				//consume the resource and update the UI
-				userInterface.ConsumeResource(checkFor, amountNeeded);
+				bool hasEnoughResource = userInterface.CheckIfHasResources(checkFor, amountNeeded);
+
+				if(hasEnoughResource)
+				{
+					//consume the resource and update the UI
+					userInterface.ConsumeResource(checkFor, amountNeeded);
+				}
+
+				return hasEnoughResource;
 			}
+			else
+			{
+				Debug.LogWarning("User Interface prefab has not been found in the scene. The action can't execute!");
+				return false;
+			}
+		}
 
-			return hasEnoughResource;
-		}
-		else
-		{
-			Debug.LogWarning("User Interface prefab has not been found in the scene. The action can't execute!");
-			return false;
-		}
+
+
 	}
-
-
-
 }

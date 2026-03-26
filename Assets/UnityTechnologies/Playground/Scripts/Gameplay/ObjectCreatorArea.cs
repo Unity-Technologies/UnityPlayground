@@ -1,45 +1,48 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
-[AddComponentMenu("Playground/Gameplay/Object Creator Area")]
-[RequireComponent(typeof(BoxCollider2D))]
-public class ObjectCreatorArea : MonoBehaviour
+namespace Playground.Gameplay
 {
-	[Header("Object creation")]
-
-	// The object to spawn
-	// WARNING: take if from the Project panel, NOT the Scene/Hierarchy!
-	public GameObject prefabToSpawn;
-
-	[Header("Other options")]
-
-	// Configure the spawning pattern
-	public float spawnInterval = 1;
-
-	private BoxCollider2D boxCollider2D;
-
-	void Start ()
+	[AddComponentMenu("Playground/Gameplay/Object Creator Area")]
+	[RequireComponent(typeof(BoxCollider2D))]
+	public class ObjectCreatorArea : MonoBehaviour
 	{
-		boxCollider2D = GetComponent<BoxCollider2D>();
+		[Header("Object creation")]
 
-		StartCoroutine(SpawnObject());
-	}
-	
-	// This will spawn an object, and then wait some time, then spawn another...
-	IEnumerator SpawnObject ()
-	{
-		while(true)
+		// The object to spawn
+		// WARNING: take if from the Project panel, NOT the Scene/Hierarchy!
+		public GameObject prefabToSpawn;
+
+		[Header("Other options")]
+
+		// Configure the spawning pattern
+		public float spawnInterval = 1;
+
+		private BoxCollider2D boxCollider2D;
+
+		void Start ()
 		{
-			// Create some random numbers
-			float randomX = Random.Range (-boxCollider2D.size.x, boxCollider2D.size.x) *.5f;
-			float randomY = Random.Range (-boxCollider2D.size.y, boxCollider2D.size.y) *.5f;
+			boxCollider2D = GetComponent<BoxCollider2D>();
 
-			// Generate the new object
-			GameObject newObject = Instantiate<GameObject>(prefabToSpawn);
-			newObject.transform.position = new Vector2(randomX + transform.position.x, randomY + transform.position.y);
+			StartCoroutine(SpawnObject());
+		}
+	
+		// This will spawn an object, and then wait some time, then spawn another...
+		IEnumerator SpawnObject ()
+		{
+			while(true)
+			{
+				// Create some random numbers
+				float randomX = Random.Range (-boxCollider2D.size.x, boxCollider2D.size.x) *.5f;
+				float randomY = Random.Range (-boxCollider2D.size.y, boxCollider2D.size.y) *.5f;
 
-			// Wait for some time before spawning another object
-			yield return new WaitForSeconds(spawnInterval);
+				// Generate the new object
+				GameObject newObject = Instantiate<GameObject>(prefabToSpawn);
+				newObject.transform.position = new Vector2(randomX + transform.position.x, randomY + transform.position.y);
+
+				// Wait for some time before spawning another object
+				yield return new WaitForSeconds(spawnInterval);
+			}
 		}
 	}
 }

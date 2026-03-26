@@ -1,75 +1,80 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using Playground.Scripts.BaseClasses;
+using Playground.Scripts.UserInterface;
+using UnityEngine;
 
-[AddComponentMenu("Playground/Actions/Dialogue Balloon")]
-public class DialogueBalloonAction : Action
+namespace Playground.Conditions.Actions
 {
-
-	[Header("Contents")]
-	public string textToDisplay = "Hey!";
-	public Color backgroundColor = new Color32(113, 132, 146, 255);
-	public Color textColor = Color.white;
-
-	[Header("Options")]
-	public Transform targetObject;
-	public DisappearMode disappearMode = DisappearMode.ButtonPress;
-	public float timeToDisappear = 2f;
-	public KeyCode keyToPress = KeyCode.Return;
-
-	[Header("Continue dialogue")]
-	public DialogueBalloonAction followingText;
-
-	private BalloonScript b;
-	private bool balloonIsActive = false;
-
-
-	public override bool ExecuteAction(GameObject other)
+	[AddComponentMenu("Playground/Actions/Dialogue Balloon")]
+	public class DialogueBalloonAction : Action
 	{
-		if(!balloonIsActive)
+
+		[Header("Contents")]
+		public string textToDisplay = "Hey!";
+		public Color backgroundColor = new Color32(113, 132, 146, 255);
+		public Color textColor = Color.white;
+
+		[Header("Options")]
+		public Transform targetObject;
+		public DisappearMode disappearMode = DisappearMode.ButtonPress;
+		public float timeToDisappear = 2f;
+		public KeyCode keyToPress = KeyCode.Return;
+
+		[Header("Continue dialogue")]
+		public DialogueBalloonAction followingText;
+
+		private BalloonScript b;
+		private bool balloonIsActive = false;
+
+
+		public override bool ExecuteAction(GameObject other)
 		{
-			DialogueSystem d = FindObjectOfType<DialogueSystem>();
-			if(d == null)
+			if(!balloonIsActive)
 			{
-				//Dialogue System is not in the scene
-				Debug.LogWarning("You need a UI in the scene to display dialogue!");
+				DialogueSystem d = FindObjectOfType<DialogueSystem>();
+				if(d == null)
+				{
+					//Dialogue System is not in the scene
+					Debug.LogWarning("You need a UI in the scene to display dialogue!");
+					return false;
+				}
+			
+				//Dialogue System is found
+				b = d.CreateBalloon(textToDisplay, (disappearMode == DisappearMode.ButtonPress), keyToPress, timeToDisappear, backgroundColor, textColor, targetObject);
+				b.BalloonDestroyed += OnBalloonDestroyed;
+				balloonIsActive = true;
+			
+				StartCoroutine(WaitForBallonDestroyed());
+				return true;
+			}
+			else
+			{
 				return false;
 			}
-			
-			//Dialogue System is found
-			b = d.CreateBalloon(textToDisplay, (disappearMode == DisappearMode.ButtonPress), keyToPress, timeToDisappear, backgroundColor, textColor, targetObject);
-			b.BalloonDestroyed += OnBalloonDestroyed;
-			balloonIsActive = true;
-			
-			StartCoroutine(WaitForBallonDestroyed());
-			return true;
 		}
-		else
+
+		private IEnumerator WaitForBallonDestroyed()
 		{
-			return false;
+			yield return new WaitUntil(()=> !balloonIsActive);
 		}
-	}
-
-	private IEnumerator WaitForBallonDestroyed()
-	{
-		yield return new WaitUntil(()=> !balloonIsActive);
-	}
 
 
-	private void OnBalloonDestroyed()
-	{
-		b.BalloonDestroyed -= OnBalloonDestroyed;
-		b = null;
-		balloonIsActive = false;
-
-		if(followingText != null)
+		private void OnBalloonDestroyed()
 		{
-			followingText.ExecuteAction(gameObject);
-		}
-	}
+			b.BalloonDestroyed -= OnBalloonDestroyed;
+			b = null;
+			balloonIsActive = false;
 
-	public enum DisappearMode
-	{
-		Time = 0,
-		ButtonPress = 1,
+			if(followingText != null)
+			{
+				followingText.ExecuteAction(gameObject);
+			}
+		}
+
+		public enum DisappearMode
+		{
+			Time = 0,
+			ButtonPress = 1,
+		}
 	}
 }

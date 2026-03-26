@@ -1,42 +1,45 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using Playground.Scripts.BaseClasses;
+using UnityEngine;
 
-[AddComponentMenu("Playground/Actions/Teleport")]
-public class TeleportAction : Action
+namespace Playground.Conditions.Actions
 {
-	public GameObject objectToMove;
-	public Vector2 newPosition;
-	public bool stopMovements = true;
-
-
-
-	// Moves the GameObject instantly to a custom position
-	public override bool ExecuteAction(GameObject dataObject)
+	[AddComponentMenu("Playground/Actions/Teleport")]
+	public class TeleportAction : Action
 	{
-		Rigidbody2D rb2D;
+		public GameObject objectToMove;
+		public Vector2 newPosition;
+		public bool stopMovements = true;
 
-		if(objectToMove != null)
+
+
+		// Moves the GameObject instantly to a custom position
+		public override bool ExecuteAction(GameObject dataObject)
 		{
-			//moves the specified object
-			objectToMove.transform.position = newPosition;
-			rb2D = objectToMove.GetComponent<Rigidbody2D>();
-		}
-		else
-		{
-			//moves this object
-			transform.position = newPosition;
-			rb2D = transform.GetComponent<Rigidbody2D>();
-		}
+			Rigidbody2D rb2D;
+
+			if(objectToMove != null)
+			{
+				//moves the specified object
+				objectToMove.transform.position = newPosition;
+				rb2D = objectToMove.GetComponent<Rigidbody2D>();
+			}
+			else
+			{
+				//moves this object
+				transform.position = newPosition;
+				rb2D = transform.GetComponent<Rigidbody2D>();
+			}
 
 
-		//in case the object has physics, we can bring it to an halt
-		if(stopMovements
-			&& rb2D != null)
-		{
-			rb2D.linearVelocity = Vector3.zero;
-			rb2D.angularVelocity = 0f;
-		}
+			//in case the object has physics, we can bring it to an halt
+			if(stopMovements
+			   && rb2D != null)
+			{
+				rb2D.linearVelocity = Vector3.zero;
+				rb2D.angularVelocity = 0f;
+			}
 
-		return true;
+			return true;
+		}
 	}
 }

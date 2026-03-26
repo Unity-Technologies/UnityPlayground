@@ -1,15 +1,18 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using Playground.Scripts.Utilities;
+using UnityEngine;
 
-[AddComponentMenu("Playground/Attributes/Bullet")]
-public class BulletAttribute : MonoBehaviour
+namespace Playground.Attributes
 {
-	[HideInInspector]
-	public int playerId;
-
-	//This will create a dialog window asking for which dialog to add
-	private void Reset()
+	[AddComponentMenu("Playground/Attributes/Bullet")]
+	public class BulletAttribute : MonoBehaviour
 	{
-		Utils.Collider2DDialogWindow(gameObject, true);
+		[HideInInspector]
+		public int playerId;
+
+		//This will create a dialog window asking for which dialog to add
+		private void Reset()
+		{
+			Utils.Collider2DDialogWindow(gameObject, true);
+		}
 	}
 }

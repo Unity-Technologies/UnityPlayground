@@ -1,47 +1,51 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using Playground.Scripts.UserInterface;
+using Playground.Scripts.Utilities;
+using UnityEngine;
 
-[AddComponentMenu("Playground/Attributes/Resource")]
-[RequireComponent(typeof(SpriteRenderer))]
-public class ResourceAttribute : MonoBehaviour
+namespace Playground.Attributes
 {
-	public int resourceIndex = 0; //the "type of resource", this index point to the array in the centralised InventoryResources ScriptableObject
-	public int amount = 1;
-
-	private UIScript userInterface;
-
-
-	// Start is called at the beginning
-	private void Start()
+	[AddComponentMenu("Playground/Attributes/Resource")]
+	[RequireComponent(typeof(SpriteRenderer))]
+	public class ResourceAttribute : MonoBehaviour
 	{
-		// Find the UI in the scene and store a reference for later use
-		userInterface = FindObjectOfType<UIScript>();
-	}
+		public int resourceIndex = 0; //the "type of resource", this index point to the array in the centralised InventoryResources ScriptableObject
+		public int amount = 1;
+
+		private UIScript userInterface;
 
 
-	//This will create a dialog window asking for which dialog to add
-	private void Reset()
-	{
-		Utils.Collider2DDialogWindow(gameObject, true);
-	}
-
-
-	private void OnTriggerEnter2D(Collider2D otherCollider)
-	{
-		// is the other object a player?
-		if(otherCollider.CompareTag("Player")
-			|| otherCollider.CompareTag("Player2"))
+		// Start is called at the beginning
+		private void Start()
 		{
-			if(userInterface != null)
-			{
-				userInterface.AddResource(resourceIndex, amount, GetComponent<SpriteRenderer>().sprite);
-			}
-			else
-			{
-				Debug.LogWarning("User Interface is not in the scene, so the resource cannot be displayed and put in the inventory.");
-			}
+			// Find the UI in the scene and store a reference for later use
+			userInterface = FindObjectOfType<UIScript>();
+		}
 
-			Destroy(gameObject);
+
+		//This will create a dialog window asking for which dialog to add
+		private void Reset()
+		{
+			Utils.Collider2DDialogWindow(gameObject, true);
+		}
+
+
+		private void OnTriggerEnter2D(Collider2D otherCollider)
+		{
+			// is the other object a player?
+			if(otherCollider.CompareTag("Player")
+			   || otherCollider.CompareTag("Player2"))
+			{
+				if(userInterface != null)
+				{
+					userInterface.AddResource(resourceIndex, amount, GetComponent<SpriteRenderer>().sprite);
+				}
+				else
+				{
+					Debug.LogWarning("User Interface is not in the scene, so the resource cannot be displayed and put in the inventory.");
+				}
+
+				Destroy(gameObject);
+			}
 		}
 	}
 }

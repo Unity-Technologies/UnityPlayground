@@ -1,28 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Playground.Scripts.BaseClasses;
 using UnityEngine;
 
-[AddComponentMenu("Playground/Conditions/Condition Repeat")]
-public class ConditionRepeat : ConditionBase
+namespace Playground.Conditions
 {
-	public float initialDelay = 0f;
-	public float frequency = 1f;
-
-	private float timeLastEventFired;
-
-
-	private void Start()
+	[AddComponentMenu("Playground/Conditions/Condition Repeat")]
+	public class ConditionRepeat : ConditionBase
 	{
-		timeLastEventFired = initialDelay - frequency;
-	}
+		public float initialDelay = 0f;
+		public float frequency = 1f;
+
+		private float timeLastEventFired;
 
 
-	private void Update()
-	{
-		if(Time.time >= timeLastEventFired + frequency)
+		private void Start()
 		{
-			ExecuteAllActions(null);
-			timeLastEventFired = Time.time;
+			timeLastEventFired = initialDelay - frequency;
+		}
+
+
+		private void Update()
+		{
+			if(Time.time >= timeLastEventFired + frequency)
+			{
+				ExecuteAllActions(null);
+				timeLastEventFired = Time.time;
+			}
 		}
 	}
 }

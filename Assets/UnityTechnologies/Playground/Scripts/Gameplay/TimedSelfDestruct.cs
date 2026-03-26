@@ -1,25 +1,27 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-[AddComponentMenu("Playground/Gameplay/Timed Self-Destruct")]
-public class TimedSelfDestruct : MonoBehaviour
+namespace Playground.Gameplay
 {
-
-	// After this time, the object will be destroyed
-	public float timeToDestruction;
-
-
-	void Start ()
+	[AddComponentMenu("Playground/Gameplay/Timed Self-Destruct")]
+	public class TimedSelfDestruct : MonoBehaviour
 	{
-		Invoke("DestroyMe", timeToDestruction);
-	}
+
+		// After this time, the object will be destroyed
+		public float timeToDestruction;
 
 
-	// This function will destroy this object :(
-	void DestroyMe()
-	{
-		Destroy(gameObject);
+		void Start ()
+		{
+			Invoke("DestroyMe", timeToDestruction);
+		}
 
-		// Bye bye!
+
+		// This function will destroy this object :(
+		void DestroyMe()
+		{
+			Destroy(gameObject);
+
+			// Bye bye!
+		}
 	}
 }

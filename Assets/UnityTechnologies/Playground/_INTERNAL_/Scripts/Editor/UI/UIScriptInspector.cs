@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections;
+using Playground.Scripts.UserInterface;
 
 [CustomEditor(typeof(UIScript))]
 public class UIScriptInspector : InspectorBase

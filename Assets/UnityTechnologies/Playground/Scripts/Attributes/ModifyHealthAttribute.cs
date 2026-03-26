@@ -1,36 +1,39 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using Playground.Scripts.Utilities;
+using UnityEngine;
 
-[AddComponentMenu("Playground/Attributes/Modify Health")]
-public class ModifyHealthAttribute : MonoBehaviour
+namespace Playground.Attributes
 {
-
-	public bool destroyWhenActivated = false;
-	public int healthChange = -1;
-
-	//This will create a dialog window asking for which dialog to add
-	private void Reset()
+	[AddComponentMenu("Playground/Attributes/Modify Health")]
+	public class ModifyHealthAttribute : MonoBehaviour
 	{
-		Utils.Collider2DDialogWindow(gameObject, true);
-	}
 
-	// This function gets called everytime this object collides with another
-	private void OnCollisionEnter2D(Collision2D collisionData)
-	{
-		OnTriggerEnter2D(collisionData.collider);
-	}
+		public bool destroyWhenActivated = false;
+		public int healthChange = -1;
 
-	private void OnTriggerEnter2D(Collider2D colliderData)
-	{
-		HealthSystemAttribute healthScript = colliderData.gameObject.GetComponent<HealthSystemAttribute>();
-		if(healthScript != null)
+		//This will create a dialog window asking for which dialog to add
+		private void Reset()
 		{
-			// subtract health from the player
-			healthScript.ModifyHealth(healthChange);
+			Utils.Collider2DDialogWindow(gameObject, true);
+		}
 
-			if(destroyWhenActivated)
+		// This function gets called everytime this object collides with another
+		private void OnCollisionEnter2D(Collision2D collisionData)
+		{
+			OnTriggerEnter2D(collisionData.collider);
+		}
+
+		private void OnTriggerEnter2D(Collider2D colliderData)
+		{
+			HealthSystemAttribute healthScript = colliderData.gameObject.GetComponent<HealthSystemAttribute>();
+			if(healthScript != null)
 			{
-				Destroy(gameObject);
+				// subtract health from the player
+				healthScript.ModifyHealth(healthChange);
+
+				if(destroyWhenActivated)
+				{
+					Destroy(gameObject);
+				}
 			}
 		}
 	}

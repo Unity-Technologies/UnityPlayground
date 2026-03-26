@@ -1,42 +1,45 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using Playground.Scripts.BaseClasses;
+using UnityEngine;
 
-[AddComponentMenu("Playground/Actions/On-Off")]
-public class OnOffAction : Action
+namespace Playground.Conditions.Actions
 {
-	public GameObject objectToAffect;
-	public bool justMakeInvisible;
-
-
-	// Changes the object state from active to inactive, and viceversa
-	public override bool ExecuteAction(GameObject dataObject)
+	[AddComponentMenu("Playground/Actions/On-Off")]
+	public class OnOffAction : Action
 	{
-		if(objectToAffect != null)
+		public GameObject objectToAffect;
+		public bool justMakeInvisible;
+
+
+		// Changes the object state from active to inactive, and viceversa
+		public override bool ExecuteAction(GameObject dataObject)
 		{
-			if(!justMakeInvisible)
+			if(objectToAffect != null)
 			{
-				objectToAffect.SetActive(!objectToAffect.activeSelf);
-			}
-			else
-			{
-				//in this case, we just make the object invisible
-				SpriteRenderer sr = objectToAffect.GetComponent<SpriteRenderer>();
-				if(sr != null)
+				if(!justMakeInvisible)
 				{
-					sr.enabled = !sr.enabled;					
+					objectToAffect.SetActive(!objectToAffect.activeSelf);
 				}
 				else
 				{
-					//the object doesn't have a Sprite Renderer component so the action can't be performed!
-					return false;
+					//in this case, we just make the object invisible
+					SpriteRenderer sr = objectToAffect.GetComponent<SpriteRenderer>();
+					if(sr != null)
+					{
+						sr.enabled = !sr.enabled;					
+					}
+					else
+					{
+						//the object doesn't have a Sprite Renderer component so the action can't be performed!
+						return false;
+					}
 				}
-			}
 
-			return true;
-		}
-		else
-		{
-			return false;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 	}
 }
