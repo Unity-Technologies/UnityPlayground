@@ -1,23 +1,28 @@
 ﻿using UnityEditor;
+using UnityEditor.Build;
 using UnityEngine;
 
 namespace Playground.Editor
 {
 	public class MenuItemFunctions
 	{
+		private static readonly string[] defineSymbols = {
+			"GAMEOBJECT_HEADER",
+			"DEFAULT_INSPECTORS",
+			"CUSTOM_INSPECTORS",
+		};
+		
 		[MenuItem("Playground/Turn Playground Off")]
 		public static void TurnOff ()
 		{
-			PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.Standalone, "");
-		
+			PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.Standalone, "");
 			Debug.Log("Turned Playground off");
 		}
 
 		[MenuItem("Playground/Turn Playground On")]
 		public static void TurnOn ()
 		{
-			PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.Standalone, "GAMEOBJECT_HEADER; DEFAULT_INSPECTORS; CUSTOM_INSPECTORS");
-		
+			PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.Standalone, defineSymbols);
 			Debug.Log("Turned Playground on");
 		}
 	}
