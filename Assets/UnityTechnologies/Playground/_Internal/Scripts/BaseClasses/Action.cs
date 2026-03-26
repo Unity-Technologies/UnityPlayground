@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Playground.Scripts.BaseClasses
+namespace Playground.BaseClasses
 {
 	public abstract class Action : MonoBehaviour
 	{

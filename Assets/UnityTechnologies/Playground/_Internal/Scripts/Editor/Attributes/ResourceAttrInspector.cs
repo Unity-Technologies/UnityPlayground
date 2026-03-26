@@ -1,6 +1,6 @@
 ﻿using Playground.Attributes;
 using Playground.Editor.BaseClasses;
-using Playground.Scripts.Utilities;
+using Playground.Utilities;
 using UnityEditor;
 using UnityEngine;
 

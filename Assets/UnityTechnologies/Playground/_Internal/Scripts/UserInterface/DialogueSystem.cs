@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Playground.Scripts.UserInterface
+namespace Playground.UserInterface
 {
 	[AddComponentMenu("")]
 	public class DialogueSystem : MonoBehaviour

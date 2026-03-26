@@ -1,6 +1,7 @@
-using Playground.Scripts.BaseClasses;
-using Playground.Scripts.Utilities;
+using Playground.BaseClasses;
+using Playground.Utilities;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Playground.Movement
 {
@@ -22,6 +23,7 @@ namespace Playground.Movement
 		{	
 			// Register the spin from the player input
 			// Moving with the arrow keys
+			spin = Keyboard.current.spaceKey.isPressed ? 1f : 0f;
 			if(typeOfControl == Enums.KeyGroups.ArrowKeys)
 			{
 				spin = Input.GetAxis("Horizontal");

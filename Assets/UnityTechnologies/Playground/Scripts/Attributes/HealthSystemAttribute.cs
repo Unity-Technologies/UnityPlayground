@@ -1,4 +1,4 @@
-﻿using Playground.Scripts.UserInterface;
+﻿using Playground.UserInterface;
 using UnityEngine;
 
 namespace Playground.Attributes

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Playground.Scripts.BaseClasses
+namespace Playground.BaseClasses
 {
 	public abstract class ConditionBase : MonoBehaviour
 	{

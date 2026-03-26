@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using Playground.Scripts.BaseClasses;
-using Playground.Scripts.Utilities;
+using Playground.BaseClasses;
+using Playground.Utilities;
 using UnityEngine;
 
 //This script has been suggested by Bryan Livingston (@BryanLivingston). Thanks Bryan!

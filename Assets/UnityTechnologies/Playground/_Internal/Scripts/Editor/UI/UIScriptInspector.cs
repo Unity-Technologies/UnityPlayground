@@ -1,5 +1,5 @@
 ﻿using Playground.Editor.BaseClasses;
-using Playground.Scripts.UserInterface;
+using Playground.UserInterface;
 using UnityEditor;
 using UnityEngine;
 

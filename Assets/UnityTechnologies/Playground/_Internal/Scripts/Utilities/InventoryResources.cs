@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Playground.Scripts.Utilities
+namespace Playground.Utilities
 {
 	[CreateAssetMenu]
 	public class InventoryResources : ScriptableObject

@@ -1,4 +1,4 @@
-﻿namespace Playground.Scripts.Utilities
+﻿namespace Playground.Utilities
 {
 	public class Enums
 	{

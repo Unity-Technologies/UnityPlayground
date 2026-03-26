@@ -1,4 +1,4 @@
-﻿using Playground.Scripts.Utilities;
+﻿using Playground.Utilities;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;

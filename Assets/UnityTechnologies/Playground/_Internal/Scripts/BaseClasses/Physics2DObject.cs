@@ -2,7 +2,7 @@ using UnityEngine;
 
 // All component that require physics inherit from this class, for easy access to the Rigidbody2D component
 
-namespace Playground.Scripts.BaseClasses
+namespace Playground.BaseClasses
 {
 	[RequireComponent(typeof(Rigidbody2D))]
 	public abstract class Physics2DObject : MonoBehaviour

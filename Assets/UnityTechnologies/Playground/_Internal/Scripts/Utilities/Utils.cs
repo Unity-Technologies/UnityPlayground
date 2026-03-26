@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Playground.Scripts.Utilities
+namespace Playground.Utilities
 {
 	public static class Utils
 	{
@@ -35,14 +35,7 @@ namespace Playground.Scripts.Utilities
 		//Always returns positive vectors!
 		public static Vector2 GetVectorFromAxis(Enums.Axes axis)
 		{
-			if(axis == Enums.Axes.X)
-			{
-				return Vector2.right;
-			}
-			else
-			{
-				return Vector2.up;
-			}
+			return axis == Enums.Axes.X ? Vector2.right : Vector2.up;
 		}
 
 		public static Vector2 GetVector2FromVector3(Vector3 input)

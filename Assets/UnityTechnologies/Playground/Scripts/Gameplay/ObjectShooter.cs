@@ -1,5 +1,5 @@
 ﻿using Playground.Attributes;
-using Playground.Scripts.Utilities;
+using Playground.Utilities;
 using UnityEngine;
 
 namespace Playground.Gameplay

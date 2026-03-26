@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Playground.Scripts.UserInterface
+namespace Playground.UserInterface
 {
 	[AddComponentMenu("")]
 	public class UIScript : MonoBehaviour

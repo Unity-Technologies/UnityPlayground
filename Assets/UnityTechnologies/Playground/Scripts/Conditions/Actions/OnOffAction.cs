@@ -1,4 +1,4 @@
-﻿using Playground.Scripts.BaseClasses;
+﻿using Playground.BaseClasses;
 using UnityEngine;
 
 namespace Playground.Conditions.Actions

@@ -1,5 +1,5 @@
-﻿using Playground.Scripts.BaseClasses;
-using Playground.Scripts.UserInterface;
+﻿using Playground.BaseClasses;
+using Playground.UserInterface;
 using UnityEngine;
 
 namespace Playground.Conditions.Actions

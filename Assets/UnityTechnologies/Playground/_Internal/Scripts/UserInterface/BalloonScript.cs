@@ -2,7 +2,7 @@
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Playground.Scripts.UserInterface
+namespace Playground.UserInterface
 {
 	[AddComponentMenu("")]
 	public class BalloonScript : MonoBehaviour
