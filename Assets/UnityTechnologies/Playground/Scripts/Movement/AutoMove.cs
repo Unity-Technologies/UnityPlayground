@@ -31,7 +31,7 @@ public class AutoMove : Physics2DObject
 	//Draw an arrow to show the direction in which the object will move
 	void OnDrawGizmosSelected()
 	{
-		if(this.enabled)
+		if(enabled)
 		{
 			float extraAngle = (relativeToRotation) ? transform.rotation.eulerAngles.z : 0f;
 			Utils.DrawMoveArrowGizmo(transform.position, direction, extraAngle);

@@ -73,14 +73,14 @@ public class BalloonScript : MonoBehaviour
 		{
 			if(Input.GetKeyUp(buttonUsed))
 			{
-				Destroy(this.gameObject);
+				Destroy(gameObject);
 			}
 		}
 		else
 		{
 			if(Time.time >= startTime + duration)
 			{
-				Destroy(this.gameObject);
+				Destroy(gameObject);
 			}
 		}
 	}

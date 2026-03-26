@@ -48,7 +48,7 @@ public class ObjectShooter : MonoBehaviour
 			Vector2 actualBulletDirection = (relativeToRotation) ? (Vector2)(Quaternion.Euler(0, 0, transform.eulerAngles.z) * shootDirection) : shootDirection;
 
 			GameObject newObject = Instantiate<GameObject>(prefabToSpawn);
-			newObject.transform.position = this.transform.position;
+			newObject.transform.position = transform.position;
 			newObject.transform.eulerAngles = new Vector3(0f, 0f, Utils.Angle(actualBulletDirection));
 			newObject.tag = "Bullet";
 
@@ -75,7 +75,7 @@ public class ObjectShooter : MonoBehaviour
 
 	void OnDrawGizmosSelected()
 	{
-		if(this.enabled)
+		if(enabled)
 		{
 			float extraAngle = (relativeToRotation) ? transform.rotation.eulerAngles.z : 0f;
 			Utils.DrawShootArrowGizmo(transform.position, shootDirection, extraAngle, 1f);

@@ -18,8 +18,8 @@ public class DestroyAction : Action
 			GameObject newObject = Instantiate<GameObject>(deathEffect);
 			
 			//move the effect depending on who needs to be destroyed
-			Vector3 otherObjectPos = (otherObject == null) ? this.transform.position : otherObject.transform.position;
-			newObject.transform.position = (target == Enums.Targets.ObjectThatCollided) ? otherObjectPos : this.transform.position;
+			Vector3 otherObjectPos = (otherObject == null) ? transform.position : otherObject.transform.position;
+			newObject.transform.position = (target == Enums.Targets.ObjectThatCollided) ? otherObjectPos : transform.position;
 		}
 
 		//remove the GameObject from the scene (destroy)

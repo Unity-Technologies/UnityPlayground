@@ -18,7 +18,7 @@ public class HealthSystemAttribute : MonoBehaviour
 	private void Start()
 	{
 		// Find the UI in the scene and store a reference for later use
-		ui = GameObject.FindObjectOfType<UIScript>();
+		ui = FindObjectOfType<UIScript>();
 
 		// Set the player number based on the GameObject tag
 		switch(gameObject.tag)

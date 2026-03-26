@@ -32,7 +32,7 @@ public class ConditionArea : ConditionBase
 	//This will create a dialog window asking for which dialog to add
 	private void Reset()
 	{
-		Utils.Collider2DDialogWindow(this.gameObject, true);
+		Utils.Collider2DDialogWindow(gameObject, true);
 	}
 	
 

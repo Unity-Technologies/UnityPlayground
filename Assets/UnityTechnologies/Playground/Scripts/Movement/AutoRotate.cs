@@ -25,7 +25,7 @@ public class AutoRotate : Physics2DObject
 	//Draw an arrow to show the direction in which the object will rotate
 	void OnDrawGizmosSelected()
 	{
-		if(this.enabled)
+		if(enabled)
 		{
 			Utils.DrawRotateArrowGizmo(transform.position, rotationSpeed);
 		}

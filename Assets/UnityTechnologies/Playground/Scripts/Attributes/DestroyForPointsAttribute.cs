@@ -11,14 +11,14 @@ public class DestroyForPointsAttribute : MonoBehaviour
 	private void Start()
 	{
 		// Find the UI in the scene and store a reference for later use
-		userInterface = GameObject.FindObjectOfType<UIScript>();
+		userInterface = FindObjectOfType<UIScript>();
 	}
 	
 
 	//This will create a dialog window asking for which dialog to add
 	private void Reset()
 	{
-		Utils.Collider2DDialogWindow(this.gameObject, false);
+		Utils.Collider2DDialogWindow(gameObject, false);
 	}
 	
 	//duplication of the following function to accomodate both trigger and non-trigger Colliders

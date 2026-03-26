@@ -11,7 +11,7 @@ public class DialogueSystem : MonoBehaviour
 
 	public BalloonScript CreateBalloon(string dialogueString, bool usingButton, KeyCode button, float timeToDisappear, Color backgroundC, Color textC, Transform targetObj = null)
 	{
-		BalloonScript b = GameObject.Instantiate(balloonPrefab).GetComponent<BalloonScript>();
+		BalloonScript b = Instantiate(balloonPrefab).GetComponent<BalloonScript>();
 		b.transform.SetParent(transform, false);
 		b.Setup(dialogueString, usingButton, button, timeToDisappear, backgroundC, textC, targetObj);
 

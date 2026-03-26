@@ -36,7 +36,7 @@ public class ObjectCreatorArea : MonoBehaviour
 
 			// Generate the new object
 			GameObject newObject = Instantiate<GameObject>(prefabToSpawn);
-			newObject.transform.position = new Vector2(randomX + this.transform.position.x, randomY + this.transform.position.y);
+			newObject.transform.position = new Vector2(randomX + transform.position.x, randomY + transform.position.y);
 
 			// Wait for some time before spawning another object
 			yield return new WaitForSeconds(spawnInterval);
