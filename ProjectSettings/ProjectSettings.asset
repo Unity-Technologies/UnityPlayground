@@ -138,7 +138,6 @@ PlayerSettings:
   switchNVNMaxPublicSamplerIDCount: 0
   switchMaxWorkerMultiple: 8
   switchNVNGraphicsFirmwareMemory: 32
-  switchGraphicsJobsSyncAfterKick: 1
   vulkanNumSwapchainBuffers: 3
   vulkanEnableSetSRGBWrite: 0
   vulkanEnablePreTransform: 0
@@ -147,7 +146,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 1.1.0
+  bundleVersion: 1.8.0
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -185,7 +184,6 @@ PlayerSettings:
   AndroidMinSdkVersion: 25
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
-  AndroidPreferredDataLocation: 1
   aotOptions: 
   stripEngineCode: 1
   iPhoneStrippingLevel: 0
@@ -274,7 +272,6 @@ PlayerSettings:
   useCustomGradleSettingsTemplate: 0
   useCustomProguardFile: 0
   AndroidTargetArchitectures: 5
-  AndroidAllowedArchitectures: -1
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: '{inproject}: '
@@ -710,12 +707,12 @@ PlayerSettings:
   webGLMemoryLinearGrowthStep: 16
   webGLMemoryGeometricGrowthStep: 0.2
   webGLMemoryGeometricGrowthCap: 96
+  webGLEnableWebGPU: 0
   webGLPowerPreference: 2
   webGLWebAssemblyTable: 0
   webGLWebAssemblyBigInt: 0
   webGLCloseOnQuit: 0
   webWasm2023: 0
-  webEnableSubmoduleStrippingCompatibility: 0
   scriptingDefineSymbols:
     Standalone: 
   additionalCompilerArguments: {}
@@ -856,6 +853,3 @@ PlayerSettings:
   insecureHttpOption: 0
   androidVulkanDenyFilterList: []
   androidVulkanAllowFilterList: []
-  androidVulkanDeviceFilterListAsset: {fileID: 0}
-  d3d12DeviceFilterListAsset: {fileID: 0}
-  allowedHttpConnections: 3
