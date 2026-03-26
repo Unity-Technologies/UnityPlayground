@@ -16,7 +16,7 @@ namespace Playground.Conditions
 		}
 	
 		// This function will be called when something touches the trigger collider
-		void OnCollisionEnter2D(Collision2D collision)
+		private void OnCollisionEnter2D(Collision2D collision)
 		{
 			if(collision.collider.CompareTag(filterTag)
 			   || !filterByTag)

@@ -16,7 +16,7 @@ namespace Playground.Movement
 
 
 		// FixedUpdate is called once per frame
-		void FixedUpdate ()
+		private void FixedUpdate ()
 		{
 			// Find the right rotation, according to speed
 			currentRotation += .02f * rotationSpeed * 10f;
@@ -26,7 +26,7 @@ namespace Playground.Movement
 		}
 
 		//Draw an arrow to show the direction in which the object will rotate
-		void OnDrawGizmosSelected()
+		private void OnDrawGizmosSelected()
 		{
 			if(enabled)
 			{

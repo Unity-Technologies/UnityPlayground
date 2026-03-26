@@ -10,14 +10,14 @@ namespace Playground.Gameplay
 		public float timeToDestruction;
 
 
-		void Start ()
+		private void Start ()
 		{
 			Invoke("DestroyMe", timeToDestruction);
 		}
 
 
 		// This function will destroy this object :(
-		void DestroyMe()
+		private void DestroyMe()
 		{
 			Destroy(gameObject);
 

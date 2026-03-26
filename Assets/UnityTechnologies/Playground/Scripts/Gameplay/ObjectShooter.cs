@@ -33,7 +33,7 @@ namespace Playground.Gameplay
 
 
 		// Use this for initialization
-		void Start ()
+		private void Start ()
 		{
 			timeOfLastSpawn = -creationRate;
 
@@ -43,7 +43,7 @@ namespace Playground.Gameplay
 
 
 		// Update is called once per frame
-		void Update ()
+		private void Update ()
 		{
 			if(Input.GetKey(keyToPress)
 			   && Time.time >= timeOfLastSpawn + creationRate)
@@ -76,7 +76,7 @@ namespace Playground.Gameplay
 			}
 		}
 
-		void OnDrawGizmosSelected()
+		private void OnDrawGizmosSelected()
 		{
 			if(enabled)
 			{

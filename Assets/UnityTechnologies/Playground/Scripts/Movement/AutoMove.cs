@@ -18,7 +18,7 @@ namespace Playground.Movement
 
 	
 		// FixedUpdate is called once per frame
-		void FixedUpdate ()
+		private void FixedUpdate ()
 		{
 			if(relativeToRotation)
 			{
@@ -32,7 +32,7 @@ namespace Playground.Movement
 
 
 		//Draw an arrow to show the direction in which the object will move
-		void OnDrawGizmosSelected()
+		private void OnDrawGizmosSelected()
 		{
 			if(enabled)
 			{

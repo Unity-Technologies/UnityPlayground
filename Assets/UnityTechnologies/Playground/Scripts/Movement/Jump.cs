@@ -25,7 +25,7 @@ namespace Playground.Movement
 		private bool canJump = true;
 
 		// Read the input from the player
-		void Update()
+		private void Update()
 		{
 			if(canJump
 			   && Input.GetKeyDown(key))

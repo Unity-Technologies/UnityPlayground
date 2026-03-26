@@ -16,10 +16,8 @@ namespace Playground.Movement
 		public float speed = 5f;
 	
 		private float spin;
-	
-	
-		// Update gets called every frame
-		void Update ()
+
+		private void Update ()
 		{	
 			// Register the spin from the player input
 			// Moving with the arrow keys
@@ -33,10 +31,8 @@ namespace Playground.Movement
 				spin = Input.GetAxis("Horizontal2");
 			}
 		}
-	
 
-		// FixedUpdate is called every frame when the physics are calculated
-		void FixedUpdate ()
+		private void FixedUpdate ()
 		{
 			// Apply the torque to the Rigidbody2D
 			rigidbody2D.AddTorque(-spin * speed);

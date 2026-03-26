@@ -25,7 +25,7 @@ namespace Playground.Conditions
 
 
 		// This function will be called at the beginning
-		void Start()
+		private void Start()
 		{
 			lastTimeTriggerStayCalled = -frequency;
 		}
@@ -58,7 +58,7 @@ namespace Playground.Conditions
 
 
 		// This will be called EVERY FRAME when something stays inside the trigger collider
-		void OnTriggerStay2D(Collider2D otherCollider)
+		private void OnTriggerStay2D(Collider2D otherCollider)
 		{
 			//is this the type of event we need?
 			if(eventType == ColliderEventTypes.StayInside

@@ -22,7 +22,7 @@ namespace Playground.Movement
 		private Vector2[] newWaypoints;
 		private int currentTargetIndex;
 
-		void Start ()
+		private void Start ()
 		{
 			currentTargetIndex = 0;
 
@@ -34,10 +34,9 @@ namespace Playground.Movement
 				w = i;
 			}
 
-			//Add the starting position at the end, only if there is at least another point in the queue - otherwise it's on index 0
+			// Add the starting position at the end, only if there is at least another point in the queue - otherwise it's on index 0
 			int v = (newWaypoints.Length > 1) ? w+1 : 0;
 			newWaypoints[v] = transform.position;
-			//waypoints = newWaypoints;
 
 			if(orientToDirection)
 			{
@@ -53,7 +52,7 @@ namespace Playground.Movement
 
 			if(Vector2.Distance(transform.position, currentTarget) <= .1f)
 			{
-				//new waypoint has been reached
+				// New waypoint has been reached
 				currentTargetIndex = (currentTargetIndex<newWaypoints.Length-1) ? currentTargetIndex +1 : 0;
 				if(orientToDirection)
 				{

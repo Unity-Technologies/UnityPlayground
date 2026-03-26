@@ -10,36 +10,32 @@ namespace Playground.Movement
 	{
 		[Header("Input key")]
 
-		// the key used to activate the push
+		// The key used to activate the push
 		public KeyCode key = KeyCode.Space;
 
 		[Header("Direction and strength")]
 
-		// strength of the push, and the axis on which it is applied (can be X or Y)
+		// Strength of the push, and the axis on which it is applied (can be X or Y)
 		public float pushStrength = 5f;
 		public Enums.Axes axis = Enums.Axes.Y;
 		public bool relativeAxis = true;
 
-
 		private bool keyPressed = false;
 		private Vector2 pushVector;
 
-
 		// Read the input from the player
-		void Update()
+		private void Update()
 		{
 			keyPressed = Input.GetKey(key);
 		}
 
-
-		// FixedUpdate is called every frame when the physics are calculated
-		void FixedUpdate()
+		private void FixedUpdate()
 		{
 			if(keyPressed)
 			{
 				pushVector = Utils.GetVectorFromAxis(axis) * pushStrength;
 
-				//Apply the push
+				// Apply the push
 				if(relativeAxis)
 				{
 					rigidbody2D.AddRelativeForce(pushVector);
@@ -51,8 +47,8 @@ namespace Playground.Movement
 			}
 		}
 
-		//Draw an arrow to show the direction in which the object will move
-		void OnDrawGizmosSelected()
+		// Draw an arrow to show the direction in which the object will move
+		private void OnDrawGizmosSelected()
 		{
 			if(enabled)
 			{

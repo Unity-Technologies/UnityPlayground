@@ -25,7 +25,7 @@ namespace Playground.Movement
 		}
 
 		// FixedUpdate is called every frame, when the physics are calculated
-		void FixedUpdate()
+		private void FixedUpdate()
 		{
 			if(target != null)
 			{
@@ -38,7 +38,7 @@ namespace Playground.Movement
 
 
 		// LateUpdate is called after all other objects have moved
-		void LateUpdate ()
+		private void LateUpdate ()
 		{
 			if(target != null)
 			{

@@ -20,7 +20,7 @@ namespace Playground.Gameplay
 
 		private BoxCollider2D boxCollider2D;
 
-		void Start ()
+		private void Start ()
 		{
 			boxCollider2D = GetComponent<BoxCollider2D>();
 
@@ -28,7 +28,7 @@ namespace Playground.Gameplay
 		}
 	
 		// This will spawn an object, and then wait some time, then spawn another...
-		IEnumerator SpawnObject ()
+		private IEnumerator SpawnObject ()
 		{
 			while(true)
 			{

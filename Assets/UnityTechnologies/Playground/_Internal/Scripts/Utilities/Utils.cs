@@ -123,10 +123,5 @@ namespace Playground.Utilities
 			}
 #endif
 		}
-
-		public static void GetAxis()
-		{
-			
-		}
 	}
 }
