@@ -24,7 +24,7 @@ namespace Playground.Movement
 		private float moveHorizontal;
 		private float moveVertical;
 		
-		private const float perFrameMultiplier = 5000f;
+		private const float perFrameMultiplier = 6000f;
 
 		private void Update ()
 		{
