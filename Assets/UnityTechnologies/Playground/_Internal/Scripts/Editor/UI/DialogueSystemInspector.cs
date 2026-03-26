@@ -1,16 +1,19 @@
-﻿using UnityEngine;
-using UnityEditor;
-using System.Collections;
+﻿using Playground.Editor.BaseClasses;
 using Playground.Scripts.UserInterface;
+using UnityEditor;
+using UnityEngine;
 
-[CustomEditor(typeof(DialogueSystem))]
-public class DialogueSystemInspector : InspectorBase
+namespace Playground.Editor.UI
 {
-	private string explanation = "This script is responsible of creating dialogue balloons. Create dialogues by using DialogueBalloonAction in Conditions.";
-
-	public override void OnInspectorGUI()
+	[CustomEditor(typeof(DialogueSystem))]
+	public class DialogueSystemInspector : InspectorBase
 	{
-		GUILayout.Space(10);
-		EditorGUILayout.HelpBox(explanation, MessageType.Info);
+		private string explanation = "This script is responsible of creating dialogue balloons. Create dialogues by using DialogueBalloonAction in Conditions.";
+
+		public override void OnInspectorGUI()
+		{
+			GUILayout.Space(10);
+			EditorGUILayout.HelpBox(explanation, MessageType.Info);
+		}
 	}
 }

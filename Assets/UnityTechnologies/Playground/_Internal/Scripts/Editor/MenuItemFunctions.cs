@@ -1,33 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEditor;
 using UnityEngine;
-using UnityEditor;
 
-public class MenuItemFunctions
+namespace Playground.Editor
 {
-	/*
-	[MenuItem("Playground/Export Unitypackage")]
-	public static void Export () {
-		string[] projectContent = AssetDatabase.GetAllAssetPaths();  
-		AssetDatabase.ExportPackage(projectContent, "UnityPlayground.unitypackage", ExportPackageOptions.Recurse | ExportPackageOptions.IncludeLibraryAssets );  
-		
-		Debug.Log("Project exported");
-	}
-	*/
-
-	[MenuItem("Playground/Turn Playground Off")]
-	public static void TurnOff ()
+	public class MenuItemFunctions
 	{
-		PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.Standalone, "");
+		[MenuItem("Playground/Turn Playground Off")]
+		public static void TurnOff ()
+		{
+			PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.Standalone, "");
 		
-		Debug.Log("Turned Playground off");
-	}
+			Debug.Log("Turned Playground off");
+		}
 
-	[MenuItem("Playground/Turn Playground On")]
-	public static void TurnOn ()
-	{
-		PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.Standalone, "GAMEOBJECT_HEADER; DEFAULT_INSPECTORS; CUSTOM_INSPECTORS");
+		[MenuItem("Playground/Turn Playground On")]
+		public static void TurnOn ()
+		{
+			PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.Standalone, "GAMEOBJECT_HEADER; DEFAULT_INSPECTORS; CUSTOM_INSPECTORS");
 		
-		Debug.Log("Turned Playground on");
+			Debug.Log("Turned Playground on");
+		}
 	}
 }

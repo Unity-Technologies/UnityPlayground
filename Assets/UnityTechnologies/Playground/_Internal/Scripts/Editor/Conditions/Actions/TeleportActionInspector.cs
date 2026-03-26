@@ -1,34 +1,37 @@
-﻿using UnityEngine;
-using System.Collections;
-using Playground.Conditions.Actions;
+﻿using Playground.Conditions.Actions;
+using Playground.Editor.BaseClasses;
 using UnityEditor;
+using UnityEngine;
 
-[CanEditMultipleObjects]
-[CustomEditor(typeof(TeleportAction))]
-public class TeleportActionInspector : InspectorBase
+namespace Playground.Editor.Conditions.Actions
 {
-	private string explanation = "Use this script to teleport this or another object to a new location.";
-	private string objectWarning = "WARNING: If you don't assign a GameObject, this GameObject will be teleported!";
-
-	public override void OnInspectorGUI()
+	[CanEditMultipleObjects]
+	[CustomEditor(typeof(TeleportAction))]
+	public class TeleportActionInspector : InspectorBase
 	{
-		GUILayout.Space(10);
-		EditorGUILayout.HelpBox(explanation, MessageType.Info);
+		private string explanation = "Use this script to teleport this or another object to a new location.";
+		private string objectWarning = "WARNING: If you don't assign a GameObject, this GameObject will be teleported!";
 
-		GUILayout.Space(10);
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("objectToMove"));
-
-		if(!CheckIfAssigned("objectToMove", false))
+		public override void OnInspectorGUI()
 		{
-			EditorGUILayout.HelpBox(objectWarning, MessageType.Warning);
-		}
+			GUILayout.Space(10);
+			EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("newPosition"));
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("stopMovements"));
+			GUILayout.Space(10);
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("objectToMove"));
 
-		if (GUI.changed)
-		{
-			serializedObject.ApplyModifiedProperties();
+			if(!CheckIfAssigned("objectToMove", false))
+			{
+				EditorGUILayout.HelpBox(objectWarning, MessageType.Warning);
+			}
+
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("newPosition"));
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("stopMovements"));
+
+			if (GUI.changed)
+			{
+				serializedObject.ApplyModifiedProperties();
+			}
 		}
 	}
 }

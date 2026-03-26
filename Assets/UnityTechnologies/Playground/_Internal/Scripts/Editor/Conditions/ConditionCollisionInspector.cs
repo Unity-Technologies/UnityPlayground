@@ -1,35 +1,38 @@
-﻿using UnityEngine;
-using System.Collections;
-using Playground.Conditions;
+﻿using Playground.Conditions;
+using Playground.Editor.BaseClasses;
 using UnityEditor;
+using UnityEngine;
 
-[CanEditMultipleObjects]
-[CustomEditor(typeof(ConditionCollision))]
-public class ConditionCollisionInspector : ConditionInspectorBase
+namespace Playground.Editor.Conditions
 {
-	private string explanation = "Use this script to perform an action when this GameObject collides with another.";
-
-	public override void OnInspectorGUI()
+	[CanEditMultipleObjects]
+	[CustomEditor(typeof(ConditionCollision))]
+	public class ConditionCollisionInspector : ConditionInspectorBase
 	{
-		serializedObject.Update();
+		private string explanation = "Use this script to perform an action when this GameObject collides with another.";
 
-		chosenTag = serializedObject.FindProperty("filterTag").stringValue;
-
-		GUILayout.Space(10);
-		EditorGUILayout.HelpBox(explanation, MessageType.Info);
-
-		GUILayout.Space(10);
-		DrawTagsGroup();
-
-		GUILayout.Space(10);
-		DrawActionLists();
-
-		CheckIfTrigger(false);
-
-		if (GUI.changed)
+		public override void OnInspectorGUI()
 		{
-			serializedObject.FindProperty("filterTag").stringValue = chosenTag;
-			serializedObject.ApplyModifiedProperties();
+			serializedObject.Update();
+
+			chosenTag = serializedObject.FindProperty("filterTag").stringValue;
+
+			GUILayout.Space(10);
+			EditorGUILayout.HelpBox(explanation, MessageType.Info);
+
+			GUILayout.Space(10);
+			DrawTagsGroup();
+
+			GUILayout.Space(10);
+			DrawActionLists();
+
+			CheckIfTrigger(false);
+
+			if (GUI.changed)
+			{
+				serializedObject.FindProperty("filterTag").stringValue = chosenTag;
+				serializedObject.ApplyModifiedProperties();
+			}
 		}
 	}
 }

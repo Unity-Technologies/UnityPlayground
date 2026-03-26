@@ -1,24 +1,25 @@
-﻿using UnityEngine;
+﻿using Playground.Conditions;
+using Playground.Editor.BaseClasses;
 using UnityEditor;
-using System.Collections;
-using Playground.Conditions;
-using UnityEditorInternal;
+using UnityEngine;
 
-[CanEditMultipleObjects]
-[CustomEditor(typeof(ConditionKeyPress))]
-public class ConditionKeyPressInspector : ConditionInspectorBase
+namespace Playground.Editor.Conditions
 {
-	private bool t;
-	private string explanation = "Use this script to perform an action when a button is pressed, released, or as long as it's kept pressed (in this case you get to choose the frequency).";
-
-	public override void OnInspectorGUI()
+	[CanEditMultipleObjects]
+	[CustomEditor(typeof(ConditionKeyPress))]
+	public class ConditionKeyPressInspector : ConditionInspectorBase
 	{
-		serializedObject.Update();
+		private bool t;
+		private string explanation = "Use this script to perform an action when a button is pressed, released, or as long as it's kept pressed (in this case you get to choose the frequency).";
 
-		GUILayout.Space(10);
-		EditorGUILayout.HelpBox(explanation, MessageType.Info);
+		public override void OnInspectorGUI()
+		{
+			serializedObject.Update();
+
+			GUILayout.Space(10);
+			EditorGUILayout.HelpBox(explanation, MessageType.Info);
 		
-		/*
+			/*
 		Texture2D headerBackground;
 		GUIStyle g = new GUIStyle();
 		headerBackground = Resources.Load<Texture2D>("Textures/Blue");
@@ -54,23 +55,24 @@ public class ConditionKeyPressInspector : ConditionInspectorBase
         EditorGUILayout.EndVertical ();
 		*/
  		
-		GUILayout.Space(10);
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("happenOnlyOnce"));
+			GUILayout.Space(10);
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("happenOnlyOnce"));
 
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("keyToPress"));
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("keyToPress"));
 
-		//discern the event type, and show the frequency if needed
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("eventType"));
-		int eventType = serializedObject.FindProperty("eventType").intValue;
-		if(eventType == 2)
-		{
-			EditorGUILayout.PropertyField(serializedObject.FindProperty("frequency"));
+			//discern the event type, and show the frequency if needed
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("eventType"));
+			int eventType = serializedObject.FindProperty("eventType").intValue;
+			if(eventType == 2)
+			{
+				EditorGUILayout.PropertyField(serializedObject.FindProperty("frequency"));
+			}
+
+
+			GUILayout.Space(10);
+			DrawActionLists();
+
+			serializedObject.ApplyModifiedProperties();
 		}
-
-
-		GUILayout.Space(10);
-		DrawActionLists();
-
-		serializedObject.ApplyModifiedProperties();
 	}
 }

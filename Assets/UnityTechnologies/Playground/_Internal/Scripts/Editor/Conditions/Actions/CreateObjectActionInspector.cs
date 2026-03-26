@@ -1,22 +1,25 @@
-﻿using UnityEngine;
-using System.Collections;
-using Playground.Conditions.Actions;
+﻿using Playground.Conditions.Actions;
+using Playground.Editor.BaseClasses;
 using UnityEditor;
+using UnityEngine;
 
-[CanEditMultipleObjects]
-[CustomEditor(typeof(CreateObjectAction))]
-public class CreateObjectActionInspector : InspectorBase
+namespace Playground.Editor.Conditions.Actions
 {
-	private string explanation = "Use this script to create a new GameObject from a Prefab in a specific position.";
-
-	public override void OnInspectorGUI()
+	[CanEditMultipleObjects]
+	[CustomEditor(typeof(CreateObjectAction))]
+	public class CreateObjectActionInspector : InspectorBase
 	{
-		GUILayout.Space(10);
-		EditorGUILayout.HelpBox(explanation, MessageType.Info);
+		private string explanation = "Use this script to create a new GameObject from a Prefab in a specific position.";
 
-		GUILayout.Space(10);
-		base.OnInspectorGUI();
+		public override void OnInspectorGUI()
+		{
+			GUILayout.Space(10);
+			EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
-		ShowPrefabWarning("prefabToCreate");
+			GUILayout.Space(10);
+			base.OnInspectorGUI();
+
+			ShowPrefabWarning("prefabToCreate");
+		}
 	}
 }

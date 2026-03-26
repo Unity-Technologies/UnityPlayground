@@ -1,25 +1,28 @@
-﻿using UnityEngine;
-using System.Collections;
-using Playground.Conditions.Actions;
+﻿using Playground.Conditions.Actions;
+using Playground.Editor.BaseClasses;
 using UnityEditor;
+using UnityEngine;
 
-[CanEditMultipleObjects]
-[CustomEditor(typeof(DestroyAction))]
-public class DestroyActionInspector : InspectorBase
+namespace Playground.Editor.Conditions.Actions
 {
-	private string explanation = "Destroys a GameObject instantaneously on impact. Could be this object, or the one that suffered the impact.";
-	private string tip = "TIP: You can assign a death effect, such as an explosion or another particle system.";
-
-	public override void OnInspectorGUI()
+	[CanEditMultipleObjects]
+	[CustomEditor(typeof(DestroyAction))]
+	public class DestroyActionInspector : InspectorBase
 	{
-		GUILayout.Space(10);
-		EditorGUILayout.HelpBox(explanation, MessageType.Info);
+		private string explanation = "Destroys a GameObject instantaneously on impact. Could be this object, or the one that suffered the impact.";
+		private string tip = "TIP: You can assign a death effect, such as an explosion or another particle system.";
 
-		base.OnInspectorGUI();
-
-		if(!CheckIfAssigned("deathEffect", true))
+		public override void OnInspectorGUI()
 		{
-			EditorGUILayout.HelpBox(tip, MessageType.Info);
+			GUILayout.Space(10);
+			EditorGUILayout.HelpBox(explanation, MessageType.Info);
+
+			base.OnInspectorGUI();
+
+			if(!CheckIfAssigned("deathEffect", true))
+			{
+				EditorGUILayout.HelpBox(tip, MessageType.Info);
+			}
 		}
 	}
 }

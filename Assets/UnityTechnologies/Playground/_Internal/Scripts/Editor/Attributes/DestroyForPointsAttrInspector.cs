@@ -1,19 +1,22 @@
-﻿using UnityEngine;
-using System.Collections;
-using Playground.Attributes;
+﻿using Playground.Attributes;
+using Playground.Editor.BaseClasses;
 using UnityEditor;
+using UnityEngine;
 
-[CanEditMultipleObjects]
-[CustomEditor(typeof(DestroyForPointsAttribute))]
-public class DestroyForPointsAttrInspector : InspectorBase
+namespace Playground.Editor.Attributes
 {
-	private string explanation = "When this object is destroyed, the player gets one or more points.";
-
-	public override void OnInspectorGUI()
+	[CanEditMultipleObjects]
+	[CustomEditor(typeof(DestroyForPointsAttribute))]
+	public class DestroyForPointsAttrInspector : InspectorBase
 	{
-		GUILayout.Space(10);
-		EditorGUILayout.HelpBox(explanation, MessageType.Info);
+		private string explanation = "When this object is destroyed, the player gets one or more points.";
 
-		base.OnInspectorGUI();
+		public override void OnInspectorGUI()
+		{
+			GUILayout.Space(10);
+			EditorGUILayout.HelpBox(explanation, MessageType.Info);
+
+			base.OnInspectorGUI();
+		}
 	}
 }

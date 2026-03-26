@@ -1,46 +1,49 @@
-﻿using UnityEngine;
-using System.Collections;
-using Playground.Conditions.Actions;
+﻿using Playground.Conditions.Actions;
+using Playground.Editor.BaseClasses;
 using UnityEditor;
+using UnityEngine;
 
-[CanEditMultipleObjects]
-[CustomEditor(typeof(DialogueBalloonAction))]
-public class DialogueBalloonActionInspector : InspectorBase
+namespace Playground.Editor.Conditions.Actions
 {
-	private string explanation = "Use this script to create a dialogue ballon on a character's head.";
-	private string tipMessage = "TIP: Connect another DialogueBalloonAction in the last slot to create a continuous conversation.";
-
-	public override void OnInspectorGUI()
+	[CanEditMultipleObjects]
+	[CustomEditor(typeof(DialogueBalloonAction))]
+	public class DialogueBalloonActionInspector : InspectorBase
 	{
-		GUILayout.Space(10);
-		EditorGUILayout.HelpBox(explanation, MessageType.Info);
+		private string explanation = "Use this script to create a dialogue ballon on a character's head.";
+		private string tipMessage = "TIP: Connect another DialogueBalloonAction in the last slot to create a continuous conversation.";
 
-		//Contents
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("textToDisplay"));
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("backgroundColor"));
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("textColor"));
-
-		//Options
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("targetObject"));
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("disappearMode"));
-		int isUsingKey = serializedObject.FindProperty("disappearMode").intValue;
-		if(isUsingKey == 1)
+		public override void OnInspectorGUI()
 		{
-			EditorGUILayout.PropertyField(serializedObject.FindProperty("keyToPress"));
-		}
-		else
-		{
-			EditorGUILayout.PropertyField(serializedObject.FindProperty("timeToDisappear"));
-		}
+			GUILayout.Space(10);
+			EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
-		//Continue dialogue
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("followingText"));
+			//Contents
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("textToDisplay"));
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("backgroundColor"));
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("textColor"));
 
-		EditorGUILayout.HelpBox(tipMessage, MessageType.Info);
+			//Options
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("targetObject"));
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("disappearMode"));
+			int isUsingKey = serializedObject.FindProperty("disappearMode").intValue;
+			if(isUsingKey == 1)
+			{
+				EditorGUILayout.PropertyField(serializedObject.FindProperty("keyToPress"));
+			}
+			else
+			{
+				EditorGUILayout.PropertyField(serializedObject.FindProperty("timeToDisappear"));
+			}
 
-		if (GUI.changed)
-		{
-			serializedObject.ApplyModifiedProperties();
+			//Continue dialogue
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("followingText"));
+
+			EditorGUILayout.HelpBox(tipMessage, MessageType.Info);
+
+			if (GUI.changed)
+			{
+				serializedObject.ApplyModifiedProperties();
+			}
 		}
 	}
 }

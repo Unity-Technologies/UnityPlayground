@@ -1,41 +1,44 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using Playground.Editor.BaseClasses;
 using Playground.Movement;
 using UnityEditor;
+using UnityEngine;
 
-[CanEditMultipleObjects]
-[CustomEditor(typeof(Move))]
-public class MoveInspector : InspectorBase
+namespace Playground.Editor.Movement
 {
-	private string explanation = "The GameObject moves when pressing specific keys. Choose between Arrows or WASD.";
-	private string constraintsReminder = "If you want, you can constrain movement on the X/Y axes in the Rigidbody2D's properties.";
-
-	public override void OnInspectorGUI()
+	[CanEditMultipleObjects]
+	[CustomEditor(typeof(Move))]
+	public class MoveInspector : InspectorBase
 	{
-		GUILayout.Space(10);
-		EditorGUILayout.HelpBox(explanation, MessageType.Info);
+		private string explanation = "The GameObject moves when pressing specific keys. Choose between Arrows or WASD.";
+		private string constraintsReminder = "If you want, you can constrain movement on the X/Y axes in the Rigidbody2D's properties.";
 
-		//base.OnInspectorGUI();
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("typeOfControl"));
-
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("speed"));
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("movementType"));
-
-		GUILayout.Space(5);
-		GUILayout.Label("Orientation", EditorStyles.boldLabel);
-		bool orientToDirectionTemp = EditorGUILayout.Toggle("Orient to direction", serializedObject.FindProperty("orientToDirection").boolValue);
-		if(orientToDirectionTemp)
+		public override void OnInspectorGUI()
 		{
-			EditorGUILayout.PropertyField(serializedObject.FindProperty("lookAxis"));
+			GUILayout.Space(10);
+			EditorGUILayout.HelpBox(explanation, MessageType.Info);
+
+			//base.OnInspectorGUI();
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("typeOfControl"));
+
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("speed"));
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("movementType"));
+
+			GUILayout.Space(5);
+			GUILayout.Label("Orientation", EditorStyles.boldLabel);
+			bool orientToDirectionTemp = EditorGUILayout.Toggle("Orient to direction", serializedObject.FindProperty("orientToDirection").boolValue);
+			if(orientToDirectionTemp)
+			{
+				EditorGUILayout.PropertyField(serializedObject.FindProperty("lookAxis"));
+			}
+			serializedObject.FindProperty("orientToDirection").boolValue = orientToDirectionTemp;
+
+
+			if(serializedObject.FindProperty("movementType").intValue != 0)
+			{
+				EditorGUILayout.HelpBox(constraintsReminder, MessageType.Info);
+			}
+
+			serializedObject.ApplyModifiedProperties();
 		}
-		serializedObject.FindProperty("orientToDirection").boolValue = orientToDirectionTemp;
-
-
-		if(serializedObject.FindProperty("movementType").intValue != 0)
-		{
-			EditorGUILayout.HelpBox(constraintsReminder, MessageType.Info);
-		}
-
-		serializedObject.ApplyModifiedProperties();
 	}
 }

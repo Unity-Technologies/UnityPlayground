@@ -1,31 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEditor;
 using UnityEngine;
-using UnityEditor;
 
-public class Collider2DInspectorBase : Editor
+namespace Playground.Editor.DefaultComponents
 {
-	protected bool showExtras = false;
-	protected string triggerMessage = "A Collider marked as \"Trigger\" is a special type of collider that can't be touched by other things, but it still detects if another GameObject enters it.\nUseful for Area Condition scripts.";
-
-	protected void ShowExtrasBlock(string[] properties)
+	public class Collider2DInspectorBase : UnityEditor.Editor
 	{
-		showExtras = EditorGUILayout.Foldout(showExtras, new GUIContent("Extra Options"));
-		if(showExtras)
+		protected bool showExtras = false;
+		protected string triggerMessage = "A Collider marked as \"Trigger\" is a special type of collider that can't be touched by other things, but it still detects if another GameObject enters it.\nUseful for Area Condition scripts.";
+
+		protected void ShowExtrasBlock(string[] properties)
 		{
-			for(int i=0; i<properties.Length; i++)
+			showExtras = EditorGUILayout.Foldout(showExtras, new GUIContent("Extra Options"));
+			if(showExtras)
 			{
-				EditorGUILayout.PropertyField(serializedObject.FindProperty(properties[i]));
+				for(int i=0; i<properties.Length; i++)
+				{
+					EditorGUILayout.PropertyField(serializedObject.FindProperty(properties[i]));
+				}
 			}
 		}
-	}
 
-	protected void ShowExtrasBlock()
-	{
+		protected void ShowExtrasBlock()
+		{
 
-	}
+		}
 
-	/*
+		/*
 	//TODO
 	private void EditMode()
 	{
@@ -47,4 +47,5 @@ public class Collider2DInspectorBase : Editor
 		Debug.Log("EditMode: " + UnityEditorInternal.EditMode.editMode);
 	}
 	*/
+	}
 }

@@ -20,7 +20,7 @@ namespace Playground.Attributes
 		private void Start()
 		{
 			// Find the UI in the scene and store a reference for later use
-			ui = FindObjectOfType<UIScript>();
+			ui = FindAnyObjectByType<UIScript>();
 
 			// Set the player number based on the GameObject tag
 			switch(gameObject.tag)

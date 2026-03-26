@@ -1,19 +1,22 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using Playground.Editor.BaseClasses;
 using Playground.Gameplay;
 using UnityEditor;
+using UnityEngine;
 
-[CanEditMultipleObjects]
-[CustomEditor(typeof(TimedSelfDestruct))]
-public class TimedSelfDestructInspector : InspectorBase
+namespace Playground.Editor.Gameplay
 {
-	private string explanation = "This GameObject will self destruct after a set amount of time, useful for bullets so they don't accumulate.";
-
-	public override void OnInspectorGUI()
+	[CanEditMultipleObjects]
+	[CustomEditor(typeof(TimedSelfDestruct))]
+	public class TimedSelfDestructInspector : InspectorBase
 	{
-		GUILayout.Space(10);
-		EditorGUILayout.HelpBox(explanation, MessageType.Info);
+		private string explanation = "This GameObject will self destruct after a set amount of time, useful for bullets so they don't accumulate.";
 
-		base.OnInspectorGUI();
+		public override void OnInspectorGUI()
+		{
+			GUILayout.Space(10);
+			EditorGUILayout.HelpBox(explanation, MessageType.Info);
+
+			base.OnInspectorGUI();
+		}
 	}
 }

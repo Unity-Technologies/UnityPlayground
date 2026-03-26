@@ -1,19 +1,22 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using Playground.Editor.BaseClasses;
 using Playground.Movement;
 using UnityEditor;
+using UnityEngine;
 
-[CanEditMultipleObjects]
-[CustomEditor(typeof(AutoMove))]
-public class AutoMoveInspector : InspectorBase
+namespace Playground.Editor.Movement
 {
-	private string explanation = "The GameObject moves automatically in a specific direction.";
-
-	public override void OnInspectorGUI()
+	[CanEditMultipleObjects]
+	[CustomEditor(typeof(AutoMove))]
+	public class AutoMoveInspector : InspectorBase
 	{
-		GUILayout.Space(10);
-		EditorGUILayout.HelpBox(explanation, MessageType.Info);
+		private string explanation = "The GameObject moves automatically in a specific direction.";
 
-		base.OnInspectorGUI();
+		public override void OnInspectorGUI()
+		{
+			GUILayout.Space(10);
+			EditorGUILayout.HelpBox(explanation, MessageType.Info);
+
+			base.OnInspectorGUI();
+		}
 	}
 }

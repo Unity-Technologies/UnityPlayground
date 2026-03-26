@@ -1,22 +1,25 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using Playground.Editor.BaseClasses;
 using Playground.Movement;
 using UnityEditor;
+using UnityEngine;
 
-[CanEditMultipleObjects]
-[CustomEditor(typeof(AutoRotate))]
-public class AutoRotateInspector : InspectorBase
+namespace Playground.Editor.Movement
 {
-	private string explanation = "The GameObject rotates automatically.";
-	private string tip = "TIP: Use negative value to rotate in the other direction.";
-
-	public override void OnInspectorGUI()
+	[CanEditMultipleObjects]
+	[CustomEditor(typeof(AutoRotate))]
+	public class AutoRotateInspector : InspectorBase
 	{
-		GUILayout.Space(10);
-		EditorGUILayout.HelpBox(explanation, MessageType.Info);
+		private string explanation = "The GameObject rotates automatically.";
+		private string tip = "TIP: Use negative value to rotate in the other direction.";
 
-		base.OnInspectorGUI();
+		public override void OnInspectorGUI()
+		{
+			GUILayout.Space(10);
+			EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
-		EditorGUILayout.HelpBox(tip, MessageType.Info);
+			base.OnInspectorGUI();
+
+			EditorGUILayout.HelpBox(tip, MessageType.Info);
+		}
 	}
 }

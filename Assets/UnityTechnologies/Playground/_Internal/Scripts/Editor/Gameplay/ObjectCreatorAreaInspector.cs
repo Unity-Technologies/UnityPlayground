@@ -1,23 +1,26 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using Playground.Editor.BaseClasses;
 using Playground.Gameplay;
 using UnityEditor;
+using UnityEngine;
 
-[CanEditMultipleObjects]
-[CustomEditor(typeof(ObjectCreatorArea))]
-public class ObjectCreatorAreaInspector : InspectorBase
+namespace Playground.Editor.Gameplay
 {
-	private string explanation = "Creates an object repeatedly in a square area. The size of the area is defined by the size of BoxCollider2D, while Spawn Interval defines the delay of spawning.";
-	
-	public override void OnInspectorGUI()
+	[CanEditMultipleObjects]
+	[CustomEditor(typeof(ObjectCreatorArea))]
+	public class ObjectCreatorAreaInspector : InspectorBase
 	{
-		GUILayout.Space (10);
-		EditorGUILayout.HelpBox(explanation, MessageType.Info);
+		private string explanation = "Creates an object repeatedly in a square area. The size of the area is defined by the size of BoxCollider2D, while Spawn Interval defines the delay of spawning.";
+	
+		public override void OnInspectorGUI()
+		{
+			GUILayout.Space (10);
+			EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
-		ShowPrefabWarning("prefabToSpawn");
+			ShowPrefabWarning("prefabToSpawn");
 
-		base.OnInspectorGUI();
+			base.OnInspectorGUI();
 
-		CheckIfTrigger(true);
+			CheckIfTrigger(true);
+		}
 	}
 }

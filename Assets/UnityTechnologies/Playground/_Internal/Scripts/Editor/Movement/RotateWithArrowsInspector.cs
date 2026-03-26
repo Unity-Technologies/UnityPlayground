@@ -1,19 +1,22 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using Playground.Editor.BaseClasses;
 using Playground.Movement;
 using UnityEditor;
+using UnityEngine;
 
-[CanEditMultipleObjects]
-[CustomEditor(typeof(Rotate))]
-public class RotateInspector : InspectorBase
+namespace Playground.Editor.Movement
 {
-	private string explanation = "The GameObject rotates when pressing the Arrow keys or WASD.";
-
-	public override void OnInspectorGUI()
+	[CanEditMultipleObjects]
+	[CustomEditor(typeof(Rotate))]
+	public class RotateInspector : InspectorBase
 	{
-		GUILayout.Space(10);
-		EditorGUILayout.HelpBox(explanation, MessageType.Info);
+		private string explanation = "The GameObject rotates when pressing the Arrow keys or WASD.";
 
-		base.OnInspectorGUI();
+		public override void OnInspectorGUI()
+		{
+			GUILayout.Space(10);
+			EditorGUILayout.HelpBox(explanation, MessageType.Info);
+
+			base.OnInspectorGUI();
+		}
 	}
 }

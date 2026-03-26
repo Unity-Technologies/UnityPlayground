@@ -1,46 +1,49 @@
-﻿using UnityEngine;
-using UnityEditor;
-using System.Collections;
+﻿using Playground.Editor.BaseClasses;
 using Playground.Scripts.UserInterface;
+using UnityEditor;
+using UnityEngine;
 
-[CustomEditor(typeof(UIScript))]
-public class UIScriptInspector : InspectorBase
+namespace Playground.Editor.UI
 {
-	private string explanation = "Use the UI to visualise points and health for the players.";
-	private string lifeReminder = "Don't forget to use the script HealthSystemAttribute on the player(s)!";
-
-	private int nOfPlayers = 0, gameType = 0;
-	private string[] readablePlayerEnum = new string[]{"One player", "Two players"};
-	private string[] readableGameTypesEnum = new string[]{"Score", "Life", "Endless"};
-
-	public override void OnInspectorGUI()
+	[CustomEditor(typeof(UIScript))]
+	public class UIScriptInspector : InspectorBase
 	{
-		GUILayout.Space(10);
-		EditorGUILayout.HelpBox(explanation, MessageType.Info);
+		private string explanation = "Use the UI to visualise points and health for the players.";
+		private string lifeReminder = "Don't forget to use the script HealthSystemAttribute on the player(s)!";
 
-		nOfPlayers = serializedObject.FindProperty("numberOfPlayers").intValue;
-		gameType = serializedObject.FindProperty("gameType").intValue;
+		private int nOfPlayers = 0, gameType = 0;
+		private string[] readablePlayerEnum = new string[]{"One player", "Two players"};
+		private string[] readableGameTypesEnum = new string[]{"Score", "Life", "Endless"};
 
-		nOfPlayers = EditorGUILayout.Popup("Number of players", nOfPlayers, readablePlayerEnum);
-
-		gameType = EditorGUILayout.Popup("Game type", gameType, readableGameTypesEnum);
-		if(gameType == 0) //score game
+		public override void OnInspectorGUI()
 		{
-			EditorGUILayout.PropertyField(serializedObject.FindProperty("scoreToWin"));
-		}
+			GUILayout.Space(10);
+			EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
-		if(gameType == 1) //life
-		{
-			EditorGUILayout.HelpBox(lifeReminder, MessageType.Info);
-		}
+			nOfPlayers = serializedObject.FindProperty("numberOfPlayers").intValue;
+			gameType = serializedObject.FindProperty("gameType").intValue;
 
-		//write all the properties back
-		serializedObject.FindProperty("gameType").intValue = gameType;
-		serializedObject.FindProperty("numberOfPlayers").intValue = nOfPlayers;
+			nOfPlayers = EditorGUILayout.Popup("Number of players", nOfPlayers, readablePlayerEnum);
 
-		if(GUI.changed)
-		{
-			serializedObject.ApplyModifiedProperties();
+			gameType = EditorGUILayout.Popup("Game type", gameType, readableGameTypesEnum);
+			if(gameType == 0) //score game
+			{
+				EditorGUILayout.PropertyField(serializedObject.FindProperty("scoreToWin"));
+			}
+
+			if(gameType == 1) //life
+			{
+				EditorGUILayout.HelpBox(lifeReminder, MessageType.Info);
+			}
+
+			//write all the properties back
+			serializedObject.FindProperty("gameType").intValue = gameType;
+			serializedObject.FindProperty("numberOfPlayers").intValue = nOfPlayers;
+
+			if(GUI.changed)
+			{
+				serializedObject.ApplyModifiedProperties();
+			}
 		}
 	}
 }

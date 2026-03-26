@@ -1,33 +1,36 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using Playground.Editor.BaseClasses;
 using Playground.Movement;
 using UnityEditor;
+using UnityEngine;
 
-[CanEditMultipleObjects]
-[CustomEditor(typeof(Wander))]
-public class WanderInspector : InspectorBase
+namespace Playground.Editor.Movement
 {
-	private string explanation = "The GameObject will move around randomly. Use keepNearStartingPoint if you want it to keep near its starting position.";
-
-	public override void OnInspectorGUI()
+	[CanEditMultipleObjects]
+	[CustomEditor(typeof(Wander))]
+	public class WanderInspector : InspectorBase
 	{
-		GUILayout.Space(10);
-		EditorGUILayout.HelpBox(explanation, MessageType.Info);
+		private string explanation = "The GameObject will move around randomly. Use keepNearStartingPoint if you want it to keep near its starting position.";
 
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("speed"));
-
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("directionChangeInterval"));
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("keepNearStartingPoint"));
-
-		GUILayout.Space(5);
-		GUILayout.Label("Orientation", EditorStyles.boldLabel);
-		bool orientToDirectionTemp = EditorGUILayout.Toggle("Orient to direction", serializedObject.FindProperty("orientToDirection").boolValue);
-		if(orientToDirectionTemp)
+		public override void OnInspectorGUI()
 		{
-			EditorGUILayout.PropertyField(serializedObject.FindProperty("lookAxis"));
-		}
-		serializedObject.FindProperty("orientToDirection").boolValue = orientToDirectionTemp;
+			GUILayout.Space(10);
+			EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
-		serializedObject.ApplyModifiedProperties();
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("speed"));
+
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("directionChangeInterval"));
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("keepNearStartingPoint"));
+
+			GUILayout.Space(5);
+			GUILayout.Label("Orientation", EditorStyles.boldLabel);
+			bool orientToDirectionTemp = EditorGUILayout.Toggle("Orient to direction", serializedObject.FindProperty("orientToDirection").boolValue);
+			if(orientToDirectionTemp)
+			{
+				EditorGUILayout.PropertyField(serializedObject.FindProperty("lookAxis"));
+			}
+			serializedObject.FindProperty("orientToDirection").boolValue = orientToDirectionTemp;
+
+			serializedObject.ApplyModifiedProperties();
+		}
 	}
 }

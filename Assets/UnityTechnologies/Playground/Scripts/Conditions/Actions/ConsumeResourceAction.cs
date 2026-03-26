@@ -19,7 +19,7 @@ namespace Playground.Conditions.Actions
 		private void Start()
 		{
 			// Find the UI in the scene and store a reference for later use
-			userInterface = FindObjectOfType<UIScript>();
+			userInterface = FindAnyObjectByType<UIScript>();
 		}
 
 

@@ -1,41 +1,42 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Playground.Scripts.Utilities;
-using UnityEngine;
+﻿using Playground.Scripts.Utilities;
 using UnityEditor;
 using UnityEditorInternal;
+using UnityEngine;
 
-[CustomEditor(typeof(InventoryResources))]
-public class InventoryResourcesInspector : Editor
+namespace Playground.Editor.ScriptableObjects
 {
-	private string explanation = "This is the list of Resources present in the game. Add and/or remove names here first, then go back to your Resource GameObjects and assign them a type.";
-	private ReorderableList list;
-
-	protected void OnEnable()
+	[CustomEditor(typeof(InventoryResources))]
+	public class InventoryResourcesInspector : UnityEditor.Editor
 	{
-		list = new ReorderableList(serializedObject, serializedObject.FindProperty("resourcesTypes"), false, true, true, true);
+		private string explanation = "This is the list of Resources present in the game. Add and/or remove names here first, then go back to your Resource GameObjects and assign them a type.";
+		private ReorderableList list;
 
-		//called for every element that has to be drawn in the ReorderableList
-		list.drawElementCallback =  (Rect rect, int index, bool isActive, bool isFocused) => {
-			SerializedProperty element = list.serializedProperty.GetArrayElementAtIndex(index);
-			rect.y += 2;
-			Rect r = new Rect(rect.x, rect.y, rect.width - 20, EditorGUIUtility.singleLineHeight);
-			EditorGUI.PropertyField(r, element, GUIContent.none, false);
-		};
+		protected void OnEnable()
+		{
+			list = new ReorderableList(serializedObject, serializedObject.FindProperty("resourcesTypes"), false, true, true, true);
 
-		list.drawHeaderCallback = (Rect rect) => {
-			EditorGUI.LabelField(rect, "Resource types");
-		};
-	}
+			//called for every element that has to be drawn in the ReorderableList
+			list.drawElementCallback =  (Rect rect, int index, bool isActive, bool isFocused) => {
+				SerializedProperty element = list.serializedProperty.GetArrayElementAtIndex(index);
+				rect.y += 2;
+				Rect r = new Rect(rect.x, rect.y, rect.width - 20, EditorGUIUtility.singleLineHeight);
+				EditorGUI.PropertyField(r, element, GUIContent.none, false);
+			};
 
-	public override void OnInspectorGUI()
-	{
-		GUILayout.Space(10);
-		EditorGUILayout.HelpBox(explanation, MessageType.Info);
+			list.drawHeaderCallback = (Rect rect) => {
+				EditorGUI.LabelField(rect, "Resource types");
+			};
+		}
 
-		list.DoLayoutList();
+		public override void OnInspectorGUI()
+		{
+			GUILayout.Space(10);
+			EditorGUILayout.HelpBox(explanation, MessageType.Info);
+
+			list.DoLayoutList();
 		
-		serializedObject.ApplyModifiedProperties();
+			serializedObject.ApplyModifiedProperties();
+		}
 	}
 }
 

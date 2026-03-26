@@ -31,7 +31,7 @@ namespace Playground.Conditions.Actions
 		{
 			if(!balloonIsActive)
 			{
-				DialogueSystem d = FindObjectOfType<DialogueSystem>();
+				DialogueSystem d = FindAnyObjectByType<DialogueSystem>();
 				if(d == null)
 				{
 					//Dialogue System is not in the scene

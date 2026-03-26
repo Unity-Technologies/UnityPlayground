@@ -1,45 +1,48 @@
-﻿using UnityEngine;
-using System.Collections;
-using Playground.Conditions;
+﻿using Playground.Conditions;
+using Playground.Editor.BaseClasses;
 using UnityEditor;
+using UnityEngine;
 
-[CanEditMultipleObjects]
-[CustomEditor(typeof(ConditionArea))]
-public class ConditionAreaInspector : ConditionInspectorBase
+namespace Playground.Editor.Conditions
 {
-	private string explanation = "Perform actions when a GameObject enters, exits, or stays inside the trigger collider (in this last case you get to choose the frequency).";
-
-	public override void OnInspectorGUI()
+	[CanEditMultipleObjects]
+	[CustomEditor(typeof(ConditionArea))]
+	public class ConditionAreaInspector : ConditionInspectorBase
 	{
-		serializedObject.Update();
+		private string explanation = "Perform actions when a GameObject enters, exits, or stays inside the trigger collider (in this last case you get to choose the frequency).";
 
-		chosenTag = serializedObject.FindProperty("filterTag").stringValue;
-
-		GUILayout.Space(10);
-		EditorGUILayout.HelpBox(explanation, MessageType.Info);
-
-		// Show a tag selector to then use for the public property filterTag
-		GUILayout.Space(10);
-		DrawTagsGroup();
-
-
-		//discern the event type, and show the frequency if needed
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("eventType"));
-		int eventType = serializedObject.FindProperty("eventType").intValue;
-		if(eventType == 2)
+		public override void OnInspectorGUI()
 		{
-			EditorGUILayout.PropertyField(serializedObject.FindProperty("frequency"));
-		}
+			serializedObject.Update();
 
-		GUILayout.Space(10);
-		DrawActionLists();
+			chosenTag = serializedObject.FindProperty("filterTag").stringValue;
 
-		CheckIfTrigger(true);
+			GUILayout.Space(10);
+			EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
-		if (GUI.changed)
-		{
-			serializedObject.FindProperty("filterTag").stringValue = chosenTag;
-			serializedObject.ApplyModifiedProperties();
+			// Show a tag selector to then use for the public property filterTag
+			GUILayout.Space(10);
+			DrawTagsGroup();
+
+
+			//discern the event type, and show the frequency if needed
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("eventType"));
+			int eventType = serializedObject.FindProperty("eventType").intValue;
+			if(eventType == 2)
+			{
+				EditorGUILayout.PropertyField(serializedObject.FindProperty("frequency"));
+			}
+
+			GUILayout.Space(10);
+			DrawActionLists();
+
+			CheckIfTrigger(true);
+
+			if (GUI.changed)
+			{
+				serializedObject.FindProperty("filterTag").stringValue = chosenTag;
+				serializedObject.ApplyModifiedProperties();
+			}
 		}
 	}
 }

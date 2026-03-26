@@ -1,36 +1,39 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using Playground.Editor.BaseClasses;
 using Playground.Movement;
 using UnityEditor;
+using UnityEngine;
 
-[CanEditMultipleObjects]
-[CustomEditor(typeof(FollowTarget))]
-public class FollowTargetInspector : InspectorBase
+namespace Playground.Editor.Movement
 {
-	private string explanation = "This GameObject will pursue a target constantly.";
-
-	public override void OnInspectorGUI()
+	[CanEditMultipleObjects]
+	[CustomEditor(typeof(FollowTarget))]
+	public class FollowTargetInspector : InspectorBase
 	{
-		GUILayout.Space(10);
-		EditorGUILayout.HelpBox(explanation, MessageType.Info);
+		private string explanation = "This GameObject will pursue a target constantly.";
 
-		GUILayout.Space(5);
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("target"));
-
-		//Draw custom inspector
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("speed"));
-
-		GUILayout.Space(10);
-
-		SerializedProperty lookAtTargetProperty = serializedObject.FindProperty("lookAtTarget");
-
-		lookAtTargetProperty.boolValue = EditorGUILayout.BeginToggleGroup("Look at target", lookAtTargetProperty.boolValue);
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("useSide"));
-		EditorGUILayout.EndToggleGroup();
-
-		if (GUI.changed)
+		public override void OnInspectorGUI()
 		{
-			serializedObject.ApplyModifiedProperties();
+			GUILayout.Space(10);
+			EditorGUILayout.HelpBox(explanation, MessageType.Info);
+
+			GUILayout.Space(5);
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("target"));
+
+			//Draw custom inspector
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("speed"));
+
+			GUILayout.Space(10);
+
+			SerializedProperty lookAtTargetProperty = serializedObject.FindProperty("lookAtTarget");
+
+			lookAtTargetProperty.boolValue = EditorGUILayout.BeginToggleGroup("Look at target", lookAtTargetProperty.boolValue);
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("useSide"));
+			EditorGUILayout.EndToggleGroup();
+
+			if (GUI.changed)
+			{
+				serializedObject.ApplyModifiedProperties();
+			}
 		}
 	}
 }

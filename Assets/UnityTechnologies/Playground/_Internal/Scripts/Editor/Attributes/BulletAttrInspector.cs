@@ -1,17 +1,20 @@
-﻿using UnityEngine;
-using System.Collections;
-using Playground.Attributes;
+﻿using Playground.Attributes;
+using Playground.Editor.BaseClasses;
 using UnityEditor;
+using UnityEngine;
 
-[CanEditMultipleObjects]
-[CustomEditor(typeof(BulletAttribute))]
-public class BulletAttrInspector : InspectorBase
+namespace Playground.Editor.Attributes
 {
-	private string explanation = "When this object touches another that has the script DestroyForPoints, the Player will get a point.";
-
-	public override void OnInspectorGUI()
+	[CanEditMultipleObjects]
+	[CustomEditor(typeof(BulletAttribute))]
+	public class BulletAttrInspector : InspectorBase
 	{
-		GUILayout.Space(10);
-		EditorGUILayout.HelpBox(explanation, MessageType.Info);
+		private string explanation = "When this object touches another that has the script DestroyForPoints, the Player will get a point.";
+
+		public override void OnInspectorGUI()
+		{
+			GUILayout.Space(10);
+			EditorGUILayout.HelpBox(explanation, MessageType.Info);
+		}
 	}
 }

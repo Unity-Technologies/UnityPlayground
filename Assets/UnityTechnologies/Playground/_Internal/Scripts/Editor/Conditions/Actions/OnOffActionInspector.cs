@@ -1,26 +1,29 @@
-﻿using UnityEngine;
-using System.Collections;
-using Playground.Conditions.Actions;
+﻿using Playground.Conditions.Actions;
+using Playground.Editor.BaseClasses;
 using UnityEditor;
+using UnityEngine;
 
-[CanEditMultipleObjects]
-[CustomEditor(typeof(OnOffAction))]
-public class OnOffActionInspector : InspectorBase
+namespace Playground.Editor.Conditions.Actions
 {
-	private string explanation = "Use this script to turn an object on or off.";
-	private string invisibleTip = "TIP: The object will be made invisible, but it will still collide with others.";
-
-	public override void OnInspectorGUI()
+	[CanEditMultipleObjects]
+	[CustomEditor(typeof(OnOffAction))]
+	public class OnOffActionInspector : InspectorBase
 	{
-		GUILayout.Space(10);
-		EditorGUILayout.HelpBox(explanation, MessageType.Info);
+		private string explanation = "Use this script to turn an object on or off.";
+		private string invisibleTip = "TIP: The object will be made invisible, but it will still collide with others.";
 
-		GUILayout.Space(10);
-		base.OnInspectorGUI();
-
-		if(serializedObject.FindProperty("justMakeInvisible").boolValue)
+		public override void OnInspectorGUI()
 		{
-			EditorGUILayout.HelpBox(invisibleTip, MessageType.Info);
+			GUILayout.Space(10);
+			EditorGUILayout.HelpBox(explanation, MessageType.Info);
+
+			GUILayout.Space(10);
+			base.OnInspectorGUI();
+
+			if(serializedObject.FindProperty("justMakeInvisible").boolValue)
+			{
+				EditorGUILayout.HelpBox(invisibleTip, MessageType.Info);
+			}
 		}
 	}
 }
