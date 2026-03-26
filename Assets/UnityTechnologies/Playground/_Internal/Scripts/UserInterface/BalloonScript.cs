@@ -4,107 +4,98 @@ using UnityEngine.UI;
 
 namespace Playground.UserInterface
 {
-	[AddComponentMenu("")]
-	public class BalloonScript : MonoBehaviour
-	{
-		public Text dialogueText, buttonText;
-		public UnityAction BalloonDestroyed; //action fired when the time is up, or when the right button has been pressed (depends on isUsingButton)
+    [AddComponentMenu("")]
+    public class BalloonScript : MonoBehaviour
+    {
+        public Text dialogueText, buttonText;
 
-		private RectTransform rectTransform;
-		private bool isUsingButton;
-		private KeyCode buttonUsed;
-		private Transform targetObj;
+        public UnityAction
+            BalloonDestroyed; //action fired when the time is up, or when the right button has been pressed (depends on isUsingButton)
 
-		private float startTime;
-		private float duration;
+        private KeyCode buttonUsed;
+        private float duration;
+        private bool isUsingButton;
 
-		private void Awake()
-		{
-			rectTransform = GetComponent<RectTransform>();
-		}
+        private RectTransform rectTransform;
 
-		public void Setup(string dialogueString, bool _isUsingButton, KeyCode _buttonUsed, float _time, Color backgroundC, Color textC, Transform _targetObj = null)
-		{
-			isUsingButton = _isUsingButton;
-			buttonUsed = _buttonUsed;
-			targetObj = _targetObj;
-			duration = _time;
+        private float startTime;
+        private Transform targetObj;
 
-			//background setup
-			GetComponent<Image>().color = backgroundC;
+        private void Awake()
+        {
+            rectTransform = GetComponent<RectTransform>();
+        }
 
-			//main dialogue text and colour
-			dialogueText.text = dialogueString;
-			dialogueText.color = textC;
+        private void Update()
+        {
+            //if(usingButton)
+            if (targetObj != null) FollowTarget();
 
-			//button text setup
-			if(isUsingButton)
-			{
-				buttonText.text = "press " + buttonUsed.ToString();
-				buttonText.color = textC;
-			}
-			else
-			{
-				buttonText.gameObject.SetActive(false);
-				startTime = Time.time;
-			}
+            if (isUsingButton)
+            {
+                if (Input.GetKeyUp(buttonUsed)) Destroy(gameObject);
+            }
+            else
+            {
+                if (Time.time >= startTime + duration) Destroy(gameObject);
+            }
+        }
 
-			//create just above the target, or at the centre
-			if(targetObj == null)
-			{
-				rectTransform.pivot = new Vector2(0.5f, 0.5f); //pivot is in the centre
-				rectTransform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, Vector3.zero);
-			}
-			else
-			{
-				rectTransform.pivot = new Vector2(0.5f, 0f); //pivot is at the bottom
-				FollowTarget();
-			}
-		}
+        private void OnDestroy()
+        {
+            BalloonDestroyed();
+        }
 
-		private void Update()
-		{
-			//if(usingButton)
-			if(targetObj != null)
-			{
-				FollowTarget();
-			}
+        public void Setup(string dialogueString, bool _isUsingButton, KeyCode _buttonUsed, float _time,
+            Color backgroundC, Color textC, Transform _targetObj = null)
+        {
+            isUsingButton = _isUsingButton;
+            buttonUsed = _buttonUsed;
+            targetObj = _targetObj;
+            duration = _time;
 
-			if(isUsingButton)
-			{
-				if(Input.GetKeyUp(buttonUsed))
-				{
-					Destroy(gameObject);
-				}
-			}
-			else
-			{
-				if(Time.time >= startTime + duration)
-				{
-					Destroy(gameObject);
-				}
-			}
-		}
+            //background setup
+            GetComponent<Image>().color = backgroundC;
 
-		private void OnDestroy()
-		{
-			BalloonDestroyed();
-		}
+            //main dialogue text and colour
+            dialogueText.text = dialogueString;
+            dialogueText.color = textC;
 
-		private void FollowTarget()
-		{
-			Vector3 topBoundary = targetObj.position;
-			SpriteRenderer sr = targetObj.GetComponent<SpriteRenderer>();
-			if(sr != null)
-			{
-				topBoundary.y += sr.bounds.size.y;
-			}
-			else
-			{
-				//the object is invisible in some way (has no SpriteRenderer)
-				topBoundary.y = targetObj.position.y;
-			}
-			rectTransform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, topBoundary);
-		}
-	}
+            //button text setup
+            if (isUsingButton)
+            {
+                buttonText.text = "press " + buttonUsed;
+                buttonText.color = textC;
+            }
+            else
+            {
+                buttonText.gameObject.SetActive(false);
+                startTime = Time.time;
+            }
+
+            //create just above the target, or at the centre
+            if (targetObj == null)
+            {
+                rectTransform.pivot = new Vector2(0.5f, 0.5f); //pivot is in the centre
+                rectTransform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, Vector3.zero);
+            }
+            else
+            {
+                rectTransform.pivot = new Vector2(0.5f, 0f); //pivot is at the bottom
+                FollowTarget();
+            }
+        }
+
+        private void FollowTarget()
+        {
+            Vector3 topBoundary = targetObj.position;
+            SpriteRenderer sr = targetObj.GetComponent<SpriteRenderer>();
+            if (sr != null)
+                topBoundary.y += sr.bounds.size.y;
+            else
+                //the object is invisible in some way (has no SpriteRenderer)
+                topBoundary.y = targetObj.position.y;
+            rectTransform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, topBoundary);
+        }
+    }
 }

@@ -5,25 +5,25 @@ using UnityEngine;
 
 namespace Playground.Editor.Conditions.Actions
 {
-	[CanEditMultipleObjects]
-	[CustomEditor(typeof(OnOffAction))]
-	public class OnOffActionInspector : InspectorBase
-	{
-		private string explanation = "Use this script to turn an object on or off.";
-		private string invisibleTip = "TIP: The object will be made invisible, but it will still collide with others.";
+    [CanEditMultipleObjects]
+    [CustomEditor(typeof(OnOffAction))]
+    public class OnOffActionInspector : InspectorBase
+    {
+        private readonly string explanation = "Use this script to turn an object on or off.";
 
-		public override void OnInspectorGUI()
-		{
-			GUILayout.Space(10);
-			EditorGUILayout.HelpBox(explanation, MessageType.Info);
+        private readonly string invisibleTip =
+            "TIP: The object will be made invisible, but it will still collide with others.";
 
-			GUILayout.Space(10);
-			base.OnInspectorGUI();
+        public override void OnInspectorGUI()
+        {
+            GUILayout.Space(10);
+            EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
-			if(serializedObject.FindProperty("justMakeInvisible").boolValue)
-			{
-				EditorGUILayout.HelpBox(invisibleTip, MessageType.Info);
-			}
-		}
-	}
+            GUILayout.Space(10);
+            base.OnInspectorGUI();
+
+            if (serializedObject.FindProperty("justMakeInvisible").boolValue)
+                EditorGUILayout.HelpBox(invisibleTip, MessageType.Info);
+        }
+    }
 }

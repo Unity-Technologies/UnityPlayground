@@ -5,33 +5,32 @@ using UnityEngine;
 
 namespace Playground.Editor.Gameplay
 {
-	[CanEditMultipleObjects]
-	[CustomEditor(typeof(ObjectShooter))]
-	public class ObjectShooterInspector : InspectorBase
-	{
-		private string explanation = "Spawns an object at the press of a button and it applies a force to it in the direction chosen.";
-		//private string hint = "TIP: If you want to shoot in another direction, apply this script to a child object and rotate it in the direction you want.";
-		private string warning = "WARNING: Don't forget to apply a Rigidbody2D to your projectiles, or they won't move!";
+    [CanEditMultipleObjects]
+    [CustomEditor(typeof(ObjectShooter))]
+    public class ObjectShooterInspector : InspectorBase
+    {
+        private readonly string explanation =
+            "Spawns an object at the press of a button and it applies a force to it in the direction chosen.";
 
-		public override void OnInspectorGUI()
-		{
-			GUILayout.Space (10);
-			EditorGUILayout.HelpBox(explanation, MessageType.Info);
+        //private string hint = "TIP: If you want to shoot in another direction, apply this script to a child object and rotate it in the direction you want.";
+        private readonly string warning =
+            "WARNING: Don't forget to apply a Rigidbody2D to your projectiles, or they won't move!";
 
-			bool prefabSelected = ShowPrefabWarning("prefabToSpawn");
+        public override void OnInspectorGUI()
+        {
+            GUILayout.Space(10);
+            EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
-			if(prefabSelected)
-			{
-				if(!CheckIfObjectUsesComponent<Rigidbody2D>("prefabToSpawn"))
-				{
-					EditorGUILayout.HelpBox(warning, MessageType.Warning);
-				}
-			}
+            bool prefabSelected = ShowPrefabWarning("prefabToSpawn");
 
-			base.OnInspectorGUI();
+            if (prefabSelected)
+                if (!CheckIfObjectUsesComponent<Rigidbody2D>("prefabToSpawn"))
+                    EditorGUILayout.HelpBox(warning, MessageType.Warning);
 
-			//removed because it's not possible to choose the direction
-			//EditorGUILayout.HelpBox(hint, MessageType.Info);
-		}
-	}
+            base.OnInspectorGUI();
+
+            //removed because it's not possible to choose the direction
+            //EditorGUILayout.HelpBox(hint, MessageType.Info);
+        }
+    }
 }

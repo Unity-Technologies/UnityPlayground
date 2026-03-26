@@ -1,9 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
-using UnityEngine.Tilemaps;
-
-#if DEFAULT_INSPECTORS
-
+﻿#if DEFAULT_INSPECTORS
 namespace Playground.Editor.DefaultComponents
 {
 	[CanEditMultipleObjects]

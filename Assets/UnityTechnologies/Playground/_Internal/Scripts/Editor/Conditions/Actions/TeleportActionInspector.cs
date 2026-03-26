@@ -5,33 +5,29 @@ using UnityEngine;
 
 namespace Playground.Editor.Conditions.Actions
 {
-	[CanEditMultipleObjects]
-	[CustomEditor(typeof(TeleportAction))]
-	public class TeleportActionInspector : InspectorBase
-	{
-		private string explanation = "Use this script to teleport this or another object to a new location.";
-		private string objectWarning = "WARNING: If you don't assign a GameObject, this GameObject will be teleported!";
+    [CanEditMultipleObjects]
+    [CustomEditor(typeof(TeleportAction))]
+    public class TeleportActionInspector : InspectorBase
+    {
+        private readonly string explanation = "Use this script to teleport this or another object to a new location.";
 
-		public override void OnInspectorGUI()
-		{
-			GUILayout.Space(10);
-			EditorGUILayout.HelpBox(explanation, MessageType.Info);
+        private readonly string objectWarning =
+            "WARNING: If you don't assign a GameObject, this GameObject will be teleported!";
 
-			GUILayout.Space(10);
-			EditorGUILayout.PropertyField(serializedObject.FindProperty("objectToMove"));
+        public override void OnInspectorGUI()
+        {
+            GUILayout.Space(10);
+            EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
-			if(!CheckIfAssigned("objectToMove", false))
-			{
-				EditorGUILayout.HelpBox(objectWarning, MessageType.Warning);
-			}
+            GUILayout.Space(10);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("objectToMove"));
 
-			EditorGUILayout.PropertyField(serializedObject.FindProperty("newPosition"));
-			EditorGUILayout.PropertyField(serializedObject.FindProperty("stopMovements"));
+            if (!CheckIfAssigned("objectToMove", false)) EditorGUILayout.HelpBox(objectWarning, MessageType.Warning);
 
-			if (GUI.changed)
-			{
-				serializedObject.ApplyModifiedProperties();
-			}
-		}
-	}
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("newPosition"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("stopMovements"));
+
+            if (GUI.changed) serializedObject.ApplyModifiedProperties();
+        }
+    }
 }

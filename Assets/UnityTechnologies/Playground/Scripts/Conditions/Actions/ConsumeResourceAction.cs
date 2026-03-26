@@ -4,48 +4,38 @@ using UnityEngine;
 
 namespace Playground.Conditions.Actions
 {
-	[AddComponentMenu("Playground/Actions/Consume Resource")]
-	public class ConsumeResourceAction : Action
-	{
-		[Header("Resource")]
+    [AddComponentMenu("Playground/Actions/Consume Resource")]
+    public class ConsumeResourceAction : Action
+    {
+        [Header("Resource")] public int checkFor;
 
-		public int checkFor = 0;
-		public int amountNeeded = 1;
+        public int amountNeeded = 1;
 
-		private UIScript userInterface;
-
+        private UIScript userInterface;
 
 
-		private void Start()
-		{
-			// Find the UI in the scene and store a reference for later use
-			userInterface = FindAnyObjectByType<UIScript>();
-		}
+        private void Start()
+        {
+            // Find the UI in the scene and store a reference for later use
+            userInterface = FindAnyObjectByType<UIScript>();
+        }
 
 
+        public override bool ExecuteAction(GameObject dataObject)
+        {
+            if (userInterface != null)
+            {
+                bool hasEnoughResource = userInterface.CheckIfHasResources(checkFor, amountNeeded);
 
-		public override bool ExecuteAction(GameObject dataObject)
-		{
-			if(userInterface != null)
-			{
-				bool hasEnoughResource = userInterface.CheckIfHasResources(checkFor, amountNeeded);
+                if (hasEnoughResource)
+                    //consume the resource and update the UI
+                    userInterface.ConsumeResource(checkFor, amountNeeded);
 
-				if(hasEnoughResource)
-				{
-					//consume the resource and update the UI
-					userInterface.ConsumeResource(checkFor, amountNeeded);
-				}
+                return hasEnoughResource;
+            }
 
-				return hasEnoughResource;
-			}
-			else
-			{
-				Debug.LogWarning("User Interface prefab has not been found in the scene. The action can't execute!");
-				return false;
-			}
-		}
-
-
-
-	}
+            Debug.LogWarning("User Interface prefab has not been found in the scene. The action can't execute!");
+            return false;
+        }
+    }
 }

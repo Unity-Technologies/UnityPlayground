@@ -4,16 +4,14 @@ using UnityEngine;
 
 namespace Playground.BaseClasses
 {
-	[RequireComponent(typeof(Rigidbody2D))]
-	public abstract class Physics2DObject : MonoBehaviour
-	{
-		[HideInInspector]
-		public new Rigidbody2D rigidbody2D;
+    [RequireComponent(typeof(Rigidbody2D))]
+    public abstract class Physics2DObject : MonoBehaviour
+    {
+        [HideInInspector] public new Rigidbody2D rigidbody2D;
 
-		private void Awake ()
-		{
-			rigidbody2D = GetComponent<Rigidbody2D>();
-		}
-
-	}
+        private void Awake()
+        {
+            rigidbody2D = GetComponent<Rigidbody2D>();
+        }
+    }
 }

@@ -1,8 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
-
-#if DEFAULT_INSPECTORS
-
+﻿#if DEFAULT_INSPECTORS
 namespace Playground.Editor.DefaultComponents
 {
 	[CanEditMultipleObjects]
@@ -31,7 +27,8 @@ namespace Playground.Editor.DefaultComponents
 				if(Selection.gameObjects.Length == 1)
 				{
 					//retrieve checkbox values
-					RigidbodyConstraints2D constraints = (RigidbodyConstraints2D)serializedObject.FindProperty("m_Constraints").intValue;
+					RigidbodyConstraints2D constraints =
+ (RigidbodyConstraints2D)serializedObject.FindProperty("m_Constraints").intValue;
 					RigidbodyConstraints2D oldConstraints = constraints;
 					bool xConstraint = (constraints & RigidbodyConstraints2D.FreezePositionX) != 0;
 					bool yConstraint = (constraints & RigidbodyConstraints2D.FreezePositionY) != 0;

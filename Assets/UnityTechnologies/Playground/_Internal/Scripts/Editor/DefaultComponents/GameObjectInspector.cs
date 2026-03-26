@@ -1,9 +1,4 @@
-﻿using UnityEditor;
-using UnityEditorInternal;
-using UnityEngine;
-
-#if GAMEOBJECT_HEADER
-
+﻿#if GAMEOBJECT_HEADER
 namespace Playground.Editor.DefaultComponents
 {
 	[CanEditMultipleObjects]
@@ -51,7 +46,8 @@ namespace Playground.Editor.DefaultComponents
 			GUILayout.BeginHorizontal();
 			GUILayout.Label("Tag", GUILayout.ExpandWidth(false));
 
-			string[] options = InternalEditorUtility.tags; //final list of tag options, including the mixed tag placeholder character "–"
+			string[] options =
+ InternalEditorUtility.tags; //final list of tag options, including the mixed tag placeholder character "–"
 			int chosenTagId = 0; //number of tag chosen
 			bool isMixedTag = false;
 
@@ -123,17 +119,17 @@ namespace Playground.Editor.DefaultComponents
 			serializedObject.ApplyModifiedProperties();
 		
 			/*
-		//Prints the names of all properties of an object
-		SerializedProperty prop = serializedObject.GetIterator();
-		if (prop.NextVisible(true)) {
-			do {
-				
-				//EditorGUILayout.PropertyField(serializedObject.FindProperty(prop.name), true);
-				Debug.Log(prop.name);
-			}
-			while (prop.NextVisible(false));
-		}
-		*/
+        //Prints the names of all properties of an object
+        SerializedProperty prop = serializedObject.GetIterator();
+        if (prop.NextVisible(true)) {
+            do {
+
+                //EditorGUILayout.PropertyField(serializedObject.FindProperty(prop.name), true);
+                Debug.Log(prop.name);
+            }
+            while (prop.NextVisible(false));
+        }
+        */
 		}
 	}
 }

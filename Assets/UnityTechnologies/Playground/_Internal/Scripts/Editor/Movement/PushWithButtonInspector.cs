@@ -5,29 +5,30 @@ using UnityEngine;
 
 namespace Playground.Editor.Movement
 {
-	[CanEditMultipleObjects]
-	[CustomEditor(typeof(Push))]
-	public class PushInspector : InspectorBase
-	{
-		private string explanation = "The GameObject will move at the push of a button, as if a thruster or an invisible force was pushing it.";
-		private string absoluteTip = "TIP: The GameObject will always move in the direction chosen regardless of its orientation.";
-		private string relativeTip = "TIP: The GameObject will move in the direction chosen relative to its orientation.";
+    [CanEditMultipleObjects]
+    [CustomEditor(typeof(Push))]
+    public class PushInspector : InspectorBase
+    {
+        private readonly string absoluteTip =
+            "TIP: The GameObject will always move in the direction chosen regardless of its orientation.";
 
-		public override void OnInspectorGUI()
-		{
-			GUILayout.Space(10);
-			EditorGUILayout.HelpBox(explanation, MessageType.Info);
+        private readonly string explanation =
+            "The GameObject will move at the push of a button, as if a thruster or an invisible force was pushing it.";
 
-			base.OnInspectorGUI();
+        private readonly string relativeTip =
+            "TIP: The GameObject will move in the direction chosen relative to its orientation.";
 
-			if(serializedObject.FindProperty("relativeAxis").boolValue)
-			{
-				EditorGUILayout.HelpBox(relativeTip, MessageType.Info);
-			}
-			else
-			{
-				EditorGUILayout.HelpBox(absoluteTip, MessageType.Info);
-			}
-		}
-	}
+        public override void OnInspectorGUI()
+        {
+            GUILayout.Space(10);
+            EditorGUILayout.HelpBox(explanation, MessageType.Info);
+
+            base.OnInspectorGUI();
+
+            if (serializedObject.FindProperty("relativeAxis").boolValue)
+                EditorGUILayout.HelpBox(relativeTip, MessageType.Info);
+            else
+                EditorGUILayout.HelpBox(absoluteTip, MessageType.Info);
+        }
+    }
 }

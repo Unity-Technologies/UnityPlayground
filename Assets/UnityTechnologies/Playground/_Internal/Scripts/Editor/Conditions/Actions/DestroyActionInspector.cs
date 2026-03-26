@@ -5,24 +5,24 @@ using UnityEngine;
 
 namespace Playground.Editor.Conditions.Actions
 {
-	[CanEditMultipleObjects]
-	[CustomEditor(typeof(DestroyAction))]
-	public class DestroyActionInspector : InspectorBase
-	{
-		private string explanation = "Destroys a GameObject instantaneously on impact. Could be this object, or the one that suffered the impact.";
-		private string tip = "TIP: You can assign a death effect, such as an explosion or another particle system.";
+    [CanEditMultipleObjects]
+    [CustomEditor(typeof(DestroyAction))]
+    public class DestroyActionInspector : InspectorBase
+    {
+        private readonly string explanation =
+            "Destroys a GameObject instantaneously on impact. Could be this object, or the one that suffered the impact.";
 
-		public override void OnInspectorGUI()
-		{
-			GUILayout.Space(10);
-			EditorGUILayout.HelpBox(explanation, MessageType.Info);
+        private readonly string tip =
+            "TIP: You can assign a death effect, such as an explosion or another particle system.";
 
-			base.OnInspectorGUI();
+        public override void OnInspectorGUI()
+        {
+            GUILayout.Space(10);
+            EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
-			if(!CheckIfAssigned("deathEffect", true))
-			{
-				EditorGUILayout.HelpBox(tip, MessageType.Info);
-			}
-		}
-	}
+            base.OnInspectorGUI();
+
+            if (!CheckIfAssigned("deathEffect")) EditorGUILayout.HelpBox(tip, MessageType.Info);
+        }
+    }
 }
