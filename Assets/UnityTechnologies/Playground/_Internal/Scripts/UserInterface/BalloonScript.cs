@@ -10,7 +10,7 @@ namespace Playground.UserInterface
         public Text dialogueText, buttonText;
 
         public UnityAction
-            BalloonDestroyed; //action fired when the time is up, or when the right button has been pressed (depends on isUsingButton)
+            BalloonDestroyed; // Action fired when the time is up, or when the right button has been pressed (depends on isUsingButton)
 
         private KeyCode buttonUsed;
         private float duration;
@@ -28,7 +28,6 @@ namespace Playground.UserInterface
 
         private void Update()
         {
-            //if(usingButton)
             if (targetObj != null) FollowTarget();
 
             if (isUsingButton)
@@ -54,14 +53,14 @@ namespace Playground.UserInterface
             targetObj = _targetObj;
             duration = _time;
 
-            //background setup
+            // Background setup
             GetComponent<Image>().color = backgroundC;
 
-            //main dialogue text and colour
+            // Main dialogue text and colour
             dialogueText.text = dialogueString;
             dialogueText.color = textC;
 
-            //button text setup
+            // Button text setup
             if (isUsingButton)
             {
                 buttonText.text = "press " + buttonUsed;
@@ -76,12 +75,12 @@ namespace Playground.UserInterface
             //create just above the target, or at the centre
             if (targetObj == null)
             {
-                rectTransform.pivot = new Vector2(0.5f, 0.5f); //pivot is in the centre
+                rectTransform.pivot = new Vector2(0.5f, 0.5f); // Pivot is in the centre
                 rectTransform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, Vector3.zero);
             }
             else
             {
-                rectTransform.pivot = new Vector2(0.5f, 0f); //pivot is at the bottom
+                rectTransform.pivot = new Vector2(0.5f, 0f); // Pivot is at the bottom
                 FollowTarget();
             }
         }
@@ -93,7 +92,7 @@ namespace Playground.UserInterface
             if (sr != null)
                 topBoundary.y += sr.bounds.size.y;
             else
-                //the object is invisible in some way (has no SpriteRenderer)
+                // The object is invisible in some way (has no SpriteRenderer)
                 topBoundary.y = targetObj.position.y;
             rectTransform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, topBoundary);
         }

@@ -27,8 +27,7 @@ namespace Playground.Conditions.Actions
                 return true;
             }
 
-            Debug.LogWarning(
-                "There is no Prefab assigned to this CreateObjectAction, so a new object can't be created.");
+            Debug.LogWarning("There is no Prefab assigned to this CreateObjectAction, so a new object can't be created.");
             return false;
         }
     }

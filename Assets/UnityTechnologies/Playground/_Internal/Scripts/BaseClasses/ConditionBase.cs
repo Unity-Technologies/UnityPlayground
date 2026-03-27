@@ -34,7 +34,7 @@ namespace Playground.BaseClasses
                     bool actionResult = ga.ExecuteAction(dataObject);
                     if (!actionResult)
                     {
-                        Debug.LogWarning($"An action failed ({ga.GetType().Name}) and interrupted the chain of Actions");
+                        Debug.Log($"An action failed ({ga.GetType().Name}) and interrupted the chain of Actions");
                         return;
                     }
                 }

@@ -28,7 +28,7 @@ namespace Playground.Conditions.Actions
                 bool hasEnoughResource = userInterface.CheckIfHasResources(checkFor, amountNeeded);
 
                 if (hasEnoughResource)
-                    //consume the resource and update the UI
+                    // Consume the resource and update the UI
                     userInterface.ConsumeResource(checkFor, amountNeeded);
 
                 return hasEnoughResource;
