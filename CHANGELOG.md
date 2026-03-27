@@ -7,6 +7,7 @@ All notable changes to this package are documented in this file.
 
 ### Fixed
 - Fixed an issue where the sprites would show with the wrong Z-sorting.
+- Fixed text not appearing for dialogues and resources in the inventory.
 
 ## [1.7]
 ### Changed
