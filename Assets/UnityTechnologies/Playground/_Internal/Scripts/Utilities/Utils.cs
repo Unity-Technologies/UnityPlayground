@@ -84,7 +84,6 @@ namespace Playground.Utilities
             return -Mathf.Atan2(inputVector.x, inputVector.y) * Mathf.Rad2Deg;
         }
 
-
         // Called by Reset functions of scripts that require a Collider2D of any type
         // Unity displays a modal dialog window asking for which type of Collider2D to add
         public static void Collider2DDialogWindow(GameObject gameObjectRef, bool makeItTrigger = false)
@@ -99,7 +98,6 @@ namespace Playground.Utilities
                 "Polygon",
                 "Circle",
                 "Rectangle");
-
 
             switch (option)
             {

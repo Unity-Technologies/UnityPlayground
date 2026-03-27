@@ -23,8 +23,7 @@ namespace Playground.Attributes
 
         private void OnTriggerEnter2D(Collider2D colliderData)
         {
-            HealthSystemAttribute healthScript = colliderData.gameObject.GetComponent<HealthSystemAttribute>();
-            if (healthScript != null)
+            if (colliderData.TryGetComponent(out HealthSystemAttribute healthScript))
             {
                 // subtract health from the player
                 healthScript.ModifyHealth(healthChange);

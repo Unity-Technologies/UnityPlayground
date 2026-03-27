@@ -7,14 +7,12 @@ namespace Playground.Attributes
     public class HealthSystemAttribute : MonoBehaviour
     {
         public int health = 3;
+        
         private int maxHealth;
-
         // Will be set to 0 or 1 depending on how the GameObject is tagged
         // it's -1 if the object is not a player
         private int playerNumber;
-
         private UIScript ui;
-
 
         private void Start()
         {
@@ -40,15 +38,14 @@ namespace Playground.Attributes
                 && playerNumber != -1)
                 ui.SetHealth(health, playerNumber);
 
-            maxHealth = health; //note down the maximum health to avoid going over it when the player gets healed
+            maxHealth = health; // Note down the maximum health to avoid going over it when the player gets healed
         }
 
-
-        // changes the energy from the player
+        // Changes the health
         // also notifies the UI (if present)
         public void ModifyHealth(int amount)
         {
-            //avoid going over the maximum health by forcin
+            // Avoid going over the maximum health
             if (health + amount > maxHealth) amount = maxHealth - health;
 
             health += amount;
@@ -58,7 +55,7 @@ namespace Playground.Attributes
                 && playerNumber != -1)
                 ui.ChangeHealth(amount, playerNumber);
 
-            //DEAD
+            // Dead
             if (health <= 0) Destroy(gameObject);
         }
     }
