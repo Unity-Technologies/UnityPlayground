@@ -6,6 +6,10 @@ namespace Playground.Editor
 {
     public class MenuItemFunctions
     {
+        private const string FirstSetupKey = "FirstSetup";
+        private const string PlaygroundState = "PlaygroundState";
+        private const string PlaygroundCustomInspectors = "Playground/Custom Inspectors";
+
         private static readonly string[] defineSymbols =
         {
             "GAMEOBJECT_HEADER",
@@ -13,18 +17,28 @@ namespace Playground.Editor
             "CUSTOM_INSPECTORS"
         };
 
-        [MenuItem("Playground/Turn Playground Off")]
-        public static void TurnOff()
+        [InitializeOnLoadMethod]
+        private static void Init()
         {
-            PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.Standalone, "");
-            Debug.Log("Turned Playground off");
+            if (SessionState.GetBool(FirstSetupKey, false)) return;
+            
+            TogglePlayground();
+            SessionState.SetBool(FirstSetupKey, true);
         }
-
-        [MenuItem("Playground/Turn Playground On")]
-        public static void TurnOn()
+        
+        [MenuItem(PlaygroundCustomInspectors)]
+        public static void TogglePlayground()
         {
-            PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.Standalone, defineSymbols);
-            Debug.Log("Turned Playground on");
+            bool playgroundOn = SessionState.GetBool(PlaygroundState, false);
+            playgroundOn = !playgroundOn;
+
+            if (playgroundOn)
+                PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.Standalone, defineSymbols);
+            else
+                PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.Standalone, "");
+
+            SessionState.SetBool(PlaygroundState, playgroundOn);
+            Menu.SetChecked(PlaygroundCustomInspectors, playgroundOn);
         }
     }
 }

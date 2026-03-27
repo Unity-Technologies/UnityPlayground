@@ -26,7 +26,7 @@ namespace Playground.Editor.Conditions
             DrawTagsGroup();
 
 
-            //discern the event type, and show the frequency if needed
+            // Discern the event type, and show the frequency if needed
             EditorGUILayout.PropertyField(serializedObject.FindProperty("eventType"));
             int eventType = serializedObject.FindProperty("eventType").intValue;
             if (eventType == 2) EditorGUILayout.PropertyField(serializedObject.FindProperty("frequency"));

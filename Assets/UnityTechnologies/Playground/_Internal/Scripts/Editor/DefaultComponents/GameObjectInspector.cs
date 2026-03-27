@@ -1,4 +1,8 @@
-﻿#if GAMEOBJECT_HEADER
+﻿using UnityEditor;
+using UnityEditorInternal;
+using UnityEngine;
+
+#if GAMEOBJECT_HEADER
 namespace Playground.Editor.DefaultComponents
 {
 	[CanEditMultipleObjects]

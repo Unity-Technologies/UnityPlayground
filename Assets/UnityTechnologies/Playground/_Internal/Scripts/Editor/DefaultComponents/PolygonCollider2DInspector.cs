@@ -1,4 +1,7 @@
-﻿#if DEFAULT_INSPECTORS
+﻿using UnityEditor;
+using UnityEngine;
+
+#if DEFAULT_INSPECTORS
 namespace Playground.Editor.DefaultComponents
 {
 	[CanEditMultipleObjects]
