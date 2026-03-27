@@ -2896,12 +2896,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9117653835b354259a0c03ce702840f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textToDisplay: Give me 3 coins!
+  textToDisplay: Give me 3 coins in exchange for a key.
   backgroundColor: {r: 0.6901961, g: 0.6117647, b: 0.18431373, a: 1}
   textColor: {r: 1, g: 1, b: 1, a: 1}
   targetObject: {fileID: 456430975}
   disappearMode: 0
-  timeToDisappear: 1
+  timeToDisappear: 3
   keyToPress: 13
   followingText: {fileID: 0}
 --- !u!1001 &617269296
