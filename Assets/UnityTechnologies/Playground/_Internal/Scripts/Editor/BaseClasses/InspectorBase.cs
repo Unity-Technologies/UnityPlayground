@@ -5,32 +5,37 @@ namespace Playground.Editor.BaseClasses
 {
     public class InspectorBase : UnityEditor.Editor
     {
-        private readonly string colliderWarning = "Disable \"Is Trigger\" on the Collider to make this script work!";
+        private const string colliderWarning = "Disable \"Is Trigger\" on the Collider to make this script work!";
 
-        private readonly string prefabNotSceneHint =
-            "Select a Prefab from Project panel, not an object in the Hierarchy!";
+        private const string prefabNotSceneHint = "Select a Prefab from Project panel, not an object in the Hierarchy!";
 
-        private readonly int preWarningSpace = 5;
-        private readonly string selectPrefabHint = "No Prefab selected!";
-        private readonly string triggerWarning = "Enable \"Is Trigger\" on the Collider to make this script work!";
+        private const int preWarningSpace = 5;
+        private const string selectPrefabHint = "No Prefab selected!";
+        private const string triggerWarning = "Enable \"Is Trigger\" on the Collider to make this script work!";
         private SerializedProperty prop;
 
+        // Regular Inspector drawing and property saving
+        public override void OnInspectorGUI()
+        {
+            DrawDefaultInspectorMinusScript();
+
+            if (GUI.changed) serializedObject.ApplyModifiedProperties();
+        }
+        
         // Draws the regular Inspector with all the properties, but minus the Script field, for more clarity
-        public void DrawDefaultInspectorMinusScript()
+        private void DrawDefaultInspectorMinusScript()
         {
             DrawPropertiesExcluding(serializedObject, "m_Script");
         }
-
 
         // Shows a warning box that enforces the selection of a Prefab, and not a GameObject
         // Used when the script won't work without a prefab
         protected bool ShowPrefabWarning(string propertyName)
         {
-            GameObject go = serializedObject.FindProperty(propertyName).objectReferenceValue as GameObject;
+            GameObject go = (GameObject)serializedObject.FindProperty(propertyName).objectReferenceValue;
             if (go != null)
             {
-                //if scene.name is Null, then the GameObject is coming from the Project and is probably a prefab
-                if (!string.IsNullOrEmpty(go.scene.name))
+                if (!AssetDatabase.Contains(go))
                 {
                     GUILayout.Space(preWarningSpace);
                     EditorGUILayout.HelpBox(prefabNotSceneHint, MessageType.Warning);
@@ -55,7 +60,7 @@ namespace Playground.Editor.BaseClasses
             {
                 GameObject go = genericObject as GameObject;
                 if (checkIfPrefab)
-                    //if scene.name is Null, then the GameObject is coming from the Project and is probably a prefab
+                    // If scene.name is Null, then the GameObject is coming from the Project and is probably a prefab
                     if (!string.IsNullOrEmpty(go.scene.name))
                     {
                         GUILayout.Space(preWarningSpace);
@@ -70,7 +75,7 @@ namespace Playground.Editor.BaseClasses
         }
 
 
-        // Checks if an obects (usually an assigned prefab) uses a specific component
+        // Checks if an object (usually an assigned prefab) uses a specific component
         protected bool CheckIfObjectUsesComponent<T>(string propertyName)
         {
             GameObject go = serializedObject.FindProperty(propertyName).objectReferenceValue as GameObject;
@@ -107,15 +112,6 @@ namespace Playground.Editor.BaseClasses
             }
 
             return isTrigger;
-        }
-
-
-        // Regular Inspector drawing and property saving
-        public override void OnInspectorGUI()
-        {
-            DrawDefaultInspectorMinusScript();
-
-            if (GUI.changed) serializedObject.ApplyModifiedProperties();
         }
     }
 }
