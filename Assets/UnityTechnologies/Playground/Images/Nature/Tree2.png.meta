@@ -3,7 +3,7 @@ guid: 801ba98b880824648a810230f036bb00
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,9 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -31,9 +34,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -43,23 +46,28 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 9
+  spritePivot: {x: 0.5282411, y: 0.02709505}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 135, z: 0, w: 403}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0.3
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 256
     resizeAlgorithm: 0
@@ -69,9 +77,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 256
     resizeAlgorithm: 0
@@ -81,24 +90,70 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites: []
-    outline: []
+    outline:
+    - - {x: 49.182693, y: -283.26953}
+      - {x: 40.240387, y: -249.8125}
+      - {x: 44.71154, y: -111.52344}
+      - {x: 44.71154, y: -28.996094}
+      - {x: 129.66347, y: -24.535156}
+      - {x: 147.54808, y: -22.304688}
+      - {x: 187.78847, y: 0}
+      - {x: 230.26443, y: 40.148438}
+      - {x: 232.5, y: 49.070312}
+      - {x: 232.5, y: 98.140625}
+      - {x: 221.32211, y: 138.28906}
+      - {x: 207.90866, y: 171.7461}
+      - {x: 205.67308, y: 187.35938}
+      - {x: 176.61058, y: 234.19922}
+      - {x: 136.3702, y: 249.8125}
+      - {x: 127.42789, y: 254.27344}
+      - {x: 82.71635, y: 258.73438}
+      - {x: 67.06731, y: 272.1172}
+      - {x: 55.889423, y: 278.8086}
+      - {x: 40.240387, y: 285.5}
+      - {x: -78.24519, y: 285.5}
+      - {x: -93.89423, y: 283.26953}
+      - {x: -134.13461, y: 272.1172}
+      - {x: -154.2548, y: 258.73438}
+      - {x: -165.4327, y: 252.04297}
+      - {x: -194.4952, y: 216.35547}
+      - {x: -203.4375, y: 194.05078}
+      - {x: -232.5, y: 158.36328}
+      - {x: -232.5, y: 100.37109}
+      - {x: -214.61539, y: 78.06641}
+      - {x: -207.90866, y: 51.30078}
+      - {x: -190.02405, y: 35.6875}
+      - {x: -147.54808, y: 0}
+      - {x: -114.01443, y: -22.304688}
+      - {x: -98.36539, y: -28.996094}
+      - {x: -78.24519, y: -35.6875}
+      - {x: -29.0625, y: -33.45703}
+      - {x: -11.177885, y: -24.535156}
+      - {x: -13.413462, y: -194.05078}
+      - {x: -20.120193, y: -283.26953}
+      - {x: -20.120193, y: -285.5}
+      - {x: 49.182693, y: -285.5}
+    customData: 
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
