@@ -1,6 +1,5 @@
 ﻿using UnityEditor;
 using UnityEditor.Build;
-using UnityEngine;
 
 namespace Playground.Editor
 {
@@ -32,13 +31,15 @@ namespace Playground.Editor
             bool playgroundOn = SessionState.GetBool(PlaygroundState, false);
             playgroundOn = !playgroundOn;
 
+            SessionState.SetBool(PlaygroundState, playgroundOn);
+
             if (playgroundOn)
                 PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.Standalone, defineSymbols);
             else
                 PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.Standalone, "");
-
-            SessionState.SetBool(PlaygroundState, playgroundOn);
-            Menu.SetChecked(PlaygroundCustomInspectors, playgroundOn);
+            
+            EditorApplication.delayCall += () => 
+                Menu.SetChecked(PlaygroundCustomInspectors, playgroundOn);
         }
     }
 }
