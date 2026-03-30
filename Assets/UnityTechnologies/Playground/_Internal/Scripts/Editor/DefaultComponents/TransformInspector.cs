@@ -1,7 +1,9 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
-using UnityEditor.UIElements;
+using Object = UnityEngine.Object;
 
 #if DEFAULT_INSPECTORS
 namespace Playground.Editor.DefaultComponents
@@ -13,7 +15,7 @@ namespace Playground.Editor.DefaultComponents
         private static readonly Color RedColor = new(0.8f, 0.2f, 0.2f);
         private static readonly Color GreenColor = new(0.2f, 0.7f, 0.2f);
         private static readonly Color BlueColor = new(0.2f, 0.4f, 0.9f);
-        private static readonly Color PrefabBlue = new Color(0.2f, 0.64f, 0.88f);
+        private static readonly Color PrefabBlue = new(0.2f, 0.64f, 0.88f);
 
         public override VisualElement CreateInspectorGUI()
         {
@@ -23,7 +25,8 @@ namespace Playground.Editor.DefaultComponents
             SerializedProperty rotProp = serializedObject.FindProperty("m_LocalRotation");
             SerializedProperty scaleProp = serializedObject.FindProperty("m_LocalScale");
 
-            container.Add(BuildRow("Position", posProp, new[] {
+            container.Add(BuildRow("Position", posProp, new[]
+            {
                 ("X", "x", RedColor),
                 ("Y", "y", GreenColor)
             }, () =>
@@ -34,7 +37,8 @@ namespace Playground.Editor.DefaultComponents
 
             container.Add(BuildRotationRow(rotProp));
 
-            container.Add(BuildRow("Scale", scaleProp, new[] {
+            container.Add(BuildRow("Scale", scaleProp, new[]
+            {
                 ("X", "x", RedColor),
                 ("Y", "y", GreenColor)
             }, () =>
@@ -47,7 +51,7 @@ namespace Playground.Editor.DefaultComponents
         }
 
         private VisualElement BuildRow(string label, SerializedProperty parentProp,
-            (string label, string relative, Color color)[] fields, System.Action onReset, string resetText)
+            (string label, string relative, Color color)[] fields, Action onReset, string resetText)
         {
             VisualElement wrapper = new();
             wrapper.AddToClassList("unity-base-field");
@@ -71,7 +75,7 @@ namespace Playground.Editor.DefaultComponents
                 }
             };
 
-            foreach (var (fieldLabel, relative, color) in fields)
+            foreach ((string fieldLabel, string relative, Color color) in fields)
             {
                 SerializedProperty prop = parentProp.FindPropertyRelative(relative);
 
@@ -151,7 +155,7 @@ namespace Playground.Editor.DefaultComponents
 
             zRotField.RegisterCallback<GeometryChangedEvent>(_ => StyleAxisLabel(zRotField, BlueColor));
 
-            System.Action<SerializedProperty> updateRotField = p =>
+            Action<SerializedProperty> updateRotField = p =>
             {
                 zRotField.SetValueWithoutNotify(p.quaternionValue.eulerAngles.z);
             };
@@ -201,9 +205,8 @@ namespace Playground.Editor.DefaultComponents
             SerializedProperty iter = prop.Copy();
             SerializedProperty end = prop.GetEndProperty();
             while (iter.Next(true) && !SerializedProperty.EqualContents(iter, end))
-            {
-                if (iter.prefabOverride) return true;
-            }
+                if (iter.prefabOverride)
+                    return true;
             return false;
         }
 
@@ -214,8 +217,9 @@ namespace Playground.Editor.DefaultComponents
             rowLabel.style.unityFontStyleAndWeight = overridden ? FontStyle.Bold : FontStyle.Normal;
             wrapper.style.borderLeftColor = overridden ? PrefabBlue : Color.clear;
 
-            var inputFields = wrapper.Query<TextElement>(className: "unity-text-element--inner-input-field-component").Build();
-            foreach (var field in inputFields)
+            UQueryState<TextElement> inputFields = wrapper
+                .Query<TextElement>(className: "unity-text-element--inner-input-field-component").Build();
+            foreach (TextElement field in inputFields)
                 field.style.unityFontStyleAndWeight = overridden ? FontStyle.Bold : FontStyle.Normal;
         }
 
@@ -254,16 +258,13 @@ namespace Playground.Editor.DefaultComponents
                     SerializedProperty iter = prop.Copy();
                     SerializedProperty end = prop.GetEndProperty();
                     while (iter.Next(true) && !SerializedProperty.EqualContents(iter, end))
-                    {
                         if (iter.prefabOverride)
                             PrefabUtility.RevertPropertyOverride(iter, InteractionMode.UserAction);
-                    }
                     prop.serializedObject.Update();
                 });
 
                 Object targetObject = prop.serializedObject.targetObject;
                 if (!PrefabUtility.IsPartOfImmutablePrefab(targetObject))
-                {
                     evt.menu.AppendAction("Apply to Prefab", _ =>
                     {
                         string assetPath = PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(targetObject);
@@ -271,13 +272,10 @@ namespace Playground.Editor.DefaultComponents
                         SerializedProperty iter = prop.Copy();
                         SerializedProperty end = prop.GetEndProperty();
                         while (iter.Next(true) && !SerializedProperty.EqualContents(iter, end))
-                        {
                             if (iter.prefabOverride)
                                 PrefabUtility.ApplyPropertyOverride(iter, assetPath, InteractionMode.UserAction);
-                        }
                         prop.serializedObject.Update();
                     });
-                }
             }));
         }
     }
