@@ -1,126 +1,285 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
+using UnityEditor.UIElements;
 
 #if DEFAULT_INSPECTORS
 namespace Playground.Editor.DefaultComponents
 {
-	[CanEditMultipleObjects]
-	[CustomEditor(typeof(Transform))]
-	public class TransformInspector : UnityEditor.Editor
-	{
-		private SerializedProperty xPos, yPos, xScale, yScale;
-		private Vector3 localEulerAngles = Vector3.zero;
-		private Quaternion localRotation = Quaternion.identity;
-		private Texture2D red, green, blue;
+    [CanEditMultipleObjects]
+    [CustomEditor(typeof(Transform))]
+    public class TransformInspector : UnityEditor.Editor
+    {
+        private static readonly Color RedColor = new(0.8f, 0.2f, 0.2f);
+        private static readonly Color GreenColor = new(0.2f, 0.7f, 0.2f);
+        private static readonly Color BlueColor = new(0.2f, 0.4f, 0.9f);
+        private static readonly Color PrefabBlue = new Color(0.2f, 0.64f, 0.88f);
 
-		private void OnEnable()
-		{
-			xPos = serializedObject.FindProperty("m_LocalPosition").FindPropertyRelative("x");
-			yPos = serializedObject.FindProperty("m_LocalPosition").FindPropertyRelative("y");
-			xScale = serializedObject.FindProperty("m_LocalScale").FindPropertyRelative("x");
-			yScale = serializedObject.FindProperty("m_LocalScale").FindPropertyRelative("y");
+        public override VisualElement CreateInspectorGUI()
+        {
+            VisualElement container = new();
 
-			red = Resources.Load<Texture2D>("Textures/Red");
-			green = Resources.Load<Texture2D>("Textures/Green");
-			blue = Resources.Load<Texture2D>("Textures/Blue");
-		}
+            SerializedProperty posProp = serializedObject.FindProperty("m_LocalPosition");
+            SerializedProperty rotProp = serializedObject.FindProperty("m_LocalRotation");
+            SerializedProperty scaleProp = serializedObject.FindProperty("m_LocalScale");
 
-		public override void OnInspectorGUI()
-		{
-			serializedObject.Update();
-			EditorGUILayout.Separator();
+            container.Add(BuildRow("Position", posProp, new[] {
+                ("X", "x", RedColor),
+                ("Y", "y", GreenColor)
+            }, () =>
+            {
+                posProp.FindPropertyRelative("x").floatValue = 0f;
+                posProp.FindPropertyRelative("y").floatValue = 0f;
+            }, "0"));
 
-			EditorGUI.BeginChangeCheck();
+            container.Add(BuildRotationRow(rotProp));
 
-			GUIStyle style = new GUIStyle(GUI.skin.label);
-			style.fontStyle = FontStyle.Bold;
-			style.margin = new RectOffset(0,0,0,0);
-			style.padding = new RectOffset(3,2,1,1);
-			style.normal.textColor = new Color(.9f,.9f,.9f);
-		
-			EditorGUILayout.BeginHorizontal();
-			EditorGUILayout.PrefixLabel("Position");
-			EditorGUIUtility.labelWidth = 12f;
-			EditorGUIUtility.fieldWidth = 10f;
-			style.normal.background = red;
-			EditorGUILayout.BeginHorizontal();
-			EditorGUILayout.LabelField("X", style, GUILayout.ExpandWidth(false), GUILayout.Width(14));
-			EditorGUILayout.PropertyField(xPos, GUIContent.none);
-			EditorGUILayout.EndHorizontal();
-			style.normal.background = green;
-			EditorGUILayout.BeginHorizontal();
-			EditorGUILayout.LabelField("Y", style, GUILayout.ExpandWidth(false), GUILayout.Width(14));
-			EditorGUILayout.PropertyField(yPos, GUIContent.none);
-			EditorGUILayout.EndHorizontal();
-			EditorGUIUtility.labelWidth = 0f;
-			EditorGUIUtility.fieldWidth = 0f;
-			if(GUILayout.Button("0", GUILayout.Width(30), GUILayout.Height(18)))
-			{
-				xPos.floatValue = 0f;
-				yPos.floatValue = 0f;
-			}
-			EditorGUILayout.EndHorizontal();
+            container.Add(BuildRow("Scale", scaleProp, new[] {
+                ("X", "x", RedColor),
+                ("Y", "y", GreenColor)
+            }, () =>
+            {
+                scaleProp.FindPropertyRelative("x").floatValue = 1f;
+                scaleProp.FindPropertyRelative("y").floatValue = 1f;
+            }, "1"));
 
-			localRotation = serializedObject.FindProperty("m_LocalRotation").quaternionValue;
-			localEulerAngles = localRotation.eulerAngles;
-			EditorGUILayout.BeginHorizontal();
-			EditorGUILayout.PrefixLabel("Rotation");
-			EditorGUIUtility.labelWidth = 12f;
-			EditorGUIUtility.fieldWidth = 10f;
-			style.normal.background = blue;
-			Rect rekt = new Rect(0,0, 300, EditorGUIUtility.singleLineHeight);
-			EditorGUI.BeginProperty(rekt, GUIContent.none, serializedObject.FindProperty("m_LocalRotation"));
-			EditorGUILayout.BeginHorizontal();
-			EditorGUILayout.LabelField("Z", style, GUILayout.ExpandWidth(false), GUILayout.Width(14));
-			localEulerAngles.z = EditorGUILayout.FloatField(localEulerAngles.z);
-			EditorGUILayout.EndHorizontal();
-			EditorGUI.EndProperty();
-			EditorGUIUtility.labelWidth = 0f;
-			EditorGUIUtility.fieldWidth = 0f;
-			localRotation = Quaternion.Euler(localEulerAngles);
-			bool resetRotation = GUILayout.Button("0", GUILayout.Width(30));
-			EditorGUILayout.EndHorizontal();
+            return container;
+        }
 
-			EditorGUILayout.BeginHorizontal();
-			EditorGUILayout.PrefixLabel("Scale");
-			EditorGUIUtility.labelWidth = 12f;
-			EditorGUIUtility.fieldWidth = 10f;
-			style.normal.background = red;
-			EditorGUILayout.BeginHorizontal();
-			EditorGUILayout.LabelField("X", style, GUILayout.ExpandWidth(false), GUILayout.Width(14));
-			EditorGUILayout.PropertyField(xScale, GUIContent.none);
-			EditorGUILayout.EndHorizontal();
-			style.normal.background = green;
-			EditorGUILayout.BeginHorizontal();
-			EditorGUILayout.LabelField("Y", style, GUILayout.ExpandWidth(false), GUILayout.Width(14));
-			EditorGUILayout.PropertyField(yScale, GUIContent.none);
-			EditorGUILayout.EndHorizontal();
-			EditorGUIUtility.labelWidth = 0f;
-			EditorGUIUtility.fieldWidth = 0f;
+        private VisualElement BuildRow(string label, SerializedProperty parentProp,
+            (string label, string relative, Color color)[] fields, System.Action onReset, string resetText)
+        {
+            VisualElement wrapper = new();
+            wrapper.AddToClassList("unity-base-field");
+            wrapper.AddToClassList("unity-base-field__aligned");
+            wrapper.style.flexDirection = FlexDirection.Row;
+            wrapper.style.alignItems = Align.Center;
+            wrapper.style.marginTop = 1;
+            wrapper.style.marginBottom = 1;
 
-			if(GUILayout.Button("1", GUILayout.Width(30)))
-			{
-				xScale.floatValue = 1f;
-				yScale.floatValue = 1f;
-			}
-			EditorGUILayout.EndHorizontal();
+            Label rowLabel = new(label);
+            rowLabel.AddToClassList("unity-base-field__label");
+            wrapper.Add(rowLabel);
 
-			bool changed = EditorGUI.EndChangeCheck();
+            VisualElement fieldsContainer = new()
+            {
+                style =
+                {
+                    flexDirection = FlexDirection.Row,
+                    flexGrow = 1,
+                    alignItems = Align.Center
+                }
+            };
 
-			if(changed)
-			{
-				if(resetRotation)
-				{
-					serializedObject.FindProperty("m_LocalRotation").quaternionValue = Quaternion.identity;
-				}
-				else
-				{
-					serializedObject.FindProperty("m_LocalRotation").quaternionValue = localRotation;
-				}
-				serializedObject.ApplyModifiedProperties();
-			}
-		}
-	}
+            foreach (var (fieldLabel, relative, color) in fields)
+            {
+                SerializedProperty prop = parentProp.FindPropertyRelative(relative);
+
+                FloatField floatField = new(fieldLabel)
+                {
+                    bindingPath = prop.propertyPath,
+                    style =
+                    {
+                        flexGrow = 1,
+                        flexBasis = 0,
+                        marginLeft = 4
+                    }
+                };
+
+                floatField.RegisterCallback<GeometryChangedEvent>(_ => StyleAxisLabel(floatField, color));
+
+                fieldsContainer.Add(floatField);
+            }
+
+            Button resetBtn = new(() =>
+            {
+                serializedObject.Update();
+                onReset();
+                serializedObject.ApplyModifiedProperties();
+            })
+            {
+                text = resetText,
+                style = { width = 30, height = 18, marginLeft = 4, flexShrink = 0 }
+            };
+            fieldsContainer.Add(resetBtn);
+
+            wrapper.Add(fieldsContainer);
+
+            UpdatePrefabStyle(wrapper, rowLabel, parentProp);
+            wrapper.TrackPropertyValue(parentProp, p => UpdatePrefabStyle(wrapper, rowLabel, p));
+
+            AddPrefabContextMenu(wrapper, parentProp);
+            return wrapper;
+        }
+
+        private VisualElement BuildRotationRow(SerializedProperty rotProp)
+        {
+            VisualElement wrapper = new();
+            wrapper.AddToClassList("unity-base-field");
+            wrapper.AddToClassList("unity-base-field__aligned");
+            wrapper.style.flexDirection = FlexDirection.Row;
+            wrapper.style.alignItems = Align.Center;
+            wrapper.style.marginTop = 1;
+            wrapper.style.marginBottom = 1;
+            wrapper.style.borderLeftWidth = 2;
+            wrapper.style.paddingLeft = 16;
+            wrapper.style.marginLeft = -15;
+
+            Label rowLabel = new("Rotation");
+            rowLabel.AddToClassList("unity-base-field__label");
+            wrapper.Add(rowLabel);
+
+            VisualElement fieldsContainer = new()
+            {
+                style =
+                {
+                    flexDirection = FlexDirection.Row,
+                    flexGrow = 1,
+                    alignItems = Align.Center
+                }
+            };
+
+            FloatField zRotField = new("Z")
+            {
+                style =
+                {
+                    flexGrow = 1,
+                    flexBasis = 0,
+                    marginLeft = 4
+                }
+            };
+
+            zRotField.RegisterCallback<GeometryChangedEvent>(_ => StyleAxisLabel(zRotField, BlueColor));
+
+            System.Action<SerializedProperty> updateRotField = p =>
+            {
+                zRotField.SetValueWithoutNotify(p.quaternionValue.eulerAngles.z);
+            };
+
+            zRotField.TrackPropertyValue(rotProp, updateRotField);
+            zRotField.RegisterCallback<AttachToPanelEvent>(_ =>
+            {
+                rotProp.serializedObject.Update();
+                updateRotField(rotProp);
+            });
+
+            zRotField.RegisterValueChangedCallback(evt =>
+            {
+                serializedObject.Update();
+                Vector3 euler = rotProp.quaternionValue.eulerAngles;
+                euler.z = evt.newValue;
+                rotProp.quaternionValue = Quaternion.Euler(euler);
+                serializedObject.ApplyModifiedProperties();
+            });
+
+            fieldsContainer.Add(zRotField);
+
+            Button resetBtn = new(() =>
+            {
+                serializedObject.Update();
+                rotProp.quaternionValue = Quaternion.identity;
+                serializedObject.ApplyModifiedProperties();
+            })
+            {
+                text = "0",
+                style = { width = 30, height = 18, marginLeft = 4, flexShrink = 0 }
+            };
+            fieldsContainer.Add(resetBtn);
+
+            wrapper.Add(fieldsContainer);
+
+            UpdatePrefabStyle(wrapper, rowLabel, rotProp);
+            wrapper.TrackPropertyValue(rotProp, p => UpdatePrefabStyle(wrapper, rowLabel, p));
+
+            AddPrefabContextMenu(wrapper, rotProp);
+            return wrapper;
+        }
+
+        private static bool HasAnyOverride(SerializedProperty prop)
+        {
+            if (prop.prefabOverride) return true;
+            SerializedProperty iter = prop.Copy();
+            SerializedProperty end = prop.GetEndProperty();
+            while (iter.Next(true) && !SerializedProperty.EqualContents(iter, end))
+            {
+                if (iter.prefabOverride) return true;
+            }
+            return false;
+        }
+
+        private static void UpdatePrefabStyle(VisualElement wrapper, Label rowLabel, SerializedProperty prop)
+        {
+            bool overridden = HasAnyOverride(prop);
+
+            rowLabel.style.unityFontStyleAndWeight = overridden ? FontStyle.Bold : FontStyle.Normal;
+            wrapper.style.borderLeftColor = overridden ? PrefabBlue : Color.clear;
+
+            var inputFields = wrapper.Query<TextElement>(className: "unity-text-element--inner-input-field-component").Build();
+            foreach (var field in inputFields)
+                field.style.unityFontStyleAndWeight = overridden ? FontStyle.Bold : FontStyle.Normal;
+        }
+
+        private static void StyleAxisLabel(FloatField field, Color color)
+        {
+            Label label = field.Q<Label>(className: "unity-base-field__label");
+            if (label == null) return;
+
+            label.style.backgroundColor = color;
+            label.style.color = new Color(0.9f, 0.9f, 0.9f);
+            label.style.unityFontStyleAndWeight = FontStyle.Bold;
+            label.style.unityTextAlign = TextAnchor.MiddleCenter;
+            label.style.minWidth = 18;
+            label.style.maxWidth = 18;
+            label.style.height = 18;
+            label.style.fontSize = 11;
+            label.style.borderTopLeftRadius = 2;
+            label.style.borderTopRightRadius = 2;
+            label.style.borderBottomLeftRadius = 2;
+            label.style.borderBottomRightRadius = 2;
+            label.style.paddingLeft = 0;
+            label.style.paddingRight = 0;
+            label.style.marginRight = 4;
+        }
+
+        private void AddPrefabContextMenu(VisualElement element, SerializedProperty prop)
+        {
+            element.AddManipulator(new ContextualMenuManipulator(evt =>
+            {
+                prop.serializedObject.Update();
+                if (!HasAnyOverride(prop)) return;
+
+                evt.menu.AppendAction("Revert", _ =>
+                {
+                    PrefabUtility.RevertPropertyOverride(prop, InteractionMode.UserAction);
+                    SerializedProperty iter = prop.Copy();
+                    SerializedProperty end = prop.GetEndProperty();
+                    while (iter.Next(true) && !SerializedProperty.EqualContents(iter, end))
+                    {
+                        if (iter.prefabOverride)
+                            PrefabUtility.RevertPropertyOverride(iter, InteractionMode.UserAction);
+                    }
+                    prop.serializedObject.Update();
+                });
+
+                Object targetObject = prop.serializedObject.targetObject;
+                if (!PrefabUtility.IsPartOfImmutablePrefab(targetObject))
+                {
+                    evt.menu.AppendAction("Apply to Prefab", _ =>
+                    {
+                        string assetPath = PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(targetObject);
+                        PrefabUtility.ApplyPropertyOverride(prop, assetPath, InteractionMode.UserAction);
+                        SerializedProperty iter = prop.Copy();
+                        SerializedProperty end = prop.GetEndProperty();
+                        while (iter.Next(true) && !SerializedProperty.EqualContents(iter, end))
+                        {
+                            if (iter.prefabOverride)
+                                PrefabUtility.ApplyPropertyOverride(iter, assetPath, InteractionMode.UserAction);
+                        }
+                        prop.serializedObject.Update();
+                    });
+                }
+            }));
+        }
+    }
 }
-
 #endif
