@@ -15,9 +15,9 @@ namespace Playground.Editor.DefaultComponents
 
 			EditorGUILayout.Separator();
 			EditorGUILayout.PropertyField(serializedObject.FindProperty("m_EdgeRadius"));
-			EditorGUILayout.PropertyField(serializedObject.FindProperty("m_IsTrigger"), new GUIContent("Is Trigger", triggerMessage));
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("m_IsTrigger"), new GUIContent("Is Trigger", triggerTooltip));
 		
-			base.ShowExtrasBlock(new string[]{"m_Material", "m_Offset", "m_UsedByEffector"});
+			//base.ShowExtrasBlock(new string[]{"m_Material", "m_Offset", "m_UsedByEffector"});
 
 			serializedObject.ApplyModifiedProperties();
 		}

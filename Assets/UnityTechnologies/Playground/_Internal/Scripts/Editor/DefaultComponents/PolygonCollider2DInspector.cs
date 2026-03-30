@@ -14,9 +14,9 @@ namespace Playground.Editor.DefaultComponents
 			serializedObject.Update();
 
 			EditorGUILayout.Separator();
-			EditorGUILayout.PropertyField(serializedObject.FindProperty("m_IsTrigger"), new GUIContent("Is Trigger", triggerMessage));
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("m_IsTrigger"), new GUIContent("Is Trigger", triggerTooltip));
 		
-			base.ShowExtrasBlock(new string[]{"m_Material", "m_UsedByEffector", "m_UsedByComposite", "m_Offset"});
+			//base.ShowExtrasBlock(new string[]{"m_Material", "m_UsedByEffector", "m_UsedByComposite", "m_Offset"});
 
 			serializedObject.ApplyModifiedProperties();
 		}

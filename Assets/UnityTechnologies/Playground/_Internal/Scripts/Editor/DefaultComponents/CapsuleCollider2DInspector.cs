@@ -1,5 +1,7 @@
 ﻿using UnityEditor;
+using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 #if DEFAULT_INSPECTORS
 namespace Playground.Editor.DefaultComponents
@@ -8,19 +10,25 @@ namespace Playground.Editor.DefaultComponents
 	[CustomEditor(typeof(CapsuleCollider2D))]
 	public class CapsuleCollider2DInspector : Collider2DInspectorBase
 	{
-
-		public override void OnInspectorGUI()
-		{
-			serializedObject.Update();
-
-			EditorGUILayout.Separator();
-			EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Size"));
-			EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Direction"));
-			EditorGUILayout.PropertyField(serializedObject.FindProperty("m_IsTrigger"), new GUIContent("Is Trigger", triggerMessage));
 		
-			base.ShowExtrasBlock(new string[]{"m_Material", "m_UsedByEffector", "m_UsedByComposite", "m_Offset"});
+		public override VisualElement CreateInspectorGUI()
+		{
+			VisualElement container = new();
+			
+			container.Add(CreateEditColliderControls());
+			
+			container.Add(new PropertyField(serializedObject.FindProperty("m_Size")));
+			container.Add(new PropertyField(serializedObject.FindProperty("m_Offset")));
+			container.Add(new PropertyField(serializedObject.FindProperty("m_Direction")));
+			container.Add(new PropertyField(serializedObject.FindProperty("m_Material")));
+			
+			PropertyField triggerPropField = new(serializedObject.FindProperty("m_IsTrigger"));
+			triggerPropField.RegisterCallbackOnce<GeometryChangedEvent>(_ => triggerPropField.Q<Toggle>().tooltip = triggerTooltip);
+			container.Add(triggerPropField);
 
-			serializedObject.ApplyModifiedProperties();
+			container.Add(CreateFoldout(new[] {"m_UsedByEffector", "m_CompositeOperation"}));
+			
+			return container;
 		}
 	}
 }

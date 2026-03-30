@@ -1,48 +1,41 @@
 ﻿using UnityEditor;
+using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Playground.Editor.DefaultComponents
 {
     public class Collider2DInspectorBase : UnityEditor.Editor
     {
-        protected bool showExtras;
+        protected readonly string triggerTooltip = "A Collider marked as \"Trigger\" is a special type of collider that can't be touched by other things, but it still detects if another GameObject enters it.\nUseful for Area Condition scripts.";
 
-        protected string triggerMessage =
-            "A Collider marked as \"Trigger\" is a special type of collider that can't be touched by other things, but it still detects if another GameObject enters it.\nUseful for Area Condition scripts.";
-
-        protected void ShowExtrasBlock(string[] properties)
+        protected Foldout CreateFoldout(string[] propNames)
         {
-            showExtras = EditorGUILayout.Foldout(showExtras, new GUIContent("Extra Options"));
-            if (showExtras)
-                for (int i = 0; i < properties.Length; i++)
-                    EditorGUILayout.PropertyField(serializedObject.FindProperty(properties[i]));
+            Foldout extrasFoldout = new()
+            {
+                text = "Extra Options",
+                viewDataKey = "Collider2DExtraOptions"
+            };
+            
+            foreach (string propName in propNames)
+            {
+                extrasFoldout.Add(new PropertyField(serializedObject.FindProperty(propName)));
+            }
+
+            return extrasFoldout;
         }
 
-        protected void ShowExtrasBlock()
+        protected IMGUIContainer CreateEditColliderControls()
         {
+            IMGUIContainer imguiContainer = new();
+            imguiContainer.onGUIHandler += () =>
+            {
+                EditorGUILayout.Space(2f);
+                EditorGUILayout.EditorToolbarForTarget(new GUIContent("Edit Collider"), target);
+                EditorGUILayout.Space(2f);
+            };
+            
+            return imguiContainer;
         }
-
-        /*
-    //TODO
-    private void EditMode()
-    {
-        var sel = Selection.activeGameObject;
-        var col = sel.GetComponent<Collider2D>();
-
-        if (!col)
-            return;
-
-        if (UnityEditorInternal.EditMode.editMode == UnityEditorInternal.EditMode.SceneViewEditMode.Collider)
-        {
-            UnityEditorInternal.EditMode.QuitEditMode();
-        }
-        else
-        {
-            UnityEditorInternal.EditMode.ChangeEditMode(UnityEditorInternal.EditMode.SceneViewEditMode.Collider, col.bounds, this);
-        }
-
-        Debug.Log("EditMode: " + UnityEditorInternal.EditMode.editMode);
-    }
-    */
     }
 }

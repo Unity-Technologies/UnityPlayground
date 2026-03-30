@@ -1,5 +1,4 @@
 ﻿using UnityEditor;
-using UnityEditor.EditorTools;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -15,35 +14,20 @@ namespace Playground.Editor.DefaultComponents
 		{
 			VisualElement container = new();
 			
-			InspectorElement.FillDefaultInspector(container, serializedObject, this);
+			container.Add(CreateEditColliderControls());
 			
-			IMGUIContainer imguiContainer = new();
-			imguiContainer.onGUIHandler += () =>
-			{
-				EditorGUILayout.Space(2f);
-				EditorGUILayout.EditorToolbarForTarget(new GUIContent("Edit Collider"), target);
-				EditorGUILayout.Space(2f);
-			};
+			container.Add(new PropertyField(serializedObject.FindProperty("m_Size")));
+			container.Add(new PropertyField(serializedObject.FindProperty("m_Offset")));
+			container.Add(new PropertyField(serializedObject.FindProperty("m_Material")));
 			
-			container.Insert(0, imguiContainer);
+			PropertyField triggerPropField = new(serializedObject.FindProperty("m_IsTrigger"));
+			triggerPropField.RegisterCallbackOnce<GeometryChangedEvent>(_ => triggerPropField.Q<Toggle>().tooltip = triggerTooltip);
+			container.Add(triggerPropField);
+
+			container.Add(CreateFoldout(new[] {"m_EdgeRadius", "m_AutoTiling", "m_UsedByEffector", "m_CompositeOperation"}));
 			
 			return container;
 		}
-
-		// public override void OnInspectorGUI()
-		// {
-		// 	serializedObject.Update();
-		//
-		// 	EditorGUILayout.Separator();
-		// 	EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Size"));
-		// 	EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Offset"));
-		// 	EditorGUILayout.PropertyField(serializedObject.FindProperty("m_AutoTiling"));
-		// 	EditorGUILayout.PropertyField(serializedObject.FindProperty("m_IsTrigger"), new GUIContent("Is Trigger", triggerMessage));
-		//
-		// 	base.ShowExtrasBlock(new string[]{"m_Material", "m_EdgeRadius", "m_UsedByEffector", "m_UsedByComposite"});
-		//
-		// 	serializedObject.ApplyModifiedProperties();
-		// }
 	}
 }
 
