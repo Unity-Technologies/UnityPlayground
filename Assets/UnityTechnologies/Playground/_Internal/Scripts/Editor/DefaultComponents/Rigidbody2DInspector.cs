@@ -1,76 +1,144 @@
-﻿using UnityEditor;
+﻿using System.Linq;
+using UnityEditor;
+using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 #if DEFAULT_INSPECTORS
 namespace Playground.Editor.DefaultComponents
 {
-	[CanEditMultipleObjects]
-	[CustomEditor(typeof(Rigidbody2D))]
-	public class Rigidbody2DInspector : UnityEditor.Editor
-	{
-		private bool showConstraints = false;
+    [CanEditMultipleObjects]
+    [CustomEditor(typeof(Rigidbody2D))]
+    public class Rigidbody2DInspector : UnityEditor.Editor
+    {
+        public override VisualElement CreateInspectorGUI()
+        {
+            VisualElement container = new();
 
-		public override void OnInspectorGUI()
-		{
-			serializedObject.Update();
+            container.Add(new PropertyField(serializedObject.FindProperty("m_BodyType")));
+            container.Add(new PropertyField(serializedObject.FindProperty("m_Mass")));
+            container.Add(new PropertyField(serializedObject.FindProperty("m_LinearDamping")));
+            container.Add(new PropertyField(serializedObject.FindProperty("m_AngularDamping")));
+            container.Add(new PropertyField(serializedObject.FindProperty("m_GravityScale")));
 
-			EditorGUILayout.Separator();
-			//EditorGUILayout.PropertyField(serializedObject.FindProperty("m_BodyType"));
-			//EditorGUILayout.LabelField("Physical Properties", EditorStyles.boldLabel);
+            Foldout constraintsFoldout = new()
+            {
+                text = "Constraints",
+                viewDataKey = "RB2DConstraints"
+            };
 
-			EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Mass"));
-			EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Rigidbody.linearDamping)), new GUIContent("Friction"));
-			EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Rigidbody.angularDamping)), new GUIContent("Angular Friction"));
-			EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Rigidbody.useGravity)), new GUIContent("Gravity"));
-			EditorGUILayout.Separator();
-		
-			showConstraints = EditorGUILayout.Foldout(showConstraints, new GUIContent("Constraints"));
-			if(showConstraints)
-			{
-				if(Selection.gameObjects.Length == 1)
-				{
-					//retrieve checkbox values
-					RigidbodyConstraints2D constraints =
- (RigidbodyConstraints2D)serializedObject.FindProperty("m_Constraints").intValue;
-					RigidbodyConstraints2D oldConstraints = constraints;
-					bool xConstraint = (constraints & RigidbodyConstraints2D.FreezePositionX) != 0;
-					bool yConstraint = (constraints & RigidbodyConstraints2D.FreezePositionY) != 0;
-					bool rotConstraint = (constraints & RigidbodyConstraints2D.FreezeRotation) != 0;
+            SerializedProperty constraintsProp = serializedObject.FindProperty("m_Constraints");
 
-					//draw the checkboxes
-					EditorGUI.indentLevel++;
-					EditorGUILayout.BeginHorizontal();
-					EditorGUILayout.PrefixLabel("Freeze Position");
-					xConstraint = GUILayout.Toggle(xConstraint, "X", GUILayout.ExpandWidth(false));
-					yConstraint = GUILayout.Toggle(yConstraint, "Y", GUILayout.ExpandWidth(false));
-					EditorGUILayout.EndHorizontal();
+            var freezePosX = CreateConstraintToggle("Freeze Position X", constraintsProp, (int)RigidbodyConstraints2D.FreezePositionX);
+            var freezePosY = CreateConstraintToggle("Freeze Position Y", constraintsProp, (int)RigidbodyConstraints2D.FreezePositionY);
+            var freezeRot = CreateConstraintToggle("Freeze Rotation", constraintsProp, (int)RigidbodyConstraints2D.FreezeRotation);
 
-					EditorGUILayout.BeginHorizontal();
-					EditorGUILayout.PrefixLabel("Freeze Rotation");
-					rotConstraint = GUILayout.Toggle(rotConstraint, "Z");
-					EditorGUILayout.EndHorizontal();
-					EditorGUI.indentLevel--;
+            constraintsFoldout.Add(freezePosX);
+            constraintsFoldout.Add(freezePosY);
+            constraintsFoldout.Add(freezeRot);
+            container.Add(constraintsFoldout);
 
-					//convert the booleans into a flag
-					constraints = xConstraint ? RigidbodyConstraints2D.FreezePositionX : RigidbodyConstraints2D.None;
-					if(yConstraint) constraints |= RigidbodyConstraints2D.FreezePositionY;
-					if(rotConstraint) constraints |= RigidbodyConstraints2D.FreezeRotation;
-				
-					//write the property back
-					if(oldConstraints != constraints)
-					{
-						serializedObject.FindProperty("m_Constraints").intValue = (int)constraints;
-					}
-				}
-				else
-				{
-					EditorGUILayout.HelpBox("Select one GameObject at a time to modify constraints", MessageType.Warning);
-				}
-			}
+            Foldout extrasFoldout = new()
+            {
+                text = "Extra Options",
+                viewDataKey = "RB2DExtraOptions"
+            };
+            extrasFoldout.Add(new PropertyField(serializedObject.FindProperty("m_Material")));
+            container.Add(extrasFoldout);
 
-			serializedObject.ApplyModifiedProperties();
-		}
-	}
+            return container;
+        }
+        
+        private VisualElement CreateConstraintToggle(string label, SerializedProperty prop, int flagValue)
+        {
+            Toggle toggle = new(label)
+            {
+                style =
+                {
+                    borderLeftWidth = 2f,
+                    paddingLeft = 16f,
+                    marginLeft = -30f
+                }
+            };
+
+            toggle.SetValueWithoutNotify((prop.intValue & flagValue) != 0);
+
+            toggle.RegisterValueChangedCallback(evt =>
+            {
+                prop.serializedObject.Update();
+                if (evt.newValue)
+                    prop.intValue |= flagValue;
+                else
+                    prop.intValue &= ~flagValue;
+                prop.serializedObject.ApplyModifiedProperties();
+            });
+
+            toggle.TrackPropertyValue(prop, p =>
+            {
+                toggle.SetValueWithoutNotify((p.intValue & flagValue) != 0);
+                UpdateOverrideStyle(toggle, p);
+            });
+
+            toggle.RegisterCallback<AttachToPanelEvent>(_ =>
+            {
+                prop.serializedObject.Update();
+                UpdateOverrideStyle(toggle, prop);
+            });
+
+            toggle.AddManipulator(new ContextualMenuManipulator(evt =>
+            {
+                prop.serializedObject.Update();
+
+                Object targetObject = prop.serializedObject.targetObject;
+                PropertyModification[] mods = PrefabUtility.GetPropertyModifications(targetObject);
+
+                bool hasOverride = mods != null && mods.Any(m =>
+                    m.propertyPath == prop.propertyPath &&
+                    m.target == PrefabUtility.GetCorrespondingObjectFromSource(targetObject));
+
+                if (hasOverride)
+                {
+                    if (!PrefabUtility.IsPartOfImmutablePrefab(targetObject))
+                    {
+                        evt.menu.AppendAction("Apply to Prefab", _ =>
+                        {
+                            string assetPath = PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(targetObject);
+                            PrefabUtility.ApplyPropertyOverride(prop, assetPath, InteractionMode.UserAction);
+                            prop.serializedObject.Update();
+                            toggle.SetValueWithoutNotify((prop.intValue & flagValue) != 0);
+                            UpdateOverrideStyle(toggle, prop);
+                        });
+                    }
+                    
+                    evt.menu.AppendAction("Revert", _ =>
+                    {
+                        PrefabUtility.RevertPropertyOverride(prop, InteractionMode.UserAction);
+                        prop.serializedObject.Update();
+                        toggle.SetValueWithoutNotify((prop.intValue & flagValue) != 0);
+                        UpdateOverrideStyle(toggle, prop);
+                    });
+                }
+            }));
+
+            return toggle;
+        }
+        
+        private static void UpdateOverrideStyle(Toggle toggle, SerializedProperty prop)
+        {
+            Label labelElement = toggle.Q<Label>();
+
+            if (prop.prefabOverride)
+            {
+                labelElement.style.unityFontStyleAndWeight = FontStyle.Bold;
+                toggle.style.borderLeftColor = new Color(0.2f, 0.64f, 0.88f);
+            }
+            else
+            {
+                labelElement.style.unityFontStyleAndWeight = FontStyle.Normal;
+                toggle.style.borderLeftColor = Color.clear;
+            }
+        }
+    }
 }
 
 #endif

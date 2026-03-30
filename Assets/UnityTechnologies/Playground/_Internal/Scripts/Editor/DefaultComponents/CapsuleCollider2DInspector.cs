@@ -10,7 +10,6 @@ namespace Playground.Editor.DefaultComponents
 	[CustomEditor(typeof(CapsuleCollider2D))]
 	public class CapsuleCollider2DInspector : Collider2DInspectorBase
 	{
-		
 		public override VisualElement CreateInspectorGUI()
 		{
 			VisualElement container = new();
@@ -20,13 +19,12 @@ namespace Playground.Editor.DefaultComponents
 			container.Add(new PropertyField(serializedObject.FindProperty("m_Size")));
 			container.Add(new PropertyField(serializedObject.FindProperty("m_Offset")));
 			container.Add(new PropertyField(serializedObject.FindProperty("m_Direction")));
-			container.Add(new PropertyField(serializedObject.FindProperty("m_Material")));
 			
 			PropertyField triggerPropField = new(serializedObject.FindProperty("m_IsTrigger"));
 			triggerPropField.RegisterCallbackOnce<GeometryChangedEvent>(_ => triggerPropField.Q<Toggle>().tooltip = triggerTooltip);
 			container.Add(triggerPropField);
 
-			container.Add(CreateFoldout(new[] {"m_UsedByEffector", "m_CompositeOperation"}));
+			container.Add(CreateFoldout(new[] {"m_UsedByEffector", "m_Material", "m_CompositeOperation"}));
 			
 			return container;
 		}

@@ -18,13 +18,12 @@ namespace Playground.Editor.DefaultComponents
 			
 			container.Add(new PropertyField(serializedObject.FindProperty("m_Size")));
 			container.Add(new PropertyField(serializedObject.FindProperty("m_Offset")));
-			container.Add(new PropertyField(serializedObject.FindProperty("m_Material")));
 			
 			PropertyField triggerPropField = new(serializedObject.FindProperty("m_IsTrigger"));
 			triggerPropField.RegisterCallbackOnce<GeometryChangedEvent>(_ => triggerPropField.Q<Toggle>().tooltip = triggerTooltip);
 			container.Add(triggerPropField);
 
-			container.Add(CreateFoldout(new[] {"m_EdgeRadius", "m_AutoTiling", "m_UsedByEffector", "m_CompositeOperation"}));
+			container.Add(CreateFoldout(new[] {"m_EdgeRadius", "m_Material", "m_AutoTiling", "m_UsedByEffector", "m_CompositeOperation"}));
 			
 			return container;
 		}

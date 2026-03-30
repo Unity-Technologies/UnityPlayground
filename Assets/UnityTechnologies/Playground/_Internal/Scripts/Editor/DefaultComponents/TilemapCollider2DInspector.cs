@@ -1,6 +1,7 @@
 ﻿using UnityEditor;
-using UnityEngine;
+using UnityEditor.UIElements;
 using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
 
 #if DEFAULT_INSPECTORS
 namespace Playground.Editor.DefaultComponents
@@ -9,17 +10,17 @@ namespace Playground.Editor.DefaultComponents
 	[CustomEditor(typeof(TilemapCollider2D))]
 	public class TilemapCollider2DInspector : Collider2DInspectorBase
 	{
-
-		public override void OnInspectorGUI()
+		public override VisualElement CreateInspectorGUI()
 		{
-			serializedObject.Update();
+			VisualElement container = new();
+			
+			PropertyField triggerPropField = new(serializedObject.FindProperty("m_IsTrigger"));
+			triggerPropField.RegisterCallbackOnce<GeometryChangedEvent>(_ => triggerPropField.Q<Toggle>().tooltip = triggerTooltip);
+			container.Add(triggerPropField);
 
-			EditorGUILayout.Separator();
-			EditorGUILayout.PropertyField(serializedObject.FindProperty("m_IsTrigger"), new GUIContent("Is Trigger", triggerTooltip));
-		
-			//base.ShowExtrasBlock(new string[]{"m_Material", "m_UsedByEffector", "m_UsedByComposite", "m_Offset"});
-
-			serializedObject.ApplyModifiedProperties();
+			container.Add(CreateFoldout(new[] {"m_UsedByEffector", "m_Offset", "m_Material", "m_CompositeOperation"}));
+			
+			return container;
 		}
 	}
 }
