@@ -20,7 +20,9 @@ namespace Playground.Editor.DefaultComponents
 			IMGUIContainer imguiContainer = new();
 			imguiContainer.onGUIHandler += () =>
 			{
-				EditorGUILayout.EditorToolbarForTarget(target);
+				EditorGUILayout.Space(2f);
+				EditorGUILayout.EditorToolbarForTarget(new GUIContent("Edit Collider"), target);
+				EditorGUILayout.Space(2f);
 			};
 			
 			container.Insert(0, imguiContainer);
