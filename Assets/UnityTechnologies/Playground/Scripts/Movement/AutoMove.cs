@@ -11,11 +11,9 @@ namespace Playground.Movement
         // These are the forces that will push the object every frame
         // don't forget they can be negative too!
         public Vector2 direction = new(1f, 0f);
-
-
-        //is the push relative or absolute to the world?
+        
+        // Is the push relative or absolute to the world?
         public bool relativeToRotation = true;
-
 
         // FixedUpdate is called once per frame
         private void FixedUpdate()
@@ -26,8 +24,7 @@ namespace Playground.Movement
                 rigidbody2D.AddForce(direction * 2f);
         }
 
-
-        //Draw an arrow to show the direction in which the object will move
+        // Draw an arrow to show the direction in which the object will move
         private void OnDrawGizmosSelected()
         {
             if (enabled)

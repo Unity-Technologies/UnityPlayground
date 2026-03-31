@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Playground.UserInterface
 {
@@ -8,7 +9,7 @@ namespace Playground.UserInterface
         public GameObject balloonPrefab;
         //private static List<DialogueBalloonAction> balloons = new List<DialogueBalloonAction>();
 
-        public BalloonScript CreateBalloon(string dialogueString, bool usingButton, KeyCode button,
+        public BalloonScript CreateBalloon(string dialogueString, bool usingButton, Key button,
             float timeToDisappear, Color backgroundC, Color textC, Transform targetObj = null)
         {
             BalloonScript b = Instantiate(balloonPrefab).GetComponent<BalloonScript>();

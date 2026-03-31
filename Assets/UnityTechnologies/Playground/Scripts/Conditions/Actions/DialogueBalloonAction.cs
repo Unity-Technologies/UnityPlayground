@@ -2,6 +2,7 @@
 using Playground.BaseClasses;
 using Playground.UserInterface;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Playground.Conditions.Actions
 {
@@ -23,7 +24,7 @@ namespace Playground.Conditions.Actions
 
         public DisappearMode disappearMode = DisappearMode.ButtonPress;
         public float timeToDisappear = 2f;
-        public KeyCode keyToPress = KeyCode.Return;
+        public Key keyToPress = Key.Enter;
 
         [Header("Continue dialogue")] public DialogueBalloonAction followingText;
 

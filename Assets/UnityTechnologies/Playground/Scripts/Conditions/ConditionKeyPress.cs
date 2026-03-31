@@ -1,5 +1,6 @@
 ﻿using Playground.BaseClasses;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Playground.Conditions
 {
@@ -13,7 +14,7 @@ namespace Playground.Conditions
             KeptPressed
         }
 
-        public KeyCode keyToPress = KeyCode.Space;
+        public Key keyToPress = Key.Space;
 
         [Header("Type of Event")] public KeyEventTypes eventType = KeyEventTypes.JustPressed;
 
@@ -33,14 +34,14 @@ namespace Playground.Conditions
             switch (eventType)
             {
                 case KeyEventTypes.JustPressed:
-                    if (Input.GetKeyDown(keyToPress)) ExecuteAllActions(null);
+                    if (Keyboard.current[keyToPress].wasPressedThisFrame) ExecuteAllActions(null);
                     break;
                 case KeyEventTypes.Released:
-                    if (Input.GetKeyUp(keyToPress)) ExecuteAllActions(null);
+                    if (Keyboard.current[keyToPress].wasReleasedThisFrame) ExecuteAllActions(null);
                     break;
                 case KeyEventTypes.KeptPressed:
                     if (Time.time >= timeLastEventFired + frequency
-                        && Input.GetKey(keyToPress))
+                        && Keyboard.current[keyToPress].IsPressed())
                     {
                         ExecuteAllActions(null);
                         timeLastEventFired = Time.time;

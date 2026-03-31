@@ -17,8 +17,7 @@ namespace Playground.Movement
         public float top = 5f;
 
         private Camera _camera;
-
-        private Vector3 lerpedPosition;
+        private Vector3 _lerpedPosition;
 
         private void Awake()
         {
@@ -31,8 +30,8 @@ namespace Playground.Movement
             if (target != null)
             {
                 // Find the right position between the camera and the object
-                lerpedPosition = Vector3.Lerp(transform.position, target.position, Time.deltaTime * 10f);
-                lerpedPosition.z = -10f;
+                _lerpedPosition = Vector3.Lerp(transform.position, target.position, Time.deltaTime * 10f);
+                _lerpedPosition.z = -10f;
             }
         }
 
@@ -43,7 +42,7 @@ namespace Playground.Movement
             if (target != null)
             {
                 // Move the camera in the position found previously
-                transform.position = lerpedPosition;
+                transform.position = _lerpedPosition;
 
                 // Bounds the camera to the limits (if enabled)
                 if (limitBounds)

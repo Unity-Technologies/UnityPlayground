@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Playground.UserInterface
@@ -9,34 +10,32 @@ namespace Playground.UserInterface
     {
         public Text dialogueText, buttonText;
 
-        public UnityAction
-            BalloonDestroyed; // Action fired when the time is up, or when the right button has been pressed (depends on isUsingButton)
+        // Action fired when the time is up, or when the right button has been pressed (depends on isUsingButton)
+        public UnityAction BalloonDestroyed;
 
-        private KeyCode buttonUsed;
-        private float duration;
-        private bool isUsingButton;
-
-        private RectTransform rectTransform;
-
-        private float startTime;
-        private Transform targetObj;
+        private Key _buttonUsed;
+        private float _duration;
+        private bool _isUsingButton;
+        private RectTransform _rectTransform;
+        private float _startTime;
+        private Transform _targetObj;
 
         private void Awake()
         {
-            rectTransform = GetComponent<RectTransform>();
+            _rectTransform = GetComponent<RectTransform>();
         }
 
         private void Update()
         {
-            if (targetObj != null) FollowTarget();
+            if (_targetObj != null) FollowTarget();
 
-            if (isUsingButton)
+            if (_isUsingButton)
             {
-                if (Input.GetKeyUp(buttonUsed)) Destroy(gameObject);
+                if (Keyboard.current[_buttonUsed].wasPressedThisFrame) Destroy(gameObject);
             }
             else
             {
-                if (Time.time >= startTime + duration) Destroy(gameObject);
+                if (Time.time >= _startTime + _duration) Destroy(gameObject);
             }
         }
 
@@ -45,13 +44,13 @@ namespace Playground.UserInterface
             BalloonDestroyed();
         }
 
-        public void Setup(string dialogueString, bool _isUsingButton, KeyCode _buttonUsed, float _time,
-            Color backgroundC, Color textC, Transform _targetObj = null)
+        public void Setup(string dialogueString, bool isUsingButton, Key buttonUsed, float time,
+            Color backgroundC, Color textC, Transform targetObj = null)
         {
-            isUsingButton = _isUsingButton;
-            buttonUsed = _buttonUsed;
-            targetObj = _targetObj;
-            duration = _time;
+            _isUsingButton = isUsingButton;
+            _buttonUsed = buttonUsed;
+            _targetObj = targetObj;
+            _duration = time;
 
             // Background setup
             GetComponent<Image>().color = backgroundC;
@@ -69,32 +68,33 @@ namespace Playground.UserInterface
             else
             {
                 buttonText.gameObject.SetActive(false);
-                startTime = Time.time;
+                _startTime = Time.time;
             }
 
-            //create just above the target, or at the centre
+            // Create just above the target, or at the centre
             if (targetObj == null)
             {
-                rectTransform.pivot = new Vector2(0.5f, 0.5f); // Pivot is in the centre
-                rectTransform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, Vector3.zero);
+                _rectTransform.pivot = new Vector2(0.5f, 0.5f); // Pivot is in the centre
+                _rectTransform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, Vector3.zero);
             }
             else
             {
-                rectTransform.pivot = new Vector2(0.5f, 0f); // Pivot is at the bottom
+                _rectTransform.pivot = new Vector2(0.5f, 0f); // Pivot is at the bottom
                 FollowTarget();
             }
         }
 
         private void FollowTarget()
         {
-            Vector3 topBoundary = targetObj.position;
-            SpriteRenderer sr = targetObj.GetComponent<SpriteRenderer>();
+            Vector3 topBoundary = _targetObj.position;
+            SpriteRenderer sr = _targetObj.GetComponent<SpriteRenderer>();
             if (sr != null)
                 topBoundary.y += sr.bounds.size.y;
             else
                 // The object is invisible in some way (has no SpriteRenderer)
-                topBoundary.y = targetObj.position.y;
-            rectTransform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, topBoundary);
+                topBoundary.y = _targetObj.position.y;
+            
+            _rectTransform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, topBoundary);
         }
     }
 }

@@ -1,6 +1,7 @@
 using Playground.BaseClasses;
 using Playground.Utilities;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Playground.Movement
 {
@@ -11,7 +12,7 @@ namespace Playground.Movement
         [Header("Input key")]
 
         // The key used to activate the push
-        public KeyCode key = KeyCode.Space;
+        public Key key = Key.Space;
 
         [Header("Direction and strength")]
 
@@ -27,7 +28,7 @@ namespace Playground.Movement
         // Read the input from the player
         private void Update()
         {
-            keyPressed = Input.GetKey(key);
+            keyPressed = Keyboard.current[key].IsPressed();
         }
 
         private void FixedUpdate()

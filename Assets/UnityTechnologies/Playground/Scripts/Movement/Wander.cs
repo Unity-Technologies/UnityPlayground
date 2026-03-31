@@ -20,16 +20,14 @@ namespace Playground.Movement
 
         // The direction that the GameObject will be oriented to
         public Enums.Directions lookAxis = Enums.Directions.Up;
-
-
+        
         private Vector2 direction;
         private Vector3 startingPoint;
-
 
         // Start is called at the beginning of the game
         private void Start()
         {
-            //we don't want directionChangeInterval to be 0, so we force it to a minimum value ;)
+            // We don't want directionChangeInterval to be 0, so we force it to a minimum value ;)
             if (directionChangeInterval < 0.1f) directionChangeInterval = 0.1f;
 
             // we note down the initial position of the GameObject in case it has to hover around that (see keepNearStartingPoint)
@@ -37,8 +35,7 @@ namespace Playground.Movement
 
             StartCoroutine(ChangeDirection());
         }
-
-
+        
         // FixedUpdate is called every frame when the physics are calculated
         private void FixedUpdate()
         {
@@ -64,7 +61,7 @@ namespace Playground.Movement
                 }
 
 
-                //if the object has to look in the direction of movement
+                // If the object has to look in the direction of movement
                 if (orientToDirection) Utils.SetAxisTowards(lookAxis, transform, direction);
 
 

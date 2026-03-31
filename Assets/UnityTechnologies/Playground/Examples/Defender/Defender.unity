@@ -726,8 +726,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabToSpawn: {fileID: 196000, guid: c9ddfe9d025db4b058cfab0c1466019c, type: 3}
-  keyToPress: 32
-  creationRate: 0.4
+  keyToPress: 1
+  creationRate: 0.3
   shootSpeed: 10
   shootDirection: {x: 0, y: 1}
   relativeToRotation: 1

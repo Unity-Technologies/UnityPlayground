@@ -1,5 +1,6 @@
 using Playground.BaseClasses;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Playground.Movement
 {
@@ -9,7 +10,7 @@ namespace Playground.Movement
     {
         [Header("Jump setup")]
         // the key used to activate the push
-        public KeyCode key = KeyCode.Space;
+        public Key key = Key.Space;
 
         // strength of the push
         public float jumpStrength = 10f;
@@ -28,7 +29,7 @@ namespace Playground.Movement
         private void Update()
         {
             if (canJump
-                && Input.GetKeyDown(key))
+                && Keyboard.current[key].wasPressedThisFrame)
             {
                 // Apply an instantaneous upwards force
                 rigidbody2D.AddForce(Vector2.up * jumpStrength, ForceMode2D.Impulse);
