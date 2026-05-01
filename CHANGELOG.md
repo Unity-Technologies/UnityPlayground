@@ -1,13 +1,15 @@
 # Changelog
 All notable changes to this package are documented in this file.
 
-## [1.8] - 2026-04-01
+## [1.8.0] - 2026-05-01
 ### Changed
+- Downgraded the project back to Unity 6.0, to ensure it's compatible with 6.0, 6.1, etc. (tested until 6.3 LTS).
 - Changed input handling from the old Input Manager to the Input System package.
 
 ### Fixed
 - Fixed an issue where the sprites would show with the wrong Z-sorting.
 - Fixed text not appearing for dialogues and resources in the inventory.
+- Fixed ConditionRepeat to work well even with object spawned after game starts (Community PR).
 
 ## [1.7]
 ### Changed
