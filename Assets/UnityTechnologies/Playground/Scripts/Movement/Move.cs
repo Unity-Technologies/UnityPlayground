@@ -8,7 +8,7 @@ namespace Playground.Movement
     [RequireComponent(typeof(Rigidbody2D))]
     public class Move : Physics2DObject
     {
-        private const float perFrameMultiplier = 6000f;
+        private const float forceMultiplier = 20f;
 
         [Header("Input keys")] public Enums.KeyGroups typeOfControl = Enums.KeyGroups.ArrowKeys;
 
@@ -57,14 +57,14 @@ namespace Playground.Movement
                 Utils.SetAxisTowards(lookAxis, transform, cachedDirection);
             }
 
-            movementInput = movementInput.normalized * Time.smoothDeltaTime;
+            movementInput = movementInput.normalized;
         }
 
         // FixedUpdate is called every frame when the physics are calculated
         private void FixedUpdate()
         {
             // Apply the force to the Rigidbody2d
-            rigidbody2D.AddForce(movementInput * (speed * perFrameMultiplier));
+            rigidbody2D.AddForce(movementInput * (speed * forceMultiplier));
         }
     }
 }
