@@ -1,8 +1,9 @@
 ﻿using System;
-using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
+using GameplayAction = Playground.BaseClasses.Action;
 
 namespace Playground.Editor.BaseClasses
 {
@@ -47,16 +48,13 @@ namespace Playground.Editor.BaseClasses
             list.onAddDropdownCallback = (buttonRect, l) =>
             {
                 GenericMenu menu = new();
-                string[] guids = AssetDatabase.FindAssets("",
-                    new[] { "Assets/UnityTechnologies/Playground/Scripts/Conditions/Actions" });
-                foreach (string guid in guids)
-                {
-                    string path = AssetDatabase.GUIDToAssetPath(guid);
-                    string p = Path.GetFileNameWithoutExtension(path);
-                    menu.AddItem(new GUIContent(p), false, ClickHandler, p);
-                }
+                // List every concrete Action in the project
+                foreach (Type actionType in TypeCache.GetTypesDerivedFrom<GameplayAction>()
+                             .Where(t => !t.IsAbstract)
+                             .OrderBy(t => t.Name))
+                    menu.AddItem(new GUIContent(actionType.Name), false, ClickHandler, actionType);
 
-                menu.AddItem(new GUIContent("- Empty slot -"), false, ClickHandler, "");
+                menu.AddItem(new GUIContent("- Empty slot -"), false, ClickHandler, null);
                 menu.ShowAsContext();
             };
 
@@ -77,15 +75,12 @@ namespace Playground.Editor.BaseClasses
             ReorderableList.defaultBehaviours.DoRemoveButton(l);
         }
 
-        public void ClickHandler(object actionName)
+        public void ClickHandler(object actionType)
         {
             Component newComponent = null;
-            if (actionName.ToString() != "")
-            {
+            if (actionType is Type t)
                 //Assign the new Component
-                Type t = Type.GetType(actionName + ",Assembly-CSharp");
                 newComponent = Selection.activeGameObject.AddComponent(t);
-            }
 
             //Add the list element
             int index = list.serializedProperty.arraySize;
