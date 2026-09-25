@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using Playground.BaseClasses;
+﻿using Playground.BaseClasses;
 using Playground.UserInterface;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -28,38 +27,28 @@ namespace Playground.Conditions.Actions
 
         [Header("Continue dialogue")] public DialogueBalloonAction followingText;
 
+        // The balloon currently on screen. It's also null if the balloon was destroyed some other way (e.g. with the UI)
         private BalloonScript b;
-        private bool balloonIsActive;
 
 
         public override bool ExecuteAction(GameObject other)
         {
-            if (!balloonIsActive)
+            // Don't show a new balloon while this one is still up
+            if (b != null) return false;
+
+            DialogueSystem d = FindAnyObjectByType<DialogueSystem>();
+            if (d == null)
             {
-                DialogueSystem d = FindAnyObjectByType<DialogueSystem>();
-                if (d == null)
-                {
-                    // Dialogue System is not in the scene
-                    Debug.LogWarning("You need a UI in the scene to display dialogue!");
-                    return false;
-                }
-
-                // Dialogue System is found
-                b = d.CreateBalloon(textToDisplay, disappearMode == DisappearMode.ButtonPress, keyToPress,
-                    timeToDisappear, backgroundColor, textColor, targetObject);
-                b.BalloonDestroyed += OnBalloonDestroyed;
-                balloonIsActive = true;
-
-                StartCoroutine(WaitForBallonDestroyed());
-                return true;
+                // Dialogue System is not in the scene
+                Debug.LogWarning("You need a UI in the scene to display dialogue!");
+                return false;
             }
 
-            return false;
-        }
-
-        private IEnumerator WaitForBallonDestroyed()
-        {
-            yield return new WaitUntil(() => !balloonIsActive);
+            // Dialogue System is found
+            b = d.CreateBalloon(textToDisplay, disappearMode == DisappearMode.ButtonPress, keyToPress,
+                timeToDisappear, backgroundColor, textColor, targetObject);
+            b.BalloonDestroyed += OnBalloonDestroyed;
+            return true;
         }
 
 
@@ -67,7 +56,9 @@ namespace Playground.Conditions.Actions
         {
             b.BalloonDestroyed -= OnBalloonDestroyed;
             b = null;
-            balloonIsActive = false;
+
+            // This Action might have been destroyed while the balloon was up
+            if (this == null) return;
 
             if (followingText != null) followingText.ExecuteAction(gameObject);
         }

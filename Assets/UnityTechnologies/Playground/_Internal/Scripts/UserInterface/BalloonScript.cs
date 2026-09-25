@@ -31,17 +31,19 @@ namespace Playground.UserInterface
 
             if (_isUsingButton)
             {
-                if (Keyboard.current[_buttonUsed].wasPressedThisFrame) Destroy(gameObject);
+                if (Keyboard.current[_buttonUsed].wasPressedThisFrame) Dismiss();
             }
             else
             {
-                if (Time.time >= _startTime + _duration) Destroy(gameObject);
+                if (Time.time >= _startTime + _duration) Dismiss();
             }
         }
 
-        private void OnDestroy()
+        // Only a dismissed balloon notifies its listeners (not one destroyed because the scene is unloading)
+        private void Dismiss()
         {
-            BalloonDestroyed();
+            Destroy(gameObject);
+            BalloonDestroyed?.Invoke();
         }
 
         public void Setup(string dialogueString, bool isUsingButton, Key buttonUsed, float time,
