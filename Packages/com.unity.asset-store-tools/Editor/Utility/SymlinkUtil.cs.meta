@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 92092535fd064bb1843017f98db213e1
+timeCreated: 1659013521
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Utility/SymlinkUtil.cs
+  uploadId: 930154

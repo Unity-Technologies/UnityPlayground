@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: eb61fd62b94248e4b5a3a07665b1a2bf
+timeCreated: 1661420659
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Validator/Scripts/Categories/CategoryEvaluator.cs
+  uploadId: 930154

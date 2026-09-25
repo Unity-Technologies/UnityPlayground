@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c183be512f4485d40a3437fabd6c81cf
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Unity.AssetStoreTools.Editor.asmdef
+  uploadId: 930154

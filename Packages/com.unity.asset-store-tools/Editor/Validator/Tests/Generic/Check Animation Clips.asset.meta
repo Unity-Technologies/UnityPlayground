@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e0426dd01b5136a4ca1d42d312e12fad
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Validator/Tests/Generic/Check
+    Animation Clips.asset
+  uploadId: 930154

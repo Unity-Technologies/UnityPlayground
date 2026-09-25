@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: d7c7a8788d0ea324e843a475244d8e18
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Validator/Scripts/UI/Elements/ValidatorTestGroupElement.cs
+  uploadId: 930154

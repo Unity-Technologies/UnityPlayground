@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 1a3d0b3827fc16347867bee335e8f4ea
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Validator/Tests/Generic/Check
+    Missing Components in Assets.asset
+  uploadId: 930154

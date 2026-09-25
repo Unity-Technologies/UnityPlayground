@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: eaf232919893db04b8e05e91f6815424
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Validator/Tests/Generic/Check
+    File Menu Names.asset
+  uploadId: 930154

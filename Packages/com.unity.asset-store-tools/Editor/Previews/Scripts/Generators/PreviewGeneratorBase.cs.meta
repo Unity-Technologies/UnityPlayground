@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: cedf01448e0edcc4fb55f19f2e92b740
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Previews/Scripts/Generators/PreviewGeneratorBase.cs
+  uploadId: 930154

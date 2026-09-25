@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d813ff809ae82f643bf975031305d541, type: 3}
+  m_Name: CheckSRPCompatibleMaterials
+  m_EditorClassIdentifier: Unity.PublishingTools.Editor::AssetStore.Validator.TestDefinitions.AutomatedTestScriptableObject
+  HasBeenInitialized: 1
+  Id: 118
+  Title: Check SRP Compatible Materials
+  Description: 'Starting with Unity 6.6, the Built-in Render Pipeline is deprecated.
+
+
+    You
+    should make sure that your package supports at least the Universal Render Pipeline
+    or the High-Definition Render Pipeline.
+
+
+    For more information see:
+
+
+    <a
+    href="https://discussions.unity.com/t/render-pipelines-strategy-for-2026/1710004">Render
+    Pipelines strategy 2026</a>
+
+
+    <a href="https://docs.unity3d.com/6000.0/Documentation/Manual/urp/features/rp-converter.html">Render
+    Pipeline Converter</a>
+
+
+    <a href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/manual/upgrading-your-shaders.html">URP
+    custom-shader upgrade guide</a>'
+  CategoryInfo:
+    IsFailFilter: 1
+    IsInclusiveFilter: 1
+    AppliesToSubCategories: 1
+    Filter:
+    - 3D
+    - 2D
+    - Animation
+    - VFX
+  ValidationType: 0
+  TestScript: {fileID: 11500000, guid: f64ac10aad46449a1ad4834f719fb7f8, type: 3}

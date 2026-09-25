@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: ae379305e9165e84584373a8272c09e7
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Validator/Scripts/Test Methods/Generic/CheckPathLengths.cs
+  uploadId: 930154

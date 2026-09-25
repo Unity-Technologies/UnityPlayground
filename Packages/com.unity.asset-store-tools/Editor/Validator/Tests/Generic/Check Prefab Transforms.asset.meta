@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 700026f446833f649a3c63b33a90a295
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Validator/Tests/Generic/Check
+    Prefab Transforms.asset
+  uploadId: 930154

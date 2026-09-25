@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 4b9389e3ee578484493d36775c75baa1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Uploader/Scripts/Services/Analytics/Data/AuthenticationAnalytic.cs
+  uploadId: 930154

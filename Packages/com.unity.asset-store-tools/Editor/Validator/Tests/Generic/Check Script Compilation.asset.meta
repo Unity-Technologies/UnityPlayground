@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 339e21c955642a04289482aa923e10b6
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Validator/Tests/Generic/Check
+    Script Compilation.asset
+  uploadId: 930154

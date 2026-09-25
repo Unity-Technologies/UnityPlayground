@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: fca7c22c787fbfd4cb0d7f186668631a
+PackageManifestImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/package.json
+  uploadId: 930154

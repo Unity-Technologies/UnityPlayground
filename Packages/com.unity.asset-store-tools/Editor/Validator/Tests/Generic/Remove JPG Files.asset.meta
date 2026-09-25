@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 781021ae3aa6570468e08d78e3195127
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Validator/Tests/Generic/Remove
+    JPG Files.asset
+  uploadId: 930154

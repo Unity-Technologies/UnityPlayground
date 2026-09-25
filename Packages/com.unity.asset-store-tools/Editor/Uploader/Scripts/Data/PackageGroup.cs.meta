@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: c9cc17f6b95bb2c42913a1451b9af29e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Uploader/Scripts/Data/PackageGroup.cs
+  uploadId: 930154

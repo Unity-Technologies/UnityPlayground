@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d813ff809ae82f643bf975031305d541, type: 3}
+  m_Name: CheckStaticVariables
+  m_EditorClassIdentifier: 
+  HasBeenInitialized: 1
+  Id: 35
+  Title: Check Static Variables
+  Description: 'Starting with Unity 6.6, ''Fast Enter Play mode'' feature is the default setting for new projects, meaning that in scripts, static variables will keep their values and static events will keep their registered subscribers between Play mode sessions.
+
+
+    You should make sure that this is taken into account for your package scripts.
+
+
+    Note: this check does not definitively identify problematic code areas. For a more conclusive overview of potential issues you should analyze your package using the Project Auditor.
+
+
+    Project Auditor is available:
+
+    - As a package (com.unity.project-auditor) before Unity 6.4
+
+    - As a built-in Editor feature in Unity 6.4 and later '
+  CategoryInfo:
+    IsFailFilter: 1
+    IsInclusiveFilter: 1
+    AppliesToSubCategories: 1
+    Filter: []
+  ValidationType: 0
+  TestScript: {fileID: 11500000, guid: 91e72a35f450f4d92a8ec174318c32e8, type: 3}

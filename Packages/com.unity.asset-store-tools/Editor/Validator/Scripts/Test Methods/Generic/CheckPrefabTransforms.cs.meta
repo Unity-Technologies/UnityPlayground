@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: f712c17a60bf2d049a4e61c8f79e56c2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Validator/Scripts/Test Methods/Generic/CheckPrefabTransforms.cs
+  uploadId: 930154

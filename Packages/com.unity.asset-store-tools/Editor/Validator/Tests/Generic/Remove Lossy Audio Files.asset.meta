@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: a48657926de5cfb47ac559a7108d03ee
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Validator/Tests/Generic/Remove
+    Lossy Audio Files.asset
+  uploadId: 930154

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 34cd1e5cbe87bb546937a521bd2bc69c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Uploader/Scripts/UI/Elements/HybridPackageWorkflowElement.cs
+  uploadId: 930154

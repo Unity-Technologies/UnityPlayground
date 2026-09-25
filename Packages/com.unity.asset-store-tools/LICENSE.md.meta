@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: baeaa62ad0dc664428d6069db8fd986d
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/LICENSE.md
+  uploadId: 930154

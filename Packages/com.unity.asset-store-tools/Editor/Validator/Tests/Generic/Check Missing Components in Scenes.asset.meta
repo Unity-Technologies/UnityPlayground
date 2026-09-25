@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: bc2cb4e6635aa334ea4a52e2e3ce57c8
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Validator/Tests/Generic/Check
+    Missing Components in Scenes.asset
+  uploadId: 930154

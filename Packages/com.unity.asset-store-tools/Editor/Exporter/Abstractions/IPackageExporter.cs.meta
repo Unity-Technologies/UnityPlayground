@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 41bc3a111ed1fd64c8b9acef211d9e51
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Exporter/Abstractions/IPackageExporter.cs
+  uploadId: 930154

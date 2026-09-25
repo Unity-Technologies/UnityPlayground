@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: bf01c18b66907f54c99517f6a877e3e0
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Validator/Tests/Generic/Remove
+    JavaScript Files.asset
+  uploadId: 930154

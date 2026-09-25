@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 06d76b0e6df91eb43ac956f883c4a2da
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Validator/Scripts/Test Definitions/Scriptable
+    Objects/Editor/ValidationTestScriptableObjectInspector.cs
+  uploadId: 930154

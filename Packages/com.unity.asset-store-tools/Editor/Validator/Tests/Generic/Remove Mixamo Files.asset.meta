@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: a0a44055f786ec64f86a07a214d5f831
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Validator/Tests/Generic/Remove
+    Mixamo Files.asset
+  uploadId: 930154

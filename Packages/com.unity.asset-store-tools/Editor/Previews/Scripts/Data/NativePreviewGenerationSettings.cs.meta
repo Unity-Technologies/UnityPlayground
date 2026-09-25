@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 5b2ef019acae6fe43b5565858e15433a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Previews/Scripts/Data/NativePreviewGenerationSettings.cs
+  uploadId: 930154

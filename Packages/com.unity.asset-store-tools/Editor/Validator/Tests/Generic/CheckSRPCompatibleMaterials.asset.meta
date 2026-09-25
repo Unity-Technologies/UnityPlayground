@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: defa17c83327c4bbbae47f76b069f91b
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store Publishing Tools
+  packageVersion: 12.0.5
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Validator/Tests/Generic/CheckSRPCompatibleMaterials.asset
+  uploadId: 930154
