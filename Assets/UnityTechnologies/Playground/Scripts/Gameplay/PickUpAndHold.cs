@@ -48,8 +48,8 @@ namespace Playground.Gameplay
             // Collect every Pickup around
             GameObject[] pickups = GameObject.FindGameObjectsWithTag("Pickup");
 
-            // Find the closest
-            float dist = pickUpDistance;
+            // Find the closest (distances are compared squared)
+            float dist = pickUpDistance * pickUpDistance;
             for (int i = 0; i < pickups.Length; i++)
             {
                 float newDist = (transform.position - pickups[i].transform.position).sqrMagnitude;
