@@ -10,8 +10,6 @@ namespace Playground.Movement
     {
         [Header("Movement")] public float speed = 5f;
 
-        public float directionChangeInterval = 3f;
-
         [Header("Orientation")] public bool orientToDirection;
 
         public Enums.Directions lookAxis = Enums.Directions.Up;
@@ -33,38 +31,35 @@ namespace Playground.Movement
         {
             currentTargetIndex = 0;
 
+            // Copy the waypoints and add the starting position at the end, so the object loops back to it
             newWaypoints = new Vector2[waypoints.Length + 1];
-            int w = 0;
-            for (int i = 0; i < waypoints.Length; i++)
-            {
-                newWaypoints[i] = waypoints[i];
-                w = i;
-            }
+            waypoints.CopyTo(newWaypoints, 0);
+            newWaypoints[waypoints.Length] = transform.position;
 
-            // Add the starting position at the end, only if there is at least another point in the queue - otherwise it's on index 0
-            int v = newWaypoints.Length > 1 ? w + 1 : 0;
-            newWaypoints[v] = transform.position;
-
-            if (orientToDirection)
-                Utils.SetAxisTowards(lookAxis, transform, ((Vector3)newWaypoints[1] - transform.position).normalized);
+            // Face the first stop (there is none if the list is empty)
+            if (orientToDirection
+                && waypoints.Length > 0)
+                Utils.SetAxisTowards(lookAxis, transform, (newWaypoints[0] - rigidbody2D.position).normalized);
         }
 
         public void FixedUpdate()
         {
             Vector2 currentTarget = newWaypoints[currentTargetIndex];
 
-            rigidbody2D.MovePosition(transform.position +
-                                     ((Vector3)currentTarget - transform.position).normalized * speed *
-                                     Time.fixedDeltaTime);
+            // MoveTowards never overshoots, so the object lands exactly on the waypoint
+            Vector2 nextPosition =
+                Vector2.MoveTowards(rigidbody2D.position, currentTarget, speed * Time.fixedDeltaTime);
+            rigidbody2D.MovePosition(nextPosition);
 
-            if (Vector2.Distance(transform.position, currentTarget) <= .1f)
+            if (nextPosition == currentTarget)
             {
                 // New waypoint has been reached
                 currentTargetIndex = currentTargetIndex < newWaypoints.Length - 1 ? currentTargetIndex + 1 : 0;
-                if (orientToDirection)
+                if (orientToDirection
+                    && newWaypoints.Length > 1)
                 {
                     currentTarget = newWaypoints[currentTargetIndex];
-                    Utils.SetAxisTowards(lookAxis, transform, ((Vector3)currentTarget - transform.position).normalized);
+                    Utils.SetAxisTowards(lookAxis, transform, (currentTarget - nextPosition).normalized);
                 }
             }
         }
