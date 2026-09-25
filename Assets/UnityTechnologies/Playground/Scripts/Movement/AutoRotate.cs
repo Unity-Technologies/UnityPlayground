@@ -11,16 +11,11 @@ namespace Playground.Movement
         // This is the force that rotate the object every frame
         public float rotationSpeed = 5;
 
-        private float _currentRotation;
-
         // FixedUpdate is called once per frame
         private void FixedUpdate()
         {
-            // Find the right rotation, according to speed
-            _currentRotation += .02f * rotationSpeed * 10f;
-
-            // Apply the rotation to the Rigidbody2d
-            rigidbody2D.MoveRotation(-_currentRotation);
+            // Rotate a bit more from the current rotation, according to speed (positive speed is clockwise)
+            rigidbody2D.MoveRotation(rigidbody2D.rotation - rotationSpeed * 10f * Time.fixedDeltaTime);
         }
 
         //Draw an arrow to show the direction in which the object will rotate
