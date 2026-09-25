@@ -14,7 +14,7 @@ namespace Playground.Conditions
 
         private void Start()
         {
-            timeLastEventFired = Time.deltaTime + initialDelay - frequency;
+            timeLastEventFired = Time.time + initialDelay - frequency;
         }
 
 
