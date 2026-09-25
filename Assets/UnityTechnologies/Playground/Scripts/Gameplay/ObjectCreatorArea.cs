@@ -24,6 +24,15 @@ namespace Playground.Gameplay
         {
             boxCollider2D = GetComponent<BoxCollider2D>();
 
+            if (prefabToSpawn == null)
+            {
+                Debug.LogWarning("There is no Prefab assigned to this Object Creator Area, so no objects will be created.");
+                return;
+            }
+
+            // We don't want spawnInterval to be 0 (it would spawn every frame), so we force it to a minimum value
+            if (spawnInterval < 0.1f) spawnInterval = 0.1f;
+
             StartCoroutine(SpawnObject());
         }
 
@@ -32,14 +41,15 @@ namespace Playground.Gameplay
         {
             while (true)
             {
-                // Create some random numbers
-                float randomX = Random.Range(-boxCollider2D.size.x, boxCollider2D.size.x) * .5f;
-                float randomY = Random.Range(-boxCollider2D.size.y, boxCollider2D.size.y) * .5f;
+                // Pick a random point inside the box, in the collider's own space
+                Vector2 halfSize = boxCollider2D.size * .5f;
+                Vector2 localPoint = boxCollider2D.offset
+                                     + new Vector2(Random.Range(-halfSize.x, halfSize.x),
+                                         Random.Range(-halfSize.y, halfSize.y));
 
-                // Generate the new object
+                // Generate the new object, converting the point to world space (this accounts for position, rotation and scale)
                 GameObject newObject = Instantiate(prefabToSpawn);
-                newObject.transform.position =
-                    new Vector2(randomX + transform.position.x, randomY + transform.position.y);
+                newObject.transform.position = (Vector2)transform.TransformPoint(localPoint);
 
                 // Wait for some time before spawning another object
                 yield return new WaitForSeconds(spawnInterval);
