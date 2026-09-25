@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
+using ConditionBase = Playground.BaseClasses.ConditionBase;
 using GameplayAction = Playground.BaseClasses.Action;
 
 namespace Playground.Editor.BaseClasses
@@ -61,34 +62,60 @@ namespace Playground.Editor.BaseClasses
             list.onRemoveCallback += RemoveElement;
         }
 
+        // Removes the selected slot from every selected Condition, and destroys the Action it pointed to
         private void RemoveElement(ReorderableList l)
         {
-            SerializedProperty element = l.serializedProperty.GetArrayElementAtIndex(l.index);
+            int index = l.index;
+            Undo.SetCurrentGroupName("Remove Action");
+            int undoGroup = Undo.GetCurrentGroup();
 
-            if (element.objectReferenceValue != null)
+            foreach (ConditionBase condition in targets)
             {
-                Type t = element.objectReferenceValue.GetType();
-                Undo.DestroyObjectImmediate(Selection.activeGameObject.GetComponent(t));
+                SerializedObject conditionObject = new(condition);
+                SerializedProperty actions = conditionObject.FindProperty("actions");
+                if (index < 0 || index >= actions.arraySize) continue;
+
+                SerializedProperty element = actions.GetArrayElementAtIndex(index);
+                Component action = element.objectReferenceValue as Component;
+
+                // Remove the slot first, so that Undo brings back both the component and the link to it
                 element.objectReferenceValue = null;
+                actions.DeleteArrayElementAtIndex(index);
+                conditionObject.ApplyModifiedProperties();
+
+                // Only destroy the Action if it's on this Condition's GameObject, otherwise it's just unlinked
+                if (action != null
+                    && action.gameObject == condition.gameObject)
+                    Undo.DestroyObjectImmediate(action);
             }
 
-            ReorderableList.defaultBehaviours.DoRemoveButton(l);
+            Undo.CollapseUndoOperations(undoGroup);
+            serializedObject.Update();
+            l.index = Mathf.Min(index, l.serializedProperty.arraySize - 1);
         }
 
+        // Adds the chosen Action (or an empty slot, if actionType is null) to every selected Condition
         public void ClickHandler(object actionType)
         {
-            Component newComponent = null;
-            if (actionType is Type t)
-                //Assign the new Component
-                newComponent = Selection.activeGameObject.AddComponent(t);
+            Undo.SetCurrentGroupName("Add Action");
+            int undoGroup = Undo.GetCurrentGroup();
 
-            //Add the list element
-            int index = list.serializedProperty.arraySize;
-            list.serializedProperty.arraySize++;
-            list.index = index;
-            SerializedProperty element = list.serializedProperty.GetArrayElementAtIndex(index);
-            element.objectReferenceValue = newComponent; //connect the newly assigned component to it
-            serializedObject.ApplyModifiedProperties();
+            foreach (ConditionBase condition in targets)
+            {
+                //Assign the new Component
+                Component newComponent = actionType is Type t ? Undo.AddComponent(condition.gameObject, t) : null;
+
+                //Add the list element, and connect the newly assigned component to it
+                SerializedObject conditionObject = new(condition);
+                SerializedProperty actions = conditionObject.FindProperty("actions");
+                actions.arraySize++;
+                actions.GetArrayElementAtIndex(actions.arraySize - 1).objectReferenceValue = newComponent;
+                conditionObject.ApplyModifiedProperties();
+            }
+
+            Undo.CollapseUndoOperations(undoGroup);
+            serializedObject.Update();
+            list.index = list.serializedProperty.arraySize - 1;
         }
 
         //draws the list ReorderableList of GameplayActions, the useCustomActions toggle and (if this is enabled) the default list of UnityEvents
