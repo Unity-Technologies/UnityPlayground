@@ -77,6 +77,8 @@ namespace Playground.Editor.Movement
 
                     if (EditorGUI.EndChangeCheck())
                     {
+                        // Makes the change undoable, and marks the scene (or prefab override) as modified
+                        Undo.RecordObject(patrolScript, "Move Waypoint");
                         patrolScript.waypoints[i] = gizmoPos;
                         Repaint();
                     }
@@ -120,6 +122,9 @@ namespace Playground.Editor.Movement
 
         public override void OnInspectorGUI()
         {
+            // Pick up changes made outside the Inspector (waypoint handles, Undo)
+            serializedObject.Update();
+
             GUILayout.Space(10);
             EditorGUILayout.HelpBox(explanation, MessageType.Info);
 
@@ -132,7 +137,9 @@ namespace Playground.Editor.Movement
             EditorGUILayout.Space();
             if (GUILayout.Button("Reset Waypoints"))
             {
+                Undo.RecordObject(patrolScript, "Reset Waypoints");
                 patrolScript.Reset();
+                serializedObject.Update();
                 EditorApplication.Beep();
 
                 //force both the custom Inspector and the Scene View to show the changes
