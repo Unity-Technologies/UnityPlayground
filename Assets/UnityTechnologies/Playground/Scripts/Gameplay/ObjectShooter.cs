@@ -44,7 +44,7 @@ namespace Playground.Gameplay
         // Update is called once per frame
         private void Update()
         {
-            if (Keyboard.current[keyToPress].wasPressedThisFrame
+            if (Keyboard.current[keyToPress].IsPressed()
                 && Time.time >= timeOfLastSpawn + creationRate)
             {
                 Vector2 actualBulletDirection = relativeToRotation
