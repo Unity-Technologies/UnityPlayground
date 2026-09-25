@@ -1,6 +1,27 @@
 # Changelog
 All notable changes to this package are documented in this file.
 
+## [1.8.1] - 2026-09-25
+### Added
+- Ensured compatibility with Unity 6.3 LTS.
+
+### Changed
+- Multi-object editing actions for Conditions components.
+- MenuItemFunctions overwrites scripting defines.
+
+### Fixed
+- Fixed an issue where Gameplay Actions created from the Inspector of a Condition component wouldn't be added.
+- Fixed ObjectShooter no longer firing while an input key is held.
+- Fixed an issue with the Move script, so it's now framerate-independent as it should be.
+- Fixed issue with ConditionRepeat ignoring initialDelay for spawned objects.
+- Fixed PickUpAndHold's pickup range.
+- Fixed AutoRotate snaps objects to 0° when Play starts.
+- Fixed Patrol script.
+- Fixed ObjectCreatorArea spawning in the wrong area.
+- Fixed Patrol inspector handle drags.
+- Fixed BalloonScript issue.
+- Fixed stuttering of CameraFollow at high framerates.
+
 ## [1.8.0] - 2026-05-01
 ### Changed
 - Downgraded the project back to Unity 6.0, to ensure it's compatible with 6.0, 6.1, etc. (tested until 6.3 LTS).
