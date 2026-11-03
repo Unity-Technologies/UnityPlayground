@@ -53,11 +53,24 @@ namespace AssetStoreTools.Utility
         {
             path = null;
 
-            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
+            // Unity 6.6+ reports AppDomain.GetAssemblies() as an error (UAC0005), since it may return
+            // unloaded assemblies. The replacement API does not exist in older Unity versions
+#if UNITY_6000_6_OR_NEWER
+            var assemblies = UnityEngine.Assemblies.CurrentAssemblies.GetLoadedAssemblies();
+#else
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+#endif
+
+            foreach (Assembly assembly in assemblies)
             {
                 if (assembly.ManifestModule.Name == "AssetStoreTools.dll")
                 {
+                    // In Unity 6.6+ assemblies are loaded from stream, so Assembly.Location returns "" (UAC0007)
+#if UNITY_6000_6_OR_NEWER
+                    path = assembly.GetLoadedAssemblyPath();
+#else
                     path = assembly.Location;
+#endif
                     break;
                 }
             }

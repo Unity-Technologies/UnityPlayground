@@ -18,25 +18,17 @@ MonoBehaviour:
   Description: 'Starting with Unity 6.6, the Built-in Render Pipeline is deprecated.
 
 
-    You
-    should make sure that your package supports at least the Universal Render Pipeline
-    or the High-Definition Render Pipeline.
+    You should make sure that your package supports at least the Universal Render Pipeline or the High-Definition Render Pipeline.
 
 
     For more information see:
 
 
-    <a
-    href="https://discussions.unity.com/t/render-pipelines-strategy-for-2026/1710004">Render
-    Pipelines strategy 2026</a>
+    <a href="https://discussions.unity.com/t/render-pipelines-strategy-for-2026/1710004">Render Pipelines strategy 2026</a>
 
+    <a href="https://docs.unity3d.com/6000.0/Documentation/Manual/urp/features/rp-converter.html">Render Pipeline Converter</a>
 
-    <a href="https://docs.unity3d.com/6000.0/Documentation/Manual/urp/features/rp-converter.html">Render
-    Pipeline Converter</a>
-
-
-    <a href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/manual/upgrading-your-shaders.html">URP
-    custom-shader upgrade guide</a>'
+    <a href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/manual/upgrading-your-shaders.html">URP custom-shader upgrade guide</a>'
   CategoryInfo:
     IsFailFilter: 1
     IsInclusiveFilter: 1

@@ -4,7 +4,7 @@ timeCreated: 1659013521
 AssetOrigin:
   serializedVersion: 1
   productId: 115
-  packageName: Asset Store Publishing Tools
-  packageVersion: 12.0.5
+  packageName: Asset Store | Publishing Tools
+  packageVersion: 12.0.6
   assetPath: Packages/com.unity.asset-store-tools/Editor/Utility/SymlinkUtil.cs
-  uploadId: 930154
+  uploadId: 1006118

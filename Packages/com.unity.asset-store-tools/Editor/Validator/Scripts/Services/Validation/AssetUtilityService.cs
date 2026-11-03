@@ -166,26 +166,19 @@ namespace AssetStoreTools.Validator.Services.Validation
 
         private bool IsMixamoFbx(string fbxPath)
         {
-            // Location of Mixamo Header, this is located in every mixamo fbx file exported
-            //const int mixamoHeader = 0x4c0 + 2; // < this is the original location from A$ Tools, unsure if Mixamo file headers were changed since then
-            const int mixamoHeader = 1622;
-            // Length of Mixamo header
-            const int length = 0xa;
+            int headerScanBytes = 4096;
+            string mixamoHeaderString = "mixamo.com";
 
-            var fs = new FileStream(fbxPath, FileMode.Open);
-            // Check if length is further than
-            if (fs.Length < mixamoHeader)
+            using var fs = new FileStream(fbxPath, FileMode.Open, FileAccess.Read);
+            int toRead = (int)Math.Min(headerScanBytes, fs.Length);
+            if (toRead <= 0)
                 return false;
 
-            byte[] buffer = new byte[length];
-            using (BinaryReader reader = new BinaryReader(fs))
-            {
-                reader.BaseStream.Seek(mixamoHeader, SeekOrigin.Begin);
-                reader.Read(buffer, 0, length);
-            }
+            byte[] buffer = new byte[toRead];
+            int read = fs.Read(buffer, 0, toRead);
 
-            string result = System.Text.Encoding.ASCII.GetString(buffer);
-            return result.Contains("Mixamo");
+            string header = System.Text.Encoding.ASCII.GetString(buffer, 0, read);
+            return header.Contains(mixamoHeaderString);
         }
 
         public string ObjectToAssetPath(Object obj)

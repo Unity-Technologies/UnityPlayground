@@ -1,12 +1,23 @@
 # Changelog
 All notable changes to this package will be documented in this file.
 
+## [12.0.6] - 2026-09-28
+
+## General changes
+- Replaced .NET APIs that are incompatible with CoreCLR in Unity 6000.6+
+
+## Validator changes
+- Improved Mixamo FBX file detection
+- Added External Dependency Manager (EDM4U) validation test
+- File Menu Names test now fails instead of reporting a warning
+- Result messages without an action are no longer displayed as buttons
+
 ## [12.0.5] - 2026-06-08
 
 ## Validator changes
 - Test descriptions now support rich text
 - Added static variable check validation test
-- Added SRP compatability validation test
+- Added SRP compatibility validation test
 
 ## [12.0.4] - 2026-05-22
 

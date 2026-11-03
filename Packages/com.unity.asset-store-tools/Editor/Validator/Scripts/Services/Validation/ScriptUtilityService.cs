@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEditor;
+using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace AssetStoreTools.Validator.Services.Validation
@@ -58,14 +59,30 @@ namespace AssetStoreTools.Validator.Services.Validation
             var types = new ConcurrentDictionary<Object, IList<Type>>();
             var failedDllPaths = new ConcurrentBag<string>();
 
+            // Unity 6.6+ reports AppDomain.GetAssemblies() as an error (UAC0005), since it may return
+            // unloaded assemblies. The replacement API does not exist in older Unity versions
+#if UNITY_6000_6_OR_NEWER
+            var allAssemblies = UnityEngine.Assemblies.CurrentAssemblies.GetLoadedAssemblies();
+#else
             var allAssemblies = AppDomain.CurrentDomain.GetAssemblies();
+#endif
 
             Parallel.ForEach(dllPaths.Keys,
                 (assemblyPath) =>
                 {
                     try
                     {
+                        // In Unity 6.6+ assemblies are loaded from stream, so Assembly.Location returns "" (UAC0007).
+                        // GetLoadedAssemblyPath() returns null when the path is unknown, which would make Path.GetFullPath() throw
+#if UNITY_6000_6_OR_NEWER
+                        var assembly = allAssemblies.FirstOrDefault(x =>
+                        {
+                            var location = x.GetLoadedAssemblyPath();
+                            return !string.IsNullOrEmpty(location) && Path.GetFullPath(location).Equals(Path.GetFullPath(assemblyPath), StringComparison.OrdinalIgnoreCase);
+                        });
+#else
                         var assembly = allAssemblies.FirstOrDefault(x => Path.GetFullPath(x.Location).Equals(Path.GetFullPath(assemblyPath), StringComparison.OrdinalIgnoreCase));
+#endif
                         if (assembly == null)
                             return;
 
@@ -83,7 +100,7 @@ namespace AssetStoreTools.Validator.Services.Validation
                 var message = new StringBuilder("The following precompiled assemblies could not be checked:");
                 foreach (var path in failedDllPaths)
                     message.Append($"\n{path}");
-                UnityEngine.Debug.LogWarning(message);
+                Debug.LogWarning(message);
             }
 
             // Types are sorted randomly due to parallelism, therefore need to be sorted before returning
@@ -103,7 +120,13 @@ namespace AssetStoreTools.Validator.Services.Validation
         {
             var realTypes = new Dictionary<MonoScript, IList<Type>>();
             var typeInfos = GetTypeInfosFromScriptAssets(monoScripts);
+            // Unity 6.6+ reports AppDomain.GetAssemblies() as an error (UAC0005), since it may return
+            // unloaded assemblies. The replacement API does not exist in older Unity versions
+#if UNITY_6000_6_OR_NEWER
+            var assemblies = UnityEngine.Assemblies.CurrentAssemblies.GetLoadedAssemblies();
+#else
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+#endif
 
             foreach (var kvp in typeInfos)
             {
@@ -178,7 +201,7 @@ namespace AssetStoreTools.Validator.Services.Validation
                 var message = new StringBuilder("The following scripts could not be checked:");
                 foreach (var s in failedScripts)
                     message.Append($"\n{AssetDatabase.GetAssetPath(s)}");
-                UnityEngine.Debug.LogWarning(message);
+                Debug.LogWarning(message);
             }
 
             // Types are sorted randomly due to parallelism, therefore need to be sorted before returning

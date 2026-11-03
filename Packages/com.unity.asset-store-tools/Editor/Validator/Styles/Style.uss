@@ -329,6 +329,13 @@
 
 .validator-test-content-result-messages-content-label {
     white-space: normal;
+
+    margin-left: 5px;
+}
+
+/* When wrapped in a clickable button, the button handles the spacing */
+.validator-test-content-result-messages-content-button .validator-test-content-result-messages-content-label {
+    margin-left: 0;
 }
 
 .validator-test-content-result-messages-separator {

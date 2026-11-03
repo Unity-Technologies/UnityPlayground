@@ -91,7 +91,7 @@ namespace AssetStoreTools.Validator.TestMethods
             {
                 if (affectedScripts.Count > 0)
                 {
-                    result.Status = TestResultStatus.VariableSeverityIssue;
+                    result.Status = TestResultStatus.Fail;
                     result.AddMessage("The following scripts contain invalid MenuItem names:");
                     foreach (var kvp in affectedScripts)
                     {
@@ -106,7 +106,7 @@ namespace AssetStoreTools.Validator.TestMethods
 
                 if (affectedAssemblies.Count > 0)
                 {
-                    result.Status = TestResultStatus.VariableSeverityIssue;
+                    result.Status = TestResultStatus.Fail;
                     result.AddMessage("The following assemblies contain invalid MenuItem names:");
                     foreach (var kvp in affectedAssemblies)
                     {

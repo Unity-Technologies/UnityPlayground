@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 02f0165a7dbea4a18bbf3ed0d5e8028e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115
+  packageName: Asset Store | Publishing Tools
+  packageVersion: 12.0.6
+  assetPath: Packages/com.unity.asset-store-tools/Editor/Validator/Tests/Generic/Check
+    External Dependency Manager.asset
+  uploadId: 1006118

@@ -12,7 +12,7 @@ MonoImporter:
 AssetOrigin:
   serializedVersion: 1
   productId: 115
-  packageName: Asset Store Publishing Tools
-  packageVersion: 12.0.5
+  packageName: Asset Store | Publishing Tools
+  packageVersion: 12.0.6
   assetPath: Packages/com.unity.asset-store-tools/Editor/Validator/Scripts/UI/Data/ValidatorSettings.cs
-  uploadId: 930154
+  uploadId: 1006118
