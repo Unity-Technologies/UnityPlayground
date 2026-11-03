@@ -1471,7 +1471,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 0}
   speed: 2
-  directionChangeInterval: 3
   orientToDirection: 0
   lookAxis: 0
   waypoints:

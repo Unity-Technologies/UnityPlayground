@@ -5,14 +5,10 @@ namespace Playground.Utilities
 {
     public static class Utils
     {
-        public static Mesh moveArrowMesh, shootArrowMesh, rotateArrowMesh;
-
-        static Utils()
-        {
-            moveArrowMesh = Resources.Load<Mesh>("Meshes/MoveArrow");
-            shootArrowMesh = Resources.Load<Mesh>("Meshes/ShootArrow");
-            rotateArrowMesh = Resources.Load<Mesh>("Meshes/RotateArrow");
-        }
+        // Gizmo meshes, loaded on demand (Unity caches them), so no static state survives between Play sessions
+        public static Mesh moveArrowMesh => Resources.Load<Mesh>("Meshes/MoveArrow");
+        public static Mesh shootArrowMesh => Resources.Load<Mesh>("Meshes/ShootArrow");
+        public static Mesh rotateArrowMesh => Resources.Load<Mesh>("Meshes/RotateArrow");
 
         public static void SetAxisTowards(Enums.Directions axis, Transform t, Vector2 direction)
         {

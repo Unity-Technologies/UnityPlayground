@@ -3,8 +3,12 @@
 --- !u!62 &6200000
 PhysicsMaterial2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: BouncyMaterial
+  serializedVersion: 2
   friction: 0.3
   bounciness: 1
+  m_FrictionCombine: 1
+  m_BounceCombine: 4
